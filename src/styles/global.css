@@ -440,14 +440,14 @@ a:hover > .arrow {
   flex: 1;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-  align-items: center;
+  align-items: start;
   gap: 24px;
 }
 
 .hero-copy {
   position: relative;
   z-index: 2;
-  padding: clamp(32px, 5vh, 64px) 0 clamp(48px, 8vh, 88px);
+  padding: clamp(20px, 3vh, 36px) 0 clamp(48px, 8vh, 88px);
 }
 
 .hero-meta {
@@ -455,6 +455,16 @@ a:hover > .arrow {
   flex-wrap: wrap;
   gap: 10px 22px;
   align-items: center;
+}
+
+.hero-meta .kicker {
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  letter-spacing: 0.1em;
+  color: var(--text);
+}
+
+.hero-meta .kicker::before {
+  display: none;
 }
 
 .hero-place {
