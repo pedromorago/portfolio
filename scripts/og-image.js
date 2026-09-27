@@ -17,7 +17,7 @@ const SITE = path.join(ROOT, "_site");
 const launchOptions = process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {};
 
 const COMMON = `
-  .nav, .skip-link, .footer, .hero-scroll, .hero-badge, body::after { display: none !important; }
+  .nav, .skip-link, .footer, .hero-scroll, body::after { display: none !important; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1 !important; transform: none !important; }
 `;

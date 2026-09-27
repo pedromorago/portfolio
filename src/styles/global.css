@@ -535,42 +535,6 @@ a:hover > .arrow {
   -webkit-mask-composite: source-in;
 }
 
-.hero-badge {
-  position: absolute;
-  left: 0;
-  bottom: 18%;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
-  border-radius: 14px;
-  background: rgba(17, 17, 19, 0.86);
-  border: 1px solid var(--line-2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  font-size: 0.875rem;
-  line-height: 1.35;
-  color: var(--text-2);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-}
-
-.hero-badge strong {
-  display: block;
-  color: var(--text);
-  font-weight: 600;
-}
-
-.hero-badge-icon {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  background: rgba(126, 226, 168, 0.14);
-  color: var(--ok);
-  flex: none;
-}
-
 .hero-scroll {
   position: absolute;
   bottom: 28px;
@@ -634,13 +598,6 @@ a:hover > .arrow {
   }
   .hero-glow {
     background: radial-gradient(70% 40% at 50% 20%, rgba(111, 177, 255, 0.22), transparent 70%);
-  }
-}
-
-@media (max-width: 960px) {
-  .hero-badge {
-    left: -6px;
-    bottom: 12%;
   }
 }
 
