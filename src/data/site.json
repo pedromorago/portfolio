@@ -77,6 +77,83 @@
       }
     ]
   },
+  "clients": {
+    "id": "clients",
+    "kicker": "Clients",
+    "title": "Who my work has reached",
+    "groups": [
+      {
+        "company": "Fieldeas",
+        "label": "Client projects I tested at Fieldeas",
+        "logos": [
+          {
+            "name": "Repsol",
+            "file": "repsol.svg"
+          },
+          {
+            "name": "SEAT",
+            "file": "seat.svg",
+            "height": 34
+          },
+          {
+            "name": "Danone",
+            "file": "danone.png"
+          },
+          {
+            "name": "DHL",
+            "file": "dhl.svg",
+            "height": 80
+          },
+          {
+            "name": "Renfe",
+            "file": "renfe.svg"
+          },
+          {
+            "name": "Palibex",
+            "file": "palibex.png",
+            "height": 24
+          }
+        ]
+      },
+      {
+        "company": "IriusRisk",
+        "label": "Companies that use the product I tested at IriusRisk",
+        "logos": [
+          {
+            "name": "J.P. Morgan",
+            "file": "jpmorgan.svg"
+          },
+          {
+            "name": "American Express",
+            "file": "americanexpress.svg",
+            "height": 38
+          },
+          {
+            "name": "HSBC",
+            "file": "hsbc.svg",
+            "height": 38
+          },
+          {
+            "name": "ABN AMRO",
+            "file": "abnamro.svg"
+          },
+          {
+            "name": "Nexi",
+            "file": "nexi.svg"
+          },
+          {
+            "name": "Raiffeisen Bank International",
+            "file": "rbi.svg"
+          },
+          {
+            "name": "Axway",
+            "file": "axway.svg",
+            "height": 46
+          }
+        ]
+      }
+    ]
+  },
   "stats": {
     "title": "In numbers",
     "items": [
@@ -198,6 +275,73 @@
             "href": "https://github.com/pedromorago/qa-wiki",
             "label": "Code ↗",
             "sr": " for the QA Wiki"
+          }
+        ]
+      }
+    ]
+  },
+  "challenges": {
+    "id": "challenges",
+    "kicker": "Challenges",
+    "title": "Hard problems I've tested",
+    "lede": "The technical problems that shaped how I test, company by company.",
+    "companies": [
+      {
+        "company": "IriusRisk",
+        "context": "Threat modeling SaaS. End-to-end automation with Playwright and TypeScript.",
+        "items": [
+          {
+            "title": "A rules engine with a combinatorial space",
+            "problem": "A rule could depend on questionnaire answers, components, trust zones, data flows, security classifications or custom fields, and trigger several actions at once. Covering it by copying a flow per combination would have produced a huge, fragile suite.",
+            "approach": [
+              "Page Objects and shared helpers for the complex screens",
+              "Entities created through the API when the UI added nothing to the test",
+              "Unique data per run, so runs never collide"
+            ]
+          },
+          {
+            "title": "Questionnaires that drive business rules",
+            "problem": "An answer could show a question, insert another answer or produce a conclusion that fired a further rule. Each change had to be checked against the state before it, including what must not happen.",
+            "approach": [
+              "Controlled starting states for every scenario",
+              "Setup kept apart from rule execution, so a failure points at its cause",
+              "Negative cases where a rule has to stay silent"
+            ]
+          },
+          {
+            "title": "Data that breaks where clean data doesn't",
+            "problem": "UTF-8 text and double quotes in questions and answers could break saving or rule evaluation, and none of it showed up with tidy test data.",
+            "approach": [
+              "Edge-case values in the suite on purpose",
+              "Round-trip checks from the UI through the API to storage and back"
+            ]
+          },
+          {
+            "title": "A flaky suite made reliable",
+            "problem": "Elements existed in the DOM before they were ready, selectors matched more than one element, and positional selectors could pass on the wrong one.",
+            "approach": [
+              "Semantic locators: getByRole, getByLabel and filters by context",
+              "Waits on observable state instead of fixed sleeps",
+              "Failures clear enough to tell a test problem from a product bug"
+            ]
+          },
+          {
+            "title": "Dynamic forms across UI, API and data",
+            "problem": "Custom Fields and Security Content mixed dynamic forms, validations and references between entities, and backend errors surfaced in the UI.",
+            "approach": [
+              "Checks on messages, state and persistence, not only on the click",
+              "Positive and negative cases for every constraint",
+              "Preconditions created through API helpers"
+            ]
+          },
+          {
+            "title": "Test architecture that scales",
+            "problem": "Every new condition or action threatened to mean another copied flow.",
+            "approach": [
+              "Page Objects, API helpers and data factories",
+              "Parameterized scenarios for variants that share setup and assertions",
+              "Reuse without hiding what each test checks"
+            ]
           }
         ]
       }
@@ -360,7 +504,8 @@
         "href": "https://www.linkedin.com/in/pedro-morago-lopezvazquez/",
         "label": "LinkedIn ↗"
       }
-    ]
+    ],
+    "statsTitle": "In numbers"
   },
   "contact": {
     "id": "contact",

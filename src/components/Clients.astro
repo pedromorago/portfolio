@@ -1,0 +1,32 @@
+---
+// Logos of companies my work has reached. Only names the companies publish
+// themselves: Fieldeas lists its clients on its site, and IriusRisk names its
+// customers in case studies and in the press. The logos are drawn in the
+// text colour, so none of them fights the page.
+import { site } from "../lib/site";
+const c = site.clients;
+---
+
+<section id={c.id} class="clients" aria-labelledby="clients-title">
+  <div class="container">
+    <h2 id="clients-title" class="sr-only">{c.title}</h2>
+  </div>
+  {
+    c.groups.map((g, gi) => (
+      <div class="marquee-group">
+        <p class="container marquee-label">{g.label}</p>
+        <div class:list={["marquee", { reverse: gi % 2 === 1 }]}>
+          {[0, 1].map((copy) => (
+            <ul class="marquee-track" aria-hidden={copy === 1 ? "true" : undefined}>
+              {g.logos.map((l) => (
+                <li>
+                  <img src={`/logos/${l.file}`} alt={copy === 0 ? l.name : ""} style={l.height ? `height:${l.height}px` : undefined} loading="lazy" decoding="async" />
+                </li>
+              ))}
+            </ul>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</section>

@@ -928,7 +928,7 @@ a:hover > .arrow {
 
 .built {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
   list-style: none;
 }
@@ -993,7 +993,13 @@ a:hover > .arrow {
   margin-top: 20px;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 1000px) {
+  .built {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
   .built {
     grid-template-columns: 1fr;
   }
@@ -1951,4 +1957,248 @@ a:hover > .arrow {
   body::after {
     display: none !important;
   }
+}
+
+/* ------------------------------------------------------------ clients */
+
+.clients {
+  padding: 40px 0 48px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+  overflow: hidden;
+}
+
+.marquee-group + .marquee-group {
+  margin-top: 28px;
+}
+
+.marquee-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  margin-bottom: 18px;
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: clamp(48px, 6vw, 88px);
+  padding-right: clamp(48px, 6vw, 88px);
+  list-style: none;
+  animation: marquee 40s linear infinite;
+}
+
+.marquee.reverse .marquee-track {
+  animation-direction: reverse;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-track img {
+  height: 30px;
+  width: auto;
+  max-width: 170px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.72;
+  transition: opacity 0.2s;
+}
+
+.marquee-track img:hover {
+  opacity: 1;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .marquee-track {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 var(--gutter);
+  }
+  .marquee-track[aria-hidden] {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------ challenges */
+
+.challenge-company + .challenge-company {
+  margin-top: 72px;
+}
+
+.challenge-company-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.challenge-company-head h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 3.4vw, 2.75rem);
+  line-height: 1;
+}
+
+.challenge-company-head p {
+  color: var(--text-2);
+}
+
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 28px;
+  list-style: none;
+}
+
+.challenge {
+  display: flex;
+  flex-direction: column;
+  padding: 26px 26px 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-2);
+  transition: border-color 0.3s var(--ease);
+}
+
+.challenge:hover {
+  border-color: var(--line-2);
+}
+
+.challenge h4 {
+  margin-top: 18px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+.challenge > p {
+  margin-top: 10px;
+  color: var(--text-2);
+  font-size: 0.95rem;
+}
+
+.challenge .challenge-how {
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.challenge ul {
+  margin-top: 10px;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.challenge ul li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.challenge ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 8px;
+  height: 1px;
+  background: var(--accent);
+}
+
+@media (max-width: 1000px) {
+  .challenge-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .challenge-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------------------------------------ career numbers */
+
+.career-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: -24px 0 56px;
+  list-style: none;
+}
+
+.career-stats li {
+  display: flex;
+  flex-direction: column;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-2);
+}
+
+.career-stat-value {
+  font-family: var(--serif);
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.career-stat-unit {
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.career-stat-text {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+@media (max-width: 860px) {
+  .career-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Follows Work directly, so it doesn't need a second top padding. */
+.section.challenges {
+  padding-top: 0;
 }

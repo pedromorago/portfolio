@@ -1,7 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
 import Hero from "../components/Hero.astro";
-import Stats from "../components/Stats.astro";
+import Clients from "../components/Clients.astro";
+import Challenges from "../components/Challenges.astro";
 import Work from "../components/Work.astro";
 import Method from "../components/Method.astro";
 import Career from "../components/Career.astro";
@@ -25,8 +26,9 @@ const m = site.meta;
 >
   <main id={site.skipLink.target}>
     <Hero />
-    <Stats />
+    <Clients />
     <Work />
+    <Challenges />
     <Method />
     <Career />
     <Contact />

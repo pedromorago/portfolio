@@ -13,6 +13,17 @@ const c = site.career;
       </div>
       <p class="section-lede">{c.lede}</p>
     </div>
+    <ul class="career-stats reveal" aria-label={c.statsTitle}>
+      {
+        site.stats.items.map((s) => (
+          <li>
+            <span class="career-stat-value">{s.value}</span>
+            <span class="career-stat-unit">{s.unit}</span>
+            <span class="career-stat-text">{s.text}</span>
+          </li>
+        ))
+      }
+    </ul>
     <div class="career-grid">
       <ol class="timeline">
         {
