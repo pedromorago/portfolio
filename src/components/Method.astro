@@ -1,0 +1,31 @@
+---
+import { site } from "../lib/site";
+import { inline, renderLink, smart } from "../lib/render";
+const m = site.method;
+---
+
+<section id={m.id} class="section method">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <p class="kicker">{m.kicker}</p>
+        <h2 class="section-title">{smart(m.title)}</h2>
+      </div>
+      <blockquote class="method-quote">
+        <p>{smart(m.quote)}</p>
+      </blockquote>
+    </div>
+    <ol class="steps-grid">
+      {
+        m.steps.map((s, i) => (
+          <li class="step reveal">
+            <span class="step-num">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{s.title}</h3>
+            <p set:html={inline(s.text)} />
+            {s.link && <Fragment set:html={renderLink(s.link)} />}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

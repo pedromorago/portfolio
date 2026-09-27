@@ -1,0 +1,38 @@
+---
+import { site } from "../lib/site";
+
+interface Props {
+  kind: "home" | "case";
+}
+const { kind } = Astro.props;
+const home = kind === "home";
+// On a case page every item but Contact goes back to the home page section;
+// Contact is the case page's own contact block. Work is marked active there.
+const href = (id: string) => (home || id === "contact" ? `#${id}` : `/#${id}`);
+---
+
+<nav class:list={["nav", { solid: !home }]} aria-label="Main">
+  <div class="container nav-inner">
+    <a href={home ? "#" : "/"} class="nav-logo">
+      <span class="nav-mark" aria-hidden="true">PM</span>
+      <span class="nav-name">{site.hero.name}</span>
+      <span class="sr-only">, home</span>
+    </a>
+    <div class="nav-links">
+      {
+        site.nav.map((item) =>
+          !home && item.id === "work" ? (
+            <a href={href(item.id)} class="active" aria-current="true">
+              {item.label}
+            </a>
+          ) : (
+            <a href={href(item.id)}>{item.label}</a>
+          ),
+        )
+      }
+      <a href={`/${site.cv.href}`} class="nav-cv">
+        {site.cv.label}<span class="sr-only">{site.cv.sr}</span>
+      </a>
+    </div>
+  </div>
+</nav>

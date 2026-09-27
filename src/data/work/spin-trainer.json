@@ -1,0 +1,194 @@
+{
+  "slug": "spin-trainer",
+  "meta": {
+    "title": "Testing Spin Trainer, a full-stack app | Pedro Morago",
+    "description": "How I test Spin Trainer, a poker range trainer I built: a black-box suite against the deployable image, one E2E spec for two backends, and 8 real defects found.",
+    "shareDescription": "A black-box suite against the deployable image, the same E2E specs against a mock and the real API, and mutation testing. What the tests found in an app I built.",
+    "about": [
+      "Software testing",
+      "API testing",
+      "End-to-end testing",
+      "Mutation testing"
+    ]
+  },
+  "crumb": "Spin Trainer",
+  "kicker": "Case study, Spin Trainer",
+  "title": "Testing a full-stack app I built for myself",
+  "lede": "Spin Trainer is a preflop range trainer for Spin & Go poker that I use to study. It's also where I test the way I'd like to test at work: a black-box suite against the image that gets deployed, the same end-to-end specs against a mock and the real API, and mutation testing to check the unit tests.",
+  "cover": {
+    "image": "spin-explorer",
+    "alt": "Spin Trainer's Explorer: a 13 by 13 grid of poker hands coloured by action, next to the range statistics"
+  },
+  "facts": [
+    {
+      "label": "Product",
+      "text": "A React web app and a Spring Boot API, with Google sign-in"
+    },
+    {
+      "label": "Stack",
+      "text": "React 19, Vite, Java 21, Spring Boot, GraalVM native image, Postgres"
+    },
+    {
+      "label": "Tested with",
+      "text": "REST Assured, JUnit 5, Cucumber, Newman, Playwright, axe, PIT and Stryker"
+    },
+    {
+      "label": "Result",
+      "text": "8 real defects found before they reached anyone, each one kept as a regression test",
+      "check": true
+    }
+  ],
+  "actions": [
+    {
+      "href": "https://spintrainer.pedromorago.com/",
+      "label": "Open the app ↗"
+    }
+  ],
+  "sections": [
+    {
+      "id": "the-product",
+      "title": "The product",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "In a Spin & Go, each decision before the flop depends on your position and your stack. Spin Trainer holds 80 reference ranges from a study guide. The Explorer shows them hand by hand, the Quiz deals you a hand and grades your answer on the server, and Stats shows where you keep missing."
+        },
+        {
+          "type": "p",
+          "text": "I built it to study, and it gave me a real system to test from the outside: an API with a contract, a database, authentication, and a web app that people sign in to."
+        }
+      ]
+    },
+    {
+      "id": "the-strategy",
+      "title": "The test strategy",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Each level lives where it can see its kind of defect. The QA suite is a separate repository and only talks HTTP, so it tests what a client sees, independently of the code."
+        },
+        {
+          "type": "list",
+          "items": [
+            "API acceptance: 145 tests with REST Assured and JUnit 5. Every response is validated against the OpenAPI contract, including status, `Content-Type` and schema.",
+            "Executable specification: 23 Cucumber scenarios, written in Spanish, so someone who knows poker but not the code can review the rules.",
+            "Collection regression: a Newman run of a new player's whole flow, 20 requests and 47 assertions.",
+            "End-to-end: 37 Playwright specs in TypeScript, run against the mock and against the real API, with axe checking WCAG 2.2 AA under the production Content-Security-Policy.",
+            "Unit and integration: 152 unit tests and 106 Testcontainers integration tests in the API, and 295 Vitest tests in the web app."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Mutation testing checks the unit tests themselves: PIT in the API and Stryker in the web app's domain both score 100%. A surviving mutant means a rule could change and no test would notice."
+        }
+      ]
+    },
+    {
+      "id": "techniques",
+      "title": "Test design, named in each test",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Every test says which technique it applies, so a reviewer can see what is covered and what is left out."
+        },
+        {
+          "type": "problem",
+          "rows": [
+            {
+              "label": "Equivalence partitioning",
+              "text": "One partition per reason a JWT is rejected, and per class of invalid range."
+            },
+            {
+              "label": "Boundary values",
+              "text": "Page size 0, 1, 200 and 201. Document size 65,536 and 65,537 bytes."
+            },
+            {
+              "label": "Decision table",
+              "text": "Quiz grading: does the player have a custom range, and is the hand in it? Each combination has an expected action."
+            },
+            {
+              "label": "State transitions",
+              "text": "A custom range goes from none to version 1, 2, deleted and 3, with a 409 for each invalid step."
+            },
+            {
+              "label": "Randomized, with an oracle",
+              "text": "Random hands and answers, graded by the API and compared with the reference ranges."
+            },
+            {
+              "label": "Concurrency",
+              "text": "Eight simultaneous writers on the same version: exactly one wins."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "black-box",
+      "title": "Testing what gets deployed",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The suite runs against the API's production image, a GraalVM native executable, with Postgres set up with the production roles and WireMock standing in for the sign-in provider."
+        },
+        {
+          "type": "p",
+          "text": "That choice paid off. In the native image, every 400 with field errors turned into a 500, because the framework couldn't see a class it needed at build time. The unit and integration tests run on the JVM and could not see it. 40 tests in the black-box suite failed the first time it ran against the real image."
+        }
+      ]
+    },
+    {
+      "id": "two-backends",
+      "title": "One spec, two backends",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The end-to-end specs run twice: against the web app's in-memory mock, which is fast and needs no backend, and against the real API. The reference data and the oracles are the same, so when a test passes on the mock and fails on the API, the defect is in the integration."
+        },
+        {
+          "type": "figure",
+          "image": "spin-quiz",
+          "alt": "Spin Trainer's Quiz: a poker table with the player's hand and buttons for each possible action",
+          "caption": "The Quiz. The server grades each answer against the player's effective range."
+        },
+        {
+          "type": "p",
+          "text": "That's how the Explorer's Reset button failed. The web app sent `Accept: application/json` on a `DELETE` that returns no body, and the API answered 406 without deleting anything. It passed on the mock, and neither the API's integration tests nor Newman caught it, because they accept any content type. It's fixed on both sides, and three tests now cover it."
+        }
+      ]
+    },
+    {
+      "id": "findings",
+      "title": "What the tests found",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Each of these was a real defect, found by a test before it reached anyone. Each test fails against the old version."
+        },
+        {
+          "type": "checks",
+          "items": [
+            "A `DELETE` from the web app returned 406 against the real API and passed against the mock.",
+            "In the native image, every validation error became a 500.",
+            "With the sign-in provider down, the API returned a correct 503 that the contract didn't declare.",
+            "When a page's code failed to download after a deploy, the app showed a framework debug screen with no way out.",
+            "A range deleted and created again restarted at version 1, so a stale tab could overwrite it without a conflict.",
+            "Mutation testing found missing boundary values, and a test named \"exactly full last page\" that never filled a page.",
+            "The API suite could pass from Gradle's cache without talking to the current API.",
+            "One action had no working keyboard shortcut, and a second player on the same tab inherited the first one's data."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "takeaway",
+      "title": "What I took from it",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A green suite only means something if each test checks what its name says. Several of these defects were in the tests, and I found them by reviewing the suite as carefully as the product."
+        }
+      ]
+    }
+  ],
+  "contactTopic": "test strategy or API and end-to-end automation"
+}

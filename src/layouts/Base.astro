@@ -1,0 +1,65 @@
+---
+import "@fontsource/instrument-serif/400.css";
+import "@fontsource/instrument-serif/400-italic.css";
+import "@fontsource-variable/inter-tight";
+import "@fontsource-variable/jetbrains-mono";
+import "../styles/global.css";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../lib/site";
+
+interface Props {
+  kind: "home" | "case";
+  url: string;
+  title: string;
+  description: string;
+  ogType: "profile" | "article";
+  ogImage: string;
+  ogImageAlt: string;
+  ogDescription: string;
+  jsonLd: string;
+}
+
+const p = Astro.props;
+---
+
+<!doctype html>
+<html lang={site.htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{p.title}</title>
+    <meta name="description" content={p.description} />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0b0b0c" />
+    <link rel="canonical" href={p.url} />
+    <meta name="author" content="Pedro Morago" />
+    <meta property="og:type" content={p.ogType} />
+    <meta property="og:site_name" content="Pedro Morago" />
+    <meta property="og:url" content={p.url} />
+    <meta property="og:title" content={p.title} />
+    <meta property="og:description" content={p.ogDescription} />
+    <meta property="og:image" content={p.ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={p.ogImageAlt} />
+    <meta property="og:locale" content={site.ogLocale} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={p.title} />
+    <meta name="twitter:description" content={p.ogDescription} />
+    <meta name="twitter:image" content={p.ogImage} />
+    <meta name="twitter:image:alt" content={p.ogImageAlt} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script type="application/ld+json" set:html={p.jsonLd} />
+    <script is:inline>document.documentElement.classList.add("js");</script>
+  </head>
+  <body data-kind={p.kind}>
+    <a class="skip-link" href={`#${site.skipLink.target}`}>{site.skipLink.label}</a>
+    <Nav kind={p.kind} />
+    <slot />
+    <Footer />
+    <script>
+      import "../scripts/site.ts";
+    </script>
+  </body>
+</html>

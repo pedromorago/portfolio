@@ -1,0 +1,7 @@
+---
+// /work/ redirects to the Work section of the home page.
+import Redirect from "../../components/Redirect.astro";
+import { site } from "../../lib/site";
+---
+
+<Redirect r={site.redirects.work} />

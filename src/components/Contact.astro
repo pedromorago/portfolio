@@ -1,0 +1,36 @@
+---
+import { Picture } from "astro:assets";
+import { site } from "../lib/site";
+import { headshot } from "../lib/images";
+import { renderLink, smart } from "../lib/render";
+const c = site.contact;
+---
+
+<section id={c.id} class="section contact">
+  <div class="container contact-inner">
+    <div class="contact-photo reveal">
+      <Picture src={headshot} alt={c.photoAlt} widths={[240, 480]} sizes="240px" formats={["avif", "webp"]} />
+    </div>
+    <div class="reveal">
+      <p class="kicker">{c.kicker}</p>
+      <h2 class="display contact-title">{smart(c.title.replace(/\.$/, ""))}<em>.</em></h2>
+      <p class="contact-text">{c.text}</p>
+      <div class="contact-email-row">
+        <a class="contact-email" href={`mailto:${c.email}`}>{c.email}</a>
+        <button
+          type="button"
+          class="btn btn-small copy-btn"
+          data-copy={c.email}
+          data-done={c.copy.done}
+          data-fallback={c.copy.fallback}
+          aria-label={c.copy.ariaLabel}
+          hidden>{c.copy.label}</button
+        >
+        <span class="copy-status" role="status" aria-live="polite"></span>
+      </div>
+      <div class="contact-actions">
+        <Fragment set:html={c.links.map((l) => renderLink(l, "btn")).join("")} />
+      </div>
+    </div>
+  </div>
+</section>

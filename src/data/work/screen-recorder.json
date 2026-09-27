@@ -1,0 +1,144 @@
+{
+  "slug": "screen-recorder",
+  "meta": {
+    "title": "Screen Recorder (QA mode) | Pedro Morago",
+    "description": "A Chrome extension I built for bug reports. It records console logs and network requests with the video, and each step with a Cypress or Playwright selector.",
+    "shareDescription": "A Chrome extension for bug reports that records console logs, network requests and your steps with the video. I test it against a page that breaks on demand.",
+    "about": [
+      "Bug reporting",
+      "Browser extensions",
+      "Software testing"
+    ]
+  },
+  "crumb": "Screen Recorder (QA mode)",
+  "kicker": "Case study, Chrome extension",
+  "title": "Screen Recorder (QA mode)",
+  "lede": "A Chrome extension that records a bug together with what a developer needs to reproduce it. I built it for my own bug reports, and anyone can install it in about 30 seconds.",
+  "cover": {
+    "image": "bench",
+    "alt": "The QA Bug Bench, a checkout page with buttons that trigger console errors and failing requests, next to a live activity log"
+  },
+  "facts": [
+    {
+      "label": "Type",
+      "text": "Chrome extension, published on GitHub"
+    },
+    {
+      "label": "Tech",
+      "text": "JavaScript, Manifest V3 and chrome.desktopCapture"
+    },
+    {
+      "label": "Tested with",
+      "text": "Cypress, Playwright and GitHub Actions"
+    },
+    {
+      "label": "Runtime dependencies",
+      "text": "None"
+    },
+    {
+      "label": "Tested against",
+      "text": "[A bug bench I built for it ↗](https://bench.pedromorago.com/)"
+    }
+  ],
+  "actions": [
+    {
+      "href": "https://github.com/pedromorago/screen-recorder-qa/releases/latest",
+      "label": "Download for Chrome ↗"
+    }
+  ],
+  "sections": [
+    {
+      "id": "why",
+      "title": "Why I built it",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "I used a tool called Nimbus to record bugs for my reports. When it changed, I rebuilt the features I relied on in my own extension, and then added the ones I wanted."
+        },
+        {
+          "type": "p",
+          "text": "None of the tools I used recorded console logs and network requests along with the video, and I didn't want to repeat a test just to write its steps down."
+        }
+      ]
+    },
+    {
+      "id": "how-i-test-it",
+      "title": "How I test it",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "I didn't want to check the recorder against whatever a real website happened to do that day. So I built a bug bench for it, a page that breaks on demand. It can return a 500 on a write, throw an uncaught exception, or send a response that says OK and means the opposite. Each failure is known in advance, so I can check the recording against it. When the recording and the bench disagree, one of them has a bug. That's how I found several of the recorder's own bugs."
+        },
+        {
+          "type": "buttons",
+          "links": [
+            {
+              "href": "https://bench.pedromorago.com/",
+              "label": "Open the bug bench ↗",
+              "style": "small"
+            }
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "Automated tests"
+        },
+        {
+          "type": "p",
+          "text": "The extension also has automated tests that run on GitHub Actions. Cypress tests the capture scripts on local test pages. Playwright loads the real extension in Chromium, and one test builds the release zip, unpacks it and loads that, so what ships is what gets tested. Starting a capture needs a real click from a person, which no test framework can fake, so that step has a manual checklist."
+        }
+      ]
+    },
+    {
+      "id": "what-you-get",
+      "title": "What you get from one recording",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "A recording of your screen, a window or a single tab, with no time limit, no watermark and no account. The logs, requests, steps and annotations below come with tab recordings.",
+            "Console logs synced to the video, including uncaught exceptions.",
+            "The page's fetch and XHR requests, with status, timing and headers, exported as a HAR file you can open in Chrome DevTools.",
+            "Numbered steps, recorded automatically from clicks, forms and page changes, including navigation inside single-page apps. Typed values are never logged.",
+            "A `*.steps.md` export in which each step has a paste-ready Cypress or Playwright selector, so the list can become the skeleton of a regression test.",
+            "Annotations drawn on the video while you record, and markers added with a keyboard shortcut.",
+            "A written report of the recording, which it can file as a new issue in Jira Cloud or Linear when you stop. The video and the log files are saved to your Downloads folder.",
+            "An audio-only export, for example of a meeting."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "install",
+      "title": "Install it",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            "Download the zip from the latest release and unzip it.",
+            "Open `chrome://extensions` and turn on Developer mode.",
+            "Choose Load unpacked and select the unzipped folder."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "You don't need an account or a build step."
+        },
+        {
+          "type": "buttons",
+          "links": [
+            {
+              "href": "https://github.com/pedromorago/screen-recorder-qa/releases/latest",
+              "label": "Download for Chrome ↗"
+            },
+            {
+              "href": "https://github.com/pedromorago/screen-recorder-qa",
+              "label": "Code on GitHub ↗"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "contactTopic": "bug reporting or test tooling"
+}

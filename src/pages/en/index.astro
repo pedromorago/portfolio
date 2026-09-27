@@ -1,0 +1,7 @@
+---
+// The old /en/ address redirects to the home page.
+import Redirect from "../../components/Redirect.astro";
+import { site } from "../../lib/site";
+---
+
+<Redirect r={site.redirects.en} />

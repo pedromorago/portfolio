@@ -1,0 +1,34 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import Stats from "../components/Stats.astro";
+import Work from "../components/Work.astro";
+import Method from "../components/Method.astro";
+import Career from "../components/Career.astro";
+import Contact from "../components/Contact.astro";
+import { SITE_URL, site, ogImageUrl } from "../lib/site";
+import { homeJsonLd } from "../lib/seo";
+
+const m = site.meta;
+---
+
+<Base
+  kind="home"
+  url={SITE_URL}
+  title={m.title}
+  description={m.description}
+  ogType="profile"
+  ogImage={ogImageUrl("og-image.png")}
+  ogImageAlt={`${site.hero.name}, ${site.person.jobTitle}. ${site.hero.lede}`}
+  ogDescription={m.ogDescription}
+  jsonLd={homeJsonLd(m.title)}
+>
+  <main id={site.skipLink.target}>
+    <Hero />
+    <Stats />
+    <Work />
+    <Method />
+    <Career />
+    <Contact />
+  </main>
+</Base>

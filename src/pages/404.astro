@@ -1,0 +1,51 @@
+---
+// GitHub Pages serves this file at any depth, so every link is root-absolute.
+import "@fontsource/instrument-serif/400.css";
+import "@fontsource/instrument-serif/400-italic.css";
+import "@fontsource-variable/inter-tight";
+import "../styles/global.css";
+import { site } from "../lib/site";
+---
+
+<!doctype html>
+<html lang={site.htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found | Pedro Morago</title>
+    <meta name="robots" content="noindex" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0b0b0c" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="not-found">
+    <main class="container">
+      <p class="kicker code">404</p>
+      <h1 class="display">This page doesn't <em>exist</em>.</h1>
+      <p class="lede">The link may be old, or the address may have a typo.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/">Back to home</a>
+        <a class="btn btn-ghost" href="/#work">See the work</a>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  .not-found {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: radial-gradient(50% 60% at 70% 30%, rgba(255, 122, 69, 0.16), transparent 70%), var(--bg);
+  }
+  h1 {
+    margin-top: 20px;
+    font-size: clamp(3rem, 9vw, 7rem);
+    max-width: 10em;
+  }
+  .lede {
+    margin-top: 20px;
+    color: var(--text-2);
+    font-size: 1.1875rem;
+  }
+</style>

@@ -1,0 +1,23 @@
+---
+// A noindex stub that sends an old or index-less address to the right place.
+// The script keeps the #fragment (the meta refresh drops it), so old links
+// such as /en/#projects still reach the section the site script maps them to.
+import { SITE_URL, site } from "../lib/site";
+const { r } = Astro.props as { r: { title: string; to: string; text: string } };
+const keepHash = r.to.includes("#") ? "" : " + location.hash";
+---
+
+<!doctype html>
+<html lang={site.htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{r.title}</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={SITE_URL} />
+    <script is:inline set:html={`location.replace(${JSON.stringify(r.to)}${keepHash});`} />
+    <meta http-equiv="refresh" content={`0; url=${r.to}`} />
+  </head>
+  <body>
+    <p><a href={r.to}>{r.text}</a></p>
+  </body>
+</html>

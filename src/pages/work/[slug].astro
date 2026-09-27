@@ -1,0 +1,164 @@
+---
+import { Picture } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import Block from "../../components/Block.astro";
+import CiChart from "../../components/CiChart.astro";
+import { SITE_URL, site, cases, nextCase, ogImageUrl, type CaseStudy } from "../../lib/site";
+import { caseJsonLd } from "../../lib/seo";
+import { shot, headshot } from "../../lib/images";
+import { inline, renderLink, smart } from "../../lib/render";
+
+export function getStaticPaths() {
+  return cases.map((c) => ({ params: { slug: c.slug }, props: { c } }));
+}
+
+const { c } = Astro.props as { c: CaseStudy };
+const url = `${SITE_URL}work/${c.slug}/`;
+const ogImage = ogImageUrl(`work/${c.slug}/og.png`);
+const next = nextCase(c.slug);
+const cc = site.caseContact;
+const email = site.contact.email;
+---
+
+<Base
+  kind="case"
+  url={url}
+  title={c.meta.title}
+  description={c.meta.description}
+  ogType="article"
+  ogImage={ogImage}
+  ogImageAlt={`${c.kicker}. ${c.title}. ${site.hero.name}, ${site.person.jobTitle}.`}
+  ogDescription={c.meta.shareDescription}
+  jsonLd={caseJsonLd(c, url, ogImage)}
+>
+  <main id={site.skipLink.target}>
+    <article>
+      <header class="case-hero">
+        <div class="container">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol>
+              <li><a href="/">{site.hero.name}</a></li>
+              <li><a href="/#work">{site.breadcrumb.work}</a></li>
+              <li><span aria-current="page">{c.crumb}</span></li>
+            </ol>
+          </nav>
+          <p class="kicker case-kicker">{c.kicker}</p>
+          <h1 class="display case-title">{smart(c.title)}</h1>
+          <p class="case-lede" set:html={inline(c.lede)} />
+          <dl class="case-facts">
+            {
+              c.facts.map((f) => (
+                <div class="fact-row">
+                  <dt>{f.label}</dt>
+                  <dd class:list={{ "has-check": f.check }}>
+                    {f.check && (
+                      <svg class="check-icon" viewBox="0 0 100 100" width="14" height="14" aria-hidden="true" focusable="false">
+                        <path d="M18 54l20 20 44-46" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    )}
+                    <Fragment set:html={inline(f.text)} />
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+          {
+            c.actions && (
+              <div class="case-actions">
+                <Fragment set:html={c.actions.map((a, i) => renderLink(a, i === 0 ? "btn btn-primary" : "btn")).join("")} />
+              </div>
+            )
+          }
+          {
+            c.cover && c.cover.image === "chart" && (
+              <div class="case-cover case-cover-chart">
+                <CiChart />
+              </div>
+            )
+          }
+          {
+            c.cover && c.cover.image !== "chart" && (
+              <div class="case-cover">
+                <Picture
+                  src={shot(c.cover.image)}
+                  alt={c.cover.alt}
+                  widths={[640, 1000, 1400, 1920]}
+                  sizes="(max-width: 1320px) 100vw, 1240px"
+                  formats={["avif", "webp"]}
+                  loading="eager"
+                />
+              </div>
+            )
+          }
+        </div>
+      </header>
+
+      <div class="container case-layout">
+        <nav class="toc" aria-label="On this page">
+          <p>On this page</p>
+          <ol>
+            {
+              c.sections.map((s) => (
+                <li>
+                  <a href={`#${s.id}`}>{s.title}</a>
+                </li>
+              ))
+            }
+          </ol>
+        </nav>
+        <div>
+          <div class="case-body">
+            {
+              c.sections.map((s) => (
+                <section id={s.id}>
+                  <h2>{smart(s.title)}</h2>
+                  {s.blocks.map((b) => (
+                    <Block b={b} />
+                  ))}
+                </section>
+              ))
+            }
+          </div>
+
+          <section id="contact" class="case-contact">
+            <div class="case-contact-photo">
+              <Picture src={headshot} alt="" widths={[88, 176]} sizes="88px" formats={["avif", "webp"]} />
+            </div>
+            <div>
+              <h2>{smart(cc.title)}</h2>
+              <p>
+                {cc.intro}
+                {cc.before}
+                {c.contactTopic}, {cc.after} <a href={`mailto:${email}`}>{email}</a>.
+              </p>
+            </div>
+            <div class="contact-actions">
+              <Fragment
+                set:html={cc.actions
+                  .map((a, i) =>
+                    renderLink(a, i === 0 ? "btn btn-primary" : "btn").replace(
+                      "</a>",
+                      a.href.endsWith(".pdf") ? '<span class="sr-only"> (PDF)</span></a>' : "</a>",
+                    ),
+                  )
+                  .join("")}
+              />
+            </div>
+          </section>
+        </div>
+      </div>
+    </article>
+
+    <nav class="case-next" aria-label={site.caseNext.label}>
+      <div class="container">
+        <a href={`/work/${next.slug}/`}>
+          <span class="case-next-label">{site.caseNext.label}</span>
+          <span class="case-next-title">
+            <span>{smart(next.title)}</span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </span>
+        </a>
+      </div>
+    </nav>
+  </main>
+</Base>

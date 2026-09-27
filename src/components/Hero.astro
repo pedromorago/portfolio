@@ -1,0 +1,67 @@
+---
+import { Picture } from "astro:assets";
+import { site } from "../lib/site";
+import { portrait } from "../lib/images";
+import { hrefOf, inline, smart } from "../lib/render";
+
+const h = site.hero;
+const [first, ...rest] = h.name.split(" ");
+// The last word of the lede is set in italic accent.
+const words = smart(h.lede).replace(/\.$/, "").split(" ");
+const lastWord = words.pop();
+---
+
+<header class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-grid-lines" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <div class="hero-meta">
+        <p class="kicker">{h.eyebrow}</p>
+        <p class="hero-place"><span class="dot" aria-hidden="true"></span>{h.place}</p>
+      </div>
+      <h1 class="display hero-name">
+        <span>{first}</span>
+        <span class="last">{rest.join(" ")}</span>
+      </h1>
+      <p class="hero-lede">{words.join(" ")} <em class="serif-em">{lastWord}</em>.</p>
+      <p class="hero-text" set:html={inline(h.text)} />
+      <div class="hero-actions">
+        {
+          h.actions.map((a, i) => (
+            <a class:list={["btn", i === 0 ? "btn-primary" : "btn-ghost"]} href={hrefOf(a.href)}>
+              {a.label}
+              {a.href.endsWith(".pdf") && <span class="sr-only"> (PDF)</span>}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <div class="hero-photo">
+      <Picture
+        src={portrait}
+        alt={h.photoAlt}
+        widths={[380, 600, 900, 1200]}
+        sizes="(max-width: 960px) 380px, 600px"
+        formats={["avif", "webp"]}
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="hero-badge">
+        <span class="hero-badge-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 16 16"
+            ><path
+              d="M3.5 8.5l3 3 6-7"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path></svg
+          >
+        </span>
+        <span><strong>ISTQB CTFL v4.0</strong>BSc in Mathematics</span>
+      </div>
+    </div>
+  </div>
+  <a class="hero-scroll" href="#work"><span class="hero-scroll-line" aria-hidden="true"></span>{h.scroll}</a>
+</header>

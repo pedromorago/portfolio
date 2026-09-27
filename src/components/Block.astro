@@ -1,0 +1,58 @@
+---
+import { Picture } from "astro:assets";
+import type { Block } from "../lib/site";
+import { shot } from "../lib/images";
+import { inline, renderLink } from "../lib/render";
+
+const { b } = Astro.props as { b: Block };
+const cls = { list: "list", steps: "steps", checks: "check-list" } as const;
+---
+
+{b.type === "p" && <p set:html={inline(b.text)} />}
+{b.type === "h3" && <h3>{b.text}</h3>}
+{b.type === "tech" && <p class="case-tech" set:html={inline(b.text)} />}
+{
+  (b.type === "list" || b.type === "checks") && (
+    <ul class={cls[b.type]}>
+      {b.items.map((t) => (
+        <li set:html={inline(t)} />
+      ))}
+    </ul>
+  )
+}
+{
+  b.type === "steps" && (
+    <ol class="steps">
+      {b.items.map((t) => (
+        <li set:html={inline(t)} />
+      ))}
+    </ol>
+  )
+}
+{
+  b.type === "problem" && (
+    <dl class="problem">
+      {b.rows.map((r) => (
+        <div class="problem-row">
+          <dt>{r.label}</dt>
+          <dd set:html={inline(r.text)} />
+        </div>
+      ))}
+    </dl>
+  )
+}
+{
+  b.type === "buttons" && (
+    <div class="case-actions">
+      <Fragment set:html={b.links.map((l, i) => renderLink(l, i === 0 ? "btn btn-small btn-light" : "btn btn-small")).join("")} />
+    </div>
+  )
+}
+{
+  b.type === "figure" && (
+    <figure class="case-figure">
+      <Picture src={shot(b.image)} alt={b.alt} widths={[600, 1000, 1400]} sizes="(max-width: 960px) 100vw, 704px" formats={["avif", "webp"]} />
+      <figcaption>{b.caption}</figcaption>
+    </figure>
+  )
+}

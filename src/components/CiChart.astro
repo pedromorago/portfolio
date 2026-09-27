@@ -1,0 +1,35 @@
+---
+// Pipeline time and cost per run for 2 to 7 containers with 5 workers each,
+// from results/containers.md in github.com/pedromorago/ci-test-split-optimization.
+// "Now" is the balanced 7-container split that ran in production.
+const rows = [
+  { label: "Production", min: 28.25, usd: 6.9, kind: "now" },
+  { label: "7 cont.", min: 25.95, usd: 6.4 },
+  { label: "6 cont.", min: 25.95, usd: 5.77 },
+  { label: "5 cont.", min: 25.95, usd: 5.0 },
+  { label: "4 cont.", min: 25.95, usd: 4.08, kind: "best" },
+  { label: "3 cont.", min: 27.89, usd: 3.34 },
+];
+const max = Math.max(...rows.map((r) => r.usd));
+---
+
+<div class="chart" role="img" aria-label="Estimated cost per pipeline run: 6.90 US dollars for the 7 containers in production, 4.08 with 4 containers, which also finish in 25.95 minutes instead of 28.25.">
+  <p class="chart-title" aria-hidden="true">Cost per run, 5 workers per container</p>
+  <ul class="chart-rows" aria-hidden="true">
+    {
+      rows.map((r) => (
+        <li class:list={["chart-row", r.kind]}>
+          <span>{r.label}</span>
+          <span class="chart-bar">
+            <span style={`width:${((r.usd / max) * 100).toFixed(1)}%`} />
+          </span>
+          <span>${r.usd.toFixed(2)}</span>
+        </li>
+      ))
+    }
+  </ul>
+  <p class="chart-legend" aria-hidden="true">
+    <span><b>4 containers</b> 25.95 min</span>
+    <span><b>Production</b> 28.25 min</span>
+  </p>
+</div>

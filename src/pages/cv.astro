@@ -1,0 +1,345 @@
+---
+// The source of pedro-morago-cv.pdf (npm run cv prints it to public/).
+// Same copy as the home page, laid out for A4 paper. Not indexed: the PDF is
+// what people download.
+import "@fontsource/instrument-serif/400.css";
+import "@fontsource/instrument-serif/400-italic.css";
+import "@fontsource-variable/inter-tight";
+import { Image } from "astro:assets";
+import { site } from "../lib/site";
+import { headshot } from "../lib/images";
+
+const p = site.person;
+const featured = site.work.features.map((f) => ({ title: f.title, text: f.text, href: `pedromorago.com/${f.link.href}` }));
+const built = site.work.items
+  .filter((i) => i.title !== "This site")
+  .map((i) => ({ title: i.title, text: i.text, href: i.links[0].href.replace(/^https:\/\//, "").replace(/\/$/, "") }));
+const url = (h: string) => (h.startsWith("work/") ? `pedromorago.com/${h}` : h.replace(/^https:\/\//, "").replace(/\/$/, ""));
+---
+
+<!doctype html>
+<html lang={site.htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{p.name}, CV</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="https://pedromorago.com/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="head">
+        <div class="photo"><Image src={headshot} alt="" width={200} height={200} /></div>
+        <div>
+          <h1>{site.hero.name}</h1>
+          <p class="role">{p.jobTitle}</p>
+          <p class="contact">
+            <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+            <a href="https://pedromorago.com/">pedromorago.com</a>
+            <a href="https://www.linkedin.com/in/pedro-morago-lopezvazquez/">linkedin.com/in/pedro-morago-lopezvazquez</a>
+            <a href="https://github.com/pedromorago">github.com/pedromorago</a>
+            <span>Santander, Spain (CET). Fully remote since 2021.</span>
+          </p>
+        </div>
+      </header>
+
+      <p class="summary">
+        {`${site.hero.lede} ${site.hero.text}`}
+      </p>
+
+      <div class="cols">
+        <div class="main">
+          <section>
+            <h2>Experience</h2>
+            {
+              site.career.jobs
+                .filter((j) => !j.edu)
+                .map((j) => (
+                  <article class="job">
+                    <div class="job-head">
+                      <h3>
+                        {j.role}, <span>{j.org}</span>
+                      </h3>
+                      <p class="dates">{j.dates}</p>
+                    </div>
+                    <p class="context">{j.context}</p>
+                    <ul>
+                      {j.bullets!.map((b) => (
+                        <li>{b}</li>
+                      ))}
+                    </ul>
+                  </article>
+                ))
+            }
+          </section>
+
+          <section>
+            <h2>Selected work</h2>
+            {
+              featured.map((f) => (
+                <article class="proj">
+                  <h3>{f.title}</h3>
+                  <p>{f.text}</p>
+                  <p class="link">{f.href}</p>
+                </article>
+              ))
+            }
+          </section>
+        </div>
+
+        <aside class="side">
+          <section>
+            <h2>Education</h2>
+            {
+              site.career.jobs
+                .filter((j) => j.edu)
+                .map((j) => (
+                  <div class="item">
+                    <h3>{j.role}</h3>
+                    <p>
+                      {j.org}, {j.dates}
+                    </p>
+                  </div>
+                ))
+            }
+          </section>
+          {
+            site.career.aside.blocks.map((b) => (
+              <section>
+                <h2>{b.title}</h2>
+                {b.items.map((t) => (
+                  <p class="item">{t}</p>
+                ))}
+              </section>
+            ))
+          }
+          <section>
+            <h2>Also built</h2>
+            {
+              built.map((x) => (
+                <div class="item">
+                  <h3>{x.title}</h3>
+                  <p class="link">{url(x.href)}</p>
+                </div>
+              ))
+            }
+          </section>
+          <section>
+            <h2>{site.career.aside.toolsTitle}</h2>
+            <ul class="chips">
+              {site.career.aside.tools.map((t) => <li>{t}</li>)}
+            </ul>
+          </section>
+          <section>
+            <h2>How I work</h2>
+            <ol class="method">
+              {site.method.steps.map((s) => <li>{s.title}</li>)}
+            </ol>
+          </section>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  :root {
+    --ink: #16161a;
+    --ink-2: #4a4a52;
+    --line: #e3e0da;
+    --accent: #c2410c;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    background: #d9d6d0;
+  }
+  body {
+    font-family: "Inter Tight Variable", system-ui, sans-serif;
+    color: var(--ink);
+    font-size: 8.9pt;
+    line-height: 1.45;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page {
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+    margin: 24px auto;
+    padding: 12mm 14mm 10mm;
+    background: #fbfaf7;
+  }
+  @media print {
+    html {
+      background: none;
+    }
+    .page {
+      margin: 0;
+    }
+  }
+  @media screen and (max-width: 840px) {
+    .page {
+      width: auto;
+      height: auto;
+      overflow: visible;
+      margin: 0;
+      padding: 24px 20px;
+    }
+    .cols {
+      grid-template-columns: 1fr !important;
+    }
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .head {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding-bottom: 5mm;
+    border-bottom: 1px solid var(--line);
+  }
+  .photo {
+    flex: none;
+    width: 25mm;
+    height: 25mm;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #1b1411;
+  }
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 18%;
+  }
+  h1 {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-weight: 400;
+    font-size: 30pt;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .role {
+    margin-top: 2px;
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 14px;
+    margin-top: 5px;
+    color: var(--ink-2);
+    font-size: 8.4pt;
+  }
+  .summary {
+    margin-top: 4.5mm;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 56mm;
+    gap: 8mm;
+    margin-top: 5mm;
+  }
+  h2 {
+    font-size: 7.6pt;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-bottom: 1.5mm;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 2.5mm;
+  }
+  section + section {
+    margin-top: 5mm;
+  }
+  .job + .job {
+    margin-top: 3.2mm;
+  }
+  .job-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: baseline;
+  }
+  h3 {
+    font-size: 9.8pt;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  h3 span {
+    font-weight: 500;
+    color: var(--ink-2);
+  }
+  .dates {
+    flex: none;
+    font-size: 8.2pt;
+    color: var(--ink-2);
+  }
+  .context {
+    color: var(--ink-2);
+    font-size: 8.6pt;
+  }
+  .job ul {
+    margin-top: 1.2mm;
+    padding-left: 3.6mm;
+  }
+  .job li + li {
+    margin-top: 0.6mm;
+  }
+  .job li::marker {
+    color: var(--accent);
+  }
+  .proj + .proj {
+    margin-top: 2.6mm;
+  }
+  .proj p {
+    color: var(--ink-2);
+  }
+  .link {
+    font-size: 8pt;
+    color: var(--accent);
+  }
+  .item + .item {
+    margin-top: 1.6mm;
+  }
+  .item p,
+  p.item {
+    color: var(--ink-2);
+  }
+  .chips {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+  .chips li {
+    font-size: 8pt;
+    padding: 1px 6px;
+    border: 1px solid var(--line);
+    border-radius: 99px;
+    background: #fff;
+  }
+  .method {
+    padding-left: 4mm;
+    color: var(--ink-2);
+  }
+  .method li + li {
+    margin-top: 0.8mm;
+  }
+</style>
