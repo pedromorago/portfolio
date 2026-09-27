@@ -2,13 +2,10 @@
 import { Picture } from "astro:assets";
 import { site } from "../lib/site";
 import { portrait } from "../lib/images";
-import { hrefOf, inline, smart } from "../lib/render";
+import { hrefOf, inline } from "../lib/render";
 
 const h = site.hero;
 const [first, ...rest] = h.name.split(" ");
-// The last word of the lede is set in italic accent.
-const words = smart(h.lede).replace(/\.$/, "").split(" ");
-const lastWord = words.pop();
 ---
 
 <header class="hero">
@@ -24,7 +21,6 @@ const lastWord = words.pop();
         <span>{first}</span>
         <span class="last">{rest.join(" ")}</span>
       </h1>
-      <p class="hero-lede">{words.join(" ")} <em class="serif-em">{lastWord}</em>.</p>
       <p class="hero-text" set:html={inline(h.text)} />
       <div class="hero-actions">
         {

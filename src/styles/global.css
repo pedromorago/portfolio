@@ -487,16 +487,8 @@ a:hover > .arrow {
   padding-left: 0.6em;
 }
 
-.hero-lede {
-  margin-top: 28px;
-  font-family: var(--serif);
-  font-size: clamp(1.625rem, 3vw, 2.375rem);
-  line-height: 1.15;
-  max-width: 17em;
-}
-
 .hero-text {
-  margin-top: 18px;
+  margin-top: 32px;
   max-width: 33em;
   color: var(--text-2);
   font-size: 1.125rem;

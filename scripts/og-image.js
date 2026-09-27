@@ -28,7 +28,6 @@ const HOME = `${COMMON}
   .hero-inner { grid-template-columns: 1.25fr 0.75fr !important; height: 630px; align-items: center !important; }
   .hero-copy { padding: 0 !important; }
   .hero-name { font-size: 132px !important; }
-  .hero-lede { font-size: 34px !important; }
   .hero-photo { align-self: end !important; max-width: 430px !important; margin: 0 !important; }
 `;
 
