@@ -405,7 +405,7 @@ a:hover > .arrow {
 
 .hero {
   position: relative;
-  min-height: 100svh;
+  min-height: min(100svh, 940px);
   padding-top: 72px;
   display: flex;
   flex-direction: column;
@@ -440,14 +440,14 @@ a:hover > .arrow {
   flex: 1;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-  align-items: end;
+  align-items: center;
   gap: 24px;
 }
 
 .hero-copy {
   position: relative;
   z-index: 2;
-  padding: clamp(40px, 8vh, 96px) 0 clamp(40px, 8vh, 88px);
+  padding: clamp(32px, 5vh, 64px) 0 clamp(48px, 8vh, 88px);
 }
 
 .hero-meta {
