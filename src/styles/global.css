@@ -447,7 +447,7 @@ a:hover > .arrow {
 .hero-copy {
   position: relative;
   z-index: 2;
-  padding: clamp(20px, 3vh, 36px) 0 clamp(48px, 8vh, 88px);
+  padding: clamp(40px, 6vh, 64px) 0 clamp(48px, 8vh, 88px);
 }
 
 .hero-meta {
