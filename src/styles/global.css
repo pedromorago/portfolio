@@ -467,22 +467,6 @@ a:hover > .arrow {
   display: none;
 }
 
-.hero-place {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.9375rem;
-  color: var(--text-2);
-}
-
-.hero-place .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--ok);
-  box-shadow: 0 0 0 4px rgba(126, 226, 168, 0.15);
-}
-
 .hero-name {
   font-size: clamp(4.25rem, 12.5vw, 11.5rem);
   margin: 22px 0 0 -0.04em;
@@ -514,7 +498,7 @@ a:hover > .arrow {
 .hero-photo {
   position: relative;
   align-self: start;
-  margin-top: 8px;
+  margin-top: 64px;
   justify-self: end;
   width: 100%;
   max-width: 600px;
