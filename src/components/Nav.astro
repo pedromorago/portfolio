@@ -15,8 +15,7 @@ const href = (id: string) => (home || id === "contact" ? `#${id}` : `/#${id}`);
   <div class="container nav-inner">
     <a href={home ? "#" : "/"} class="nav-logo">
       <span class="nav-mark" aria-hidden="true">PM</span>
-      <span class="nav-name">{site.hero.name}</span>
-      <span class="sr-only">, home</span>
+      <span class="sr-only">{site.hero.name}, home</span>
     </a>
     <div class="nav-links">
       {
