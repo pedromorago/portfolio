@@ -405,7 +405,7 @@ a:hover > .arrow {
 
 .hero {
   position: relative;
-  min-height: min(100svh, 940px);
+  min-height: 0;
   padding-top: 72px;
   display: flex;
   flex-direction: column;
@@ -513,7 +513,8 @@ a:hover > .arrow {
 
 .hero-photo {
   position: relative;
-  align-self: end;
+  align-self: start;
+  margin-top: 8px;
   justify-self: end;
   width: 100%;
   max-width: 600px;
