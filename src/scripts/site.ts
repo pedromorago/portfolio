@@ -126,3 +126,55 @@ if (copyBtn) {
     }
   });
 }
+
+// Logo carousels: they scroll on their own and can be dragged with a mouse or
+// a finger. Without JavaScript the CSS animation runs instead.
+document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
+  const track = marquee.querySelector<HTMLElement>(".marquee-track");
+  if (!track || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  marquee.classList.add("draggable");
+  const dir = marquee.classList.contains("reverse") ? 1 : -1;
+  const speed = 40; // px per second
+  let offset = 0;
+  let width = track.offsetWidth;
+  let dragging = false;
+  let hovering = false;
+  let startX = 0;
+  let startOffset = 0;
+  let last = performance.now();
+  const wrap = () => {
+    width = track.offsetWidth || width;
+    offset = ((offset % width) - width) % width; // keep it in (-width, 0]
+  };
+  const paint = () => marquee.style.setProperty("--x", `${offset}px`);
+  const tick = (now: number) => {
+    const dt = Math.min(now - last, 100) / 1000;
+    last = now;
+    if (!dragging && !hovering) offset += dir * speed * dt;
+    wrap();
+    paint();
+    requestAnimationFrame(tick);
+  };
+  marquee.addEventListener("pointerenter", (e) => {
+    if (e.pointerType === "mouse") hovering = true;
+  });
+  marquee.addEventListener("pointerleave", () => (hovering = false));
+  marquee.addEventListener("pointerdown", (e) => {
+    dragging = true;
+    startX = e.clientX;
+    startOffset = offset;
+    marquee.setPointerCapture(e.pointerId);
+    marquee.classList.add("dragging");
+  });
+  marquee.addEventListener("pointermove", (e) => {
+    if (dragging) offset = startOffset + (e.clientX - startX);
+  });
+  const end = () => {
+    dragging = false;
+    marquee.classList.remove("dragging");
+  };
+  marquee.addEventListener("pointerup", end);
+  marquee.addEventListener("pointercancel", end);
+  window.addEventListener("resize", wrap);
+  requestAnimationFrame(tick);
+});

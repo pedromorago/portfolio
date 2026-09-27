@@ -2202,3 +2202,20 @@ a:hover > .arrow {
 .section.challenges {
   padding-top: 0;
 }
+
+/* Driven by the site script when JavaScript is on: it can be dragged. */
+.marquee.draggable {
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.marquee.draggable.dragging {
+  cursor: grabbing;
+}
+
+.marquee.draggable .marquee-track {
+  animation: none;
+  transform: translateX(var(--x, 0));
+}

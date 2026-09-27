@@ -20,7 +20,7 @@ const c = site.clients;
             <ul class="marquee-track" aria-hidden={copy === 1 ? "true" : undefined}>
               {g.logos.map((l) => (
                 <li>
-                  <img src={`/logos/${l.file}`} alt={copy === 0 ? l.name : ""} style={l.height ? `height:${l.height}px` : undefined} loading="lazy" decoding="async" />
+                  <img draggable="false" src={`/logos/${l.file}`} alt={copy === 0 ? l.name : ""} style={l.height ? `height:${l.height}px` : undefined} loading="lazy" decoding="async" />
                 </li>
               ))}
             </ul>
