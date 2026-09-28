@@ -1,0 +1,107 @@
+{
+  "summary": "Senior QA Engineer with 5 years of experience in quality assurance and test automation for international SaaS products and a telecom platform. API automation in Java (REST Assured, JUnit 5) and Karate, E2E testing with Playwright and Cypress, tests integrated into CI/CD pipelines, and test strategy in fully remote, distributed Agile teams (Scrum/Kanban). ISTQB CTFL v4.0 certified.",
+  "jobs": [
+    {
+      "role": "Senior QA Engineer",
+      "org": "Alvatross by SATEC",
+      "dates": "Jul 2026 – Present",
+      "meta": "Remote. Telecom OSS platform for EWE (Germany)",
+      "bullets": [
+        "QA on the OSS transformation of EWE, a German telecom and energy provider, built on TM Forum ODA standards.",
+        "Design and run the tests for service-order flows in Jira and Xray: add, modify, delete, suspend and reactivate.",
+        "Building API test automation with Karate against TM Forum APIs, and built a one-click Postman smoke suite that checks every service after a production deployment."
+      ]
+    },
+    {
+      "role": "QA Engineer",
+      "org": "IriusRisk",
+      "dates": "May 2024 – Jun 2026",
+      "meta": "Remote. International SaaS, cybersecurity and threat modeling",
+      "bullets": [
+        "Led the testing strategy for the Security Content module, one of the product's core components, defining the test mix across the testing pyramid (backend, API and frontend).",
+        "Designed and maintained Playwright and TypeScript E2E automation for the rules engine, covering combinations of conditions and actions, with Page Objects, API-backed setup and data factories.",
+        "Designed and deployed a Python optimization model (MILP) to split E2E tests across CI containers: 42% faster in a one-worker run. Modelling the 5 production workers showed 4 containers instead of 7 would be about 8% faster and 41% cheaper.",
+        "Backend API automation in Java with REST Assured and JUnit 5 (Given-When-Then, JSON schema validation, negative cases, Qase traceability), plus API testing with Postman across development, staging and production.",
+        "Took part in the migration from TestCafe to Playwright with TypeScript: about 80% less execution time and a more stable suite.",
+        "Contributed to CI/CD pipelines in Bitbucket and applied Shift Left, reviewing requirements and technical designs early and turning them into test cases."
+      ]
+    },
+    {
+      "role": "QA Engineer",
+      "org": "Fieldeas",
+      "dates": "Jun 2021 – May 2024",
+      "meta": "Remote. Field service management SaaS",
+      "bullets": [
+        "Designed and executed functional, regression and integration tests across multiple client projects, reporting 500+ bugs prioritised by product risk and business criticality, with data validation through SQL queries.",
+        "Built and maintained automated E2E suites with Cypress and JavaScript, moving the team's testing from manual to a scalable automation model.",
+        "Produced the team's technical QA documentation (test plans, test cases, reports) and managed defects in Jira, coordinating releases with development.",
+        "Onboarded and mentored new team members on tools and automation best practices, reducing ramp-up time."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Spin Trainer",
+      "url": "pedromorago.com/work/spin-trainer",
+      "text": "Full-stack app tested like production: black-box API suite (REST Assured), the same Playwright specs against a mock and the real API, and mutation testing. The tests found 8 real defects."
+    },
+    {
+      "title": "CI Shard Advisor",
+      "url": "shard.pedromorago.com",
+      "text": "Recommends how to split Cypress specs across CI containers from run reports, with a demo that runs in the browser."
+    },
+    {
+      "title": "Screen Recorder (QA mode)",
+      "url": "github.com/pedromorago/screen-recorder-qa",
+      "text": "Chrome extension for bug reports: console, network (HAR) and user steps synced to the video, filed as issues in Jira and Linear."
+    },
+    {
+      "title": "QA Wiki",
+      "url": "wiki.pedromorago.com",
+      "text": "My QA knowledge base: 50+ articles on test strategy, API testing, Playwright, CI/CD and performance."
+    }
+  ],
+  "education": [
+    {
+      "title": "BSc in Mathematics",
+      "org": "University of Cantabria",
+      "dates": "2015 – 2020"
+    },
+    {
+      "title": "Advanced Web Application Development with Java",
+      "org": "CIC (bootcamp)",
+      "dates": "2021"
+    },
+    {
+      "title": "ISTQB Certified Tester Foundation Level (CTFL) v4.0",
+      "org": "Credential ID Brightest2024029052",
+      "dates": "Dec 2024"
+    }
+  ],
+  "skills": [
+    {
+      "title": "Automation and testing",
+      "text": "Playwright, Cypress, Selenium, TestCafe. Functional, regression, integration, API and E2E testing"
+    },
+    {
+      "title": "API and backend",
+      "text": "Java, REST Assured, JUnit 5, Karate, Postman, SQL"
+    },
+    {
+      "title": "Programming",
+      "text": "Java, JavaScript, TypeScript, Python"
+    },
+    {
+      "title": "CI/CD and tools",
+      "text": "Bitbucket Pipelines, GitHub Actions, Jenkins, Git, Docker, Jira, Xray, Confluence, Qase, Chrome DevTools"
+    },
+    {
+      "title": "Strategy and process",
+      "text": "Test strategy, Shift Left, test case design, code reviews, Agile (Scrum, Kanban)"
+    }
+  ],
+  "languages": [
+    "Spanish, native",
+    "English C1.1 (EOI), professional proficiency"
+  ]
+}

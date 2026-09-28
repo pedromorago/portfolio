@@ -1,20 +1,17 @@
 ---
 // The source of pedro-morago-cv.pdf (npm run cv prints it to public/).
-// Same copy as the home page, laid out for A4 paper. Not indexed: the PDF is
-// what people download.
+// The copy lives in src/data/cv.json, laid out for one A4 page. Not indexed:
+// the PDF is what people download.
 import "@fontsource/instrument-serif/400.css";
-import "@fontsource/instrument-serif/400-italic.css";
 import "@fontsource-variable/inter-tight";
 import { Image } from "astro:assets";
 import { site } from "../lib/site";
 import { headshot } from "../lib/images";
+import cv from "../data/cv.json";
+import { assertContent } from "../lib/render";
 
+assertContent(cv, "$", "src/data/cv.json");
 const p = site.person;
-const featured = site.work.features.map((f) => ({ title: f.title, text: f.text, href: `pedromorago.com/${f.link.href}` }));
-const built = site.work.items
-  .filter((i) => i.title !== "This site")
-  .map((i) => ({ title: i.title, text: i.text, href: i.links[0].href.replace(/^https:\/\//, "").replace(/\/$/, "") }));
-const url = (h: string) => (h.startsWith("work/") ? `pedromorago.com/${h}` : h.replace(/^https:\/\//, "").replace(/\/$/, ""));
 ---
 
 <!doctype html>
@@ -32,7 +29,7 @@ const url = (h: string) => (h.startsWith("work/") ? `pedromorago.com/${h}` : h.r
       <header class="head">
         <div class="photo"><Image src={headshot} alt="" width={200} height={200} /></div>
         <div>
-          <h1>{site.hero.name}</h1>
+          <h1>{p.name}</h1>
           <p class="role">{p.jobTitle}</p>
           <p class="contact">
             <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
@@ -44,45 +41,39 @@ const url = (h: string) => (h.startsWith("work/") ? `pedromorago.com/${h}` : h.r
         </div>
       </header>
 
-      <p class="summary">
-        {site.hero.text}
-      </p>
+      <p class="summary">{cv.summary}</p>
 
       <div class="cols">
         <div class="main">
           <section>
             <h2>Experience</h2>
             {
-              site.career.jobs
-                .filter((j) => !j.edu)
-                .map((j) => (
-                  <article class="job">
-                    <div class="job-head">
-                      <h3>
-                        {j.role}, <span>{j.org}</span>
-                      </h3>
-                      <p class="dates">{j.dates}</p>
-                    </div>
-                    <p class="context">{j.context}</p>
-                    <ul>
-                      {j.bullets!.map((b) => (
-                        <li>{b}</li>
-                      ))}
-                    </ul>
-                  </article>
-                ))
+              cv.jobs.map((j) => (
+                <article class="job">
+                  <div class="job-head">
+                    <h3>
+                      {j.role}, <span>{j.org}</span>
+                    </h3>
+                    <p class="dates">{j.dates}</p>
+                  </div>
+                  <p class="context">{j.meta}</p>
+                  <ul>
+                    {j.bullets.map((b) => (
+                      <li>{b}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))
             }
           </section>
 
           <section>
-            <h2>Selected work</h2>
+            <h2>Skills</h2>
             {
-              featured.map((f) => (
-                <article class="proj">
-                  <h3>{f.title}</h3>
-                  <p>{f.text}</p>
-                  <p class="link">{f.href}</p>
-                </article>
+              cv.skills.map((s) => (
+                <p class="skill">
+                  <strong>{s.title}:</strong> {s.text}
+                </p>
               ))
             }
           </section>
@@ -90,52 +81,33 @@ const url = (h: string) => (h.startsWith("work/") ? `pedromorago.com/${h}` : h.r
 
         <aside class="side">
           <section>
-            <h2>Education</h2>
+            <h2>Education and certification</h2>
             {
-              site.career.jobs
-                .filter((j) => j.edu)
-                .map((j) => (
-                  <div class="item">
-                    <h3>{j.role}</h3>
-                    <p>
-                      {j.org}, {j.dates}
-                    </p>
-                  </div>
-                ))
-            }
-          </section>
-          {
-            site.career.aside.blocks.map((b) => (
-              <section>
-                <h2>{b.title}</h2>
-                {b.items.map((t) => (
-                  <p class="item">{t}</p>
-                ))}
-              </section>
-            ))
-          }
-          <section>
-            <h2>Also built</h2>
-            {
-              built.map((x) => (
+              cv.education.map((e) => (
                 <div class="item">
-                  <h3>{x.title}</h3>
-                  <p class="link">{url(x.href)}</p>
+                  <h3>{e.title}</h3>
+                  <p>
+                    {e.org}, {e.dates}
+                  </p>
                 </div>
               ))
             }
           </section>
           <section>
-            <h2>{site.career.aside.toolsTitle}</h2>
-            <ul class="chips">
-              {site.career.aside.tools.map((t) => <li>{t}</li>)}
-            </ul>
+            <h2>Projects</h2>
+            {
+              cv.projects.map((x) => (
+                <article class="proj">
+                  <h3>{x.title}</h3>
+                  <p class="link">{x.url}</p>
+                  <p>{x.text}</p>
+                </article>
+              ))
+            }
           </section>
           <section>
-            <h2>How I work</h2>
-            <ol class="method">
-              {site.method.steps.map((s) => <li>{s.title}</li>)}
-            </ol>
+            <h2>Languages</h2>
+            {cv.languages.map((l) => <p class="item">{l}</p>)}
           </section>
         </aside>
       </div>
@@ -165,7 +137,7 @@ const url = (h: string) => (h.startsWith("work/") ? `pedromorago.com/${h}` : h.r
   body {
     font-family: "Inter Tight Variable", system-ui, sans-serif;
     color: var(--ink);
-    font-size: 8.9pt;
+    font-size: 8.3pt;
     line-height: 1.45;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -175,7 +147,7 @@ const url = (h: string) => (h.startsWith("work/") ? `pedromorago.com/${h}` : h.r
     height: 297mm;
     overflow: hidden;
     margin: 24px auto;
-    padding: 12mm 14mm 10mm;
+    padding: 10mm 12mm 8mm;
     background: #fbfaf7;
   }
   @media print {
@@ -226,7 +198,7 @@ const url = (h: string) => (h.startsWith("work/") ? `pedromorago.com/${h}` : h.r
   h1 {
     font-family: "Instrument Serif", Georgia, serif;
     font-weight: 400;
-    font-size: 30pt;
+    font-size: 26pt;
     line-height: 1;
     letter-spacing: -0.01em;
   }
@@ -245,15 +217,15 @@ const url = (h: string) => (h.startsWith("work/") ? `pedromorago.com/${h}` : h.r
     font-size: 8.4pt;
   }
   .summary {
-    margin-top: 4.5mm;
-    font-size: 10pt;
-    line-height: 1.5;
+    margin-top: 3.5mm;
+    font-size: 9pt;
+    line-height: 1.45;
   }
   .cols {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 56mm;
-    gap: 8mm;
-    margin-top: 5mm;
+    grid-template-columns: minmax(0, 1fr) 50mm;
+    gap: 6mm;
+    margin-top: 4mm;
   }
   h2 {
     font-size: 7.6pt;
@@ -266,7 +238,7 @@ const url = (h: string) => (h.startsWith("work/") ? `pedromorago.com/${h}` : h.r
     margin-bottom: 2.5mm;
   }
   section + section {
-    margin-top: 5mm;
+    margin-top: 3.8mm;
   }
   .job + .job {
     margin-top: 3.2mm;
@@ -334,6 +306,12 @@ const url = (h: string) => (h.startsWith("work/") ? `pedromorago.com/${h}` : h.r
     border: 1px solid var(--line);
     border-radius: 99px;
     background: #fff;
+  }
+.skill + .skill {
+    margin-top: 1mm;
+  }
+  .skill strong {
+    font-weight: 600;
   }
   .method {
     padding-left: 4mm;
