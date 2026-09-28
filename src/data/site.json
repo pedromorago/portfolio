@@ -83,60 +83,12 @@
     "title": "Who my work has reached",
     "groups": [
       {
-        "company": "Fieldeas",
-        "label": "Client projects I tested at Fieldeas",
-        "logos": [
-          {
-            "name": "Repsol",
-            "file": "repsol.svg"
-          },
-          {
-            "name": "Telefónica",
-            "file": "fe-telefonica.png",
-            "height": 30
-          },
-          {
-            "name": "Iberdrola",
-            "file": "fe-iberdrola.png",
-            "height": 40
-          },
-          {
-            "name": "Renfe",
-            "file": "renfe.svg"
-          },
-          {
-            "name": "Bosch",
-            "file": "fe-bosch.png",
-            "height": 30
-          },
-          {
-            "name": "SEAT",
-            "file": "seat.svg",
-            "height": 34
-          },
-          {
-            "name": "DHL",
-            "file": "dhl.svg",
-            "height": 80
-          },
-          {
-            "name": "Danone",
-            "file": "danone.png"
-          }
-        ]
-      },
-      {
-        "company": "IriusRisk",
-        "label": "Companies that use the product I tested at IriusRisk",
+        "company": "All",
+        "label": "Clients of the teams I've tested for",
         "logos": [
           {
             "name": "J.P. Morgan",
             "file": "jpmorgan.svg"
-          },
-          {
-            "name": "American Express",
-            "file": "americanexpress.svg",
-            "height": 38
           },
           {
             "name": "HSBC",
@@ -144,26 +96,42 @@
             "height": 30
           },
           {
-            "name": "ABN AMRO",
-            "file": "abnamro.svg"
+            "name": "American Express",
+            "file": "americanexpress.svg",
+            "height": 38
           },
           {
-            "name": "Raiffeisen Bank International",
-            "file": "rbi.svg"
+            "name": "Telefónica",
+            "file": "fe-telefonica.png",
+            "height": 30
           },
           {
-            "name": "Nexi",
-            "file": "nexi.svg"
+            "name": "Repsol",
+            "file": "repsol.svg"
           },
           {
-            "name": "ClearBank",
-            "file": "clearbank.svg",
-            "height": 24
+            "name": "Iberdrola",
+            "file": "fe-iberdrola.png",
+            "height": 40
           },
           {
-            "name": "Axway",
-            "file": "axway.svg",
-            "height": 46
+            "name": "Bosch",
+            "file": "fe-bosch.png",
+            "height": 30
+          },
+          {
+            "name": "EWE",
+            "file": "ewe.svg",
+            "height": 30
+          },
+          {
+            "name": "DHL",
+            "file": "dhl.svg",
+            "height": 80
+          },
+          {
+            "name": "Renfe",
+            "file": "renfe.svg"
           }
         ]
       }
