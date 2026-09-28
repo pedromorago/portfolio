@@ -83,8 +83,52 @@
     "title": "Who my work has reached",
     "groups": [
       {
-        "company": "All",
-        "label": "Clients of the teams I've tested for",
+        "company": "Spain",
+        "label": "Spanish companies",
+        "logos": [
+          {
+            "name": "Telefónica",
+            "file": "fe-telefonica.png",
+            "height": 30
+          },
+          {
+            "name": "Repsol",
+            "file": "repsol.svg"
+          },
+          {
+            "name": "Iberdrola",
+            "file": "fe-iberdrola.png",
+            "height": 40
+          },
+          {
+            "name": "Renfe",
+            "file": "renfe.svg"
+          },
+          {
+            "name": "SEAT",
+            "file": "seat.svg",
+            "height": 34
+          },
+          {
+            "name": "Adif",
+            "file": "fe-adif.png",
+            "height": 34
+          },
+          {
+            "name": "Metro de Madrid",
+            "file": "fe-metro-madrid.png",
+            "height": 40
+          },
+          {
+            "name": "Applus+",
+            "file": "fe-applus.png",
+            "height": 34
+          }
+        ]
+      },
+      {
+        "company": "International",
+        "label": "International companies",
         "logos": [
           {
             "name": "J.P. Morgan",
@@ -99,20 +143,6 @@
             "name": "American Express",
             "file": "americanexpress.svg",
             "height": 38
-          },
-          {
-            "name": "Telefónica",
-            "file": "fe-telefonica.png",
-            "height": 30
-          },
-          {
-            "name": "Repsol",
-            "file": "repsol.svg"
-          },
-          {
-            "name": "Iberdrola",
-            "file": "fe-iberdrola.png",
-            "height": 40
           },
           {
             "name": "Bosch",
@@ -130,8 +160,12 @@
             "height": 80
           },
           {
-            "name": "Renfe",
-            "file": "renfe.svg"
+            "name": "ABN AMRO",
+            "file": "abnamro.svg"
+          },
+          {
+            "name": "Nexi",
+            "file": "nexi.svg"
           }
         ]
       }
