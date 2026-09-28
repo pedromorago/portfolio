@@ -2009,7 +2009,7 @@ a:hover > .arrow {
 .marquee-track img {
   height: 30px;
   width: auto;
-  max-width: 170px;
+  max-width: 180px;
   object-fit: contain;
   filter: brightness(0) invert(1);
   opacity: 0.72;
