@@ -2219,3 +2219,45 @@ a:hover > .arrow {
   animation: none;
   transform: translateX(var(--x, 0));
 }
+
+/* ------------------------------------------------------------ portfolio stories */
+
+.app h3 {
+  margin-top: 12px;
+}
+
+.story {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.story dt {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.story dd {
+  margin-top: 4px;
+  color: var(--text-2);
+  font-size: 0.975rem;
+}
+
+.app .card-links {
+  margin-top: 24px;
+}
+
+.challenge-feature {
+  margin-top: 28px;
+}
+
+.challenge-feature h4 {
+  margin-top: 14px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.05;
+}

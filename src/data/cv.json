@@ -43,7 +43,7 @@
     {
       "title": "Spin Trainer",
       "url": "pedromorago.com/work/spin-trainer",
-      "text": "Full-stack app tested like production: black-box API suite (REST Assured), the same Playwright specs against a mock and the real API, and mutation testing. The tests found 8 real defects."
+      "text": "Poker range trainer built for a friend and tested like production: black-box API suite (REST Assured), the same Playwright specs against a mock and the real API, and mutation testing. The tests found 8 real defects."
     },
     {
       "title": "CI Shard Advisor",

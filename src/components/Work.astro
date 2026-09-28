@@ -2,8 +2,7 @@
 import { Picture } from "astro:assets";
 import { site } from "../lib/site";
 import { shot } from "../lib/images";
-import { inline, renderLink, hrefOf, smart } from "../lib/render";
-import CiChart from "./CiChart.astro";
+import { inline, renderLink, smart } from "../lib/render";
 
 const w = site.work;
 ---
@@ -19,69 +18,41 @@ const w = site.work;
     </div>
 
     {
-      w.features.map((f, i) => (
-        <article class="feature reveal">
+      w.apps.map((a, i) => (
+        <article class="feature app reveal">
           <div class="feature-copy">
             <p class="feature-index">
-              {String(i + 1).padStart(2, "0")} / {f.kicker}
+              {String(i + 1).padStart(2, "0")} / {a.kicker}
             </p>
-            <h3>
-              <a href={hrefOf(f.link.href)}>
-                {smart(f.title)}
-                <span class="sr-only">. {f.link.label}</span>
-              </a>
-            </h3>
-            <p class="feature-text" set:html={inline(f.text)} />
+            <h3>{a.title}</h3>
+            <dl class="story">
+              {a.story.map((s) => (
+                <div>
+                  <dt>{s.label}</dt>
+                  <dd set:html={inline(s.text)} />
+                </div>
+              ))}
+            </dl>
             <ul class="tags">
-              {f.tags.map((t) => (
+              {a.tags.map((t) => (
                 <li>{t}</li>
               ))}
             </ul>
-            <p class="feature-cta" aria-hidden="true">
-              {f.link.label} <span class="arrow">→</span>
-            </p>
+            <div class="card-links">
+              <Fragment set:html={a.links.map((l, j) => renderLink(l, j === 0 ? "btn btn-small btn-light" : "btn btn-small")).join("")} />
+            </div>
           </div>
           <div class="feature-visual">
-            {f.visual === "chart" ? (
-              <CiChart />
-            ) : (
-              <Picture
-                src={shot(f.visual)}
-                alt={f.visualAlt!}
-                widths={[480, 800, 1200]}
-                sizes="(max-width: 900px) 100vw, 700px"
-                formats={["avif", "webp"]}
-              />
-            )}
+            <Picture
+              src={shot(a.visual)}
+              alt={a.visualAlt}
+              widths={[480, 800, 1200]}
+              sizes="(max-width: 900px) 100vw, 700px"
+              formats={["avif", "webp"]}
+            />
           </div>
         </article>
       ))
     }
-
-    <h3 class="built-label">{w.builtLabel}</h3>
-    <ul class="built">
-      {
-        w.items.map((item) => (
-          <li class="card reveal">
-            <div class="card-visual">
-              <Picture
-                src={shot(item.visual)}
-                alt={item.visualAlt}
-                widths={[400, 700, 1000]}
-                sizes="(max-width: 680px) 100vw, 420px"
-                formats={["avif", "webp"]}
-              />
-            </div>
-            <div class="card-body">
-              <h4>{item.title}</h4>
-              <p set:html={inline(item.text)} />
-              <div class="card-links">
-                <Fragment set:html={item.links.map((l, j) => renderLink(l, j === 0 ? "btn btn-small btn-light" : "btn btn-small")).join("")} />
-              </div>
-            </div>
-          </li>
-        ))
-      }
-    </ul>
   </div>
 </section>
