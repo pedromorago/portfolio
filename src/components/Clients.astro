@@ -14,7 +14,6 @@ const c = site.clients;
   {
     c.groups.map((g, gi) => (
       <div class="marquee-group">
-        <p class="container marquee-label">{g.label}</p>
         <div class:list={["marquee", { reverse: gi % 2 === 1 }]}>
           {[0, 1, 2].map((copy) => (
             <ul class="marquee-track" aria-hidden={copy > 0 ? "true" : undefined}>
