@@ -1,0 +1,86 @@
+{
+  "slug": "ci-shard-advisor",
+  "meta": {
+    "title": "CI Shard Advisor | Pedro Morago",
+    "description": "A browser tool that reads Cypress run reports and recommends how to split spec files across CI containers, and how I test a core with no known answers.",
+    "shareDescription": "How to split a Cypress suite across CI containers, from your own run reports, in the browser. And how to test a tool when nobody knows the right answer in advance.",
+    "about": [
+      "Continuous integration",
+      "Test automation",
+      "Property-based testing"
+    ]
+  },
+  "crumb": "CI Shard Advisor",
+  "kicker": "Project, web tool",
+  "title": "CI Shard Advisor",
+  "lede": "A public tool that tells a team how to split its Cypress suite across CI containers, and what each option costs in time and money. It grew out of the pipeline work I did at IriusRisk.",
+  "cover": {
+    "image": "shard",
+    "alt": "CI Shard Advisor showing a 3-container setup and the suggested moves"
+  },
+  "facts": [
+    {
+      "label": "Type",
+      "text": "Web tool that runs in the browser"
+    },
+    {
+      "label": "Input",
+      "text": "Cypress run reports, one per container or merged"
+    },
+    {
+      "label": "Tested with",
+      "text": "Property-based, metamorphic and invariant tests"
+    },
+    {
+      "label": "Privacy",
+      "text": "Reports never leave the browser"
+    }
+  ],
+  "actions": [
+    {
+      "href": "https://shard.pedromorago.com/",
+      "label": "Open the live demo ↗"
+    },
+    {
+      "href": "https://github.com/pedromorago/ci-shard-advisor",
+      "label": "Code on GitHub ↗"
+    }
+  ],
+  "sections": [
+    {
+      "id": "the-brief",
+      "title": "The brief",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "At IriusRisk I modelled how to split an end-to-end suite across CI containers. I wanted any team to get the same answer without writing a model."
+        },
+        {
+          "type": "p",
+          "text": "[The CI containers case study](work/ci-pipeline-optimization/) tells the whole story of that model."
+        }
+      ]
+    },
+    {
+      "id": "what-i-built",
+      "title": "What I built",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A browser tool that reads Cypress run reports and recommends how to split the spec files across containers, with the time and cost of each option. The reports never leave the browser."
+        }
+      ]
+    },
+    {
+      "id": "how-i-tested-it",
+      "title": "How I tested it",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "For most inputs nobody knows the right split in advance, so the core is tested with property-based, metamorphic and invariant tests."
+        }
+      ]
+    }
+  ],
+  "contactTopic": "CI pipelines or test tooling"
+}

@@ -2261,3 +2261,49 @@ a:hover > .arrow {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   line-height: 1.05;
 }
+
+/* ------------------------------------------------------------ portfolio grid */
+
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  list-style: none;
+}
+
+.app-card .card-visual {
+  display: block;
+  aspect-ratio: 16 / 10;
+}
+
+.app-card .card-visual img {
+  object-position: top left;
+}
+
+.app-card h3 {
+  margin-top: 10px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+  line-height: 1.05;
+}
+
+.app-card h3 a {
+  text-decoration: none;
+}
+
+.app-card h3 a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 4px;
+}
+
+.app-card .card-body > p:not(.feature-index) {
+  flex: 0;
+}
+
+@media (max-width: 760px) {
+  .apps-grid {
+    grid-template-columns: 1fr;
+  }
+}

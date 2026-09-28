@@ -200,27 +200,13 @@
     "id": "work",
     "kicker": "Portfolio",
     "title": "Portfolio",
-    "lede": "The applications I've built, why each one exists and how I tested it.",
+    "lede": "The applications I've built. Open one for the full story: the brief, what I built and how I tested it.",
     "apps": [
       {
         "visual": "spin-explorer",
         "visualAlt": "Spin Trainer's Explorer: a 13 by 13 grid of poker hands coloured by action, with range statistics",
-        "kicker": "Web app, built for a friend",
+        "kicker": "Web app",
         "title": "Spin Trainer",
-        "story": [
-          {
-            "label": "The brief",
-            "text": "A friend who plays Spin & Go poker asked me for a way to study preflop ranges: see the right play for every hand, practise it and track his progress."
-          },
-          {
-            "label": "What I built",
-            "text": "A React web app and a Spring Boot API with Google sign-in. The Explorer shows 80 reference ranges hand by hand, the Quiz deals a hand and the server grades the answer, and Stats shows where he keeps missing."
-          },
-          {
-            "label": "How I tested it",
-            "text": "A black-box suite against the image that gets deployed, the same Playwright specs against a mock and the real API, and mutation testing on the unit tests. The tests found 8 real defects before they reached him."
-          }
-        ],
         "tags": [
           "React",
           "Spring Boot",
@@ -230,35 +216,18 @@
         ],
         "links": [
           {
-            "href": "work/spin-trainer/",
-            "label": "Read the case study",
-            "sr": " about testing Spin Trainer"
-          },
-          {
             "href": "https://spintrainer.pedromorago.com/",
             "label": "Open the app ↗"
           }
-        ]
+        ],
+        "summary": "Poker range trainer built for a friend",
+        "page": "work/spin-trainer/"
       },
       {
         "visual": "shard",
         "visualAlt": "CI Shard Advisor showing a 3-container setup and the suggested moves",
         "kicker": "Web tool, public",
         "title": "CI Shard Advisor",
-        "story": [
-          {
-            "label": "The brief",
-            "text": "At IriusRisk I modelled how to split an end-to-end suite across CI containers. I wanted any team to get the same answer without writing a model."
-          },
-          {
-            "label": "What I built",
-            "text": "A browser tool that reads Cypress run reports and recommends how to split the spec files across containers, with the time and cost of each option. The reports never leave the browser."
-          },
-          {
-            "label": "How I tested it",
-            "text": "For most inputs nobody knows the right split in advance, so the core is tested with property-based, metamorphic and invariant tests."
-          }
-        ],
         "tags": [
           "TypeScript",
           "Optimization",
@@ -268,33 +237,16 @@
           {
             "href": "https://shard.pedromorago.com/",
             "label": "Open the live demo ↗"
-          },
-          {
-            "href": "https://github.com/pedromorago/ci-shard-advisor",
-            "label": "Code on GitHub ↗",
-            "sr": " for CI Shard Advisor"
           }
-        ]
+        ],
+        "summary": "Splits a Cypress suite across CI containers",
+        "page": "work/ci-shard-advisor/"
       },
       {
         "visual": "bench",
         "visualAlt": "The QA Bug Bench, a page with buttons that trigger console errors and failing requests",
         "kicker": "Chrome extension",
         "title": "Screen Recorder (QA mode)",
-        "story": [
-          {
-            "label": "The brief",
-            "text": "My bug reports needed the evidence a developer asks for, and the screen recorder I used for them had changed."
-          },
-          {
-            "label": "What I built",
-            "text": "A Chrome extension that records the screen together with console logs, network requests and every step, each with a Cypress or Playwright selector ready to paste into a test."
-          },
-          {
-            "label": "How I tested it",
-            "text": "Cypress and Playwright tests in GitHub Actions, run against a bug bench I built for it: a page that breaks on demand."
-          }
-        ],
         "tags": [
           "JavaScript",
           "Manifest V3",
@@ -303,35 +255,18 @@
         ],
         "links": [
           {
-            "href": "work/screen-recorder/",
-            "label": "Read the case study",
-            "sr": " about Screen Recorder (QA mode)"
-          },
-          {
             "href": "https://github.com/pedromorago/screen-recorder-qa/releases/latest",
             "label": "Download for Chrome ↗"
           }
-        ]
+        ],
+        "summary": "Chrome extension for bug reports",
+        "page": "work/screen-recorder/"
       },
       {
         "visual": "wiki",
         "visualAlt": "The QA Wiki home page with sections on fundamentals, strategy and API testing",
         "kicker": "Knowledge base, public",
         "title": "QA Wiki",
-        "story": [
-          {
-            "label": "The brief",
-            "text": "I write down what I learn so that I, and anyone starting in QA, don't have to learn it twice."
-          },
-          {
-            "label": "What I built",
-            "text": "A public wiki with more than 50 articles on test strategy, API testing, Playwright, CI/CD for QA, performance testing and QA for telecom OSS/BSS."
-          },
-          {
-            "label": "How I use it",
-            "text": "It starts with a learning path from the fundamentals to automation, and I keep adding to it as I learn."
-          }
-        ],
         "tags": [
           "Test strategy",
           "API testing",
@@ -341,13 +276,10 @@
           {
             "href": "https://wiki.pedromorago.com/",
             "label": "Read the QA Wiki ↗"
-          },
-          {
-            "href": "https://github.com/pedromorago/qa-wiki",
-            "label": "Code on GitHub ↗",
-            "sr": " for the QA Wiki"
           }
-        ]
+        ],
+        "summary": "Public QA knowledge base, 50+ articles",
+        "page": "work/qa-wiki/"
       }
     ]
   },

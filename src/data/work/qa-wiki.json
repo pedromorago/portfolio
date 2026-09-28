@@ -1,0 +1,82 @@
+{
+  "slug": "qa-wiki",
+  "meta": {
+    "title": "QA Wiki | Pedro Morago",
+    "description": "My public QA knowledge base: more than 50 articles on test strategy, API testing, Playwright, CI/CD for QA, performance testing and telecom OSS/BSS.",
+    "shareDescription": "More than 50 articles on test strategy, API testing, Playwright, CI/CD for QA and performance testing, with a learning path from the fundamentals.",
+    "about": [
+      "Software testing",
+      "Quality assurance",
+      "Test automation"
+    ]
+  },
+  "crumb": "QA Wiki",
+  "kicker": "Project, knowledge base",
+  "title": "QA Wiki",
+  "lede": "A public wiki where I write down what I learn about QA, from the fundamentals to automation in CI.",
+  "cover": {
+    "image": "wiki",
+    "alt": "The QA Wiki home page with sections on fundamentals, strategy and API testing"
+  },
+  "facts": [
+    {
+      "label": "Articles",
+      "text": "More than 50"
+    },
+    {
+      "label": "Topics",
+      "text": "Test strategy, API testing, Playwright, CI/CD for QA, performance, telecom OSS/BSS"
+    },
+    {
+      "label": "Start here",
+      "text": "A learning path from the fundamentals to automation"
+    },
+    {
+      "label": "Status",
+      "text": "I keep adding to it"
+    }
+  ],
+  "actions": [
+    {
+      "href": "https://wiki.pedromorago.com/",
+      "label": "Read the QA Wiki ↗"
+    },
+    {
+      "href": "https://github.com/pedromorago/qa-wiki",
+      "label": "Code on GitHub ↗"
+    }
+  ],
+  "sections": [
+    {
+      "id": "the-brief",
+      "title": "The brief",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "I write down what I learn so that I, and anyone starting in QA, don't have to learn it twice."
+        }
+      ]
+    },
+    {
+      "id": "what-i-built",
+      "title": "What I built",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A public wiki with more than 50 articles on test strategy, API testing, Playwright, CI/CD for QA, performance testing and QA for telecom OSS/BSS."
+        }
+      ]
+    },
+    {
+      "id": "how-i-use-it",
+      "title": "How I use it",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "It starts with a learning path from the fundamentals to automation, and I keep adding to it as I learn."
+        }
+      ]
+    }
+  ],
+  "contactTopic": "test strategy or learning QA"
+}
