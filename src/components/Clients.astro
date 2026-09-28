@@ -16,8 +16,8 @@ const c = site.clients;
       <div class="marquee-group">
         <p class="container marquee-label">{g.label}</p>
         <div class:list={["marquee", { reverse: gi % 2 === 1 }]}>
-          {[0, 1].map((copy) => (
-            <ul class="marquee-track" aria-hidden={copy === 1 ? "true" : undefined}>
+          {[0, 1, 2].map((copy) => (
+            <ul class="marquee-track" aria-hidden={copy > 0 ? "true" : undefined}>
               {g.logos.map((l) => (
                 <li>
                   <img draggable="false" src={`/logos/${l.file}`} alt={copy === 0 ? l.name : ""} style={l.height ? `height:${l.height}px` : undefined} loading="lazy" decoding="async" />

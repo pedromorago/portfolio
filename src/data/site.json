@@ -122,186 +122,6 @@
           {
             "name": "Danone",
             "file": "danone.png"
-          },
-          {
-            "name": "Applus+",
-            "file": "fe-applus.png",
-            "height": 34
-          },
-          {
-            "name": "Metro de Madrid",
-            "file": "fe-metro-madrid.png",
-            "height": 40
-          },
-          {
-            "name": "Bridgestone",
-            "file": "fe-bridgestone.png",
-            "height": 30
-          },
-          {
-            "name": "Engie",
-            "file": "fe-engie.png",
-            "height": 34
-          },
-          {
-            "name": "Adif",
-            "file": "fe-adif.png",
-            "height": 34
-          },
-          {
-            "name": "XPO Logistics",
-            "file": "fe-xpo-logistics.png",
-            "height": 30
-          },
-          {
-            "name": "Linde",
-            "file": "fe-linde.png",
-            "height": 30
-          },
-          {
-            "name": "SGS",
-            "file": "fe-sgs.png",
-            "height": 40
-          },
-          {
-            "name": "Aguas de Burgos",
-            "file": "fe-aguas-burgos.png",
-            "height": 34
-          },
-          {
-            "name": "ANAV",
-            "file": "fe-anav.png",
-            "height": 30
-          },
-          {
-            "name": "Ayuntamiento de Madrid",
-            "file": "fe-ayuntamiento-de-madrid.png",
-            "height": 54
-          },
-          {
-            "name": "Ayuntamiento de Pozuelo de Alarcón",
-            "file": "fe-ayuntamiento-pozuelo-de-alarcon.png",
-            "height": 34
-          },
-          {
-            "name": "Carburos Metálicos",
-            "file": "fe-carburos-met-licos.png",
-            "height": 30
-          },
-          {
-            "name": "Celsa Group",
-            "file": "fe-celsa-group.png",
-            "height": 34
-          },
-          {
-            "name": "Compesca",
-            "file": "fe-compesca.png",
-            "height": 46
-          },
-          {
-            "name": "Concello de Arteixo",
-            "file": "fe-ayuntamiento-arteixo.png",
-            "height": 34
-          },
-          {
-            "name": "Empark",
-            "file": "fe-empark.png",
-            "height": 30
-          },
-          {
-            "name": "Farmavenix",
-            "file": "fe-farmavenix.png",
-            "height": 48
-          },
-          {
-            "name": "Garvasa",
-            "file": "fe-garvasa.png",
-            "height": 30
-          },
-          {
-            "name": "Gaselec",
-            "file": "fe-gaselec.png",
-            "height": 48
-          },
-          {
-            "name": "GM Food",
-            "file": "fe-gm-food.png",
-            "height": 54
-          },
-          {
-            "name": "ITM",
-            "file": "fe-itm.png",
-            "height": 40
-          },
-          {
-            "name": "Konecta",
-            "file": "fe-konecta.png",
-            "height": 30
-          },
-          {
-            "name": "Logesta",
-            "file": "fe-logesta.png",
-            "height": 30
-          },
-          {
-            "name": "Lupa",
-            "file": "fe-lupa.png",
-            "height": 34
-          },
-          {
-            "name": "Margutsa",
-            "file": "fe-margutsa.png",
-            "height": 40
-          },
-          {
-            "name": "Palibex",
-            "file": "palibex.png",
-            "height": 24
-          },
-          {
-            "name": "Port de Tarragona",
-            "file": "fe-puerto-de-tarragona.png",
-            "height": 30
-          },
-          {
-            "name": "Saltoki",
-            "file": "fe-saltoki.png",
-            "height": 30
-          },
-          {
-            "name": "Salvesen Logística",
-            "file": "fe-salvesen.png",
-            "height": 34
-          },
-          {
-            "name": "SERMA",
-            "file": "fe-serma.png",
-            "height": 30
-          },
-          {
-            "name": "Surus",
-            "file": "fe-surus.png",
-            "height": 46
-          },
-          {
-            "name": "Tanden",
-            "file": "fe-tanden.png",
-            "height": 34
-          },
-          {
-            "name": "Uponor",
-            "file": "fe-uponor.png",
-            "height": 30
-          },
-          {
-            "name": "Velltrans",
-            "file": "fe-velltrans.png",
-            "height": 30
-          },
-          {
-            "name": "Viesgo",
-            "file": "fe-viesgo.png",
-            "height": 48
           }
         ]
       },
@@ -321,19 +141,24 @@
           {
             "name": "HSBC",
             "file": "hsbc.svg",
-            "height": 38
+            "height": 30
           },
           {
             "name": "ABN AMRO",
             "file": "abnamro.svg"
           },
           {
+            "name": "Raiffeisen Bank International",
+            "file": "rbi.svg"
+          },
+          {
             "name": "Nexi",
             "file": "nexi.svg"
           },
           {
-            "name": "Raiffeisen Bank International",
-            "file": "rbi.svg"
+            "name": "ClearBank",
+            "file": "clearbank.svg",
+            "height": 24
           },
           {
             "name": "Axway",
