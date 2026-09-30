@@ -116,7 +116,9 @@ const p = site.person;
             <h2>Languages</h2>
             {cv.languages.map((l) => <p class="item">{l}</p>)}
           </section>
-          <p class="note">{cv.note}</p>
+          <p class="note">
+            {cv.note} <a href={`https://${cv.noteLink}`}>{cv.noteLink}</a>
+          </p>
         </aside>
       </div>
     </main>
@@ -329,6 +331,10 @@ const p = site.person;
   }
   .fit li::marker {
     color: var(--accent);
+  }
+  .note a {
+    color: var(--accent);
+    word-break: break-all;
   }
   .note {
     margin-top: 4mm;

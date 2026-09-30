@@ -1,6 +1,6 @@
 ---
 import { site } from "../lib/site";
-import { inline, renderLink, smart } from "../lib/render";
+import { hrefOf, inline, renderLink, smart } from "../lib/render";
 const c = site.career;
 ---
 
@@ -42,7 +42,7 @@ const c = site.career;
           ))
         }
       </ol>
-      <aside class="career-aside" aria-label="Certification, languages, references and tools">
+      <aside class="career-aside" aria-label="Certification, languages and tools">
         {
           c.aside.blocks.map((b) => (
             <div class="aside-card">
@@ -75,5 +75,18 @@ const c = site.career;
         </div>
       </aside>
     </div>
+    <figure class="reference reveal">
+      <blockquote>
+        <p>{smart(c.reference.quote)}</p>
+      </blockquote>
+      <figcaption>
+        <span class="reference-name">{c.reference.name}</span>
+        <span class="reference-role">{c.reference.role}. {c.reference.context}.</span>
+        <a class="reference-link" href={hrefOf(c.reference.link.href)}>
+          {c.reference.link.label}<span class="sr-only"> from {c.reference.name} (PDF)</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </figcaption>
+    </figure>
   </div>
 </section>
