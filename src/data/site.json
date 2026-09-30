@@ -2,8 +2,8 @@
   "htmlLang": "en",
   "ogLocale": "en_US",
   "meta": {
-    "title": "Pedro Morago | Senior QA Engineer for Poker & Quantitative Systems",
-    "description": "Senior QA Engineer with 5 years in test automation, a Mathematics degree and 10 years of poker experience. Playwright, API/backend testing, quantitative QA and Poker AI specialization.",
+    "title": "Pedro Morago | Senior QA for Poker & Quantitative Systems",
+    "description": "Senior QA Engineer: 5 years of test automation, a Mathematics degree and 10 years of poker. API, backend and E2E testing for poker, AI and quantitative systems.",
     "ogDescription": "Senior QA Engineer with a Mathematics degree and 10 years of poker. API, backend and E2E automation, specializing in testing quantitative and poker AI systems.",
     "twitterDescription": "Senior QA Engineer with a Mathematics degree and 10 years of poker, specializing in testing quantitative and poker AI systems."
   },
@@ -84,7 +84,7 @@
     "actions": [
       {
         "href": "#work",
-        "label": "View my Poker / QA work"
+        "label": "See my work"
       },
       {
         "href": "pedro-morago-cv.pdf",
@@ -139,8 +139,8 @@
       "visual": "spin-explorer",
       "visualAlt": "Spin Trainer's Explorer: a 13 by 13 grid of poker hands coloured by action, with range statistics",
       "page": "work/spin-trainer/",
-      "headline": "Poker range training platform tested like a production system",
-      "text": "React and Spring Boot product with server-side grading, 80 reference ranges, REST Assured API testing, Playwright against mock and real backends, mutation testing and 8 real defects found before release.",
+      "headline": "Poker range training platform I built and tested like a production system",
+      "text": "My own React and Spring Boot product, from idea to release: server-side grading, 80 reference ranges, REST Assured API testing, Playwright against mock and real backends, mutation testing and 8 real defects found before release.",
       "metrics": [
         {
           "value": "145",
@@ -159,6 +159,11 @@
         {
           "href": "https://spintrainer.pedromorago.com/",
           "label": "Open the app ↗"
+        },
+        {
+          "href": "https://github.com/pedromorago/spin-trainer-qa",
+          "label": "Test suite ↗",
+          "sr": " for Spin Trainer"
         }
       ]
     },
@@ -581,40 +586,48 @@
           {
             "name": "Telefónica",
             "file": "fe-telefonica.png",
-            "height": 30
+            "height": 30,
+            "ratio": 3.5
           },
           {
             "name": "Repsol",
-            "file": "repsol.svg"
+            "file": "repsol.svg",
+            "ratio": 4.266
           },
           {
             "name": "Iberdrola",
             "file": "fe-iberdrola.png",
-            "height": 40
+            "height": 40,
+            "ratio": 2.174
           },
           {
             "name": "Renfe",
-            "file": "renfe.svg"
+            "file": "renfe.svg",
+            "ratio": 2.617
           },
           {
             "name": "SEAT",
             "file": "seat.svg",
-            "height": 34
+            "height": 34,
+            "ratio": 1.0
           },
           {
             "name": "Adif",
             "file": "fe-adif.png",
-            "height": 34
+            "height": 34,
+            "ratio": 3.286
           },
           {
             "name": "Metro de Madrid",
             "file": "fe-metro-madrid.png",
-            "height": 40
+            "height": 40,
+            "ratio": 1.609
           },
           {
             "name": "Applus+",
             "file": "fe-applus.png",
-            "height": 34
+            "height": 34,
+            "ratio": 3.258
           }
         ]
       },
@@ -624,45 +637,58 @@
         "logos": [
           {
             "name": "J.P. Morgan",
-            "file": "jpmorgan.svg"
+            "file": "jpmorgan.svg",
+            "ratio": 4.864
           },
           {
             "name": "HSBC",
             "file": "hsbc.svg",
-            "height": 30
+            "height": 30,
+            "ratio": 3.716
           },
           {
             "name": "American Express",
             "file": "americanexpress.svg",
-            "height": 38
+            "height": 48,
+            "ratio": 1.0
           },
           {
             "name": "Bosch",
             "file": "fe-bosch.png",
-            "height": 30
+            "height": 30,
+            "ratio": 4.385
           },
           {
             "name": "EWE",
             "file": "ewe.svg",
-            "height": 30
+            "height": 24,
+            "ratio": 2.953
           },
           {
             "name": "DHL",
             "file": "dhl.svg",
-            "height": 80
+            "height": 80,
+            "ratio": 1.0
           },
           {
             "name": "ABN AMRO",
-            "file": "abnamro.svg"
+            "file": "abnamro.svg",
+            "ratio": 4.05
           },
           {
             "name": "Nexi",
-            "file": "nexi.svg"
+            "file": "nexi.svg",
+            "ratio": 3.312
           }
         ]
       }
     ],
-    "label": "Clients of the teams I've tested for"
+    "label": "Clients of the teams I've tested for",
+    "pause": {
+      "pause": "Pause",
+      "play": "Play",
+      "ariaLabel": "Pause the moving logos"
+    }
   },
   "contact": {
     "id": "contact",

@@ -8,8 +8,9 @@ const c = site.clients;
 ---
 
 <section id={c.id} class="clients" aria-labelledby="clients-title">
-  <div class="container">
+  <div class="container clients-head">
     <h2 id="clients-title" class="clients-label">{c.label}</h2>
+    <button type="button" class="clients-pause" aria-pressed="false" aria-label={c.pause.ariaLabel} data-pause={c.pause.pause} data-play={c.pause.play} hidden>{c.pause.pause}</button>
   </div>
   {
     c.groups.map((g, gi) => (
@@ -19,7 +20,16 @@ const c = site.clients;
             <ul class="marquee-track" aria-hidden={copy > 0 ? "true" : undefined}>
               {g.logos.map((l) => (
                 <li>
-                  <img draggable="false" src={`/logos/${l.file}`} alt={copy === 0 ? l.name : ""} style={l.height ? `height:${l.height}px` : undefined} loading="lazy" decoding="async" />
+                  <img
+                    draggable="false"
+                    src={`/logos/${l.file}`}
+                    alt={copy === 0 ? l.name : ""}
+                    width={Math.round((l.height ?? 30) * l.ratio)}
+                    height={l.height ?? 30}
+                    style={l.height ? `height:${l.height}px` : undefined}
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </li>
               ))}
             </ul>

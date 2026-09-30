@@ -1,8 +1,8 @@
 {
   "slug": "game-integrity-lab",
   "meta": {
-    "title": "Game Integrity Lab: evaluating models that flag cheaters | Pedro Morago",
-    "description": "An evaluation testbed for poker game-integrity models on synthetic data: bots, RTA and collusion, per-segment false positives, robustness scenarios, a regression gate and eleven seeded evaluation bugs.",
+    "title": "Game Integrity Lab: evaluating anti-cheat models | Pedro Morago",
+    "description": "An evaluation testbed for poker game-integrity models on synthetic data: bots, RTA and collusion, per-segment false positives and eleven seeded evaluation bugs.",
     "shareDescription": "When a model flags a poker player, a false positive accuses a real person. An evaluation testbed on synthetic data, with per-segment false positives and eleven seeded evaluation bugs.",
     "about": [
       "Software testing",

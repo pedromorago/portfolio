@@ -128,7 +128,19 @@ if (copyBtn) {
 }
 
 // Logo carousels: they scroll on their own and can be dragged with a mouse or
-// a finger. Without JavaScript the CSS animation runs instead.
+// a finger. Without JavaScript the CSS animation runs instead. Anything that
+// moves on its own needs a way to stop it that works without a mouse, so a
+// Pause button stops both rows.
+let logosPaused = false;
+const pauseBtn = document.querySelector<HTMLButtonElement>(".clients-pause");
+if (pauseBtn && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  pauseBtn.hidden = false;
+  pauseBtn.addEventListener("click", () => {
+    logosPaused = !logosPaused;
+    pauseBtn.setAttribute("aria-pressed", String(logosPaused));
+    pauseBtn.textContent = logosPaused ? pauseBtn.dataset.play! : pauseBtn.dataset.pause!;
+  });
+}
 document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
   const track = marquee.querySelector<HTMLElement>(".marquee-track");
   if (!track || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -150,7 +162,7 @@ document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
   const tick = (now: number) => {
     const dt = Math.min(now - last, 100) / 1000;
     last = now;
-    if (!dragging && !hovering) offset += dir * speed * dt;
+    if (!dragging && !hovering && !logosPaused) offset += dir * speed * dt;
     wrap();
     paint();
     requestAnimationFrame(tick);

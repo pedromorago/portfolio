@@ -46,7 +46,7 @@
     {
       "title": "Spin Trainer",
       "url": "pedromorago.com/work/spin-trainer",
-      "text": "Poker range trainer, React and Spring Boot. 145 API tests, 37 Playwright specs, mutation testing and real and mocked backend runs; the tests found 8 real defects."
+      "text": "My own poker range trainer, from idea to release: React and Spring Boot. 145 API tests, 37 Playwright specs on mock and real backends, mutation testing; 8 real defects found."
     },
     {
       "title": "Solver Validation Lab",

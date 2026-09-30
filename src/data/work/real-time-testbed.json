@@ -1,8 +1,8 @@
 {
   "slug": "real-time-testbed",
   "meta": {
-    "title": "Real-Time Testbed: testing a live poker table under a hostile network | Pedro Morago",
-    "description": "A No-Limit Hold'em table served over WebSockets, tested for duplicates, reconnects, reordering, races, timers and server crashes, with a deterministic chaos simulator and seventeen seeded bugs.",
+    "title": "Real-Time Testbed: testing a live poker table | Pedro Morago",
+    "description": "A Hold'em table server over WebSockets, tested for duplicates, reconnects, races, timers and crashes with a chaos simulator and seventeen seeded bugs.",
     "shareDescription": "What breaks in a real-time poker table: the second click, the dropped connection, the timer that fires with the call, the server that dies mid-hand. A table server, a chaos simulator and seventeen seeded bugs.",
     "about": [
       "Software testing",

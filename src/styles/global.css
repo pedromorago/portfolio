@@ -2300,6 +2300,17 @@ a:hover > .arrow {
 
 .app-card .card-body > p:not(.feature-index) {
   flex: 0;
+  margin-bottom: 20px;
+}
+
+/* Cards in a row share one height. The label keeps its size, and the spare
+   height goes above the buttons, so titles and buttons line up across a row. */
+.app-card .card-body > .feature-index {
+  flex: 0 0 auto;
+}
+
+.app-card .card-links {
+  margin-top: auto;
 }
 
 @media (max-width: 760px) {
@@ -3036,8 +3047,35 @@ a:hover > .arrow {
   padding: 22px 0 26px;
 }
 
+.clients-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.clients-pause {
+  min-height: 28px;
+  padding: 2px 12px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: none;
+  color: var(--text-2);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.clients-pause:hover {
+  color: var(--text);
+  border-color: var(--line-2);
+}
+
 .clients-label {
-  margin: 0 0 16px;
+  margin: 0;
   font-family: var(--mono);
   font-weight: 400;
   font-size: 0.75rem;

@@ -1,8 +1,8 @@
 {
   "slug": "solver-validation-lab",
   "meta": {
-    "title": "Solver Validation Lab: testing poker math with no perfect oracle | Pedro Morago",
-    "description": "An equity engine and a validator for exported poker solver strategies, tested with invariants, metamorphic relations, error bars, differential testing and a regression diff, with 26 seeded defects to prove it.",
+    "title": "Solver Validation Lab: poker math with no oracle | Pedro Morago",
+    "description": "An equity engine and a validator for poker solver strategy exports, tested with invariants, metamorphic relations and a regression diff. 26 seeded defects.",
     "shareDescription": "How do you test poker math when nobody knows the right answer? An equity engine, a validator for solver strategy exports, and 26 seeded defects, all caught.",
     "about": [
       "Software testing",

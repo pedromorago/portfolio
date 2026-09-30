@@ -1,9 +1,9 @@
 {
   "slug": "spin-trainer",
   "meta": {
-    "title": "Spin Trainer: a poker range trainer tested like production | Pedro Morago",
-    "description": "A poker range trainer tested like a production platform: 145 black-box API tests, Playwright against mock and real backends, mutation testing, 8 real defects.",
-    "shareDescription": "A poker range trainer tested like a production platform: black-box API tests against the deployable image, one E2E spec for two backends, mutation testing and 8 real defects.",
+    "title": "Spin Trainer: a poker trainer I built and tested | Pedro Morago",
+    "description": "My own poker range trainer, built and tested like a production platform: 145 black-box API tests, Playwright on mock and real backends, 8 real defects.",
+    "shareDescription": "My own poker range trainer, from idea to release, tested like a production platform: black-box API tests against the deployable image, one E2E spec for two backends, mutation testing and 8 real defects.",
     "about": [
       "Software testing",
       "Poker",
@@ -14,8 +14,8 @@
   },
   "crumb": "Spin Trainer",
   "kicker": "Case study, Spin Trainer",
-  "title": "A poker range trainer tested like a production platform",
-  "lede": "Spin Trainer is a preflop range-training product for Spin & Go poker, with a React frontend, Spring Boot API, Postgres, Google sign-in and server-side grading. I used it as a realistic test system: black-box API acceptance tests, executable poker specifications, Playwright against both mock and real backends, production-image testing, concurrency cases and mutation testing.",
+  "title": "A poker range trainer I built and tested like a production platform",
+  "lede": "Spin Trainer is my own product: a preflop range-training app for Spin & Go poker, with a React frontend, Spring Boot API, Postgres, Google sign-in and server-side grading. The idea was mine, I designed and built it, and then I tested it the way I'd test a production platform: black-box API acceptance tests, executable poker specifications, Playwright against both mock and real backends, production-image testing, concurrency cases and mutation testing.",
   "cover": {
     "image": "spin-explorer",
     "alt": "Spin Trainer's Explorer: a 13 by 13 grid of poker hands coloured by action, next to the range statistics"
@@ -23,7 +23,7 @@
   "facts": [
     {
       "label": "Product",
-      "text": "A React web app and a Spring Boot API, with Google sign-in"
+      "text": "My own: a React web app and a Spring Boot API, with Google sign-in"
     },
     {
       "label": "Stack",
@@ -43,6 +43,18 @@
     {
       "href": "https://spintrainer.pedromorago.com/",
       "label": "Open the app ↗"
+    },
+    {
+      "href": "https://github.com/pedromorago/spin-trainer-qa",
+      "label": "Test suite on GitHub ↗"
+    },
+    {
+      "href": "https://github.com/pedromorago/spin-trainer-api",
+      "label": "API code ↗"
+    },
+    {
+      "href": "https://github.com/pedromorago/spin-trainer-web",
+      "label": "Web code ↗"
     }
   ],
   "sections": [
@@ -56,7 +68,7 @@
         },
         {
           "type": "p",
-          "text": "It started as a tool a friend who plays asked me for. It became a real system to test from the outside: an API with a contract, a database, authentication, and a web app that people sign in to."
+          "text": "It was my idea: the trainer I wanted for my own Spin & Go study. I designed and built it as a real system, with an API contract, a database, authentication and a web app that people sign in to, and then tested it from the outside."
         }
       ]
     },
@@ -66,7 +78,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Each level lives where it can see its kind of defect. The QA suite is a separate repository and only talks HTTP, so it tests what a client sees, independently of the code."
+          "text": "Each level lives where it can see its kind of defect. The QA suite is [a separate repository ↗](https://github.com/pedromorago/spin-trainer-qa) and only talks HTTP, so it tests what a client sees, independently of the code."
         },
         {
           "type": "list",

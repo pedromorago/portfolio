@@ -1,7 +1,7 @@
 {
   "slug": "ci-shard-advisor",
   "meta": {
-    "title": "CI Shard Advisor: optimization inside a test pipeline | Pedro Morago",
+    "title": "CI Shard Advisor: optimization in a test pipeline | Pedro Morago",
     "description": "How a CI test-splitting problem becomes a mathematical model with runtime and cost trade-offs, and how to test a tool when there is no perfect oracle.",
     "shareDescription": "A mathematical optimization problem hidden inside a test pipeline: split a Cypress suite across CI containers and see the runtime and cost of each option.",
     "about": [
