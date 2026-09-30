@@ -166,10 +166,9 @@
       {
         "title": "Solver Validation Lab",
         "kicker": "Poker validation",
-        "status": "in-progress",
         "visual": "svlab",
         "page": "work/solver-validation-lab/",
-        "summary": "Testing poker math with no perfect oracle: 15 checks, 9 seeded bugs, all caught.",
+        "summary": "Testing poker math and solver strategy exports with no perfect oracle: 26 seeded defects, all caught.",
         "links": [
           {
             "href": "https://github.com/pedromorago/solver-validation-lab",
@@ -247,7 +246,7 @@
         "text": "Testing invariants, numerical tolerances, regressions, metamorphic properties and outputs where there may not be a perfect oracle.",
         "link": {
           "href": "work/solver-validation-lab/",
-          "label": "First step: Solver Validation Lab →"
+          "label": "Project: Solver Validation Lab →"
         }
       },
       {

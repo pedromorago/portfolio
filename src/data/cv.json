@@ -51,7 +51,7 @@
     {
       "title": "Solver Validation Lab",
       "url": "github.com/pedromorago/solver-validation-lab",
-      "text": "Poker equity engine with a validation suite for outputs without a perfect oracle: invariants, metamorphic relations, statistical bounds and differential testing. 9 of 9 seeded bugs caught."
+      "text": "Poker equity engine and a validator for solver strategy exports, with a regression diff: invariants, metamorphic and statistical checks. 26 of 26 seeded defects caught."
     },
     {
       "title": "Real-Time Testbed",

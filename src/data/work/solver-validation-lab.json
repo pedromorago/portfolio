@@ -2,8 +2,8 @@
   "slug": "solver-validation-lab",
   "meta": {
     "title": "Solver Validation Lab: testing poker math with no perfect oracle | Pedro Morago",
-    "description": "A poker equity engine and a validation suite built on invariants, metamorphic relations, error bars and differential testing, with nine seeded bugs to prove it.",
-    "shareDescription": "How do you test poker math when nobody knows the right answer? Invariants, metamorphic relations, error bars, differential testing and nine seeded bugs.",
+    "description": "An equity engine and a validator for exported poker solver strategies, tested with invariants, metamorphic relations, error bars, differential testing and a regression diff, with 26 seeded defects to prove it.",
+    "shareDescription": "How do you test poker math when nobody knows the right answer? An equity engine, a validator for solver strategy exports, and 26 seeded defects, all caught.",
     "about": [
       "Software testing",
       "Poker",
@@ -12,29 +12,29 @@
     ]
   },
   "crumb": "Solver Validation Lab",
-  "kicker": "Project, in progress",
+  "kicker": "Project",
   "title": "Testing poker math when there is no perfect oracle",
-  "lede": "A solver or a trainer gives you numbers: equities, frequencies, expected values. For a handful of spots you can check them by hand; for the rest there is no answer key, only relationships that must hold. This lab is my first step in validating that kind of system: a small poker equity engine, a suite of checks that each name their oracle, and nine seeded bugs to show what the suite catches.",
+  "lede": "A solver or a trainer gives you numbers: equities, frequencies, expected values. For a handful of spots you can check them by hand; for the rest there is no answer key, only relationships that must hold. This lab applies that idea at two levels: a small poker equity engine with a suite of checks that each name their oracle, and a validator for exported solver strategies with a regression diff between versions. Seeded bugs and corrupted files show what each check catches.",
   "cover": {
     "image": "svlab",
-    "alt": "A terminal report listing nine seeded bugs in a poker equity engine and the kinds of checks that caught each one"
+    "alt": "A terminal showing a regression diff between two versions of a poker strategy failing on its thresholds, and a table of seeded corruptions with the rule that caught each one"
   },
   "facts": [
     {
-      "label": "System under test",
-      "text": "All-in equity, exact and Monte Carlo, in pure Python"
+      "label": "Layer 1",
+      "text": "An all-in equity engine in pure Python, with 15 checks across six kinds of oracle"
     },
     {
-      "label": "Checks",
-      "text": "15, across six kinds of oracle, plus Hypothesis properties"
+      "label": "Layer 2",
+      "text": "A validator for exported strategies: 13 rules, suit isomorphism and a regression diff"
     },
     {
-      "label": "Independent oracle",
-      "text": "treys, an open-source hand evaluator"
+      "label": "Tests",
+      "text": "233, including Hypothesis-generated strategy files"
     },
     {
-      "label": "Seeded bugs",
-      "text": "9 of 9 caught; the real engine passes every check",
+      "label": "Seeded defects",
+      "text": "9 engine bugs and 17 file corruptions, all caught",
       "check": true
     }
   ],
@@ -61,7 +61,7 @@
     },
     {
       "id": "the-engine",
-      "title": "The system under test",
+      "title": "Layer 1: the equity engine",
       "blocks": [
         {
           "type": "p",
@@ -114,7 +114,7 @@
     },
     {
       "id": "seeded-bugs",
-      "title": "Testing the tests",
+      "title": "Testing the engine's tests",
       "blocks": [
         {
           "type": "p",
@@ -132,12 +132,69 @@
       ]
     },
     {
+      "id": "strategies",
+      "title": "Layer 2: validating exported strategies",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A solver doesn't hand you one number. It hands you a strategy: for every hand in a range, how often to take each action at a decision, and what each action is worth. The second layer checks files like that against a documented JSON format and a set of rules any correct export must satisfy, and points at the exact entry that breaks one, such as `nodes[0].combos['2h2c'].freqs: sums to 1.07`."
+        },
+        {
+          "type": "problem",
+          "rows": [
+            {
+              "label": "Contract",
+              "text": "Strict parsing into typed data, with errors located down to the combo and field. Duplicate combos are kept so a rule can report them."
+            },
+            {
+              "label": "13 rules",
+              "text": "Frequencies in range and summing to one, finite EVs, legal actions and bet sizes, valid and unique combos, no combo using a board card, overall EV consistent with the action EVs, range weights consistent with the actions that led to the node, and no action left at 0% while its EV beats everything played."
+            },
+            {
+              "label": "Suit isomorphism",
+              "text": "When two suits play the same role on the board, hands that differ only by swapping them must play the same way. Across two files, a strategy for a board and one for its suit-relabelled twin must map onto each other."
+            },
+            {
+              "label": "Regression diff",
+              "text": "Baseline against candidate: per-hand frequency and EV shifts, range-weighted shifts per action, hands added or removed, and tree changes, against configurable thresholds, with a Markdown report and a failing exit code for CI."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "The strategy files in the repository are synthetic, generated or written by hand for the lab. None comes from a real solver, and the lab isn't one."
+        },
+        {
+          "type": "tech",
+          "text": "Tech: Python, pytest, Hypothesis and GitHub Actions."
+        }
+      ]
+    },
+    {
+      "id": "corruptions",
+      "title": "Testing the validator",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Seventeen corruptions of a valid strategy file, from frequencies that sum to 1.07 to one hand drifting away from its suit-swapped twin, each run through validate, diff and the isomorphism check. All seventeen are caught, and the table says which tool is needed for what."
+        },
+        {
+          "type": "checks",
+          "items": [
+            "A hand that uses a board card, and the same hand written twice in a different card order, are each caught by one rule only. The diff can't see either, so validation has to run before comparing versions.",
+            "A valid file with a large strategy change passes every rule. Only the regression diff flags it.",
+            "Hypothesis found a case I had missed: two hands that swap strategies leave every range-weighted total unchanged. Only the per-hand threshold catches it, and there is now a test for it."
+          ]
+        }
+      ]
+    },
+    {
       "id": "next",
       "title": "What comes next",
       "blocks": [
         {
           "type": "p",
-          "text": "This is a first step, not a solver. Next in the same repository: a heads-up push/fold equilibrium for short stacks, checked by exploitability; range against range equity, checked against its hand-against-hand parts; and checks for exported solver strategies, where frequencies must sum to one at every node and EVs must be consistent with the tree."
+          "text": "Next in the same repository: a heads-up push/fold equilibrium for short stacks, checked by exploitability, which would give the strategy validator a real solver to point at and a stronger oracle than its best-response rule; and range against range equity, checked against its hand-against-hand parts."
         }
       ]
     }
