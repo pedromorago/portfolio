@@ -56,7 +56,7 @@
     {
       "title": "Real-Time Testbed",
       "url": "github.com/pedromorago/real-time-testbed",
-      "text": "WebSocket poker table tested for retries, reconnects, races and timers with a deterministic chaos simulator. 12 of 12 seeded bugs caught."
+      "text": "WebSocket poker table tested for retries, reconnects, races, timers and server crashes with a chaos simulator. 17 of 17 seeded bugs caught."
     },
     {
       "title": "CI Shard Advisor",

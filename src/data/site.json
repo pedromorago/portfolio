@@ -183,7 +183,7 @@
         "kicker": "Real-time poker systems",
         "visual": "rtt",
         "page": "work/real-time-testbed/",
-        "summary": "A live poker table tested through a hostile network: 12 seeded bugs, all caught.",
+        "summary": "A live poker table tested through a hostile network and server crashes: 17 seeded bugs, all caught.",
         "links": [
           {
             "href": "https://github.com/pedromorago/real-time-testbed",

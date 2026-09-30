@@ -2,8 +2,8 @@
   "slug": "real-time-testbed",
   "meta": {
     "title": "Real-Time Testbed: testing a live poker table under a hostile network | Pedro Morago",
-    "description": "A No-Limit Hold'em table served over WebSockets, tested for duplicates, reconnects, reordering, races and timers, with a deterministic chaos simulator and twelve seeded bugs.",
-    "shareDescription": "What breaks in a real-time poker table: the second click, the dropped connection, the timer that fires with the call. A table server, a chaos simulator and twelve seeded bugs.",
+    "description": "A No-Limit Hold'em table served over WebSockets, tested for duplicates, reconnects, reordering, races, timers and server crashes, with a deterministic chaos simulator and seventeen seeded bugs.",
+    "shareDescription": "What breaks in a real-time poker table: the second click, the dropped connection, the timer that fires with the call, the server that dies mid-hand. A table server, a chaos simulator and seventeen seeded bugs.",
     "about": [
       "Software testing",
       "Poker",
@@ -15,10 +15,10 @@
   "crumb": "Real-Time Testbed",
   "kicker": "Project",
   "title": "Testing a live poker table through a hostile network",
-  "lede": "A real-time poker table fails in ways a unit test rarely sees: a call that arrives twice, a phone that drops mid-hand and comes back a minute later, an action timer that fires in the same millisecond as the player's click. I built a small No-Limit Hold'em table server and a test harness aimed at exactly those failures, then seeded twelve bugs into it to check that the harness notices.",
+  "lede": "A real-time poker table fails in ways a unit test rarely sees: a call that arrives twice, a phone that drops mid-hand and comes back a minute later, an action timer that fires in the same millisecond as the player's click, a server that dies halfway through writing a hand. I built a small No-Limit Hold'em table server and a test harness aimed at exactly those failures, then seeded seventeen bugs into it to check that the harness notices.",
   "cover": {
     "image": "rtt",
-    "alt": "A terminal showing a 100-hand chaos run in which every client converged, and a table of twelve seeded bugs with the kinds of checks that caught each one"
+    "alt": "A terminal showing a 100-hand chaos run with 24 server crashes in which every client converged, and a table of seventeen seeded bugs with the kinds of checks that caught each one"
   },
   "facts": [
     {
@@ -27,15 +27,15 @@
     },
     {
       "label": "Checks",
-      "text": "13 in five layers, plus tests over real sockets"
+      "text": "20 in six layers, plus tests over real sockets"
     },
     {
       "label": "Chaos",
-      "text": "Latency, reordering, duplicates and disconnects, reproducible by seed"
+      "text": "Latency, reordering, duplicates, disconnects and server crashes, reproducible by seed"
     },
     {
       "label": "Seeded bugs",
-      "text": "12 of 12 caught; the real code passes every check",
+      "text": "17 of 17 caught; the real code passes every check",
       "check": true
     }
   ],
@@ -70,7 +70,8 @@
             "The rules as a pure function: a command goes in, and either a rejection or the next state and its events come out. The deck is shuffled from a seed, so a log of commands replays to identical events.",
             "One service owns the table. It deduplicates commands by sender and command id, applies them one at a time, stores each change before publishing it, arms the action timers and sends every viewer a numbered event stream with other players' hole cards removed.",
             "Clients keep their own copy of the table from those events. They apply them strictly in sequence order, drop duplicates, resume from their last event after a reconnect, and re-send unanswered commands under the same id so a retry can't act twice.",
-            "Every action names the hand and turn it was decided on, so a decision made on a stale view is rejected instead of landing on whatever is current."
+            "Every action names the hand and turn it was decided on, so a decision made on a stale view is rejected instead of landing on whatever is current.",
+            "If the server dies, a new process rebuilds the table from its log: it replays every command through the rules, refuses a log that doesn't match, restores the same event numbers and the results of commands already applied, and re-arms the timers. Clients carry on as after any reconnect."
           ]
         },
         {
@@ -81,7 +82,7 @@
     },
     {
       "id": "the-checks",
-      "title": "Five layers of checks",
+      "title": "Six layers of checks",
       "blocks": [
         {
           "type": "problem",
@@ -105,12 +106,16 @@
             {
               "label": "Chaos",
               "text": "Whole games on a virtual clock through a network that delays, reorders, duplicates and drops. At the end every client, spectator included, must see exactly the server's table, and the command log must replay to the same events."
+            },
+            {
+              "label": "Recovery",
+              "text": "The server is killed at each stage of a write: before it reaches the disk, on disk but not yet published, published but not yet delivered. The restored table must match exactly, a retry must get its original result and apply once, the turn timer must come back, and a tampered log must be refused."
             }
           ]
         },
         {
           "type": "p",
-          "text": "The same seed gives the same run, message for message, so any failure comes with a seed that reproduces it. The key guarantees are also tested over real sockets and real timers: the seat race, a client killed mid-hand that catches up, a command sent while offline and applied once, and the log on disk replaying exactly."
+          "text": "The same seed gives the same run, message for message, so any failure comes with a seed that reproduces it. Across 800 simulated games with a server crash every few seconds, every client converged on the server's table and the log replayed exactly. The key guarantees are also tested over real sockets and real timers, including killing the server mid-hand and restarting it from its log file on the same port."
         }
       ]
     },
@@ -120,7 +125,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Twelve deliberate bugs can be switched on, one at a time, across the rules, the server and the client. Every check runs against every one of them. All twelve are caught, and the table they produce says more about the checks than the pass count does."
+          "text": "Seventeen deliberate bugs can be switched on, one at a time, across the rules, the server, the client and crash recovery. Every check runs against every one of them. All seventeen are caught, and the table they produce says more about the checks than the pass count does."
         },
         {
           "type": "checks",
@@ -128,12 +133,13 @@
             "One layer can hide another's bug. When the server resends one event too many on resume, the client's deduplication absorbs it and whole games look perfect. Only the protocol check, which holds the server to its own contract, sees it.",
             "Invariants keep the state sane but don't know the rules. Accepting a raise below the minimum breaks no invariant, and the random sessions never notice. A reference case written from the rules does.",
             "Races need a window. With instant storage, validating commands concurrently never goes wrong. The concurrency checks use storage that takes a moment, and the simulator randomizes it, so the lost update actually happens.",
-            "Whole-game simulation is the widest net, catching nine of the twelve, including both client bugs. When it fails it says the views diverged; the focused checks say why."
+            "Whole-game simulation is the widest net, including both client bugs, but it can be blind to a specific timing. Publishing events before storing them was caught in only one of ten simulated seeds; a check that crashes the server at exactly that moment catches it every time.",
+            "Five of the bugs only exist after a restart. The most telling one: when the server forgets which commands it had already applied, the first symptom is a player being told their action failed when it had actually happened."
           ]
         },
         {
           "type": "p",
-          "text": "The simulator also found two bugs of mine while I was building it. On a quiet table the bots never sat down, because the client didn't wake them after connecting. And the automatic start of the next hand reused one id per hand number, so once a start failed for lack of players, the idempotency cache kept answering every later start with that same rejection and the table froze for good."
+          "text": "The simulator also found bugs of mine while I was building it. On a quiet table the bots never sat down, because the client didn't wake them after connecting. The automatic start of the next hand reused one id per hand number, so once a start failed for lack of players, the idempotency cache kept answering every later start with that same rejection and the table froze for good. And running the crash games against one of the seeded bugs showed that an error thrown inside a timer's command went unhandled, which in Node ends the whole process; with recovery, it would have become a crash loop."
         }
       ]
     },
@@ -143,7 +149,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "This is one table in one process, with play chips and no authentication. Next: a multi-table tournament with blind levels and players moved between tables without losing an event, crash recovery that rebuilds the table from its log mid-hand, and a load run with many tables at once under the same convergence checks."
+          "text": "This is one table in one process, with play chips and no authentication, and a restart replays the whole log without snapshots. Next: a multi-table tournament with blind levels and players moved between tables without losing an event, and a load run with many tables at once under the same convergence checks."
         }
       ]
     }
