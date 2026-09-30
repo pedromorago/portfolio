@@ -4,6 +4,11 @@ import "@fontsource/instrument-serif/400-italic.css";
 import "@fontsource-variable/inter-tight";
 import "@fontsource-variable/jetbrains-mono";
 import "../styles/global.css";
+// The three faces the first screen uses, fetched before the CSS asks for
+// them, so the hero's text doesn't jump when the web font replaces the fallback.
+import interTight from "@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2?url";
+import serif from "@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url";
+import serifItalic from "@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2?url";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import { site } from "../lib/site";
@@ -28,6 +33,9 @@ const p = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" href={interTight} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={serif} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={serifItalic} as="font" type="font/woff2" crossorigin />
     <title>{p.title}</title>
     <meta name="description" content={p.description} />
     <meta name="color-scheme" content="dark" />
