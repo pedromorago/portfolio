@@ -119,7 +119,7 @@
       },
       {
         "title": "Poker",
-        "text": "10 years playing poker, including Spin & Go, with working knowledge of EV, equity, pot odds, ranges, combinatorics, blockers and poker decision-making.",
+        "text": "10 years playing poker, including Spin & Go, studying with GTO Wizard, with working knowledge of EV, equity, pot odds, ranges, combinatorics, blockers and poker decision-making.",
         "link": {
           "href": "#poker",
           "label": "Poker as domain knowledge →"
@@ -414,7 +414,7 @@
     "id": "poker",
     "kicker": "Domain knowledge",
     "title": "Poker is domain knowledge, not a hobby line on my CV",
-    "text": "I've played poker for roughly a decade, with significant time in Spin & Go formats. Concepts such as EV, equity, ranges, combinations, blockers, stack depth and strategic trade-offs are already part of how I reason, not terminology I learned for a job application.",
+    "text": "I've played poker for roughly a decade, with significant time in Spin & Go formats, and I study with GTO Wizard. Concepts such as EV, equity, ranges, combinations, blockers, stack depth and strategic trade-offs are already part of how I reason, not terminology I learned for a job application.",
     "concepts": [
       "EV",
       "Equity",
