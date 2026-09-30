@@ -3030,3 +3030,22 @@ a:hover > .arrow {
 .reference-link:hover {
   border-bottom-color: var(--accent);
 }
+
+/* Clients band directly under the hero, with its label. */
+.clients {
+  padding: 22px 0 26px;
+}
+
+.clients-label {
+  margin: 0 0 16px;
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+
+.clients .marquee-group + .marquee-group {
+  margin-top: 18px;
+}

@@ -603,7 +603,8 @@
           }
         ]
       }
-    ]
+    ],
+    "label": "Clients of the teams I've tested for"
   },
   "contact": {
     "id": "contact",

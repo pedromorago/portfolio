@@ -9,7 +9,7 @@ const c = site.clients;
 
 <section id={c.id} class="clients" aria-labelledby="clients-title">
   <div class="container">
-    <h2 id="clients-title" class="sr-only">{c.title}</h2>
+    <h2 id="clients-title" class="clients-label">{c.label}</h2>
   </div>
   {
     c.groups.map((g, gi) => (
