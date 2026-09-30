@@ -7,6 +7,7 @@ import spinQuiz from "../assets/shots/spin-quiz.png";
 import shard from "../assets/shots/shard.png";
 import bench from "../assets/shots/bench.png";
 import wiki from "../assets/shots/wiki.png";
+import svlab from "../assets/shots/svlab.png";
 
 export { portrait, headshot };
 
@@ -16,6 +17,7 @@ export const shots = {
   shard,
   bench,
   wiki,
+  svlab,
 };
 
 export function shot(key: string) {

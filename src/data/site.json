@@ -164,6 +164,21 @@
     },
     "projects": [
       {
+        "title": "Solver Validation Lab",
+        "kicker": "Poker validation",
+        "status": "in-progress",
+        "visual": "svlab",
+        "page": "work/solver-validation-lab/",
+        "summary": "Testing poker math with no perfect oracle: 15 checks, 9 seeded bugs, all caught.",
+        "links": [
+          {
+            "href": "https://github.com/pedromorago/solver-validation-lab",
+            "label": "Code ↗",
+            "sr": " for the Solver Validation Lab"
+          }
+        ]
+      },
+      {
         "title": "CI Shard Advisor",
         "kicker": "Quantitative tooling",
         "visual": "shard",
@@ -215,7 +230,11 @@
     "items": [
       {
         "title": "Poker solver validation",
-        "text": "Testing invariants, numerical tolerances, regressions, metamorphic properties and outputs where there may not be a perfect oracle."
+        "text": "Testing invariants, numerical tolerances, regressions, metamorphic properties and outputs where there may not be a perfect oracle.",
+        "link": {
+          "href": "work/solver-validation-lab/",
+          "label": "First step: Solver Validation Lab →"
+        }
       },
       {
         "title": "AI and model quality",
@@ -367,10 +386,10 @@
     "principle": {
       "label": "Principle",
       "title": "When there is no perfect oracle, test relationships and invariants.",
-      "text": "Quantitative and AI-driven systems don't always have one exact expected value. Then I test what must stay true: constraints, consistency between related inputs, metamorphic relationships, numerical tolerances and regressions against known outputs. It's the direction my quality engineering is taking, and already how I test the core of CI Shard Advisor.",
+      "text": "Quantitative and AI-driven systems don't always have one exact expected value. Then I test what must stay true: constraints, consistency between related inputs, metamorphic relationships, numerical tolerances and regressions against known outputs. It's how I test the core of CI Shard Advisor, and the whole point of my Solver Validation Lab.",
       "link": {
-        "href": "work/ci-shard-advisor/",
-        "label": "CI Shard Advisor →"
+        "href": "work/solver-validation-lab/",
+        "label": "Solver Validation Lab →"
       }
     }
   },

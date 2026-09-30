@@ -1,0 +1,146 @@
+{
+  "slug": "solver-validation-lab",
+  "meta": {
+    "title": "Solver Validation Lab: testing poker math with no perfect oracle | Pedro Morago",
+    "description": "A poker equity engine and a validation suite built on invariants, metamorphic relations, error bars and differential testing, with nine seeded bugs to prove it.",
+    "shareDescription": "How do you test poker math when nobody knows the right answer? Invariants, metamorphic relations, error bars, differential testing and nine seeded bugs.",
+    "about": [
+      "Software testing",
+      "Poker",
+      "Metamorphic testing",
+      "Property-based testing"
+    ]
+  },
+  "crumb": "Solver Validation Lab",
+  "kicker": "Project, in progress",
+  "title": "Testing poker math when there is no perfect oracle",
+  "lede": "A solver or a trainer gives you numbers: equities, frequencies, expected values. For a handful of spots you can check them by hand; for the rest there is no answer key, only relationships that must hold. This lab is my first step in validating that kind of system: a small poker equity engine, a suite of checks that each name their oracle, and nine seeded bugs to show what the suite catches.",
+  "cover": {
+    "image": "svlab",
+    "alt": "A terminal report listing nine seeded bugs in a poker equity engine and the kinds of checks that caught each one"
+  },
+  "facts": [
+    {
+      "label": "System under test",
+      "text": "All-in equity, exact and Monte Carlo, in pure Python"
+    },
+    {
+      "label": "Checks",
+      "text": "15, across six kinds of oracle, plus Hypothesis properties"
+    },
+    {
+      "label": "Independent oracle",
+      "text": "treys, an open-source hand evaluator"
+    },
+    {
+      "label": "Seeded bugs",
+      "text": "9 of 9 caught; the real engine passes every check",
+      "check": true
+    }
+  ],
+  "actions": [
+    {
+      "href": "https://github.com/pedromorago/solver-validation-lab",
+      "label": "Code on GitHub ↗"
+    }
+  ],
+  "sections": [
+    {
+      "id": "the-problem",
+      "title": "The problem",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Most tests compare an output with an expected value. For a poker engine that only works for the easy cases: a royal flush beats a full house, two identical hands split. Ask for the equity of a flush draw against an overpair on a given flop and nobody has the answer written down. The same is true, at a much bigger scale, of a solver's frequencies or a model's recommendations."
+        },
+        {
+          "type": "p",
+          "text": "So the question becomes what must be true of any correct answer, and how to check that without knowing the answer."
+        }
+      ]
+    },
+    {
+      "id": "the-engine",
+      "title": "The system under test",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A pure-Python engine: a seven-card hand evaluator, exact equity that enumerates every remaining board, and Monte Carlo equity that samples boards and reports a standard error with every estimate. Exact equity is accumulated in integer shares of the pot, so exactness can be asserted without floating-point tolerance."
+        }
+      ]
+    },
+    {
+      "id": "the-oracles",
+      "title": "Six kinds of oracle",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Every check is written against an interchangeable engine and names the kind of oracle it relies on."
+        },
+        {
+          "type": "problem",
+          "rows": [
+            {
+              "label": "Reference",
+              "text": "Hand-written expected values, only where they are beyond argument: textbook hand categories, kickers, identical hands splitting."
+            },
+            {
+              "label": "Differential",
+              "text": "3,000 random seven-card matchups must be ordered the same way as by an independent evaluator."
+            },
+            {
+              "label": "Invariant",
+              "text": "Card order doesn't matter, shares add up to the pot exactly, a complete board has no uncertainty, sampled boards only use legal cards."
+            },
+            {
+              "label": "Metamorphic",
+              "text": "Renaming suits changes nothing, swapping players swaps equities, and flop equity is exactly the average of the equities after each turn card."
+            },
+            {
+              "label": "Statistical",
+              "text": "Monte Carlo estimates fall within 4.5 standard errors of the exact value, and quadrupling the samples roughly halves the error."
+            },
+            {
+              "label": "Regression",
+              "text": "Exact equities for 11 spots, recorded only after the independent evaluator agreed with every one."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "On top of them, Hypothesis generates random hands and spots for the same properties, plus one more: adding a seventh card can never make the best hand worse."
+        }
+      ]
+    },
+    {
+      "id": "seeded-bugs",
+      "title": "Testing the tests",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A suite for a system without an answer key has to answer a question about itself: if the engine were wrong in this way, would anything notice? Nine versions of the engine each carry one deliberate bug, and every check runs against every one of them. All nine are caught."
+        },
+        {
+          "type": "checks",
+          "items": [
+            "Sampling the board with replacement moves the estimates so little that they still land inside their error bars. The invariant on the sampled cards catches it directly.",
+            "Giving every tie to the first player keeps the shares adding up to the pot, so that invariant passes. Swapping the players exposes it.",
+            "Never dealing the last card of the deck produces plausible equities everywhere, but breaks the law of total probability: flop equity stops being the average of the turn equities.",
+            "Differential testing catches every evaluator bug, and it is only as good as the other implementation. That's why the baselines are cross-checked against it once, rather than trusted on their own."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "next",
+      "title": "What comes next",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "This is a first step, not a solver. Next in the same repository: a heads-up push/fold equilibrium for short stacks, checked by exploitability; range against range equity, checked against its hand-against-hand parts; and checks for exported solver strategies, where frequencies must sum to one at every node and EVs must be consistent with the tree."
+        }
+      ]
+    }
+  ],
+  "contactTopic": "testing poker or quantitative systems"
+}

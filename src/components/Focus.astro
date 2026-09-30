@@ -2,7 +2,7 @@
 // Deliberate specialization, kept visually apart from professional
 // experience: these are areas of study and personal projects.
 import { site } from "../lib/site";
-import { smart } from "../lib/render";
+import { renderLink, smart } from "../lib/render";
 const f = site.focus;
 ---
 
@@ -22,6 +22,7 @@ const f = site.focus;
             <span class="badge">{f.badge}</span>
             <h3>{it.title}</h3>
             <p>{smart(it.text)}</p>
+            {it.link && <Fragment set:html={renderLink(it.link, "focus-link")} />}
           </li>
         ))
       }

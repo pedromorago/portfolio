@@ -3049,3 +3049,29 @@ a:hover > .arrow {
 .clients .marquee-group + .marquee-group {
   margin-top: 18px;
 }
+
+.focus-link {
+  display: inline-flex;
+  gap: 6px;
+  min-height: 32px;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-2);
+}
+
+.focus-link:hover {
+  border-bottom-color: var(--accent);
+}
+
+/* Four project cards: two per row on wide screens. */
+.featured + .apps-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 700px) {
+  .featured + .apps-grid {
+    grid-template-columns: 1fr;
+  }
+}
