@@ -1,0 +1,152 @@
+{
+  "slug": "real-time-testbed",
+  "meta": {
+    "title": "Real-Time Testbed: testing a live poker table under a hostile network | Pedro Morago",
+    "description": "A No-Limit Hold'em table served over WebSockets, tested for duplicates, reconnects, reordering, races and timers, with a deterministic chaos simulator and twelve seeded bugs.",
+    "shareDescription": "What breaks in a real-time poker table: the second click, the dropped connection, the timer that fires with the call. A table server, a chaos simulator and twelve seeded bugs.",
+    "about": [
+      "Software testing",
+      "Poker",
+      "WebSockets",
+      "Distributed systems testing",
+      "Property-based testing"
+    ]
+  },
+  "crumb": "Real-Time Testbed",
+  "kicker": "Project",
+  "title": "Testing a live poker table through a hostile network",
+  "lede": "A real-time poker table fails in ways a unit test rarely sees: a call that arrives twice, a phone that drops mid-hand and comes back a minute later, an action timer that fires in the same millisecond as the player's click. I built a small No-Limit Hold'em table server and a test harness aimed at exactly those failures, then seeded twelve bugs into it to check that the harness notices.",
+  "cover": {
+    "image": "rtt",
+    "alt": "A terminal showing a 100-hand chaos run in which every client converged, and a table of twelve seeded bugs with the kinds of checks that caught each one"
+  },
+  "facts": [
+    {
+      "label": "System under test",
+      "text": "A Hold'em table server over WebSockets, in TypeScript"
+    },
+    {
+      "label": "Checks",
+      "text": "13 in five layers, plus tests over real sockets"
+    },
+    {
+      "label": "Chaos",
+      "text": "Latency, reordering, duplicates and disconnects, reproducible by seed"
+    },
+    {
+      "label": "Seeded bugs",
+      "text": "12 of 12 caught; the real code passes every check",
+      "check": true
+    }
+  ],
+  "actions": [
+    {
+      "href": "https://github.com/pedromorago/real-time-testbed",
+      "label": "Code on GitHub ↗"
+    }
+  ],
+  "sections": [
+    {
+      "id": "the-problem",
+      "title": "The problem",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The rules of poker are the easy part to test. The hard part of a live table is everything around them: several clients holding their own copy of the game, a network that delivers late, twice or never, and a server that has to stay the single source of truth while players reconnect, retry and race each other and the clock."
+        },
+        {
+          "type": "p",
+          "text": "Those bugs rarely show up in a test that sends one message and checks one reply. They show up in the hundredth hand, when a retry lands after a timeout. So the harness plays whole games through a network built to misbehave, and checks what must stay true at every step."
+        }
+      ]
+    },
+    {
+      "id": "the-system",
+      "title": "The system under test",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "The rules as a pure function: a command goes in, and either a rejection or the next state and its events come out. The deck is shuffled from a seed, so a log of commands replays to identical events.",
+            "One service owns the table. It deduplicates commands by sender and command id, applies them one at a time, stores each change before publishing it, arms the action timers and sends every viewer a numbered event stream with other players' hole cards removed.",
+            "Clients keep their own copy of the table from those events. They apply them strictly in sequence order, drop duplicates, resume from their last event after a reconnect, and re-send unanswered commands under the same id so a retry can't act twice.",
+            "Every action names the hand and turn it was decided on, so a decision made on a stale view is rejected instead of landing on whatever is current."
+          ]
+        },
+        {
+          "type": "tech",
+          "text": "Tech: TypeScript, Node.js, WebSockets (ws), Vitest, fast-check and GitHub Actions."
+        }
+      ]
+    },
+    {
+      "id": "the-checks",
+      "title": "Five layers of checks",
+      "blocks": [
+        {
+          "type": "problem",
+          "rows": [
+            {
+              "label": "Reference",
+              "text": "Outcomes written by hand from the rules: heads-up blind order, minimum raises and short all-ins, a three-way all-in split into main pot, side pot and returned bet, the odd chip of a split pot."
+            },
+            {
+              "label": "Property",
+              "text": "fast-check generates 300 sessions of up to 400 commands, legal and not, and every invariant must hold after each one: chips conserved, one seat per player, busted players never dealt in, turns and streets only moving forward, nobody winning more than they could have lost."
+            },
+            {
+              "label": "Protocol",
+              "text": "A retried command gets its first result and applies once; resuming after event k sends exactly k+1 onwards; hole cards reach only their owner; a timer that fires after its turn does nothing."
+            },
+            {
+              "label": "Concurrency",
+              "text": "Two players racing for one seat, and a player's action landing together with their timeout, while storage takes a few milliseconds: exactly one wins each time."
+            },
+            {
+              "label": "Chaos",
+              "text": "Whole games on a virtual clock through a network that delays, reorders, duplicates and drops. At the end every client, spectator included, must see exactly the server's table, and the command log must replay to the same events."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "The same seed gives the same run, message for message, so any failure comes with a seed that reproduces it. The key guarantees are also tested over real sockets and real timers: the seat race, a client killed mid-hand that catches up, a command sent while offline and applied once, and the log on disk replaying exactly."
+        }
+      ]
+    },
+    {
+      "id": "seeded-bugs",
+      "title": "Testing the tests",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Twelve deliberate bugs can be switched on, one at a time, across the rules, the server and the client. Every check runs against every one of them. All twelve are caught, and the table they produce says more about the checks than the pass count does."
+        },
+        {
+          "type": "checks",
+          "items": [
+            "One layer can hide another's bug. When the server resends one event too many on resume, the client's deduplication absorbs it and whole games look perfect. Only the protocol check, which holds the server to its own contract, sees it.",
+            "Invariants keep the state sane but don't know the rules. Accepting a raise below the minimum breaks no invariant, and the random sessions never notice. A reference case written from the rules does.",
+            "Races need a window. With instant storage, validating commands concurrently never goes wrong. The concurrency checks use storage that takes a moment, and the simulator randomizes it, so the lost update actually happens.",
+            "Whole-game simulation is the widest net, catching nine of the twelve, including both client bugs. When it fails it says the views diverged; the focused checks say why."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "The simulator also found two bugs of mine while I was building it. On a quiet table the bots never sat down, because the client didn't wake them after connecting. And the automatic start of the next hand reused one id per hand number, so once a start failed for lack of players, the idempotency cache kept answering every later start with that same rejection and the table froze for good."
+        }
+      ]
+    },
+    {
+      "id": "next",
+      "title": "What comes next",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "This is one table in one process, with play chips and no authentication. Next: a multi-table tournament with blind levels and players moved between tables without losing an event, crash recovery that rebuilds the table from its log mid-hand, and a load run with many tables at once under the same convergence checks."
+        }
+      ]
+    }
+  ],
+  "contactTopic": "testing real-time or poker systems"
+}

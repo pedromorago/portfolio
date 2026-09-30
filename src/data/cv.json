@@ -54,9 +54,14 @@
       "text": "Poker equity engine with a validation suite for outputs without a perfect oracle: invariants, metamorphic relations, statistical bounds and differential testing. 9 of 9 seeded bugs caught."
     },
     {
+      "title": "Real-Time Testbed",
+      "url": "github.com/pedromorago/real-time-testbed",
+      "text": "WebSocket poker table tested for retries, reconnects, races and timers with a deterministic chaos simulator. 12 of 12 seeded bugs caught."
+    },
+    {
       "title": "CI Shard Advisor",
       "url": "shard.pedromorago.com",
-      "text": "Public CI optimization tool. Recommends how to distribute Cypress specs across CI containers from run data; evolved from the IriusRisk optimization work."
+      "text": "Public tool that recommends how to split Cypress specs across CI containers from run data; grew out of the IriusRisk optimization work."
     }
   ],
   "education": [

@@ -8,6 +8,7 @@ import shard from "../assets/shots/shard.png";
 import bench from "../assets/shots/bench.png";
 import wiki from "../assets/shots/wiki.png";
 import svlab from "../assets/shots/svlab.png";
+import rtt from "../assets/shots/rtt.png";
 
 export { portrait, headshot };
 
@@ -18,6 +19,7 @@ export const shots = {
   bench,
   wiki,
   svlab,
+  rtt,
 };
 
 export function shot(key: string) {

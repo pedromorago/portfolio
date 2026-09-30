@@ -3065,9 +3065,32 @@ a:hover > .arrow {
   border-bottom-color: var(--accent);
 }
 
-/* Four project cards: two per row on wide screens. */
+/* Project cards: two per row on wide screens. An odd card out spans the row,
+   picture on the left, lined up with the column above. */
 .featured + .apps-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 701px) {
+  .featured + .apps-grid > .app-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: calc(50% - 12px) minmax(0, 1fr);
+  }
+  .featured + .apps-grid > .app-card:last-child:nth-child(odd) .card-visual {
+    border-bottom: 0;
+    border-right: 1px solid var(--line);
+  }
+  .featured + .apps-grid > .app-card:last-child:nth-child(odd) .card-body {
+    justify-content: center;
+    padding: 32px 36px;
+  }
+  .featured + .apps-grid > .app-card:last-child:nth-child(odd) .card-body > * {
+    flex: 0 0 auto;
+  }
+  .featured + .apps-grid > .app-card:last-child:nth-child(odd) .card-links {
+    margin-top: 20px;
+  }
 }
 
 @media (max-width: 700px) {

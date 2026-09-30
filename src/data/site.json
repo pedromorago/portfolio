@@ -179,6 +179,20 @@
         ]
       },
       {
+        "title": "Real-Time Testbed",
+        "kicker": "Real-time poker systems",
+        "visual": "rtt",
+        "page": "work/real-time-testbed/",
+        "summary": "A live poker table tested through a hostile network: 12 seeded bugs, all caught.",
+        "links": [
+          {
+            "href": "https://github.com/pedromorago/real-time-testbed",
+            "label": "Code ↗",
+            "sr": " for the Real-Time Testbed"
+          }
+        ]
+      },
+      {
         "title": "CI Shard Advisor",
         "kicker": "Quantitative tooling",
         "visual": "shard",
@@ -242,7 +256,11 @@
       },
       {
         "title": "Real-time poker systems",
-        "text": "WebSockets, reconnects, idempotency, duplicate events, ordering, concurrency and state recovery."
+        "text": "WebSockets, reconnects, idempotency, duplicate events, ordering, concurrency and state recovery.",
+        "link": {
+          "href": "work/real-time-testbed/",
+          "label": "Project: Real-Time Testbed →"
+        }
       },
       {
         "title": "Game integrity",

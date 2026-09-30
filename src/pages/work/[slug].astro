@@ -127,9 +127,7 @@ const email = site.contact.email;
             <div>
               <h2>{smart(cc.title)}</h2>
               <p>
-                {cc.intro}
-                {cc.before}
-                {c.contactTopic}, {cc.after} <a href={`mailto:${email}`}>{email}</a>.
+                {`${cc.intro} ${cc.before} ${c.contactTopic}, ${cc.after} `}<a href={`mailto:${email}`}>{email}</a>.
               </p>
             </div>
             <div class="contact-actions">
