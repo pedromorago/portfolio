@@ -1,0 +1,154 @@
+{
+  "slug": "game-integrity-lab",
+  "meta": {
+    "title": "Game Integrity Lab: evaluating models that flag cheaters | Pedro Morago",
+    "description": "An evaluation testbed for poker game-integrity models on synthetic data: bots, RTA and collusion, per-segment false positives, robustness scenarios, a regression gate and eleven seeded evaluation bugs.",
+    "shareDescription": "When a model flags a poker player, a false positive accuses a real person. An evaluation testbed on synthetic data, with per-segment false positives and eleven seeded evaluation bugs.",
+    "about": [
+      "Software testing",
+      "Poker",
+      "Machine learning evaluation",
+      "Game integrity"
+    ]
+  },
+  "crumb": "Game Integrity Lab",
+  "kicker": "Project",
+  "title": "Evaluating models that flag cheaters, when every false positive is a real player",
+  "lede": "Poker sites use models to flag bots, real-time assistance and collusion. Testing those models is a QA problem with a sharp edge: a missed cheater costs the other players money, and a false positive accuses someone innocent. I built an evaluation testbed on synthetic data, three models to evaluate, and a harness of checks, then seeded eleven bugs into the evaluation itself to see which checks catch them.",
+  "cover": {
+    "image": "gil",
+    "alt": "A terminal showing the evaluation of three models on synthetic players, with the false positives of the best one all falling on strong regulars, and a table of seeded evaluation bugs"
+  },
+  "facts": [
+    {
+      "label": "Data",
+      "text": "3,020 synthetic players and 1.4 million decisions, with known labels"
+    },
+    {
+      "label": "Models under evaluation",
+      "text": "A rule baseline, Isolation Forest and gradient boosting"
+    },
+    {
+      "label": "Checks",
+      "text": "19 on the evaluation harness, in six kinds"
+    },
+    {
+      "label": "Seeded bugs",
+      "text": "11 of 11 caught; the real pipeline passes every check",
+      "check": true
+    }
+  ],
+  "actions": [
+    {
+      "href": "https://github.com/pedromorago/game-integrity-lab",
+      "label": "Code on GitHub ↗"
+    }
+  ],
+  "sections": [
+    {
+      "id": "the-problem",
+      "title": "The problem",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A model that scores players for suspicious behaviour is easy to make look good. Report one headline number on a convenient split and it can hide who pays for the mistakes. The questions that matter are narrower: how many legitimate players does it flag, which ones, whether the threshold was chosen without peeking at the answers, and what happens when cheaters adapt or honest players change."
+        },
+        {
+          "type": "p",
+          "text": "This lab is an evaluation testbed for that kind of model. It isn't a cheat detector: the data is synthetic, and a statistical flag is never proof of cheating."
+        }
+      ]
+    },
+    {
+      "id": "the-data",
+      "title": "Synthetic players with known labels",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A seeded simulation plays decisions of varying difficulty against a reference strategy, with decision times, sessions and hours of play. Because the labels are known, every flag can be scored."
+        },
+        {
+          "type": "problem",
+          "rows": [
+            {
+              "label": "Legitimate",
+              "text": "Recreational players, strong regulars whose timing grows with difficulty and who tire over long sessions, and multi-tablers who are fast but tired."
+            },
+            {
+              "label": "Bots",
+              "text": "Very close to the reference, with steady timing unrelated to difficulty and very long sessions at any hour."
+            },
+            {
+              "label": "RTA users",
+              "text": "Humans who become near-perfect on hard spots, with extra delay on exactly those decisions."
+            },
+            {
+              "label": "Collusion",
+              "text": "Pairs who sit together and soft-play each other, some of them dumping chips. Friends who happen to play together are there too, as the legitimate lookalike."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Features cover how far a player's play is from the reference by difficulty, how timing relates to difficulty, and session patterns, plus pair features such as shared sessions and aggression toward the partner compared with everyone else."
+        },
+        {
+          "type": "tech",
+          "text": "Tech: Python, NumPy, scikit-learn, pytest, Hypothesis and GitHub Actions."
+        }
+      ]
+    },
+    {
+      "id": "the-evaluation",
+      "title": "What the evaluation shows",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Players are split so nobody appears in two sets, and each model's threshold is chosen on a validation split so that at most 1% of legitimate players are flagged. The test split is only used to report. On this synthetic data:"
+        },
+        {
+          "type": "checks",
+          "items": [
+            "Gradient boosting ranks best (PR-AUC 0.866), and all seven of its false positives on test are strong regulars: 3.8% of that segment, against 1.36% overall. The model that learns to find RTA also learns to suspect accurate humans, and a single overall rate would hide it.",
+            "The simple rules and Isolation Forest catch none of the RTA users in the test split. Gradient boosting catches 12 of 31.",
+            "Bots that add timing noise and deliberate mistakes get past all three frozen models, with at most 2 of 160 flagged.",
+            "When honest players drift, the frozen gradient boosting thresholds flag 47% of regulars while recall barely moves."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "A regression gate compares a candidate evaluation with a baseline, overall and per segment, and fails with an exit code. Dropping the accuracy features fails it: PR-AUC falls from 0.867 to 0.749, and the share of regulars flagged rises from 3.8% to 9.2%."
+        }
+      ]
+    },
+    {
+      "id": "seeded-bugs",
+      "title": "Testing the evaluation",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Nineteen checks guard the harness itself: metrics against hand-computed cases and scikit-learn, invariants, leakage checks, a label shuffle that must fall to the base rate, metamorphic relations such as row order and dataset duplication, and determinism by seed. Eleven bugs seeded into the evaluation pipeline are all caught."
+        },
+        {
+          "type": "checks",
+          "items": [
+            "The most dangerous bugs make the model look better. Leaking players across splits, a feature built from the labels and evaluating on training players all report a PR-AUC of 1.000 against 0.853 for the real pipeline. Nobody would question those numbers from the report alone.",
+            "Two bugs, a false-positive budget computed over all players and a PR curve missing its last point, leave this run's numbers unchanged. Only hand-computed reference cases see them.",
+            "Reporting accuracy as the headline looks great at 0.95, but with one player in nine positive, a model that flags nobody is already right about 89% of the time. A sanity check that makes flagging nobody look as bad as it is catches it."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "next",
+      "title": "What comes next",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The populations were built with the signatures the features look for, the test split is small, and real labels come from investigations, not a generator. Next: label noise and selection bias in the training labels, where the ground truth is itself the output of earlier flags; confidence intervals for every per-segment rate, with a gate that compares intervals; and seeded bugs for the checks that don't catch anything yet."
+        }
+      ]
+    }
+  ],
+  "contactTopic": "evaluating game-integrity or ML models"
+}

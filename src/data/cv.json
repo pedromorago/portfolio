@@ -51,7 +51,7 @@
     {
       "title": "Solver Validation Lab",
       "url": "github.com/pedromorago/solver-validation-lab",
-      "text": "Poker equity engine and a validator for solver strategy exports, with a regression diff: invariants, metamorphic and statistical checks. 26 of 26 seeded defects caught."
+      "text": "Poker equity engine and a validator for solver strategy exports, with a regression diff between versions. 26 of 26 seeded defects caught."
     },
     {
       "title": "Real-Time Testbed",
@@ -59,9 +59,9 @@
       "text": "WebSocket poker table tested for retries, reconnects, races, timers and server crashes with a chaos simulator. 17 of 17 seeded bugs caught."
     },
     {
-      "title": "CI Shard Advisor",
-      "url": "shard.pedromorago.com",
-      "text": "Public tool that recommends how to split Cypress specs across CI containers from run data; grew out of the IriusRisk optimization work."
+      "title": "Game Integrity Lab",
+      "url": "github.com/pedromorago/game-integrity-lab",
+      "text": "Evaluation testbed for bot, RTA and collusion models on synthetic data: per-segment false positives and a regression gate. 11 of 11 seeded bugs caught."
     }
   ],
   "education": [

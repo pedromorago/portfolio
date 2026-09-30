@@ -9,6 +9,7 @@ import bench from "../assets/shots/bench.png";
 import wiki from "../assets/shots/wiki.png";
 import svlab from "../assets/shots/svlab.png";
 import rtt from "../assets/shots/rtt.png";
+import gil from "../assets/shots/gil.png";
 
 export { portrait, headshot };
 
@@ -20,6 +21,7 @@ export const shots = {
   wiki,
   svlab,
   rtt,
+  gil,
 };
 
 export function shot(key: string) {

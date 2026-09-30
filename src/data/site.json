@@ -192,6 +192,20 @@
         ]
       },
       {
+        "title": "Game Integrity Lab",
+        "kicker": "Model evaluation",
+        "visual": "gil",
+        "page": "work/game-integrity-lab/",
+        "summary": "Evaluating models that flag bots, RTA and collusion, where every false positive is a real player.",
+        "links": [
+          {
+            "href": "https://github.com/pedromorago/game-integrity-lab",
+            "label": "Code ↗",
+            "sr": " for the Game Integrity Lab"
+          }
+        ]
+      },
+      {
         "title": "CI Shard Advisor",
         "kicker": "Quantitative tooling",
         "visual": "shard",
@@ -251,7 +265,11 @@
       },
       {
         "title": "AI and model quality",
-        "text": "Evaluating whether outputs make sense, designing robust test datasets and understanding model-quality trade-offs."
+        "text": "Evaluating whether outputs make sense, designing robust test datasets and understanding model-quality trade-offs.",
+        "link": {
+          "href": "work/game-integrity-lab/",
+          "label": "Project: Game Integrity Lab →"
+        }
       },
       {
         "title": "Real-time poker systems",
@@ -263,7 +281,11 @@
       },
       {
         "title": "Game integrity",
-        "text": "Testing the data quality and systems used around botting, RTA, collusion and behavioral anomalies, knowing that a simple model can't conclusively prove cheating."
+        "text": "Testing the data quality and systems used around botting, RTA, collusion and behavioral anomalies, knowing that a simple model can't conclusively prove cheating.",
+        "link": {
+          "href": "work/game-integrity-lab/",
+          "label": "Project: Game Integrity Lab →"
+        }
       }
     ]
   },
