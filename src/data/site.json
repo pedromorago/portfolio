@@ -2,16 +2,16 @@
   "htmlLang": "en",
   "ogLocale": "en_US",
   "meta": {
-    "title": "Pedro Morago | Senior QA Engineer",
-    "description": "Pedro Morago is a Senior QA Engineer in Santander, Spain, working remotely. He automates tests with Playwright, Cypress and Java, and balances CI pipelines with maths.",
-    "ogDescription": "Senior QA Engineer. I automate tests with Playwright, Cypress and REST Assured in Java, and I use optimization models to balance CI pipelines.",
-    "twitterDescription": "Senior QA Engineer. I automate tests with Playwright, Cypress and Java, and I use optimization models to balance CI pipelines."
+    "title": "Pedro Morago | Senior QA Engineer for Poker & Quantitative Systems",
+    "description": "Senior QA Engineer with 5 years in test automation, a Mathematics degree and 10 years of poker experience. Playwright, API/backend testing, quantitative QA and Poker AI specialization.",
+    "ogDescription": "Senior QA Engineer with a Mathematics degree and 10 years of poker. API, backend and E2E automation, specializing in testing quantitative and poker AI systems.",
+    "twitterDescription": "Senior QA Engineer with a Mathematics degree and 10 years of poker, specializing in testing quantitative and poker AI systems."
   },
   "person": {
     "name": "Pedro Morago López-Vázquez",
     "alternateName": "Pedro Morago",
     "jobTitle": "Senior QA Engineer",
-    "description": "Senior QA Engineer working on test automation, API testing and CI pipelines.",
+    "description": "Senior QA Engineer with a Mathematics degree and 10 years of poker experience, specializing in testing quantitative and poker AI systems.",
     "worksFor": "Alvatross by SATEC",
     "alumniOf": "University of Cantabria",
     "addressLocality": "Santander",
@@ -23,14 +23,19 @@
     "credential": "ISTQB Certified Tester Foundation Level (CTFL) v4.0",
     "knowsAbout": [
       "Software Quality Assurance",
+      "Quality Engineering",
       "Test Automation",
       "API Testing",
+      "Backend Testing",
       "Playwright",
+      "TypeScript",
       "Cypress",
       "REST Assured",
       "Karate",
       "CI/CD",
-      "Mathematical optimization"
+      "Mathematics",
+      "Mathematical optimization",
+      "Poker strategy"
     ]
   },
   "skipLink": {
@@ -40,11 +45,15 @@
   "nav": [
     {
       "id": "work",
-      "label": "Portfolio"
+      "label": "Work"
+    },
+    {
+      "id": "focus",
+      "label": "Poker / AI focus"
     },
     {
       "id": "method",
-      "label": "Method"
+      "label": "How I test"
     },
     {
       "id": "career",
@@ -62,18 +71,439 @@
     "sr": " (PDF)"
   },
   "hero": {
-    "eyebrow": "Senior QA Engineer",
     "name": "Pedro Morago",
-    "text": "I'm a mathematics graduate from the University of Cantabria, and I've spent five years in test automation, first on international SaaS products and now on a telecom platform.",
+    "eyebrow": [
+      "Senior QA Engineer",
+      "Mathematics",
+      "10 years of poker"
+    ],
+    "titleLead": "I test systems where correctness isn't",
+    "titleAccent": "just a boolean.",
+    "text": "I'm a Senior QA Engineer with 5 years in test automation, a Mathematics degree and 10 years of poker experience. I work across API, backend and E2E layers, and I'm specializing in the quality problems behind poker AI, solver evaluation, real-time systems and game integrity.",
     "photoAlt": "Pedro Morago, arms crossed, in a navy shirt",
     "actions": [
       {
-        "href": "mailto:pedro@pedromorago.com",
-        "label": "Email me"
+        "href": "#work",
+        "label": "View my Poker / QA work"
       },
       {
         "href": "pedro-morago-cv.pdf",
-        "label": "Download my CV"
+        "label": "Download CV"
+      }
+    ],
+    "contactLink": {
+      "href": "#contact",
+      "label": "Contact me →"
+    }
+  },
+  "why": {
+    "id": "why",
+    "kicker": "Why me",
+    "title": "Why this intersection",
+    "items": [
+      {
+        "title": "Quality Engineering",
+        "text": "5 years testing SaaS and telecom systems: API and backend automation, Playwright, REST Assured, CI/CD, risk-based testing and debugging.",
+        "link": {
+          "href": "#challenges",
+          "label": "Hard problems I've tested →"
+        }
+      },
+      {
+        "title": "Mathematics",
+        "text": "A BSc in Mathematics from the University of Cantabria, put to real use in optimization and combinatorial reasoning inside software quality work.",
+        "link": {
+          "href": "work/ci-pipeline-optimization/",
+          "label": "The CI optimization model →"
+        }
+      },
+      {
+        "title": "Poker",
+        "text": "10 years playing poker, including Spin & Go, with working knowledge of EV, equity, pot odds, ranges, combinatorics, blockers and poker decision-making.",
+        "link": {
+          "href": "#poker",
+          "label": "Poker as domain knowledge →"
+        }
+      }
+    ],
+    "closing": "The overlap is the point: I want to test products where software behavior, probability and strategic decision-making meet."
+  },
+  "work": {
+    "id": "work",
+    "kicker": "Work",
+    "title": "Portfolio",
+    "lede": "Products and tools I've built and tested. Each one opens into the full story.",
+    "featured": {
+      "title": "Spin Trainer",
+      "kicker": "Featured project",
+      "visual": "spin-explorer",
+      "visualAlt": "Spin Trainer's Explorer: a 13 by 13 grid of poker hands coloured by action, with range statistics",
+      "page": "work/spin-trainer/",
+      "headline": "Poker range training platform tested like a production system",
+      "text": "React and Spring Boot product with server-side grading, 80 reference ranges, REST Assured API testing, Playwright against mock and real backends, mutation testing and 8 real defects found before release.",
+      "metrics": [
+        {
+          "value": "145",
+          "label": "black-box API tests against the deployable image"
+        },
+        {
+          "value": "37",
+          "label": "Playwright specs, run on a mock and on the real backend"
+        },
+        {
+          "value": "8",
+          "label": "real defects found before release"
+        }
+      ],
+      "links": [
+        {
+          "href": "https://spintrainer.pedromorago.com/",
+          "label": "Open the app ↗"
+        }
+      ]
+    },
+    "projects": [
+      {
+        "title": "CI Shard Advisor",
+        "kicker": "Quantitative tooling",
+        "visual": "shard",
+        "page": "work/ci-shard-advisor/",
+        "summary": "A mathematical optimization problem hidden inside a test pipeline.",
+        "links": [
+          {
+            "href": "https://shard.pedromorago.com/",
+            "label": "Live demo ↗"
+          }
+        ]
+      },
+      {
+        "title": "Screen Recorder (QA mode)",
+        "kicker": "Chrome extension",
+        "visual": "bench",
+        "page": "work/screen-recorder/",
+        "summary": "Turns a bug into evidence: video, console, network and every step.",
+        "links": [
+          {
+            "href": "https://github.com/pedromorago/screen-recorder-qa/releases/latest",
+            "label": "Download ↗",
+            "sr": " Screen Recorder for Chrome"
+          }
+        ]
+      },
+      {
+        "title": "QA Wiki",
+        "kicker": "Knowledge base",
+        "visual": "wiki",
+        "page": "work/qa-wiki/",
+        "summary": "A public QA knowledge base with more than 50 articles.",
+        "links": [
+          {
+            "href": "https://wiki.pedromorago.com/",
+            "label": "Read it ↗",
+            "sr": " the QA Wiki"
+          }
+        ]
+      }
+    ]
+  },
+  "focus": {
+    "id": "focus",
+    "kicker": "Poker / AI focus",
+    "title": "What I'm building toward",
+    "lede": "Where I'm deliberately taking my testing next. These are areas I'm studying and building projects in, not years of production experience.",
+    "badge": "Current focus",
+    "items": [
+      {
+        "title": "Poker solver validation",
+        "text": "Testing invariants, numerical tolerances, regressions, metamorphic properties and outputs where there may not be a perfect oracle."
+      },
+      {
+        "title": "AI and model quality",
+        "text": "Evaluating whether outputs make sense, designing robust test datasets and understanding model-quality trade-offs."
+      },
+      {
+        "title": "Real-time poker systems",
+        "text": "WebSockets, reconnects, idempotency, duplicate events, ordering, concurrency and state recovery."
+      },
+      {
+        "title": "Game integrity",
+        "text": "Testing the data quality and systems used around botting, RTA, collusion and behavioral anomalies, knowing that a simple model can't conclusively prove cheating."
+      }
+    ]
+  },
+  "challenges": {
+    "id": "challenges",
+    "kicker": "Challenges",
+    "title": "Hard problems I've tested",
+    "lede": "Complex systems fail in combinations, state transitions and edge cases long before they fail in the happy path. These are examples of how I approach that kind of problem.",
+    "companies": [
+      {
+        "company": "IriusRisk",
+        "context": "Threat modeling SaaS. End-to-end automation with Playwright and TypeScript.",
+        "items": [
+          {
+            "title": "A rules engine with a combinatorial space",
+            "problem": "A rule could depend on questionnaire answers, components, trust zones, data flows, security classifications or custom fields, and trigger several actions at once. Covering it by copying a flow per combination would have produced a huge, fragile suite.",
+            "approach": [
+              "Page Objects and shared helpers for the complex screens",
+              "Entities created through the API when the UI added nothing to the test",
+              "Unique data per run, so runs never collide"
+            ]
+          },
+          {
+            "title": "Questionnaires that drive business rules",
+            "problem": "An answer could show a question, insert another answer or produce a conclusion that fired a further rule. Each change had to be checked against the state before it, including what must not happen.",
+            "approach": [
+              "Controlled starting states for every scenario",
+              "Setup kept apart from rule execution, so a failure points at its cause",
+              "Negative cases where a rule has to stay silent"
+            ]
+          },
+          {
+            "title": "Data that breaks where clean data doesn't",
+            "problem": "UTF-8 text and double quotes in questions and answers could break saving or rule evaluation, and none of it showed up with tidy test data.",
+            "approach": [
+              "Edge-case values in the suite on purpose",
+              "Round-trip checks from the UI through the API to storage and back"
+            ]
+          },
+          {
+            "title": "A flaky suite made reliable",
+            "problem": "Elements existed in the DOM before they were ready, selectors matched more than one element, and positional selectors could pass on the wrong one.",
+            "approach": [
+              "Semantic locators: getByRole, getByLabel and filters by context",
+              "Waits on observable state instead of fixed sleeps",
+              "Failures clear enough to tell a test problem from a product bug"
+            ]
+          },
+          {
+            "title": "Dynamic forms across UI, API and data",
+            "problem": "Custom Fields and Security Content mixed dynamic forms, validations and references between entities, and backend errors surfaced in the UI.",
+            "approach": [
+              "Checks on messages, state and persistence, not only on the click",
+              "Positive and negative cases for every constraint",
+              "Preconditions created through API helpers"
+            ]
+          },
+          {
+            "title": "Test architecture that scales",
+            "problem": "Every new condition or action threatened to mean another copied flow.",
+            "approach": [
+              "Page Objects, API helpers and data factories",
+              "Parameterized scenarios for variants that share setup and assertions",
+              "Reuse without hiding what each test checks"
+            ]
+          }
+        ],
+        "feature": {
+          "title": "How many CI containers a test suite needs",
+          "text": "End-to-end tests ran in 7 CI containers, one per product module. My first model balanced them and was 42% faster in a one-worker test run, but only about 8% with the 5 workers production used. Modelling the workers showed that 4 containers would be faster than 7 and cost 41% less.",
+          "tags": [
+            "Python",
+            "PuLP",
+            "Optimization",
+            "CI"
+          ],
+          "link": {
+            "href": "work/ci-pipeline-optimization/",
+            "label": "Read the case study",
+            "sr": " about how many CI containers a test suite needs"
+          }
+        }
+      }
+    ]
+  },
+  "method": {
+    "id": "method",
+    "kicker": "How I test",
+    "title": "How I work",
+    "quote": "I test software the way I was taught to do maths: state the problem precisely, argue every step, don't skip details.",
+    "steps": [
+      {
+        "title": "State the problem precisely",
+        "text": "Before I test or optimize anything, I write down what is given, the rules and the goal. That's how a slow CI pipeline became an optimization model.",
+        "link": {
+          "href": "work/ci-pipeline-optimization/#writing-it-down",
+          "label": "See it in the CI case →"
+        }
+      },
+      {
+        "title": "Define what must be true first",
+        "text": "I agree on what has to hold for a feature to be done before a single test exists, in refinement and design reviews. A gap found in a ticket costs a comment; found in production, it costs a hotfix."
+      },
+      {
+        "title": "Test at the layer where the defect can exist",
+        "text": "Rules and contracts get API tests; user flows get end-to-end tests. Running the same specs against a mock and the real API found a defect neither run could see alone.",
+        "link": {
+          "href": "work/spin-trainer/#two-backends",
+          "label": "One spec, two backends →"
+        }
+      },
+      {
+        "title": "Use explicit test-design techniques",
+        "text": "Equivalence partitioning, boundary values, decision tables and state transitions, named in each test, so a reviewer can see what is covered and what isn't.",
+        "link": {
+          "href": "work/spin-trainer/#techniques",
+          "label": "The techniques in use →"
+        }
+      },
+      {
+        "title": "Investigate until the root cause is clear",
+        "text": "A failing test is a question. I keep digging until I can say whether the product, the data, the environment or the test itself is wrong.",
+        "link": {
+          "href": "work/spin-trainer/#findings",
+          "label": "What that found →"
+        }
+      },
+      {
+        "title": "Automate evidence, not just clicks",
+        "text": "A bug report should carry what a developer needs to reproduce it: console, network and the exact steps. I built a Chrome extension to capture it.",
+        "link": {
+          "href": "work/screen-recorder/",
+          "label": "How I built the recorder →"
+        }
+      }
+    ],
+    "principle": {
+      "label": "Principle",
+      "title": "When there is no perfect oracle, test relationships and invariants.",
+      "text": "Quantitative and AI-driven systems don't always have one exact expected value. Then I test what must stay true: constraints, consistency between related inputs, metamorphic relationships, numerical tolerances and regressions against known outputs. It's the direction my quality engineering is taking, and already how I test the core of CI Shard Advisor.",
+      "link": {
+        "href": "work/ci-shard-advisor/",
+        "label": "CI Shard Advisor →"
+      }
+    }
+  },
+  "poker": {
+    "id": "poker",
+    "kicker": "Domain knowledge",
+    "title": "Poker is domain knowledge, not a hobby line on my CV",
+    "text": "I've played poker for roughly a decade, with significant time in Spin & Go formats. Concepts such as EV, equity, ranges, combinations, blockers, stack depth and strategic trade-offs are already part of how I reason, not terminology I learned for a job application.",
+    "concepts": [
+      "EV",
+      "Equity",
+      "Pot odds",
+      "Ranges",
+      "Combinatorics",
+      "Blockers",
+      "Stack depth"
+    ],
+    "link": {
+      "href": "work/spin-trainer/",
+      "label": "See it applied in Spin Trainer →"
+    }
+  },
+  "career": {
+    "id": "career",
+    "kicker": "Career",
+    "title": "Where I've worked",
+    "lede": "Five years in QA, all of them automating tests.",
+    "jobs": [
+      {
+        "dates": "Jul 2026 – Present",
+        "role": "Senior QA Engineer",
+        "org": "Alvatross by SATEC",
+        "context": "Telecom OSS platform for EWE, a German telecom and energy provider, built on TM Forum standards",
+        "bullets": [
+          "Design and run the tests for TM Forum service-order flows in Jira and Xray: add, modify, delete, suspend and reactivate.",
+          "Building API automation with Karate against TM Forum APIs.",
+          "Built a one-click Postman smoke suite that checks every service after a production deployment."
+        ]
+      },
+      {
+        "dates": "May 2024 – Jun 2026",
+        "role": "QA Engineer",
+        "org": "IriusRisk",
+        "context": "International cybersecurity SaaS for threat modeling, remote",
+        "bullets": [
+          "Built a Python MILP model to split end-to-end tests across CI containers: 42% faster in a one-worker benchmark. Modelling the 5 production workers showed 4 containers instead of 7 would be about 8% faster and 41% cheaper.",
+          "Led the testing strategy for the Security Content module, a core part of the product, across backend, API and frontend.",
+          "Designed Playwright and TypeScript automation for a combinatorial rules engine, with Page Objects, API-backed setup and data factories.",
+          "Automated backend APIs in Java with REST Assured and JUnit 5: schema validation, negative cases and traceability.",
+          "Worked on the TestCafe to Playwright migration: about 80% less run time and a more stable suite."
+        ],
+        "link": {
+          "href": "work/ci-pipeline-optimization/",
+          "label": "The CI case study →"
+        }
+      },
+      {
+        "dates": "Jun 2021 – May 2024",
+        "role": "QA Engineer",
+        "org": "Fieldeas",
+        "context": "Field service management SaaS, several client projects, remote",
+        "bullets": [
+          "Moved client projects from mostly manual testing to automated end-to-end suites in Cypress.",
+          "Reported 500+ defects prioritized by product risk and business impact, and validated data with SQL.",
+          "Onboarded and mentored teammates on QA tooling and automation."
+        ]
+      },
+      {
+        "dates": "2021",
+        "role": "Java web development bootcamp",
+        "org": "CIC",
+        "context": "They hired me as a QA engineer when it finished.",
+        "edu": true
+      },
+      {
+        "dates": "2015 – 2020",
+        "role": "BSc in Mathematics",
+        "org": "University of Cantabria",
+        "context": "Where I learned to state a problem before solving it.",
+        "edu": true
+      }
+    ],
+    "aside": {
+      "blocks": [
+        {
+          "title": "Certification",
+          "items": [
+            "ISTQB Certified Tester Foundation Level (CTFL) v4.0, 2024"
+          ]
+        },
+        {
+          "title": "Languages",
+          "items": [
+            "English, professional working proficiency",
+            "Spanish, native"
+          ]
+        },
+        {
+          "title": "References",
+          "items": [
+            "Reference letter from a former QA Manager available on request"
+          ]
+        }
+      ],
+      "toolsTitle": "Toolbox",
+      "tools": [
+        "Playwright",
+        "Cypress",
+        "TypeScript",
+        "Java",
+        "REST Assured",
+        "JUnit 5",
+        "Karate",
+        "Cucumber",
+        "Postman",
+        "SQL",
+        "Python",
+        "GitHub Actions",
+        "Bitbucket Pipelines",
+        "Jenkins",
+        "Docker",
+        "Jira",
+        "Xray"
+      ]
+    },
+    "actions": [
+      {
+        "href": "pedro-morago-cv.pdf",
+        "label": "Download CV"
+      },
+      {
+        "href": "https://www.linkedin.com/in/pedro-morago-lopezvazquez/",
+        "label": "LinkedIn ↗"
       }
     ]
   },
@@ -171,365 +601,11 @@
       }
     ]
   },
-  "stats": {
-    "title": "In numbers",
-    "items": [
-      {
-        "value": "5",
-        "unit": "years",
-        "text": "in test automation, fully remote since 2021"
-      },
-      {
-        "value": "500+",
-        "unit": "bugs",
-        "text": "reported at Fieldeas, prioritized by product risk"
-      },
-      {
-        "value": "80%",
-        "unit": "less run time",
-        "text": "after the TestCafe to Playwright migration I worked on at IriusRisk"
-      },
-      {
-        "value": "4",
-        "unit": "containers, not 7",
-        "text": "what my CI model recommends: an estimated 8% faster and 41% cheaper"
-      }
-    ]
-  },
-  "work": {
-    "id": "work",
-    "kicker": "Portfolio",
-    "title": "Portfolio",
-    "lede": "The applications I've built. Open one for the full story: the brief, what I built and how I tested it.",
-    "apps": [
-      {
-        "visual": "spin-explorer",
-        "visualAlt": "Spin Trainer's Explorer: a 13 by 13 grid of poker hands coloured by action, with range statistics",
-        "kicker": "Web app",
-        "title": "Spin Trainer",
-        "tags": [
-          "React",
-          "Spring Boot",
-          "REST Assured",
-          "Playwright",
-          "Mutation testing"
-        ],
-        "links": [
-          {
-            "href": "https://spintrainer.pedromorago.com/",
-            "label": "Open the app ↗"
-          }
-        ],
-        "summary": "Poker range trainer built for a friend",
-        "page": "work/spin-trainer/"
-      },
-      {
-        "visual": "shard",
-        "visualAlt": "CI Shard Advisor showing a 3-container setup and the suggested moves",
-        "kicker": "Web tool, public",
-        "title": "CI Shard Advisor",
-        "tags": [
-          "TypeScript",
-          "Optimization",
-          "Property-based testing"
-        ],
-        "links": [
-          {
-            "href": "https://shard.pedromorago.com/",
-            "label": "Open the live demo ↗"
-          }
-        ],
-        "summary": "Splits a Cypress suite across CI containers",
-        "page": "work/ci-shard-advisor/"
-      },
-      {
-        "visual": "bench",
-        "visualAlt": "The QA Bug Bench, a page with buttons that trigger console errors and failing requests",
-        "kicker": "Chrome extension",
-        "title": "Screen Recorder (QA mode)",
-        "tags": [
-          "JavaScript",
-          "Manifest V3",
-          "Cypress",
-          "Playwright"
-        ],
-        "links": [
-          {
-            "href": "https://github.com/pedromorago/screen-recorder-qa/releases/latest",
-            "label": "Download for Chrome ↗"
-          }
-        ],
-        "summary": "Chrome extension for bug reports",
-        "page": "work/screen-recorder/"
-      },
-      {
-        "visual": "wiki",
-        "visualAlt": "The QA Wiki home page with sections on fundamentals, strategy and API testing",
-        "kicker": "Knowledge base, public",
-        "title": "QA Wiki",
-        "tags": [
-          "Test strategy",
-          "API testing",
-          "CI/CD"
-        ],
-        "links": [
-          {
-            "href": "https://wiki.pedromorago.com/",
-            "label": "Read the QA Wiki ↗"
-          }
-        ],
-        "summary": "Public QA knowledge base, 50+ articles",
-        "page": "work/qa-wiki/"
-      }
-    ]
-  },
-  "challenges": {
-    "id": "challenges",
-    "kicker": "Challenges",
-    "title": "Hard problems I've tested",
-    "lede": "The technical problems that shaped how I test, company by company.",
-    "companies": [
-      {
-        "company": "IriusRisk",
-        "context": "Threat modeling SaaS. End-to-end automation with Playwright and TypeScript.",
-        "items": [
-          {
-            "title": "A rules engine with a combinatorial space",
-            "problem": "A rule could depend on questionnaire answers, components, trust zones, data flows, security classifications or custom fields, and trigger several actions at once. Covering it by copying a flow per combination would have produced a huge, fragile suite.",
-            "approach": [
-              "Page Objects and shared helpers for the complex screens",
-              "Entities created through the API when the UI added nothing to the test",
-              "Unique data per run, so runs never collide"
-            ]
-          },
-          {
-            "title": "Questionnaires that drive business rules",
-            "problem": "An answer could show a question, insert another answer or produce a conclusion that fired a further rule. Each change had to be checked against the state before it, including what must not happen.",
-            "approach": [
-              "Controlled starting states for every scenario",
-              "Setup kept apart from rule execution, so a failure points at its cause",
-              "Negative cases where a rule has to stay silent"
-            ]
-          },
-          {
-            "title": "Data that breaks where clean data doesn't",
-            "problem": "UTF-8 text and double quotes in questions and answers could break saving or rule evaluation, and none of it showed up with tidy test data.",
-            "approach": [
-              "Edge-case values in the suite on purpose",
-              "Round-trip checks from the UI through the API to storage and back"
-            ]
-          },
-          {
-            "title": "A flaky suite made reliable",
-            "problem": "Elements existed in the DOM before they were ready, selectors matched more than one element, and positional selectors could pass on the wrong one.",
-            "approach": [
-              "Semantic locators: getByRole, getByLabel and filters by context",
-              "Waits on observable state instead of fixed sleeps",
-              "Failures clear enough to tell a test problem from a product bug"
-            ]
-          },
-          {
-            "title": "Dynamic forms across UI, API and data",
-            "problem": "Custom Fields and Security Content mixed dynamic forms, validations and references between entities, and backend errors surfaced in the UI.",
-            "approach": [
-              "Checks on messages, state and persistence, not only on the click",
-              "Positive and negative cases for every constraint",
-              "Preconditions created through API helpers"
-            ]
-          },
-          {
-            "title": "Test architecture that scales",
-            "problem": "Every new condition or action threatened to mean another copied flow.",
-            "approach": [
-              "Page Objects, API helpers and data factories",
-              "Parameterized scenarios for variants that share setup and assertions",
-              "Reuse without hiding what each test checks"
-            ]
-          }
-        ],
-        "feature": {
-          "title": "How many CI containers a test suite needs",
-          "text": "End-to-end tests ran in 7 CI containers, one per product module. My first model balanced them and was 42% faster in a one-worker test run, but only about 8% with the 5 workers production used. Modelling the workers showed that 4 containers would be faster than 7 and cost 41% less.",
-          "tags": [
-            "Python",
-            "PuLP",
-            "Optimization",
-            "CI"
-          ],
-          "link": {
-            "href": "work/ci-pipeline-optimization/",
-            "label": "Read the case study",
-            "sr": " about how many CI containers a test suite needs"
-          }
-        }
-      }
-    ]
-  },
-  "method": {
-    "id": "method",
-    "kicker": "Method",
-    "title": "How I work",
-    "quote": "There's a saying in software that perfect is the enemy of good. It always grated on me a little. In maths, where I started, a proof is either right or wrong, and I think that's partly why I ended up in QA.",
-    "steps": [
-      {
-        "title": "Read the requirement before the code",
-        "text": "I join refinement and design reviews and ask what has to be true for a feature to be done. A gap found in a ticket costs a comment. Found in production, it costs a hotfix."
-      },
-      {
-        "title": "State the problem precisely",
-        "text": "Before I test or optimize anything, I write down what is given, the rules and the goal, the way you'd state a maths problem. That's how a slow CI pipeline became a model.",
-        "link": {
-          "href": "work/ci-pipeline-optimization/#writing-it-down",
-          "label": "See it in the CI case →"
-        }
-      },
-      {
-        "title": "Design tests with a named technique",
-        "text": "Equivalence partitioning, boundary values, decision tables, state transitions. Each test says which one it uses, so a reviewer can see what is covered and what isn't.",
-        "link": {
-          "href": "work/spin-trainer/#techniques",
-          "label": "See the techniques →"
-        }
-      },
-      {
-        "title": "Automate at the level that can fail",
-        "text": "Business rules and contracts get API tests with REST Assured or Karate. The flows a user sees get Playwright or Cypress. Running the same specs against a mock and the real API catches what each misses alone.",
-        "link": {
-          "href": "work/spin-trainer/#two-backends",
-          "label": "One spec, two backends →"
-        }
-      },
-      {
-        "title": "Let the pipeline decide",
-        "text": "Checks run on every push and block a release when they fail. Then I keep the pipeline fast enough that nobody is tempted to skip it.",
-        "link": {
-          "href": "work/ci-pipeline-optimization/",
-          "label": "How I made one faster →"
-        }
-      },
-      {
-        "title": "Keep a bug open until I know why",
-        "text": "When something breaks, I dig until I understand the cause, and the report carries the evidence a developer needs to reproduce it. I built a Chrome extension to capture it.",
-        "link": {
-          "href": "work/screen-recorder/",
-          "label": "How I built the recorder →"
-        }
-      }
-    ]
-  },
-  "career": {
-    "id": "career",
-    "kicker": "Career",
-    "title": "Where I've worked",
-    "lede": "Five years in QA, all of them automating tests.",
-    "jobs": [
-      {
-        "dates": "Jul 2026 – Present",
-        "role": "Senior QA Engineer",
-        "org": "Alvatross by SATEC",
-        "context": "Telecom OSS platform for EWE, a German telecom and energy provider",
-        "bullets": [
-          "Design and run the tests for service-order flows in Jira and Xray: add, modify, delete, suspend and reactivate.",
-          "Building API test automation with Karate against TM Forum APIs.",
-          "Built a one-click Postman smoke suite that checks every service after a production deployment."
-        ]
-      },
-      {
-        "dates": "May 2024 – Jun 2026",
-        "role": "QA Engineer",
-        "org": "IriusRisk",
-        "context": "International cybersecurity SaaS for threat modeling, remote",
-        "bullets": [
-          "Automated backend API tests in Java with REST Assured and JUnit 5, with JSON schema validation and negative cases.",
-          "Worked on the migration from TestCafe to Playwright with TypeScript: 80% less run time and a more stable suite.",
-          "Modelled how to split the end-to-end suite across CI containers.",
-          "Reviewed pull requests and mentored teammates on test automation."
-        ],
-        "link": {
-          "href": "work/ci-pipeline-optimization/",
-          "label": "The CI case study →"
-        }
-      },
-      {
-        "dates": "Jun 2021 – May 2024",
-        "role": "QA Engineer",
-        "org": "Fieldeas",
-        "context": "Field service management SaaS, several client projects, remote",
-        "bullets": [
-          "Reported more than 500 bugs, prioritized by product risk and business impact.",
-          "Moved the team from manual testing to automated end-to-end suites in Cypress.",
-          "Validated data with SQL and coordinated releases with development."
-        ]
-      },
-      {
-        "dates": "2021",
-        "role": "Java web development bootcamp",
-        "org": "CIC",
-        "context": "They hired me as a QA engineer when it finished.",
-        "edu": true
-      },
-      {
-        "dates": "2015 – 2020",
-        "role": "BSc in Mathematics",
-        "org": "University of Cantabria",
-        "context": "Where I learned to state a problem before solving it.",
-        "edu": true
-      }
-    ],
-    "aside": {
-      "blocks": [
-        {
-          "title": "Certification",
-          "items": [
-            "ISTQB Certified Tester Foundation Level (CTFL) v4.0, 2024"
-          ]
-        },
-        {
-          "title": "Languages",
-          "items": [
-            "English at a professional working level, used every day at work",
-            "Spanish, native"
-          ]
-        }
-      ],
-      "toolsTitle": "Toolbox",
-      "tools": [
-        "Playwright",
-        "Cypress",
-        "TypeScript",
-        "Java",
-        "REST Assured",
-        "JUnit 5",
-        "Karate",
-        "Cucumber",
-        "Postman",
-        "SQL",
-        "Python",
-        "GitHub Actions",
-        "Bitbucket Pipelines",
-        "Jenkins",
-        "Docker",
-        "Jira",
-        "Xray"
-      ]
-    },
-    "actions": [
-      {
-        "href": "pedro-morago-cv.pdf",
-        "label": "Download my CV"
-      },
-      {
-        "href": "https://www.linkedin.com/in/pedro-morago-lopezvazquez/",
-        "label": "LinkedIn ↗"
-      }
-    ],
-    "statsTitle": "In numbers"
-  },
   "contact": {
     "id": "contact",
     "kicker": "Contact",
-    "title": "Let's talk.",
-    "text": "Email is the quickest way to reach me. My career history is on LinkedIn, and my code is on GitHub.",
+    "title": "Building poker, AI or technically difficult backend products? Let's talk.",
+    "text": "I'm based in Spain (CET) and work remotely with international teams. I'm particularly interested in Senior QA/SDET and Quality Engineering roles involving poker, quantitative systems, AI evaluation, game integrity or complex backend behavior.",
     "email": "pedro@pedromorago.com",
     "photoAlt": "Pedro Morago",
     "copy": {
@@ -547,21 +623,39 @@
         "href": "https://github.com/pedromorago",
         "label": "GitHub ↗"
       }
+    ],
+    "actions": [
+      {
+        "href": "mailto:pedro@pedromorago.com",
+        "label": "Email Pedro"
+      },
+      {
+        "href": "https://www.linkedin.com/in/pedro-morago-lopezvazquez/",
+        "label": "LinkedIn ↗"
+      },
+      {
+        "href": "https://github.com/pedromorago",
+        "label": "GitHub ↗"
+      },
+      {
+        "href": "pedro-morago-cv.pdf",
+        "label": "Download CV"
+      }
     ]
   },
   "caseContact": {
     "title": "Contact",
-    "intro": "I'm Pedro Morago, a Senior QA Engineer working fully remote from Santander, Spain.",
+    "intro": "I'm Pedro Morago, a Senior QA Engineer with a Mathematics degree and 10 years of poker, working remotely from Spain.",
     "before": "If you'd like to talk about",
     "after": "email me at",
     "actions": [
       {
         "href": "mailto:pedro@pedromorago.com",
-        "label": "Email me"
+        "label": "Email Pedro"
       },
       {
         "href": "pedro-morago-cv.pdf",
-        "label": "Download my CV"
+        "label": "Download CV"
       }
     ]
   },
@@ -569,7 +663,7 @@
     "label": "Next case study"
   },
   "breadcrumb": {
-    "work": "Portfolio"
+    "work": "Work"
   },
   "footer": {
     "year": "2026",

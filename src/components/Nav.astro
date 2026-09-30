@@ -17,7 +17,11 @@ const href = (id: string) => (home || id === "contact" ? `#${id}` : `/#${id}`);
       <span class="nav-mark" aria-hidden="true">PM</span>
       <span class="sr-only">{site.hero.name}, home</span>
     </a>
-    <div class="nav-links">
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" hidden>
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+      <span class="sr-only">Menu</span>
+    </button>
+    <div class="nav-links" id="nav-links">
       {
         site.nav.map((item) =>
           !home && item.id === "work" ? (

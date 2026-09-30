@@ -1,19 +1,19 @@
 {
   "slug": "ci-shard-advisor",
   "meta": {
-    "title": "CI Shard Advisor | Pedro Morago",
-    "description": "A browser tool that reads Cypress run reports and recommends how to split spec files across CI containers, and how I test a core with no known answers.",
-    "shareDescription": "How to split a Cypress suite across CI containers, from your own run reports, in the browser. And how to test a tool when nobody knows the right answer in advance.",
+    "title": "CI Shard Advisor: optimization inside a test pipeline | Pedro Morago",
+    "description": "How a CI test-splitting problem becomes a mathematical model with runtime and cost trade-offs, and how to test a tool when there is no perfect oracle.",
+    "shareDescription": "A mathematical optimization problem hidden inside a test pipeline: split a Cypress suite across CI containers and see the runtime and cost of each option.",
     "about": [
+      "Mathematical optimization",
       "Continuous integration",
-      "Test automation",
       "Property-based testing"
     ]
   },
   "crumb": "CI Shard Advisor",
-  "kicker": "Project, web tool",
-  "title": "CI Shard Advisor",
-  "lede": "A public tool that tells a team how to split its Cypress suite across CI containers, and what each option costs in time and money. It grew out of the pipeline work I did at IriusRisk.",
+  "kicker": "Project, quantitative tooling",
+  "title": "A mathematical optimization problem hidden inside a test pipeline",
+  "lede": "CI Shard Advisor is a public tool that recommends how to split a Cypress suite across CI containers, with the time and cost of each option. The point isn't that CI gets faster. It's that a QA infrastructure problem can be stated as a mathematical model, checked against how production workers really behave, and turned into runtime and cost trade-offs a team can choose from.",
   "cover": {
     "image": "shard",
     "alt": "CI Shard Advisor showing a 3-container setup and the suggested moves"
@@ -53,11 +53,11 @@
       "blocks": [
         {
           "type": "p",
-          "text": "At IriusRisk I modelled how to split an end-to-end suite across CI containers. I wanted any team to get the same answer without writing a model."
+          "text": "At IriusRisk the end-to-end suite ran in one CI container per product module. I stated the split as an optimization problem: given the duration of every spec and a fixed setup cost per container, assign specs to containers so the slowest one finishes as early as possible, and weigh that against what each extra container costs."
         },
         {
           "type": "p",
-          "text": "[The CI containers case study](work/ci-pipeline-optimization/) tells the whole story of that model."
+          "text": "The first model assumed one worker per container. Production used 5, so I simulated how Playwright schedules specs across workers and modelled that too. With the workers in the model, 4 containers instead of 7 came out about 8% faster and 41% cheaper. [The CI containers case study](work/ci-pipeline-optimization/) tells the whole story."
         }
       ]
     },
@@ -67,7 +67,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "A browser tool that reads Cypress run reports and recommends how to split the spec files across containers, with the time and cost of each option. The reports never leave the browser."
+          "text": "A browser tool that takes the same idea to any team using Cypress. It reads run reports, measures the current setup and recommends how to rebalance the specs or change the number of containers, with the feedback time and the cost per run of each option. The reports never leave the browser."
         }
       ]
     },
@@ -77,7 +77,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "For most inputs nobody knows the right split in advance, so the core is tested with property-based, metamorphic and invariant tests."
+          "text": "For most inputs nobody knows the optimal split in advance, so there is no perfect oracle to compare one output against. The core is tested on what must hold instead, with property-based, metamorphic and invariant tests."
         }
       ]
     }

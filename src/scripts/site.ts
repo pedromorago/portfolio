@@ -178,3 +178,25 @@ document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
   window.addEventListener("resize", wrap);
   requestAnimationFrame(tick);
 });
+
+// Phone menu: the links fold behind a button below 820px. Without JavaScript
+// they stay visible and wrap instead.
+const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
+const menu = document.getElementById("nav-links");
+if (toggle && menu && nav) {
+  toggle.hidden = false;
+  const setOpen = (open: boolean) => {
+    toggle.setAttribute("aria-expanded", String(open));
+    nav.classList.toggle("open", open);
+  };
+  toggle.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
+  menu.addEventListener("click", (e) => {
+    if ((e.target as HTMLElement).closest("a")) setOpen(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.classList.contains("open")) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+}

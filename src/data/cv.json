@@ -1,5 +1,12 @@
 {
-  "summary": "Senior QA Engineer with 5 years of experience in quality assurance and test automation for international SaaS products and a telecom platform. API automation in Java (REST Assured, JUnit 5) and Karate, E2E testing with Playwright and Cypress, tests integrated into CI/CD pipelines, and test strategy in fully remote, distributed Agile teams (Scrum/Kanban). ISTQB CTFL v4.0 certified.",
+  "headline": "Senior QA Engineer for Poker & Quantitative Systems",
+  "summary": "Senior QA Engineer with 5 years of experience in test automation across international SaaS and telecom platforms. BSc in Mathematics, 10 years of poker experience, and hands-on testing across API, backend and E2E layers with Playwright and TypeScript, Cypress, REST Assured and Java, Karate and Python. Built a poker range-training product with production-style QA and a quantitative Python optimization model for CI. Targeting QA/SDET roles at the intersection of poker, AI and solver evaluation, game integrity and complex backend systems.",
+  "fitTitle": "Poker and quantitative fit",
+  "fit": [
+    "10 years playing poker, including Spin & Go; strong working knowledge of EV, equity, pot odds, ranges, combinatorics, blockers and decision-making.",
+    "Mathematics background applied to optimization, combinatorial reasoning, edge cases and quantitative validation.",
+    "Built Spin Trainer, a preflop range-training product with server-side grading, player statistics and 80 reference ranges."
+  ],
   "jobs": [
     {
       "role": "Senior QA Engineer",
@@ -7,23 +14,20 @@
       "dates": "Jul 2026 – Present",
       "meta": "Remote. Telecom OSS platform for EWE (Germany)",
       "bullets": [
-        "QA on the OSS transformation of EWE, a German telecom and energy provider, built on TM Forum ODA standards.",
-        "Design and run the tests for service-order flows in Jira and Xray: add, modify, delete, suspend and reactivate.",
-        "Building API test automation with Karate against TM Forum APIs, and built a one-click Postman smoke suite that checks every service after a production deployment."
+        "Design and execute testing for TM Forum-based service-order flows across add, modify, delete, suspend and reactivate operations in Jira and Xray.",
+        "Build API automation with Karate against TM Forum APIs, and created a one-click Postman smoke suite for post-deployment service checks."
       ]
     },
     {
       "role": "QA Engineer",
       "org": "IriusRisk",
       "dates": "May 2024 – Jun 2026",
-      "meta": "Remote. International SaaS, cybersecurity and threat modeling",
+      "meta": "Remote. International cybersecurity SaaS, threat modeling",
       "bullets": [
-        "Led the testing strategy for the Security Content module, one of the product's core components, defining the test mix across the testing pyramid (backend, API and frontend).",
-        "Designed and maintained Playwright and TypeScript E2E automation for the rules engine, covering combinations of conditions and actions, with Page Objects, API-backed setup and data factories.",
-        "Designed and deployed a Python optimization model (MILP) to split E2E tests across CI containers: 42% faster in a one-worker run. Modelling the 5 production workers showed 4 containers instead of 7 would be about 8% faster and 41% cheaper.",
-        "Backend API automation in Java with REST Assured and JUnit 5 (Given-When-Then, JSON schema validation, negative cases, Qase traceability), plus API testing with Postman across development, staging and production.",
-        "Took part in the migration from TestCafe to Playwright with TypeScript: about 80% less execution time and a more stable suite.",
-        "Contributed to CI/CD pipelines in Bitbucket and applied Shift Left, reviewing requirements and technical designs early and turning them into test cases."
+        "Built a Python MILP optimization model for CI sharding: 42% faster in a one-worker benchmark; modelling production workers showed 4 containers instead of 7 could be about 8% faster and 41% cheaper.",
+        "Led the testing strategy for a core Security Content module across backend, API and frontend layers.",
+        "Designed Playwright and TypeScript E2E automation for a combinatorial rules engine using Page Objects, API-backed setup and data factories.",
+        "Automated backend APIs with REST Assured and JUnit 5, including schema validation, negative cases and traceability; contributed to a TestCafe to Playwright migration that cut runtime by about 80%."
       ]
     },
     {
@@ -32,10 +36,9 @@
       "dates": "Jun 2021 – May 2024",
       "meta": "Remote. Field service management SaaS",
       "bullets": [
-        "Designed and executed functional, regression and integration tests across multiple client projects, reporting 500+ bugs prioritised by product risk and business criticality, with data validation through SQL queries.",
-        "Built and maintained automated E2E suites with Cypress and JavaScript, moving the team's testing from manual to a scalable automation model.",
-        "Produced the team's technical QA documentation (test plans, test cases, reports) and managed defects in Jira, coordinating releases with development.",
-        "Onboarded and mentored new team members on tools and automation best practices, reducing ramp-up time."
+        "Moved client projects from primarily manual testing to scalable Cypress and JavaScript E2E automation.",
+        "Reported 500+ defects prioritized by product risk and business impact; validated data with SQL and coordinated releases with development.",
+        "Onboarded and mentored teammates on QA tooling and automation practices."
       ]
     }
   ],
@@ -43,22 +46,12 @@
     {
       "title": "Spin Trainer",
       "url": "pedromorago.com/work/spin-trainer",
-      "text": "Poker range trainer built for a friend and tested like production: black-box API suite (REST Assured), the same Playwright specs against a mock and the real API, and mutation testing. The tests found 8 real defects."
+      "text": "Poker range trainer, React and Spring Boot. 145 API tests, 37 Playwright specs, mutation testing and real and mocked backend runs; the tests found 8 real defects."
     },
     {
       "title": "CI Shard Advisor",
       "url": "shard.pedromorago.com",
-      "text": "Recommends how to split Cypress specs across CI containers from run reports, with a demo that runs in the browser."
-    },
-    {
-      "title": "Screen Recorder (QA mode)",
-      "url": "github.com/pedromorago/screen-recorder-qa",
-      "text": "Chrome extension for bug reports: console, network (HAR) and user steps synced to the video, filed as issues in Jira and Linear."
-    },
-    {
-      "title": "QA Wiki",
-      "url": "wiki.pedromorago.com",
-      "text": "My QA knowledge base: 50+ articles on test strategy, API testing, Playwright, CI/CD and performance."
+      "text": "Public CI optimization tool. Recommends how to distribute Cypress specs across CI containers from run data; evolved from the IriusRisk optimization work."
     }
   ],
   "education": [
@@ -68,40 +61,36 @@
       "dates": "2015 – 2020"
     },
     {
-      "title": "Advanced Web Application Development with Java",
-      "org": "CIC (bootcamp)",
-      "dates": "2021"
-    },
-    {
       "title": "ISTQB Certified Tester Foundation Level (CTFL) v4.0",
-      "org": "Credential ID Brightest2024029052",
+      "org": "ISTQB",
       "dates": "Dec 2024"
     }
   ],
   "skills": [
     {
-      "title": "Automation and testing",
-      "text": "Playwright, Cypress, Selenium, TestCafe. Functional, regression, integration, API and E2E testing"
+      "title": "Automation",
+      "text": "Playwright, Cypress, Selenium, TestCafe"
     },
     {
       "title": "API and backend",
-      "text": "Java, REST Assured, JUnit 5, Karate, Postman, SQL"
+      "text": "REST Assured, JUnit 5, Karate, Postman, SQL"
     },
     {
       "title": "Programming",
-      "text": "Java, JavaScript, TypeScript, Python"
+      "text": "TypeScript, JavaScript, Java, Python"
     },
     {
-      "title": "CI/CD and tools",
-      "text": "Bitbucket Pipelines, GitHub Actions, Jenkins, Git, Docker, Jira, Xray, Confluence, Qase, Chrome DevTools"
+      "title": "CI and tooling",
+      "text": "GitHub Actions, Bitbucket Pipelines, Jenkins, Docker, Git, Jira, Xray, Qase, Confluence"
     },
     {
-      "title": "Strategy and process",
-      "text": "Test strategy, Shift Left, test case design, code reviews, Agile (Scrum, Kanban)"
+      "title": "Quality engineering",
+      "text": "Test strategy, risk-based testing, E2E, API and integration testing, Shift Left, debugging, data-driven and combinatorial test design"
     }
   ],
   "languages": [
-    "Spanish, native",
-    "English C1.1 (EOI), professional proficiency"
-  ]
+    "English, professional working proficiency",
+    "Spanish, native"
+  ],
+  "note": "Reference letter from a former QA Manager available on request."
 }

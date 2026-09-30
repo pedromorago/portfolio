@@ -30,7 +30,7 @@ const p = site.person;
         <div class="photo"><Image src={headshot} alt="" width={200} height={200} /></div>
         <div>
           <h1>{p.name}</h1>
-          <p class="role">{p.jobTitle}</p>
+          <p class="role">{cv.headline}</p>
           <p class="contact">
             <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
             <a href="https://pedromorago.com/">pedromorago.com</a>
@@ -45,6 +45,13 @@ const p = site.person;
 
       <div class="cols">
         <div class="main">
+          <section>
+            <h2>{cv.fitTitle}</h2>
+            <ul class="fit">
+              {cv.fit.map((x) => <li>{x}</li>)}
+            </ul>
+          </section>
+
           <section>
             <h2>Experience</h2>
             {
@@ -109,6 +116,7 @@ const p = site.person;
             <h2>Languages</h2>
             {cv.languages.map((l) => <p class="item">{l}</p>)}
           </section>
+          <p class="note">{cv.note}</p>
         </aside>
       </div>
     </main>
@@ -312,6 +320,21 @@ const p = site.person;
   }
   .skill strong {
     font-weight: 600;
+  }
+  .fit {
+    padding-left: 3.6mm;
+  }
+  .fit li + li {
+    margin-top: 0.6mm;
+  }
+  .fit li::marker {
+    color: var(--accent);
+  }
+  .note {
+    margin-top: 4mm;
+    font-size: 8pt;
+    font-style: italic;
+    color: var(--ink-2);
   }
   .method {
     padding-left: 4mm;

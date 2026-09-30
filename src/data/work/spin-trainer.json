@@ -1,11 +1,12 @@
 {
   "slug": "spin-trainer",
   "meta": {
-    "title": "Spin Trainer, a poker trainer tested like production | Pedro Morago",
-    "description": "How I tested Spin Trainer, a poker range trainer I built for a friend: a black-box suite against the deployable image, one E2E spec for two backends, 8 defects found.",
-    "shareDescription": "A poker trainer I built for a friend, tested like production: a black-box suite against the deployable image, the same E2E specs against a mock and the real API.",
+    "title": "Spin Trainer: a poker range trainer tested like production | Pedro Morago",
+    "description": "A poker range trainer tested like a production platform: 145 black-box API tests, Playwright against mock and real backends, mutation testing, 8 real defects.",
+    "shareDescription": "A poker range trainer tested like a production platform: black-box API tests against the deployable image, one E2E spec for two backends, mutation testing and 8 real defects.",
     "about": [
       "Software testing",
+      "Poker",
       "API testing",
       "End-to-end testing",
       "Mutation testing"
@@ -13,8 +14,8 @@
   },
   "crumb": "Spin Trainer",
   "kicker": "Case study, Spin Trainer",
-  "title": "A poker trainer I built for a friend, tested like production",
-  "lede": "Spin Trainer is a preflop range trainer for Spin & Go poker. A friend who plays asked me for it, and I tested it the way I'd like to test at work: a black-box suite against the image that gets deployed, the same end-to-end specs against a mock and the real API, and mutation testing to check the unit tests.",
+  "title": "A poker range trainer tested like a production platform",
+  "lede": "Spin Trainer is a preflop range-training product for Spin & Go poker, with a React frontend, Spring Boot API, Postgres, Google sign-in and server-side grading. I used it as a realistic test system: black-box API acceptance tests, executable poker specifications, Playwright against both mock and real backends, production-image testing, concurrency cases and mutation testing.",
   "cover": {
     "image": "spin-explorer",
     "alt": "Spin Trainer's Explorer: a 13 by 13 grid of poker hands coloured by action, next to the range statistics"
@@ -55,7 +56,7 @@
         },
         {
           "type": "p",
-          "text": "A friend who plays asked me for it, and it gave me a real system to test from the outside: an API with a contract, a database, authentication, and a web app that people sign in to."
+          "text": "It started as a tool a friend who plays asked me for. It became a real system to test from the outside: an API with a contract, a database, authentication, and a web app that people sign in to."
         }
       ]
     },

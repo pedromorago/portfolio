@@ -2,25 +2,24 @@
 import { Picture } from "astro:assets";
 import { site } from "../lib/site";
 import { portrait } from "../lib/images";
-import { hrefOf, inline } from "../lib/render";
+import { hrefOf, parseLabel, smart } from "../lib/render";
 
 const h = site.hero;
-const [first, ...rest] = h.name.split(" ");
+const contact = parseLabel(h.contactLink);
 ---
 
 <header class="hero">
-  <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-grid-lines" aria-hidden="true"></div>
   <div class="container hero-inner">
     <div class="hero-copy">
-      <div class="hero-meta">
-        <p class="kicker">{h.eyebrow}</p>
-      </div>
-      <h1 class="display hero-name">
-        <span>{first}</span>
-        <span class="last">{rest.join(" ")}</span>
+      <p class="hero-who">{h.name}</p>
+      <ul class="hero-eyebrow">
+        {h.eyebrow.map((e) => <li>{e}</li>)}
+      </ul>
+      <h1 class="display hero-title">
+        {smart(h.titleLead)} <em>{h.titleAccent}</em>
       </h1>
-      <p class="hero-text" set:html={inline(h.text)} />
+      <p class="hero-text">{smart(h.text)}</p>
       <div class="hero-actions">
         {
           h.actions.map((a, i) => (
@@ -30,14 +29,17 @@ const [first, ...rest] = h.name.split(" ");
             </a>
           ))
         }
+        <a class="hero-contact" href={h.contactLink.href}>
+          {contact.text} <span class="arrow" aria-hidden="true">{contact.arrow}</span>
+        </a>
       </div>
     </div>
     <div class="hero-photo">
       <Picture
         src={portrait}
         alt={h.photoAlt}
-        widths={[380, 600, 900, 1200]}
-        sizes="(max-width: 960px) 380px, 600px"
+        widths={[320, 480, 720, 960]}
+        sizes="(max-width: 960px) 280px, 440px"
         formats={["avif", "webp"]}
         loading="eager"
         fetchpriority="high"

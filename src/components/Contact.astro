@@ -13,8 +13,8 @@ const c = site.contact;
     </div>
     <div class="reveal">
       <p class="kicker">{c.kicker}</p>
-      <h2 class="display contact-title">{smart(c.title.replace(/\.$/, ""))}<em>.</em></h2>
-      <p class="contact-text">{c.text}</p>
+      <h2 class="display contact-title">{smart(c.title)}</h2>
+      <p class="contact-text">{smart(c.text)}</p>
       <div class="contact-email-row">
         <a class="contact-email" href={`mailto:${c.email}`}>{c.email}</a>
         <button
@@ -29,7 +29,16 @@ const c = site.contact;
         <span class="copy-status" role="status" aria-live="polite"></span>
       </div>
       <div class="contact-actions">
-        <Fragment set:html={c.links.map((l) => renderLink(l, "btn")).join("")} />
+        <Fragment
+          set:html={c.actions
+            .map((a, i) =>
+              renderLink(a, i === 0 ? "btn btn-primary" : "btn").replace(
+                "</a>",
+                a.href.endsWith(".pdf") ? '<span class="sr-only"> (PDF)</span></a>' : "</a>",
+              ),
+            )
+            .join("")}
+        />
       </div>
     </div>
   </div>

@@ -1,0 +1,30 @@
+---
+// Deliberate specialization, kept visually apart from professional
+// experience: these are areas of study and personal projects.
+import { site } from "../lib/site";
+import { smart } from "../lib/render";
+const f = site.focus;
+---
+
+<section id={f.id} class="section focus">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <p class="kicker">{f.kicker}</p>
+        <h2 class="section-title">{smart(f.title)}</h2>
+      </div>
+      <p class="section-lede">{smart(f.lede)}</p>
+    </div>
+    <ul class="focus-grid">
+      {
+        f.items.map((it) => (
+          <li class="focus-item reveal">
+            <span class="badge">{f.badge}</span>
+            <h3>{it.title}</h3>
+            <p>{smart(it.text)}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

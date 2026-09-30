@@ -2,7 +2,7 @@
 
 The personal site of Pedro Morago, Senior QA Engineer, at [pedromorago.com](https://pedromorago.com/). Built with [Astro](https://astro.build/): static pages, self-hosted fonts and no requests to other servers.
 
-- `/`: home page (hero, numbers, selected work, how I work, career, contact)
+- `/`: home page (hero, why this intersection, work, what I'm building toward, hard problems, how I work, poker, career, clients, contact)
 - `/work/<slug>/`: one case study per page
 - `/pedro-morago-cv.pdf`: the CV, printed from `/cv/`
 - `/en/` and `/work/` are `noindex` redirects to the home page (`/` and `/#work`)
@@ -12,8 +12,9 @@ The personal site of Pedro Morago, Senior QA Engineer, at [pedromorago.com](http
 ```
 src/data/site.json            ← copy for the home page and shared parts
 src/data/work/<slug>.json     ← one JSON file per case study
+src/data/cv.json              ← copy for the CV PDF
 src/pages/                    ← routes: home, case studies, CV, 404, redirects, sitemap
-src/components/               ← hero, stats, work, method, career, contact, blocks
+src/components/               ← one component per home page section, plus case-study blocks
 src/styles/global.css         ← the one dark theme
 src/assets/                   ← portraits and screenshots (Astro resizes them at build time)
 public/                       ← files served as they are: CV PDF, share images, CNAME, robots.txt
@@ -21,6 +22,8 @@ scripts/og-image.js           ← regenerates the share images from the built pa
 scripts/cv-pdf.js             ← prints /cv/ to public/pedro-morago-cv.pdf
 .github/workflows/deploy.yml  ← build and deploy to GitHub Pages
 ```
+
+Portfolio projects are data in `site.json` (`work.featured` and `work.projects`), so a new project needs no new markup. A project can carry `"status": "in-progress"` to show a badge; only add one once it has real content (a repo, a demo or a write-up). Case studies live in `src/data/work/<slug>.json` and get a page at `/work/<slug>/`.
 
 The copy lives in JSON and the markup in the components, so a copy change never touches the markup. Text fields support `[label](href)` for a link and `` `code` `` for inline code. External link labels end in ` ↗`; they open in a new tab with `rel="noopener"`. The build stops if a text field is empty or missing.
 

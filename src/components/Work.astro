@@ -1,10 +1,16 @@
 ---
+// The portfolio. Projects are data in src/data/site.json (work.featured and
+// work.projects). A project can carry "status": "in-progress" to show a badge;
+// only add a project once it has real content: a repo, a demo or a write-up.
 import { Picture } from "astro:assets";
 import { site } from "../lib/site";
 import { shot } from "../lib/images";
 import { hrefOf, renderLink, smart } from "../lib/render";
 
 const w = site.work;
+const f = w.featured;
+type Project = (typeof w.projects)[number] & { status?: string };
+const projects = w.projects as Project[];
 ---
 
 <section id={w.id} class="section">
@@ -17,25 +23,62 @@ const w = site.work;
       <p class="section-lede">{w.lede}</p>
     </div>
 
+    <article class="featured reveal">
+      <a class="featured-visual" href={hrefOf(f.page)} tabindex="-1" aria-hidden="true">
+        <Picture
+          src={shot(f.visual)}
+          alt=""
+          widths={[640, 1000, 1400]}
+          sizes="(max-width: 960px) 100vw, 760px"
+          formats={["avif", "webp"]}
+        />
+      </a>
+      <div class="featured-copy">
+        <p class="feature-index">{f.kicker}</p>
+        <h3><a href={hrefOf(f.page)}>{f.title}</a></h3>
+        <p class="featured-headline">{smart(f.headline)}</p>
+        <p class="featured-text">{f.text}</p>
+        <ul class="metrics">
+          {
+            f.metrics.map((m) => (
+              <li>
+                <span class="metric-value">{m.value}</span>
+                <span class="metric-label">{m.label}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="card-links">
+          <a class="btn btn-small btn-light" href={hrefOf(f.page)}>
+            Read the case study<span class="sr-only">: {f.title}</span> <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <Fragment set:html={f.links.map((l) => renderLink(l, "btn btn-small")).join("")} />
+        </div>
+      </div>
+    </article>
+
     <ul class="apps-grid">
       {
-        w.apps.map((a) => (
+        projects.map((a) => (
           <li class="card app-card reveal">
             <a class="card-visual" href={hrefOf(a.page)} tabindex="-1" aria-hidden="true">
               <Picture
                 src={shot(a.visual)}
                 alt=""
-                widths={[480, 800, 1200]}
-                sizes="(max-width: 760px) 100vw, 620px"
+                widths={[400, 700, 1000]}
+                sizes="(max-width: 700px) 100vw, 420px"
                 formats={["avif", "webp"]}
               />
             </a>
             <div class="card-body">
-              <p class="feature-index">{a.kicker}</p>
+              <p class="feature-index">
+                {a.kicker}
+                {a.status === "in-progress" && <span class="badge">In progress</span>}
+              </p>
               <h3>
                 <a href={hrefOf(a.page)}>{a.title}</a>
               </h3>
-              <p>{a.summary}</p>
+              <p>{smart(a.summary)}</p>
               <div class="card-links">
                 <a class="btn btn-small btn-light" href={hrefOf(a.page)}>
                   View project<span class="sr-only">: {a.title}</span> <span class="arrow" aria-hidden="true">→</span>
