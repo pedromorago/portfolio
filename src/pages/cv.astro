@@ -46,13 +46,6 @@ const p = site.person;
       <div class="cols">
         <div class="main">
           <section>
-            <h2>{cv.fitTitle}</h2>
-            <ul class="fit">
-              {cv.fit.map((x) => <li>{x}</li>)}
-            </ul>
-          </section>
-
-          <section>
             <h2>Experience</h2>
             {
               cv.jobs.map((j) => (
@@ -72,6 +65,13 @@ const p = site.person;
                 </article>
               ))
             }
+          </section>
+
+          <section>
+            <h2>{cv.fitTitle}</h2>
+            <ul class="fit">
+              {cv.fit.map((x) => <li>{x}</li>)}
+            </ul>
           </section>
 
           <section>

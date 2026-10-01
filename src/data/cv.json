@@ -79,7 +79,7 @@
   "skills": [
     {
       "title": "Automation",
-      "text": "Playwright, Cypress, Selenium, TestCafe"
+      "text": "Playwright, Cypress, Selenium, TestCafe, Vitest, pytest, Hypothesis, fast-check"
     },
     {
       "title": "API and backend",
@@ -95,7 +95,7 @@
     },
     {
       "title": "Quality engineering",
-      "text": "Test strategy, risk-based testing, E2E, API and integration testing, Shift Left, debugging, data-driven and combinatorial test design"
+      "text": "Test strategy, risk-based testing, E2E, API and integration testing; property-based, metamorphic, mutation and chaos testing; Shift Left, debugging, combinatorial test design"
     }
   ],
   "languages": [
