@@ -126,40 +126,6 @@
     "kicker": "Work",
     "title": "Portfolio",
     "lede": "Products and tools I've built and tested. Each one opens into the full story.",
-    "featured": {
-      "title": "Spin Trainer",
-      "kicker": "Featured project",
-      "visual": "spin-explorer",
-      "visualAlt": "Spin Trainer's Explorer: a 13 by 13 grid of poker hands coloured by action, with range statistics",
-      "page": "work/spin-trainer/",
-      "headline": "Poker range training platform I built and tested like a production system",
-      "text": "My own React and Spring Boot product, from idea to release: server-side grading, 80 reference ranges, REST Assured API testing, Playwright against mock and real backends, mutation testing and 8 real defects found before release.",
-      "metrics": [
-        {
-          "value": "145",
-          "label": "black-box API tests against the deployable image"
-        },
-        {
-          "value": "37",
-          "label": "Playwright specs, run on a mock and on the real backend"
-        },
-        {
-          "value": "8",
-          "label": "real defects found before release"
-        }
-      ],
-      "links": [
-        {
-          "href": "https://spintrainer.pedromorago.com/",
-          "label": "Open the app ↗"
-        },
-        {
-          "href": "https://github.com/pedromorago/spin-trainer-qa",
-          "label": "Test suite ↗",
-          "sr": " for Spin Trainer"
-        }
-      ]
-    },
     "groups": [
       {
         "title": "QA engineering and tools",
@@ -224,7 +190,7 @@
       },
       {
         "title": "Poker and quantitative labs",
-        "note": "Personal projects in the areas I'm moving into: solver validation, real-time systems and model evaluation. Each repository is public, with its tests and CI.",
+        "note": "Personal projects in the areas I'm moving into: solver validation, real-time systems, model evaluation and a poker product of my own. Each repository is public, with its tests and CI.",
         "projects": [
           {
             "title": "Solver Validation Lab",
@@ -265,6 +231,25 @@
                 "href": "https://github.com/pedromorago/game-integrity-lab",
                 "label": "Code ↗",
                 "sr": " for the Game Integrity Lab"
+              }
+            ]
+          },
+          {
+            "title": "Spin Trainer",
+            "kicker": "My product",
+            "visual": "spin-explorer",
+            "page": "work/spin-trainer/",
+            "summary": "My own poker range trainer, from idea to release, tested like production: 145 API tests, 37 Playwright specs and 8 real defects found.",
+            "links": [
+              {
+                "href": "https://spintrainer.pedromorago.com/",
+                "label": "Open the app ↗",
+                "sr": " Spin Trainer"
+              },
+              {
+                "href": "https://github.com/pedromorago/spin-trainer-qa",
+                "label": "Tests ↗",
+                "sr": " for Spin Trainer"
               }
             ]
           }

@@ -1,6 +1,6 @@
 ---
-// The portfolio. Projects are data in src/data/site.json: work.featured, then
-// work.groups, each with a title, a note and its projects. A project can carry
+// The portfolio. Projects are data in src/data/site.json: work.groups, each
+// with a title, a note and its projects. A project can carry
 // "status": "in-progress" to show a badge; only add a project once it has real
 // content: a repo, a demo or a write-up.
 import { Picture } from "astro:assets";
@@ -9,7 +9,6 @@ import { shot } from "../lib/images";
 import { hrefOf, renderLink, smart } from "../lib/render";
 
 const w = site.work;
-const f = w.featured;
 type Project = (typeof w.groups)[number]["projects"][number] & { status?: string };
 ---
 
@@ -23,39 +22,6 @@ type Project = (typeof w.groups)[number]["projects"][number] & { status?: string
       <p class="section-lede">{w.lede}</p>
     </div>
 
-    <article class="featured reveal">
-      <a class="featured-visual" href={hrefOf(f.page)} tabindex="-1" aria-hidden="true">
-        <Picture
-          src={shot(f.visual)}
-          alt=""
-          widths={[640, 1000, 1400]}
-          sizes="(max-width: 960px) 100vw, 760px"
-          formats={["avif", "webp"]}
-        />
-      </a>
-      <div class="featured-copy">
-        <p class="feature-index">{f.kicker}</p>
-        <h3><a href={hrefOf(f.page)}>{f.title}</a></h3>
-        <p class="featured-headline">{smart(f.headline)}</p>
-        <p class="featured-text">{f.text}</p>
-        <ul class="metrics">
-          {
-            f.metrics.map((m) => (
-              <li>
-                <span class="metric-value">{m.value}</span>
-                <span class="metric-label">{m.label}</span>
-              </li>
-            ))
-          }
-        </ul>
-        <div class="card-links">
-          <a class="btn btn-small btn-light" href={hrefOf(f.page)}>
-            Read the case study<span class="sr-only">: {f.title}</span> <span class="arrow" aria-hidden="true">→</span>
-          </a>
-          <Fragment set:html={f.links.map((l) => renderLink(l, "btn btn-small")).join("")} />
-        </div>
-      </div>
-    </article>
 
     {
       w.groups.map((g) => (
