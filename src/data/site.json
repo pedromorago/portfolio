@@ -162,54 +162,6 @@
     },
     "groups": [
       {
-        "title": "Poker and quantitative labs",
-        "note": "Personal projects in the areas I'm moving into: solver validation, real-time systems and model evaluation. Each repository is public, with its tests and CI.",
-        "projects": [
-          {
-            "title": "Solver Validation Lab",
-            "kicker": "Poker validation",
-            "visual": "svlab",
-            "page": "work/solver-validation-lab/",
-            "summary": "Validates poker solver strategy exports: 13 rules, suit isomorphism and a regression diff between versions.",
-            "links": [
-              {
-                "href": "https://github.com/pedromorago/solver-validation-lab",
-                "label": "Code ↗",
-                "sr": " for the Solver Validation Lab"
-              }
-            ]
-          },
-          {
-            "title": "Real-Time Testbed",
-            "kicker": "Real-time poker systems",
-            "visual": "rtt",
-            "page": "work/real-time-testbed/",
-            "summary": "A poker table server that crashed and restored 619 times in one run, with every client converging.",
-            "links": [
-              {
-                "href": "https://github.com/pedromorago/real-time-testbed",
-                "label": "Code ↗",
-                "sr": " for the Real-Time Testbed"
-              }
-            ]
-          },
-          {
-            "title": "Game Integrity Lab",
-            "kicker": "Model evaluation",
-            "visual": "gil",
-            "page": "work/game-integrity-lab/",
-            "summary": "Evaluating anti-cheat models on synthetic data, where the best model's false positives were all strong regulars.",
-            "links": [
-              {
-                "href": "https://github.com/pedromorago/game-integrity-lab",
-                "label": "Code ↗",
-                "sr": " for the Game Integrity Lab"
-              }
-            ]
-          }
-        ]
-      },
-      {
         "title": "QA engineering and tools",
         "note": "From my day-to-day QA work, and the tools I built around it.",
         "projects": [
@@ -265,6 +217,54 @@
                 "href": "https://wiki.pedromorago.com/",
                 "label": "Read it ↗",
                 "sr": " the QA Wiki"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Poker and quantitative labs",
+        "note": "Personal projects in the areas I'm moving into: solver validation, real-time systems and model evaluation. Each repository is public, with its tests and CI.",
+        "projects": [
+          {
+            "title": "Solver Validation Lab",
+            "kicker": "Poker validation",
+            "visual": "svlab",
+            "page": "work/solver-validation-lab/",
+            "summary": "Validates poker solver strategy exports: 13 rules, suit isomorphism and a regression diff between versions.",
+            "links": [
+              {
+                "href": "https://github.com/pedromorago/solver-validation-lab",
+                "label": "Code ↗",
+                "sr": " for the Solver Validation Lab"
+              }
+            ]
+          },
+          {
+            "title": "Real-Time Testbed",
+            "kicker": "Real-time poker systems",
+            "visual": "rtt",
+            "page": "work/real-time-testbed/",
+            "summary": "A poker table server that crashed and restored 619 times in one run, with every client converging.",
+            "links": [
+              {
+                "href": "https://github.com/pedromorago/real-time-testbed",
+                "label": "Code ↗",
+                "sr": " for the Real-Time Testbed"
+              }
+            ]
+          },
+          {
+            "title": "Game Integrity Lab",
+            "kicker": "Model evaluation",
+            "visual": "gil",
+            "page": "work/game-integrity-lab/",
+            "summary": "Evaluating anti-cheat models on synthetic data, where the best model's false positives were all strong regulars.",
+            "links": [
+              {
+                "href": "https://github.com/pedromorago/game-integrity-lab",
+                "label": "Code ↗",
+                "sr": " for the Game Integrity Lab"
               }
             ]
           }
