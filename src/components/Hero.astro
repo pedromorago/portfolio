@@ -6,18 +6,17 @@ import { hrefOf, parseLabel, smart } from "../lib/render";
 
 const h = site.hero;
 const contact = parseLabel(h.contactLink);
+// The name is the title, surname in italic.
+const [first, ...rest] = h.name.split(" ");
+const last = rest.join(" ");
 ---
 
 <header class="hero">
   <div class="hero-grid-lines" aria-hidden="true"></div>
   <div class="container hero-inner">
     <div class="hero-copy">
-      <p class="hero-who">{h.name}</p>
-      <ul class="hero-eyebrow">
-        {h.eyebrow.map((e) => <li>{e}</li>)}
-      </ul>
       <h1 class="display hero-title">
-        {smart(h.titleLead)} <em>{h.titleAccent}</em>
+        {first} <em>{last}</em>
       </h1>
       <p class="hero-text">{smart(h.text)}</p>
       <div class="hero-actions">

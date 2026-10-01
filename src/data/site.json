@@ -72,13 +72,6 @@
   },
   "hero": {
     "name": "Pedro Morago",
-    "eyebrow": [
-      "Senior QA Engineer",
-      "Mathematics",
-      "10 years of poker"
-    ],
-    "titleLead": "I test systems where correctness isn't",
-    "titleAccent": "just a boolean.",
     "text": "I'm a Senior QA Engineer with 5 years in test automation, a Mathematics degree and 10 years of poker experience. I work across API, backend and E2E layers, and I'm specializing in the quality problems behind poker AI, solver evaluation, real-time systems and game integrity.",
     "photoAlt": "Pedro Morago, arms crossed, in a navy shirt",
     "actions": [

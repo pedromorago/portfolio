@@ -27,9 +27,7 @@ const HOME = `${COMMON}
   .hero { min-height: 630px !important; height: 630px; padding: 0 !important; overflow: hidden; }
   .hero-inner { grid-template-columns: 1.4fr 0.6fr !important; height: 630px; align-items: center !important; }
   .hero-copy { padding: 0 !important; }
-  .hero-title { font-size: 84px !important; margin-top: 26px !important; }
-  .hero-eyebrow { font-size: 22px !important; }
-  .hero-who { font-size: 18px !important; }
+  .hero-title { font-size: 110px !important; }
   .hero .hero-photo { align-self: end !important; max-width: 380px !important; margin: 0 !important; }
 `;
 
