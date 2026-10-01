@@ -1,0 +1,208 @@
+{
+  "slug": "iriusrisk-rules-engine",
+  "meta": {
+    "title": "IriusRisk: testing a combinatorial rules engine | Pedro Morago",
+    "description": "How I tested a threat-modeling rules engine end to end with Playwright and TypeScript: combinatorial rules, stateful questionnaires, messy data, a flaky suite.",
+    "shareDescription": "Testing a rules engine where one answer changes what fires three steps later: combinatorial rules, stateful questionnaires, messy data and a flaky suite made reliable.",
+    "about": [
+      "Software testing",
+      "End-to-end testing",
+      "Playwright",
+      "Test design"
+    ]
+  },
+  "crumb": "IriusRisk rules engine",
+  "kicker": "Case study, IriusRisk",
+  "title": "Testing a rules engine where every combination is a new case",
+  "lede": "At IriusRisk I automated end-to-end tests with Playwright and TypeScript for a threat-modeling product whose rules depend on questionnaires, components, trust zones, data flows and custom fields. Copying a flow for every combination would have produced a huge, fragile suite, so the work was mostly about structure: state, data and design that scale.",
+  "facts": [
+    {
+      "label": "Product",
+      "text": "Threat-modeling SaaS, used by international teams"
+    },
+    {
+      "label": "Role",
+      "text": "QA Engineer, May 2024 to June 2026, remote"
+    },
+    {
+      "label": "Tested with",
+      "text": "Playwright, TypeScript, REST Assured, JUnit 5"
+    },
+    {
+      "label": "Result",
+      "text": "About 80% less run time after the TestCafe to Playwright migration I worked on",
+      "check": true
+    }
+  ],
+  "sections": [
+    {
+      "id": "the-product",
+      "title": "The product",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "IriusRisk is a threat-modeling SaaS. Teams describe a system with questionnaires, components, trust zones and data flows, and a rules engine turns that model into threats and countermeasures. A single answer can change what the engine concludes several steps later."
+        },
+        {
+          "type": "p",
+          "text": "Complex systems like this fail in combinations, state transitions and edge cases long before they fail in the happy path. These are the problems that mattered most in its end-to-end suite, and how I approached each one."
+        },
+        {
+          "type": "tech",
+          "text": "Tech: Playwright, TypeScript, REST Assured, JUnit 5 and the IriusRisk API."
+        }
+      ]
+    },
+    {
+      "id": "combinatorial-rules",
+      "title": "A rules engine with a combinatorial space",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A rule could depend on questionnaire answers, components, trust zones, data flows, security classifications or custom fields, and trigger several actions at once. Covering it by copying a flow per combination would have produced a huge, fragile suite."
+        },
+        {
+          "type": "h3",
+          "text": "How I approached it"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Page Objects and shared helpers for the complex screens",
+            "Entities created through the API when the UI added nothing to the test",
+            "Unique data per run, so runs never collide"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "questionnaires",
+      "title": "Questionnaires that drive business rules",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "An answer could show a question, insert another answer or produce a conclusion that fired a further rule. Each change had to be checked against the state before it, including what must not happen."
+        },
+        {
+          "type": "h3",
+          "text": "How I approached it"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Controlled starting states for every scenario",
+            "Setup kept apart from rule execution, so a failure points at its cause",
+            "Negative cases where a rule has to stay silent"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "messy-data",
+      "title": "Data that breaks where clean data doesn't",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "UTF-8 text and double quotes in questions and answers could break saving or rule evaluation, and none of it showed up with tidy test data."
+        },
+        {
+          "type": "h3",
+          "text": "How I approached it"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Edge-case values in the suite on purpose",
+            "Round-trip checks from the UI through the API to storage and back"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "flaky-suite",
+      "title": "A flaky suite made reliable",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Elements existed in the DOM before they were ready, selectors matched more than one element, and positional selectors could pass on the wrong one."
+        },
+        {
+          "type": "h3",
+          "text": "How I approached it"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Semantic locators: getByRole, getByLabel and filters by context",
+            "Waits on observable state instead of fixed sleeps",
+            "Failures clear enough to tell a test problem from a product bug"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dynamic-forms",
+      "title": "Dynamic forms across UI, API and data",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Custom Fields and Security Content mixed dynamic forms, validations and references between entities, and backend errors surfaced in the UI."
+        },
+        {
+          "type": "h3",
+          "text": "How I approached it"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Checks on messages, state and persistence, not only on the click",
+            "Positive and negative cases for every constraint",
+            "Preconditions created through API helpers"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "test-architecture",
+      "title": "Test architecture that scales",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Every new condition or action threatened to mean another copied flow."
+        },
+        {
+          "type": "h3",
+          "text": "How I approached it"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Page Objects, API helpers and data factories",
+            "Parameterized scenarios for variants that share setup and assertions",
+            "Reuse without hiding what each test checks"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-pipeline",
+      "title": "The pipeline that ran it",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The suite ran in 7 CI containers, one per product module. A Python optimization model showed that 4 containers would be about 8% faster than 7 and cost 41% less per run."
+        },
+        {
+          "type": "buttons",
+          "links": [
+            {
+              "href": "work/ci-pipeline-optimization/",
+              "label": "Read the CI case study →"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "contactTopic": "testing complex, rule-driven products"
+}

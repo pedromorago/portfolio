@@ -48,8 +48,8 @@
       "label": "Work"
     },
     {
-      "id": "focus",
-      "label": "Poker / AI focus"
+      "id": "why",
+      "label": "Why me"
     },
     {
       "id": "method",
@@ -105,8 +105,8 @@
         "title": "Quality Engineering",
         "text": "5 years testing SaaS and telecom systems: API and backend automation, Playwright, REST Assured, CI/CD, risk-based testing and debugging.",
         "link": {
-          "href": "#challenges",
-          "label": "Hard problems I've tested →"
+          "href": "work/iriusrisk-rules-engine/",
+          "label": "How I tested a rules engine →"
         }
       },
       {
@@ -119,10 +119,10 @@
       },
       {
         "title": "Poker",
-        "text": "10 years playing poker, including Spin & Go, studying with GTO Wizard, with working knowledge of EV, equity, pot odds, ranges, combinatorics, blockers and poker decision-making.",
+        "text": "10 years of poker, mostly Spin & Go, studying with GTO Wizard. EV, equity, pot odds, ranges, combinatorics, blockers and stack depth are part of how I reason about a decision, and they shape how I test poker software.",
         "link": {
-          "href": "#poker",
-          "label": "Poker as domain knowledge →"
+          "href": "work/spin-trainer/",
+          "label": "See it in Spin Trainer →"
         }
       }
     ],
@@ -167,212 +167,115 @@
         }
       ]
     },
-    "projects": [
+    "groups": [
       {
-        "title": "Solver Validation Lab",
-        "kicker": "Poker validation",
-        "visual": "svlab",
-        "page": "work/solver-validation-lab/",
-        "summary": "Testing poker math and solver strategy exports with no perfect oracle: 26 seeded defects, all caught.",
-        "links": [
+        "title": "Poker and quantitative labs",
+        "note": "Personal projects in the areas I'm moving into: solver validation, real-time systems and model evaluation. Each repository is public, with its tests and CI.",
+        "projects": [
           {
-            "href": "https://github.com/pedromorago/solver-validation-lab",
-            "label": "Code ↗",
-            "sr": " for the Solver Validation Lab"
-          }
-        ]
-      },
-      {
-        "title": "Real-Time Testbed",
-        "kicker": "Real-time poker systems",
-        "visual": "rtt",
-        "page": "work/real-time-testbed/",
-        "summary": "A live poker table tested through a hostile network and server crashes: 17 seeded bugs, all caught.",
-        "links": [
-          {
-            "href": "https://github.com/pedromorago/real-time-testbed",
-            "label": "Code ↗",
-            "sr": " for the Real-Time Testbed"
-          }
-        ]
-      },
-      {
-        "title": "Game Integrity Lab",
-        "kicker": "Model evaluation",
-        "visual": "gil",
-        "page": "work/game-integrity-lab/",
-        "summary": "Evaluating models that flag bots, RTA and collusion, where every false positive is a real player.",
-        "links": [
-          {
-            "href": "https://github.com/pedromorago/game-integrity-lab",
-            "label": "Code ↗",
-            "sr": " for the Game Integrity Lab"
-          }
-        ]
-      },
-      {
-        "title": "CI Shard Advisor",
-        "kicker": "Quantitative tooling",
-        "visual": "shard",
-        "page": "work/ci-shard-advisor/",
-        "summary": "A mathematical optimization problem hidden inside a test pipeline.",
-        "links": [
-          {
-            "href": "https://shard.pedromorago.com/",
-            "label": "Live demo ↗"
-          }
-        ]
-      },
-      {
-        "title": "Screen Recorder (QA mode)",
-        "kicker": "Chrome extension",
-        "visual": "bench",
-        "page": "work/screen-recorder/",
-        "summary": "Turns a bug into evidence: video, console, network and every step.",
-        "links": [
-          {
-            "href": "https://github.com/pedromorago/screen-recorder-qa/releases/latest",
-            "label": "Download ↗",
-            "sr": " Screen Recorder for Chrome"
-          }
-        ]
-      },
-      {
-        "title": "QA Wiki",
-        "kicker": "Knowledge base",
-        "visual": "wiki",
-        "page": "work/qa-wiki/",
-        "summary": "A public QA knowledge base with more than 50 articles.",
-        "links": [
-          {
-            "href": "https://wiki.pedromorago.com/",
-            "label": "Read it ↗",
-            "sr": " the QA Wiki"
-          }
-        ]
-      }
-    ]
-  },
-  "focus": {
-    "id": "focus",
-    "kicker": "Poker / AI focus",
-    "title": "What I'm building toward",
-    "lede": "Where I'm deliberately taking my testing next. These are areas I'm studying and building projects in, not years of production experience.",
-    "badge": "Current focus",
-    "items": [
-      {
-        "title": "Poker solver validation",
-        "text": "Testing invariants, numerical tolerances, regressions, metamorphic properties and outputs where there may not be a perfect oracle.",
-        "link": {
-          "href": "work/solver-validation-lab/",
-          "label": "Project: Solver Validation Lab →"
-        }
-      },
-      {
-        "title": "AI and model quality",
-        "text": "Evaluating whether outputs make sense, designing robust test datasets and understanding model-quality trade-offs.",
-        "link": {
-          "href": "work/game-integrity-lab/",
-          "label": "Project: Game Integrity Lab →"
-        }
-      },
-      {
-        "title": "Real-time poker systems",
-        "text": "WebSockets, reconnects, idempotency, duplicate events, ordering, concurrency and state recovery.",
-        "link": {
-          "href": "work/real-time-testbed/",
-          "label": "Project: Real-Time Testbed →"
-        }
-      },
-      {
-        "title": "Game integrity",
-        "text": "Testing the data quality and systems used around botting, RTA, collusion and behavioral anomalies, knowing that a simple model can't conclusively prove cheating.",
-        "link": {
-          "href": "work/game-integrity-lab/",
-          "label": "Project: Game Integrity Lab →"
-        }
-      }
-    ]
-  },
-  "challenges": {
-    "id": "challenges",
-    "kicker": "Challenges",
-    "title": "Hard problems I've tested",
-    "lede": "Complex systems fail in combinations, state transitions and edge cases long before they fail in the happy path. These are examples of how I approach that kind of problem.",
-    "companies": [
-      {
-        "company": "IriusRisk",
-        "context": "Threat modeling SaaS. End-to-end automation with Playwright and TypeScript.",
-        "items": [
-          {
-            "title": "A rules engine with a combinatorial space",
-            "problem": "A rule could depend on questionnaire answers, components, trust zones, data flows, security classifications or custom fields, and trigger several actions at once. Covering it by copying a flow per combination would have produced a huge, fragile suite.",
-            "approach": [
-              "Page Objects and shared helpers for the complex screens",
-              "Entities created through the API when the UI added nothing to the test",
-              "Unique data per run, so runs never collide"
+            "title": "Solver Validation Lab",
+            "kicker": "Poker validation",
+            "visual": "svlab",
+            "page": "work/solver-validation-lab/",
+            "summary": "Validates poker solver strategy exports: 13 rules, suit isomorphism and a regression diff between versions.",
+            "links": [
+              {
+                "href": "https://github.com/pedromorago/solver-validation-lab",
+                "label": "Code ↗",
+                "sr": " for the Solver Validation Lab"
+              }
             ]
           },
           {
-            "title": "Questionnaires that drive business rules",
-            "problem": "An answer could show a question, insert another answer or produce a conclusion that fired a further rule. Each change had to be checked against the state before it, including what must not happen.",
-            "approach": [
-              "Controlled starting states for every scenario",
-              "Setup kept apart from rule execution, so a failure points at its cause",
-              "Negative cases where a rule has to stay silent"
+            "title": "Real-Time Testbed",
+            "kicker": "Real-time poker systems",
+            "visual": "rtt",
+            "page": "work/real-time-testbed/",
+            "summary": "A poker table server that crashed and restored 619 times in one run, with every client converging.",
+            "links": [
+              {
+                "href": "https://github.com/pedromorago/real-time-testbed",
+                "label": "Code ↗",
+                "sr": " for the Real-Time Testbed"
+              }
             ]
           },
           {
-            "title": "Data that breaks where clean data doesn't",
-            "problem": "UTF-8 text and double quotes in questions and answers could break saving or rule evaluation, and none of it showed up with tidy test data.",
-            "approach": [
-              "Edge-case values in the suite on purpose",
-              "Round-trip checks from the UI through the API to storage and back"
-            ]
-          },
-          {
-            "title": "A flaky suite made reliable",
-            "problem": "Elements existed in the DOM before they were ready, selectors matched more than one element, and positional selectors could pass on the wrong one.",
-            "approach": [
-              "Semantic locators: getByRole, getByLabel and filters by context",
-              "Waits on observable state instead of fixed sleeps",
-              "Failures clear enough to tell a test problem from a product bug"
-            ]
-          },
-          {
-            "title": "Dynamic forms across UI, API and data",
-            "problem": "Custom Fields and Security Content mixed dynamic forms, validations and references between entities, and backend errors surfaced in the UI.",
-            "approach": [
-              "Checks on messages, state and persistence, not only on the click",
-              "Positive and negative cases for every constraint",
-              "Preconditions created through API helpers"
-            ]
-          },
-          {
-            "title": "Test architecture that scales",
-            "problem": "Every new condition or action threatened to mean another copied flow.",
-            "approach": [
-              "Page Objects, API helpers and data factories",
-              "Parameterized scenarios for variants that share setup and assertions",
-              "Reuse without hiding what each test checks"
+            "title": "Game Integrity Lab",
+            "kicker": "Model evaluation",
+            "visual": "gil",
+            "page": "work/game-integrity-lab/",
+            "summary": "Evaluating anti-cheat models on synthetic data, where the best model's false positives were all strong regulars.",
+            "links": [
+              {
+                "href": "https://github.com/pedromorago/game-integrity-lab",
+                "label": "Code ↗",
+                "sr": " for the Game Integrity Lab"
+              }
             ]
           }
-        ],
-        "feature": {
-          "title": "How many CI containers a test suite needs",
-          "text": "End-to-end tests ran in 7 CI containers, one per product module. My first model balanced them and was 42% faster in a one-worker test run, but only about 8% with the 5 workers production used. Modelling the workers showed that 4 containers would be faster than 7 and cost 41% less.",
-          "tags": [
-            "Python",
-            "PuLP",
-            "Optimization",
-            "CI"
-          ],
-          "link": {
-            "href": "work/ci-pipeline-optimization/",
-            "label": "Read the case study",
-            "sr": " about how many CI containers a test suite needs"
+        ]
+      },
+      {
+        "title": "QA engineering and tools",
+        "note": "From my day-to-day QA work, and the tools I built around it.",
+        "projects": [
+          {
+            "title": "CI Pipeline Optimization",
+            "kicker": "Production case, IriusRisk",
+            "visual": "ci",
+            "page": "work/ci-pipeline-optimization/",
+            "summary": "A Python optimization model showed 4 CI containers would beat 7: about 8% faster and 41% cheaper.",
+            "links": [
+              {
+                "href": "https://github.com/pedromorago/ci-test-split-optimization",
+                "label": "Code ↗",
+                "sr": " for the CI optimization model"
+              }
+            ]
+          },
+          {
+            "title": "CI Shard Advisor",
+            "kicker": "Quantitative tooling",
+            "visual": "shard",
+            "page": "work/ci-shard-advisor/",
+            "summary": "A mathematical optimization problem hidden inside a test pipeline.",
+            "links": [
+              {
+                "href": "https://shard.pedromorago.com/",
+                "label": "Live demo ↗"
+              }
+            ]
+          },
+          {
+            "title": "Screen Recorder (QA mode)",
+            "kicker": "Chrome extension",
+            "visual": "bench",
+            "page": "work/screen-recorder/",
+            "summary": "Turns a bug into evidence: video, console, network and every step.",
+            "links": [
+              {
+                "href": "https://github.com/pedromorago/screen-recorder-qa/releases/latest",
+                "label": "Download ↗",
+                "sr": " Screen Recorder for Chrome"
+              }
+            ]
+          },
+          {
+            "title": "QA Wiki",
+            "kicker": "Knowledge base",
+            "visual": "wiki",
+            "page": "work/qa-wiki/",
+            "summary": "A public QA knowledge base with more than 50 articles.",
+            "links": [
+              {
+                "href": "https://wiki.pedromorago.com/",
+                "label": "Read it ↗",
+                "sr": " the QA Wiki"
+              }
+            ]
           }
-        }
+        ]
       }
     ]
   },
@@ -391,10 +294,6 @@
         }
       },
       {
-        "title": "Define what must be true first",
-        "text": "I agree on what has to hold for a feature to be done before a single test exists, in refinement and design reviews. A gap found in a ticket costs a comment; found in production, it costs a hotfix."
-      },
-      {
         "title": "Test at the layer where the defect can exist",
         "text": "Rules and contracts get API tests; user flows get end-to-end tests. Running the same specs against a mock and the real API found a defect neither run could see alone.",
         "link": {
@@ -409,22 +308,6 @@
           "href": "work/spin-trainer/#techniques",
           "label": "The techniques in use →"
         }
-      },
-      {
-        "title": "Investigate until the root cause is clear",
-        "text": "A failing test is a question. I keep digging until I can say whether the product, the data, the environment or the test itself is wrong.",
-        "link": {
-          "href": "work/spin-trainer/#findings",
-          "label": "What that found →"
-        }
-      },
-      {
-        "title": "Automate evidence, not just clicks",
-        "text": "A bug report should carry what a developer needs to reproduce it: console, network and the exact steps. I built a Chrome extension to capture it.",
-        "link": {
-          "href": "work/screen-recorder/",
-          "label": "How I built the recorder →"
-        }
       }
     ],
     "principle": {
@@ -435,25 +318,6 @@
         "href": "work/solver-validation-lab/",
         "label": "Solver Validation Lab →"
       }
-    }
-  },
-  "poker": {
-    "id": "poker",
-    "kicker": "Domain knowledge",
-    "title": "Poker is domain knowledge, not a hobby line on my CV",
-    "text": "I've played poker for roughly a decade, with significant time in Spin & Go formats, and I study with GTO Wizard. Concepts such as EV, equity, ranges, combinations, blockers, stack depth and strategic trade-offs are already part of how I reason, not terminology I learned for a job application.",
-    "concepts": [
-      "EV",
-      "Equity",
-      "Pot odds",
-      "Ranges",
-      "Combinatorics",
-      "Blockers",
-      "Stack depth"
-    ],
-    "link": {
-      "href": "work/spin-trainer/",
-      "label": "See it applied in Spin Trainer →"
     }
   },
   "career": {
@@ -486,8 +350,8 @@
           "Worked on the TestCafe to Playwright migration: about 80% less run time and a more stable suite."
         ],
         "link": {
-          "href": "work/ci-pipeline-optimization/",
-          "label": "The CI case study →"
+          "href": "work/iriusrisk-rules-engine/",
+          "label": "How I tested its rules engine →"
         }
       },
       {
