@@ -2335,6 +2335,13 @@ a:hover > .arrow {
   }
 }
 
+/* Phones: the name sits close under the bar instead of a screen-height gap away. */
+@media (max-width: 700px) {
+  .hero-copy {
+    padding-top: 28px;
+  }
+}
+
 /* ------------------------------------------------------------ why this intersection */
 
 .why {
