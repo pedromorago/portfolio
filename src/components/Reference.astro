@@ -5,15 +5,16 @@ import { hrefOf, smart } from "../lib/render";
 const r = site.reference;
 ---
 
-<section class="section reference-section" aria-label={`Reference from ${r.name}`}>
+<section class="section reference-section" aria-labelledby="reference-title">
   <div class="container">
+    <h2 id="reference-title" class="clients-label reference-label">{r.label}</h2>
     <figure class="reference reveal">
       <blockquote>
         <p>{smart(r.quote)}</p>
       </blockquote>
       <figcaption>
         <span class="reference-name">{r.name}</span>
-        <span class="reference-role">{r.role}. {r.context}.</span>
+        <span class="reference-role">{r.context}.</span>
         <a class="reference-link" href={hrefOf(r.link.href)}>
           {r.link.label}<span class="sr-only"> from {r.name} (PDF)</span>
           <span class="arrow" aria-hidden="true">→</span>
