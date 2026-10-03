@@ -1,9 +1,14 @@
 // Behaviour shared by every page. Everything here is an enhancement: the pages
 // read and work the same with JavaScript off.
 
-// The nav gets a background once the page scrolls past the hero's top.
+// The nav gets a background once the page scrolls past the hero's top, and
+// shows the name once the hero's big name has gone under it.
 const nav = document.querySelector<HTMLElement>(".nav");
-const onScroll = () => nav?.classList.toggle("scrolled", window.scrollY > 24);
+const heroTitle = document.querySelector<HTMLElement>(".hero-title");
+const onScroll = () => {
+  nav?.classList.toggle("scrolled", window.scrollY > 24);
+  if (nav && heroTitle) nav.classList.toggle("named", heroTitle.getBoundingClientRect().bottom < nav.offsetHeight);
+};
 window.addEventListener("scroll", onScroll, { passive: true });
 onScroll();
 

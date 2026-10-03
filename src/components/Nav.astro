@@ -6,6 +6,10 @@ interface Props {
 }
 const { kind } = Astro.props;
 const home = kind === "home";
+// The name next to the mark shows on case pages, and on the home page once the
+// hero's big name has scrolled under the bar (site.ts adds .named).
+const [first, ...rest] = site.hero.name.split(" ");
+const last = rest.join(" ");
 // On a case page every item but Contact goes back to the home page section;
 // Contact is the case page's own contact block. Work is marked active there.
 const href = (id: string) => (home || id === "contact" ? `#${id}` : `/#${id}`);
@@ -15,6 +19,7 @@ const href = (id: string) => (home || id === "contact" ? `#${id}` : `/#${id}`);
   <div class="container nav-inner">
     <a href={home ? "#" : "/"} class="nav-logo">
       <span class="nav-mark" aria-hidden="true" translate="no">PM</span>
+      <span class="nav-name" aria-hidden="true" translate="no">{first} <em>{last}</em></span>
       <span class="sr-only">{site.hero.name}, home</span>
     </a>
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" hidden>

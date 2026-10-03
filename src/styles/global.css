@@ -375,6 +375,37 @@ a:hover > .arrow {
   letter-spacing: -0.04em;
 }
 
+.nav-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.375rem;
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: var(--text);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s;
+}
+
+.nav-name em {
+  color: var(--accent);
+}
+
+.nav.named .nav-name,
+.nav.solid .nav-name {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-name {
+    transition: none;
+  }
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -416,7 +447,8 @@ a:hover > .arrow {
 }
 
 @media (max-width: 760px) {
-  .nav-name {
+  /* Without JavaScript the links stay in the bar and need the room. */
+  html:not(.js) .nav-name {
     display: none;
   }
   .nav-links a {
