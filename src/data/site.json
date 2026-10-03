@@ -267,7 +267,7 @@
     "id": "career",
     "kicker": "Career",
     "title": "Where I've worked",
-    "lede": "Five years in QA, all of them automating tests.",
+    "lede": "Five years in QA, with automation in every role.",
     "jobs": [
       {
         "dates": "Jul 2026 – Present",
@@ -379,7 +379,12 @@
         "href": "pedro-morago-reference-letter.pdf",
         "label": "Read the full letter"
       }
-    }
+    },
+    "story": [
+      "I studied Mathematics at the University of Cantabria, and the habit stayed with me: state the problem precisely, then prove every step. When I moved into software in 2021, I went straight into test automation, and it has been at the centre of every job since.",
+      "At Fieldeas I found client projects tested by hand and left them running on Cypress suites, after reporting more than 500 defects ranked by business risk. At IriusRisk, a cybersecurity SaaS, I led the testing strategy for a core module, helped move the suite from TestCafe to Playwright with about 80% less run time, and turned a slow CI pipeline into an optimization problem: the model showed that 4 containers would beat 7, about 8% faster and 41% cheaper. Today, at Alvatross, I test a TM Forum telecom platform for EWE in Germany and automate its APIs.",
+      "Outside work I keep building: a training app of my own, tested like a production platform; a Chrome extension that turns a bug into evidence; a public QA wiki with more than 50 articles; and labs for systems with no single right answer, where every check is proven against bugs I seed on purpose."
+    ]
   },
   "clients": {
     "id": "clients",
