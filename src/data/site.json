@@ -409,11 +409,27 @@
             "about": "One of the largest telecom operators in the world, present across Europe and Latin America."
           },
           {
+            "name": "Ayuntamiento de Madrid",
+            "file": "fe-ayuntamiento-de-madrid.png",
+            "height": 54,
+            "ratio": 1.188,
+            "sector": "Public administration",
+            "about": "The city council of Madrid, Spain's capital and largest city."
+          },
+          {
             "name": "Repsol",
             "file": "repsol.svg",
             "ratio": 4.266,
             "sector": "Energy",
             "about": "One of Spain's largest energy groups, across oil, gas, fuels and renewables."
+          },
+          {
+            "name": "Celsa Group",
+            "file": "fe-celsa-group.png",
+            "height": 34,
+            "ratio": 2.541,
+            "sector": "Steel",
+            "about": "One of Europe's leading producers of recycled steel, based in Barcelona."
           },
           {
             "name": "Iberdrola",
@@ -422,6 +438,14 @@
             "ratio": 2.174,
             "sector": "Energy",
             "about": "One of the largest electricity utilities in the world, and a global leader in renewable energy."
+          },
+          {
+            "name": "Konecta",
+            "file": "fe-konecta.png",
+            "height": 24,
+            "ratio": 5.0,
+            "sector": "Customer experience",
+            "about": "Spanish multinational in customer experience and business process outsourcing."
           },
           {
             "name": "Renfe",
@@ -476,12 +500,27 @@
             "about": "Part of JPMorgan Chase, the largest bank in the United States."
           },
           {
+            "name": "Engie",
+            "file": "fe-engie.png",
+            "height": 34,
+            "ratio": 2.667,
+            "sector": "Energy",
+            "about": "French multinational energy group, one of the largest in the world."
+          },
+          {
             "name": "HSBC",
             "file": "hsbc.svg",
             "height": 30,
             "ratio": 3.716,
             "sector": "Banking",
             "about": "One of the largest banks in the world, headquartered in London."
+          },
+          {
+            "name": "Raiffeisen Bank International",
+            "file": "rbi.svg",
+            "ratio": 5.5,
+            "sector": "Banking",
+            "about": "Austrian banking group with a major presence across Central and Eastern Europe."
           },
           {
             "name": "American Express",
@@ -492,12 +531,28 @@
             "about": "One of the world's largest card issuers by purchase volume."
           },
           {
+            "name": "Bridgestone",
+            "file": "fe-bridgestone.png",
+            "height": 30,
+            "ratio": 7.25,
+            "sector": "Tyres",
+            "about": "One of the world's largest tyre and rubber companies, based in Tokyo."
+          },
+          {
             "name": "Bosch",
             "file": "fe-bosch.png",
             "height": 30,
             "ratio": 4.385,
             "sector": "Engineering and technology",
             "about": "The world's largest automotive supplier, and an engineering group across industry, energy and home appliances."
+          },
+          {
+            "name": "Linde",
+            "file": "fe-linde.png",
+            "height": 30,
+            "ratio": 3.538,
+            "sector": "Industrial gases",
+            "about": "The world's largest industrial gases company."
           },
           {
             "name": "EWE",
@@ -508,12 +563,28 @@
             "about": "One of Germany's largest utilities: energy, telecommunications and IT across the northwest of the country."
           },
           {
+            "name": "ClearBank",
+            "file": "clearbank.svg",
+            "height": 24,
+            "ratio": 6.122,
+            "sector": "Banking",
+            "about": "UK clearing bank built on cloud technology."
+          },
+          {
             "name": "DHL",
             "file": "dhl.svg",
             "height": 80,
             "ratio": 1.0,
             "sector": "Logistics",
             "about": "The world's leading logistics company, delivering to more than 220 countries and territories."
+          },
+          {
+            "name": "SGS",
+            "file": "fe-sgs.png",
+            "height": 40,
+            "ratio": 2.15,
+            "sector": "Testing and inspection",
+            "about": "The world's leading testing, inspection and certification company, based in Geneva."
           },
           {
             "name": "ABN AMRO",
@@ -523,11 +594,34 @@
             "about": "One of the largest banks in the Netherlands, headquartered in Amsterdam."
           },
           {
+            "name": "Danone",
+            "file": "danone.png",
+            "ratio": 3.204,
+            "sector": "Food and beverages",
+            "about": "French multinational food company, known for its dairy products and bottled water."
+          },
+          {
             "name": "Nexi",
             "file": "nexi.svg",
             "ratio": 3.312,
             "sector": "Payments",
             "about": "One of Europe's largest payment companies."
+          },
+          {
+            "name": "XPO Logistics",
+            "file": "fe-xpo-logistics.png",
+            "height": 30,
+            "ratio": 6.222,
+            "sector": "Logistics",
+            "about": "US freight transportation company, one of the largest in North America."
+          },
+          {
+            "name": "Axway",
+            "file": "axway.svg",
+            "height": 46,
+            "ratio": 1.762,
+            "sector": "Software",
+            "about": "French software company specialising in API management and integration."
           }
         ]
       }
