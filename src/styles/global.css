@@ -1,5 +1,30 @@
 /* pedromorago.com: one dark theme, self-hosted fonts, no requests to other servers. */
 
+/* A stand-in for Instrument Serif while it loads, or if it never does: Times New
+   Roman (Liberation Serif on Linux), scaled to the same width and line height,
+   so the fallback keeps the narrow look and the page doesn't jump on swap. */
+@font-face {
+  font-family: "Instrument Serif Fallback";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Times New Roman"), local("TimesNewRomanPSMT"), local("Liberation Serif");
+  size-adjust: 83.6%;
+  ascent-override: 118.4%;
+  descent-override: 37.1%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Instrument Serif Fallback";
+  font-style: italic;
+  font-weight: 400;
+  src: local("Times New Roman Italic"), local("TimesNewRomanPS-ItalicMT"), local("Liberation Serif Italic");
+  size-adjust: 88%;
+  ascent-override: 112.5%;
+  descent-override: 35.2%;
+  line-gap-override: 0%;
+}
+
 :root {
   --bg: #0b0b0c;
   --bg-2: #111113;
@@ -13,7 +38,7 @@
   --accent-ink: #06111f;
   --ok: #7ee2a8;
 
-  --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --serif: "Instrument Serif", "Instrument Serif Fallback", "Iowan Old Style", Georgia, serif;
   --sans: "Inter Tight Variable", "Inter Tight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
