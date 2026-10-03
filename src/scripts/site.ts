@@ -128,31 +128,25 @@ if (copyBtn) {
 }
 
 // Logo carousels: they scroll on their own and can be dragged with a mouse or
-// a finger. Without JavaScript the CSS animation runs instead. Anything that
-// moves on its own needs a way to stop it that works without a mouse, so a
-// Pause button stops both rows.
-let logosPaused = false;
-const pauseBtn = document.querySelector<HTMLButtonElement>(".clients-pause");
-if (pauseBtn && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  pauseBtn.hidden = false;
-  pauseBtn.addEventListener("click", () => {
-    logosPaused = !logosPaused;
-    pauseBtn.setAttribute("aria-pressed", String(logosPaused));
-    pauseBtn.textContent = logosPaused ? pauseBtn.dataset.play! : pauseBtn.dataset.pause!;
-  });
-}
+// a finger. A drag that ends in a fast flick throws the row: it keeps the
+// speed of the gesture and slows back to its own pace over a few seconds.
+// Without JavaScript, or with reduced motion, the CSS takes over instead.
 document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
   const track = marquee.querySelector<HTMLElement>(".marquee-track");
   if (!track || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   marquee.classList.add("draggable");
   const dir = marquee.classList.contains("reverse") ? 1 : -1;
-  const speed = 40; // px per second
+  const speed = 40; // px per second, the row's own pace
+  const settle = 1.4; // seconds for a throw to lose about two thirds of its speed
+  const maxThrow = 5000; // px per second
   let offset = 0;
   let width = track.offsetWidth;
   let dragging = false;
   let hovering = false;
   let startX = 0;
   let startOffset = 0;
+  let thrown = 0; // extra speed from the last flick, px per second
+  let samples: { t: number; x: number }[] = [];
   let last = performance.now();
   const wrap = () => {
     width = track.offsetWidth || width;
@@ -162,7 +156,12 @@ document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
   const tick = (now: number) => {
     const dt = Math.min(now - last, 100) / 1000;
     last = now;
-    if (!dragging && !hovering && !logosPaused) offset += dir * speed * dt;
+    if (!dragging) {
+      // Hovering with a mouse holds the row still, but a throw still plays out.
+      offset += ((hovering ? 0 : dir * speed) + thrown) * dt;
+      thrown *= Math.exp(-dt / settle);
+      if (Math.abs(thrown) < 1) thrown = 0;
+    }
     wrap();
     paint();
     requestAnimationFrame(tick);
@@ -173,17 +172,32 @@ document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
   marquee.addEventListener("pointerleave", () => (hovering = false));
   marquee.addEventListener("pointerdown", (e) => {
     dragging = true;
+    thrown = 0;
     startX = e.clientX;
     startOffset = offset;
+    samples = [{ t: e.timeStamp, x: e.clientX }];
     marquee.setPointerCapture(e.pointerId);
     marquee.classList.add("dragging");
   });
   marquee.addEventListener("pointermove", (e) => {
-    if (dragging) offset = startOffset + (e.clientX - startX);
+    if (!dragging) return;
+    offset = startOffset + (e.clientX - startX);
+    samples.push({ t: e.timeStamp, x: e.clientX });
+    while (samples.length > 2 && e.timeStamp - samples[0].t > 100) samples.shift();
   });
-  const end = () => {
+  const end = (e: PointerEvent) => {
+    if (!dragging) return;
     dragging = false;
     marquee.classList.remove("dragging");
+    // The speed of the last tenth of a second of the drag; a drag that stopped
+    // before letting go throws nothing.
+    const first = samples[0];
+    const age = e.timeStamp - samples[samples.length - 1].t;
+    const span = e.timeStamp - first.t;
+    if (samples.length > 1 && age < 50 && span > 0) {
+      const v = ((e.clientX - first.x) / span) * 1000;
+      thrown = Math.max(-maxThrow, Math.min(maxThrow, v));
+    }
   };
   marquee.addEventListener("pointerup", end);
   marquee.addEventListener("pointercancel", end);

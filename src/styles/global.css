@@ -2610,25 +2610,6 @@ a:hover > .arrow {
   margin-bottom: 16px;
 }
 
-.clients-pause {
-  min-height: 28px;
-  padding: 2px 12px;
-  border: 1px solid var(--line);
-  border-radius: 99px;
-  background: none;
-  color: var(--text-2);
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.clients-pause:hover {
-  color: var(--text);
-  border-color: var(--line-2);
-}
-
 .clients-label {
   margin: 0;
   font-family: var(--mono);

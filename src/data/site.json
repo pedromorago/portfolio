@@ -526,12 +526,7 @@
         ]
       }
     ],
-    "label": "Clients of the teams I've tested for",
-    "pause": {
-      "pause": "Pause",
-      "play": "Play",
-      "ariaLabel": "Pause the moving logos"
-    }
+    "label": "Clients of the teams I've tested for"
   },
   "contact": {
     "id": "contact",

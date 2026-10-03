@@ -10,7 +10,6 @@ const c = site.clients;
 <section id={c.id} class="clients" aria-labelledby="clients-title">
   <div class="container clients-head">
     <h2 id="clients-title" class="clients-label">{c.label}</h2>
-    <button type="button" class="clients-pause" aria-pressed="false" aria-label={c.pause.ariaLabel} data-pause={c.pause.pause} data-play={c.pause.play} hidden>{c.pause.pause}</button>
   </div>
   {
     c.groups.map((g, gi) => (
