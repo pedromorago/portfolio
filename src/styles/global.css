@@ -2079,24 +2079,12 @@ a:hover > .arrow {
 
 /* A centred heading between two short rules. */
 .clients-label {
-  display: flex;
-  align-items: center;
-  gap: 16px;
   margin: 0;
   font-family: var(--sans);
   font-weight: 600;
   font-size: clamp(1rem, 1.6vw, 1.1875rem);
   color: var(--text-2);
   text-align: center;
-}
-
-.clients-label::before,
-.clients-label::after {
-  content: "";
-  flex: 0 0 auto;
-  width: 28px;
-  height: 1px;
-  background: var(--line-2);
 }
 
 .clients .marquee-group + .marquee-group {
