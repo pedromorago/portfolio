@@ -396,16 +396,14 @@
             "height": 30,
             "ratio": 3.5,
             "sector": "Telecommunications",
-            "via": "fieldeas",
-            "about": "Spanish multinational telecom operator, one of the largest in Europe and Latin America."
+            "about": "One of the largest telecom operators in the world, present across Europe and Latin America."
           },
           {
             "name": "Repsol",
             "file": "repsol.svg",
             "ratio": 4.266,
             "sector": "Energy",
-            "via": "fieldeas",
-            "about": "Spanish multi-energy company: oil, gas, fuels and renewables."
+            "about": "One of Spain's largest energy groups, across oil, gas, fuels and renewables."
           },
           {
             "name": "Iberdrola",
@@ -413,16 +411,14 @@
             "height": 40,
             "ratio": 2.174,
             "sector": "Energy",
-            "via": "fieldeas",
-            "about": "Spanish electricity utility, one of the largest in the world and a leader in renewables."
+            "about": "One of the largest electricity utilities in the world, and a global leader in renewable energy."
           },
           {
             "name": "Renfe",
             "file": "renfe.svg",
             "ratio": 2.617,
             "sector": "Rail",
-            "via": "fieldeas",
-            "about": "Spain's state-owned railway operator, for passengers and freight."
+            "about": "Spain's national railway operator, running the AVE high-speed trains."
           },
           {
             "name": "SEAT",
@@ -430,8 +426,7 @@
             "height": 34,
             "ratio": 1.0,
             "sector": "Automotive",
-            "via": "fieldeas",
-            "about": "Spanish car maker based in Martorell, part of the Volkswagen Group."
+            "about": "Spain's car maker, part of the Volkswagen Group and home of the CUPRA brand."
           },
           {
             "name": "Adif",
@@ -439,8 +434,7 @@
             "height": 34,
             "ratio": 3.286,
             "sector": "Rail infrastructure",
-            "via": "fieldeas",
-            "about": "The public company that builds and manages Spain's rail infrastructure."
+            "about": "Manages Spain's rail network, including the largest high-speed network in Europe."
           },
           {
             "name": "Metro de Madrid",
@@ -448,8 +442,7 @@
             "height": 40,
             "ratio": 1.609,
             "sector": "Public transport",
-            "via": "fieldeas",
-            "about": "Madrid's underground network, one of the largest in Europe."
+            "about": "One of the largest metro networks in Europe, with nearly 300 kilometres of line."
           },
           {
             "name": "Applus+",
@@ -457,8 +450,7 @@
             "height": 34,
             "ratio": 3.258,
             "sector": "Testing and inspection",
-            "via": "fieldeas",
-            "about": "Spanish testing, inspection and certification group, working in more than 60 countries."
+            "about": "A global testing, inspection and certification group."
           }
         ]
       },
@@ -471,8 +463,7 @@
             "file": "jpmorgan.svg",
             "ratio": 4.864,
             "sector": "Banking",
-            "via": "iriusrisk",
-            "about": "Global investment bank and financial services firm, part of JPMorgan Chase."
+            "about": "Part of JPMorgan Chase, the largest bank in the United States."
           },
           {
             "name": "HSBC",
@@ -480,8 +471,7 @@
             "height": 30,
             "ratio": 3.716,
             "sector": "Banking",
-            "via": "iriusrisk",
-            "about": "British multinational bank headquartered in London."
+            "about": "One of the largest banks in the world, headquartered in London."
           },
           {
             "name": "American Express",
@@ -489,8 +479,7 @@
             "height": 48,
             "ratio": 1.0,
             "sector": "Payments",
-            "via": "iriusrisk",
-            "about": "US payments company, known for its cards and travel services."
+            "about": "One of the world's largest card issuers by purchase volume."
           },
           {
             "name": "Bosch",
@@ -498,8 +487,7 @@
             "height": 30,
             "ratio": 4.385,
             "sector": "Engineering and technology",
-            "via": "fieldeas",
-            "about": "German engineering and technology group: mobility, industry, energy and consumer goods."
+            "about": "The world's largest automotive supplier, and an engineering group across industry, energy and home appliances."
           },
           {
             "name": "EWE",
@@ -507,8 +495,7 @@
             "height": 24,
             "ratio": 2.953,
             "sector": "Energy and telecom",
-            "via": "alvatross",
-            "about": "German provider of energy, telecommunications and IT services, based in Oldenburg."
+            "about": "One of Germany's largest utilities: energy, telecommunications and IT across the northwest of the country."
           },
           {
             "name": "DHL",
@@ -516,34 +503,26 @@
             "height": 80,
             "ratio": 1.0,
             "sector": "Logistics",
-            "via": "fieldeas",
-            "about": "International logistics and express delivery company, part of DHL Group."
+            "about": "The world's leading logistics company, delivering to more than 220 countries and territories."
           },
           {
             "name": "ABN AMRO",
             "file": "abnamro.svg",
             "ratio": 4.05,
             "sector": "Banking",
-            "via": "iriusrisk",
-            "about": "Dutch bank headquartered in Amsterdam."
+            "about": "One of the largest banks in the Netherlands, headquartered in Amsterdam."
           },
           {
             "name": "Nexi",
             "file": "nexi.svg",
             "ratio": 3.312,
             "sector": "Payments",
-            "via": "iriusrisk",
-            "about": "European payments company based in Italy."
+            "about": "One of Europe's largest payment companies."
           }
         ]
       }
     ],
     "label": "Clients of the teams I've tested for",
-    "via": {
-      "fieldeas": "A client of Fieldeas, whose field service management platform I tested from 2021 to 2024.",
-      "iriusrisk": "At IriusRisk I tested features built specifically for this customer of its threat modeling platform, from 2024 to 2026.",
-      "alvatross": "The client I work for at Alvatross by SATEC: I test its TM Forum OSS platform for telecom service orders."
-    },
     "close": "Close"
   },
   "contact": {

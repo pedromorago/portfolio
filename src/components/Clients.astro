@@ -3,7 +3,7 @@
 // themselves: Fieldeas lists its clients on its site, and IriusRisk names its
 // customers in case studies and in the press. The logos are drawn in the
 // text colour, so none of them fights the page. Tapping one opens a small
-// card that says how my work reached that company.
+// card with a line about the company.
 import { site } from "../lib/site";
 const c = site.clients;
 ---
@@ -29,7 +29,6 @@ const c = site.clients;
                     data-name={l.name}
                     data-sector={l.sector}
                     data-about={l.about}
-                    data-via={c.via[l.via as keyof typeof c.via]}
                   >
                   <img
                     draggable="false"
@@ -54,7 +53,6 @@ const c = site.clients;
     <p id="client-card-name" class="client-card-name"></p>
     <p class="client-card-sector"></p>
     <p class="client-card-about"></p>
-    <p class="client-card-via"></p>
     <button type="button" class="client-card-close" aria-label={c.close}>×</button>
   </div>
 </section>
