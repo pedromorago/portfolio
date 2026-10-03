@@ -10,12 +10,14 @@ onScroll();
 // Old section addresses (shared before the redesigns) land on the matching
 // new place instead of the top of the page.
 const OLD_FRAGMENTS: Record<string, string> = {
-  about: "method",
-  "how-i-test": "method",
-  experience: "career",
+  about: "work",
+  "how-i-test": "work",
+  method: "work",
   projects: "work",
-  skills: "career",
-  "at-a-glance": "career",
+  experience: "contact",
+  skills: "contact",
+  "at-a-glance": "contact",
+  career: "contact",
 };
 const hash = location.hash.slice(1);
 if (Object.hasOwn(OLD_FRAGMENTS, hash) && !document.getElementById(hash)) {

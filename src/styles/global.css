@@ -953,163 +953,6 @@ a:hover > .arrow {
   margin-top: 20px;
 }
 
-/* ------------------------------------------------------------ method */
-
-.method {
-  background: var(--bg-2);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  overflow: hidden;
-}
-
-.method::before {
-  content: "";
-  position: absolute;
-  right: -10%;
-  top: -20%;
-  width: 60%;
-  height: 80%;
-  background: radial-gradient(closest-side, rgba(111, 177, 255, 0.1), transparent);
-  pointer-events: none;
-}
-
-.method-quote {
-  position: relative;
-  margin: 0;
-  font-family: var(--serif);
-  font-size: clamp(1.5rem, 2.6vw, 2.125rem);
-  line-height: 1.25;
-  color: var(--text);
-  max-width: 30em;
-  padding-left: clamp(20px, 3vw, 36px);
-  border-left: 2px solid var(--accent);
-}
-
-.method-quote p + p {
-  margin-top: 0.6em;
-}
-
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
-  margin-top: clamp(56px, 7vw, 88px);
-  list-style: none;
-  border-top: 1px solid var(--line);
-  counter-reset: step;
-}
-
-.step {
-  position: relative;
-  padding: 36px 32px 40px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.step:not(:nth-child(3n + 1)) {
-  padding-left: 32px;
-  border-left: 1px solid var(--line);
-}
-
-.step-num {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--mono);
-  font-size: 0.8125rem;
-  color: var(--accent);
-  letter-spacing: 0.06em;
-}
-
-.step-num::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, var(--line-2), transparent);
-}
-
-.step h3 {
-  margin-top: 22px;
-  font-size: 1.375rem;
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-}
-
-.step p {
-  margin-top: 12px;
-  color: var(--text-2);
-  font-size: 0.975rem;
-}
-
-.step a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 32px;
-  margin-top: 14px;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  text-decoration: none;
-  color: var(--text);
-  border-bottom: 1px solid var(--line-2);
-}
-
-.step a:hover {
-  border-bottom-color: var(--accent);
-}
-
-@media (max-width: 960px) {
-  .steps-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .step,
-  .step:not(:nth-child(3n + 1)) {
-    padding: 32px 28px 36px 0;
-    border-left: 0;
-  }
-  .step:nth-child(even) {
-    padding-left: 28px;
-    padding-right: 0;
-    border-left: 1px solid var(--line);
-  }
-}
-
-@media (max-width: 620px) {
-  .steps-grid {
-    grid-template-columns: 1fr;
-  }
-  .step,
-  .step:not(:nth-child(3n + 1)),
-  .step:nth-child(even) {
-    padding: 28px 0 32px;
-    border-left: 0;
-  }
-}
-
-/* ------------------------------------------------------------ career */
-
-.career-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.8fr);
-  gap: clamp(40px, 6vw, 96px);
-  align-items: start;
-}
-
-.timeline {
-  list-style: none;
-  position: relative;
-}
-
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 10px;
-  bottom: 10px;
-  width: 1px;
-  background: linear-gradient(var(--accent), var(--line) 30%, var(--line));
-}
-
 .job {
   position: relative;
   padding: 0 0 48px 44px;
@@ -1137,13 +980,6 @@ a:hover > .arrow {
   box-shadow: 0 0 0 6px rgba(111, 177, 255, 0.15);
 }
 
-.job-dates {
-  font-family: var(--mono);
-  font-size: 0.8125rem;
-  letter-spacing: 0.04em;
-  color: var(--text-2);
-}
-
 .job h3 {
   margin-top: 6px;
   font-size: clamp(1.375rem, 2.2vw, 1.75rem);
@@ -1152,26 +988,10 @@ a:hover > .arrow {
   line-height: 1.25;
 }
 
-.job-org {
-  display: block;
-  margin-top: 2px;
-  font-family: var(--serif);
-  font-size: 1.375rem;
-  font-weight: 400;
-  font-style: italic;
-  letter-spacing: 0;
-  color: var(--text-2);
-}
-
 .job h3 .at {
   font-family: var(--serif);
   font-style: italic;
   font-weight: 400;
-  color: var(--text-2);
-}
-
-.job-context {
-  margin-top: 6px;
   color: var(--text-2);
 }
 
@@ -1197,85 +1017,6 @@ a:hover > .arrow {
   width: 8px;
   height: 1px;
   background: var(--accent);
-}
-
-.job-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 32px;
-  margin-top: 12px;
-  font-weight: 600;
-  font-size: 0.9375rem;
-  text-decoration: none;
-  border-bottom: 1px solid var(--line-2);
-}
-
-.job-link:hover {
-  border-bottom-color: var(--accent);
-}
-
-.career-aside {
-  position: sticky;
-  top: 100px;
-  display: grid;
-  gap: 20px;
-}
-
-.aside-card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--bg-2);
-  padding: 24px 26px;
-}
-
-.aside-card h3 {
-  font-family: var(--mono);
-  font-weight: 400;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-2);
-}
-
-.aside-card ul {
-  list-style: none;
-  margin-top: 12px;
-  display: grid;
-  gap: 8px;
-}
-
-.aside-card li {
-  font-size: 0.975rem;
-}
-
-.chips {
-  display: flex !important;
-  flex-wrap: wrap;
-  gap: 8px !important;
-}
-
-.chips li {
-  font-size: 0.875rem;
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: var(--bg-3);
-  border: 1px solid var(--line);
-}
-
-.aside-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-@media (max-width: 960px) {
-  .career-grid {
-    grid-template-columns: 1fr;
-  }
-  .career-aside {
-    position: static;
-  }
 }
 
 /* ------------------------------------------------------------ contact */
@@ -1945,7 +1686,6 @@ a:hover > .arrow {
   list-style: none;
 }
 
-
 .marquee-track img {
   height: 30px;
   width: auto;
@@ -1975,53 +1715,6 @@ a:hover > .arrow {
   }
   .marquee-track[aria-hidden] {
     display: none;
-  }
-}
-
-/* ------------------------------------------------------------ career numbers */
-
-.career-stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  margin: -24px 0 56px;
-  list-style: none;
-}
-
-.career-stats li {
-  display: flex;
-  flex-direction: column;
-  padding: 18px 20px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: var(--bg-2);
-}
-
-.career-stat-value {
-  font-family: var(--serif);
-  font-size: 2.25rem;
-  line-height: 1;
-}
-
-.career-stat-unit {
-  margin-top: 6px;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.career-stat-text {
-  margin-top: 6px;
-  font-size: 0.85rem;
-  line-height: 1.45;
-  color: var(--text-2);
-}
-
-@media (max-width: 860px) {
-  .career-stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -2336,64 +2029,7 @@ a:hover > .arrow {
   }
 }
 
-/* ------------------------------------------------------------ how I work */
-
-.method-anchor {
-  margin: 0 0 clamp(8px, 2vw, 16px);
-  padding-left: clamp(20px, 3vw, 36px);
-  border-left: 2px solid var(--accent);
-}
-
-.method-anchor p {
-  font-family: var(--serif);
-  font-size: clamp(1.75rem, 3.4vw, 3rem);
-  line-height: 1.12;
-  max-width: 24em;
-}
-
-.principle {
-  margin-top: 32px;
-  padding: clamp(24px, 3vw, 36px);
-  border: 1px solid rgba(111, 177, 255, 0.35);
-  border-radius: calc(var(--radius) + 4px);
-  background: radial-gradient(80% 120% at 100% 0%, rgba(111, 177, 255, 0.08), transparent 60%), var(--bg);
-}
-
-.principle .badge {
-  margin-left: 0;
-  border-style: solid;
-}
-
-.principle h3 {
-  margin-top: 16px;
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(1.625rem, 2.8vw, 2.375rem);
-  line-height: 1.1;
-  max-width: 22em;
-}
-
-.principle p:not(.badge) {
-  margin-top: 12px;
-  max-width: 48em;
-  color: var(--text-2);
-}
-
-.principle a {
-  display: inline-flex;
-  gap: 6px;
-  min-height: 32px;
-  margin-top: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  border-bottom: 1px solid var(--line-2);
-}
-
-.principle a:hover {
-  border-bottom-color: var(--accent);
-}
-
-/* ------------------------------------------------------------ clients band (after career) */
+/* ------------------------------------------------------------ clients band */
 
 .clients {
   padding: 28px 0 32px;
@@ -2418,67 +2054,6 @@ a:hover > .arrow {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
-}
-
-/* ------------------------------------------------------------ reference letter */
-
-.reference {
-  margin: clamp(56px, 7vw, 88px) 0 0;
-  padding: clamp(28px, 4vw, 48px);
-  border: 1px solid var(--line);
-  border-radius: calc(var(--radius) + 6px);
-  background: radial-gradient(70% 120% at 0% 0%, rgba(111, 177, 255, 0.08), transparent 60%), var(--bg-2);
-}
-
-.reference blockquote {
-  margin: 0;
-}
-
-.reference blockquote p {
-  font-family: var(--serif);
-  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
-  line-height: 1.2;
-  max-width: 34em;
-}
-
-.reference blockquote p::before {
-  content: "“";
-  color: var(--accent);
-}
-
-.reference blockquote p::after {
-  content: "”";
-  color: var(--accent);
-}
-
-.reference figcaption {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 6px 16px;
-  margin-top: 24px;
-}
-
-.reference-name {
-  font-weight: 600;
-}
-
-.reference-role {
-  color: var(--text-2);
-}
-
-.reference-link {
-  display: inline-flex;
-  gap: 6px;
-  min-height: 32px;
-  align-items: center;
-  font-weight: 600;
-  text-decoration: none;
-  border-bottom: 1px solid var(--line-2);
-}
-
-.reference-link:hover {
-  border-bottom-color: var(--accent);
 }
 
 /* Clients band directly under the hero, with its label. */
