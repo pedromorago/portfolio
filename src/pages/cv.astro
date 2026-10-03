@@ -30,7 +30,7 @@ const p = site.person;
         <div class="photo"><Image src={headshot} alt="" width={200} height={200} /></div>
         <div>
           <h1>{p.name}</h1>
-          <p class="role">{cv.headline}</p>
+          <p class="role">{cv.headline} <span class="headline-skills">{site.hero.skills.join(" | ")}</span></p>
           <p class="contact">
             <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
             <a href="https://pedromorago.com/">pedromorago.com</a>
@@ -211,6 +211,12 @@ const p = site.person;
     font-size: 26pt;
     line-height: 1;
     letter-spacing: -0.01em;
+  }
+  .headline-skills {
+    margin-left: 6px;
+    font-size: 8.6pt;
+    font-weight: 400;
+    color: var(--ink-2);
   }
   .role {
     margin-top: 2px;
