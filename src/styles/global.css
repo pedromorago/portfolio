@@ -2719,9 +2719,18 @@ a:hover > .arrow {
   color: var(--accent);
 }
 
-.client-card-via {
+.client-card-about {
   margin-top: 10px;
   font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.client-card-via {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: 0.85rem;
   line-height: 1.5;
   color: var(--text-2);
 }

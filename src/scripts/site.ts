@@ -161,6 +161,7 @@ const openCard = (logo: HTMLButtonElement, byKeyboard: boolean) => {
   openLogo = logo;
   card.querySelector(".client-card-name")!.textContent = logo.dataset.name ?? "";
   card.querySelector(".client-card-sector")!.textContent = logo.dataset.sector ?? "";
+  card.querySelector(".client-card-about")!.textContent = logo.dataset.about ?? "";
   card.querySelector(".client-card-via")!.textContent = logo.dataset.via ?? "";
   logo.setAttribute("aria-expanded", "true");
   logo.closest<HTMLElement>(".marquee")?.setAttribute("data-held", "");
