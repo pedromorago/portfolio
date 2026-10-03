@@ -353,6 +353,61 @@ document.querySelectorAll<HTMLElement>(".work-group").forEach((group) => {
     update();
   };
 
+  // A mouse can drag the row too (touch already scrolls it natively). On release
+  // the row settles on the nearest card, carried a little further by a flick.
+  let dragging = false;
+  let startX = 0;
+  let startLeft = 0;
+  let moved = 0;
+  let samples: { t: number; x: number }[] = [];
+  list.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse" || e.button !== 0 || stops.length < 2) return;
+    dragging = true;
+    moved = 0;
+    startX = e.clientX;
+    startLeft = list.scrollLeft;
+    samples = [{ t: e.timeStamp, x: e.clientX }];
+  });
+  window.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    if (!moved && Math.abs(dx) < 6) return;
+    if (!moved) {
+      list.classList.add("dragging");
+      list.setPointerCapture(e.pointerId);
+    }
+    moved = Math.max(moved, Math.abs(dx));
+    list.scrollLeft = startLeft - dx;
+    samples.push({ t: e.timeStamp, x: e.clientX });
+    while (samples.length > 2 && e.timeStamp - samples[0].t > 100) samples.shift();
+  });
+  const endDrag = (e: PointerEvent) => {
+    if (!dragging) return;
+    dragging = false;
+    if (!moved) return;
+    const first = samples[0];
+    const span = e.timeStamp - first.t;
+    const v = span > 0 ? (e.clientX - first.x) / span : 0; // px per ms
+    const aim = list.scrollLeft - v * 250;
+    let best = 0;
+    stops.forEach((x, i) => {
+      if (Math.abs(x - aim) < Math.abs(stops[best] - aim)) best = i;
+    });
+    list.classList.remove("dragging");
+    go(stops[best]);
+  };
+  window.addEventListener("pointerup", endDrag);
+  window.addEventListener("pointercancel", endDrag);
+  // A drag that ends over a link must not follow it, and images must not be dragged out.
+  list.addEventListener("click", (e) => {
+    if (moved > 6) {
+      e.preventDefault();
+      e.stopPropagation();
+      moved = 0;
+    }
+  }, true);
+  list.addEventListener("dragstart", (e) => e.preventDefault());
+
   prev.addEventListener("click", () => go(stops[Math.max(0, current() - 1)]));
   next.addEventListener("click", () => go(stops[Math.min(stops.length - 1, current() + 1)]));
   let frame = 0;

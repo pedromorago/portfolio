@@ -2401,3 +2401,20 @@ a:hover > .arrow {
     display: none !important;
   }
 }
+
+/* Mouse dragging of the project rows: no snapping while the row follows the pointer. */
+@media (hover: hover) and (pointer: fine) {
+  .work-group .apps-grid {
+    cursor: grab;
+  }
+}
+
+.work-group .apps-grid.dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+.work-group .apps-grid.dragging a {
+  pointer-events: none;
+}
