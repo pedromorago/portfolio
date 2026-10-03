@@ -1,6 +1,6 @@
 {
   "headline": "Senior QA Engineer: Test Automation, CI and Quality Engineering",
-  "summary": "Senior QA Engineer with 5 years of test automation across international SaaS and telecom platforms, and a BSc in Mathematics. Hands-on across API, backend and E2E layers with Playwright and TypeScript, Cypress, REST Assured and Java, Karate and Python. Built a Python optimization model that made CI faster and cheaper, and personal projects that test systems with no single right answer: numerical solvers, a real-time server and detection models. Targeting Senior QA/SDET and Quality Engineering roles in test automation, CI and test infrastructure, and AI and model evaluation.",
+  "summary": "After a BSc in Mathematics at the University of Cantabria, I moved into software quality and have worked in test automation from the first day. At Fieldeas I took client projects from manual testing to automated Cypress suites; at IriusRisk I built Playwright and REST Assured automation and a Python optimization model that made CI faster and cheaper; at Alvatross I automate TM Forum APIs for a German telecom. Five years across process automation for companies outside tech, cybersecurity and telecom. Targeting Senior QA/SDET and Quality Engineering roles in test automation, CI and test infrastructure, and AI and model evaluation.",
   "fitTitle": "Strengths",
   "fit": [
     "Mathematics background applied to optimization, combinatorial test design, edge cases and quantitative validation.",
