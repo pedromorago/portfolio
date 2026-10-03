@@ -57,6 +57,7 @@
 }
 
 html {
+  background: var(--bg);
   scroll-behavior: smooth;
   scroll-padding-top: calc(88px + env(safe-area-inset-top, 0px));
   -webkit-text-size-adjust: 100%;
@@ -173,7 +174,7 @@ code {
   position: absolute;
   left: 16px;
   top: -80px;
-  z-index: 200;
+  z-index: 1100;
   background: var(--accent);
   color: var(--accent-ink);
   padding: 10px 16px;
@@ -315,7 +316,8 @@ a:hover > .arrow {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 50;
+  /* Above everything that scrolls, the film grain included. */
+  z-index: 1000;
   /* The page runs under the phone's status bar (viewport-fit=cover), and the
      bar's padding covers that strip so nothing scrolls visibly behind the clock. */
   padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) 0 env(safe-area-inset-left, 0px);
@@ -2206,7 +2208,7 @@ a:hover > .arrow {
 
 .client-card {
   position: fixed;
-  z-index: 60;
+  z-index: 1010;
   width: min(300px, calc(100vw - 32px));
   padding: 16px 40px 16px 18px;
   border: 1px solid var(--line-2);
