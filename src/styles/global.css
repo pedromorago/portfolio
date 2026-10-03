@@ -2779,28 +2779,17 @@ a:hover > .arrow {
   }
 }
 
-/* Hero backdrop: faint maths and test code behind the photo, in place of a plain
-   arch. Sized to the photo's width, so it scales with it, and faded at the edges. */
-.hero .hero-photo {
-  container-type: inline-size;
-}
-
+/* Hero backdrop: a soft glow behind the photo. */
 .hero-photo::before {
   display: none;
 }
 
 .hero-backdrop {
   position: absolute;
-  /* Reaches left into the gap between the text and the photo, where the
-     formulas can be read; the photo covers the rest. */
-  inset: 3% -6% 4% -38%;
+  inset: 3% -6% 4%;
   z-index: -1;
-  overflow: hidden;
   pointer-events: none;
-  user-select: none;
-  background: radial-gradient(45% 45% at 62% 38%, rgba(111, 177, 255, 0.16), transparent 75%);
-  mask-image: radial-gradient(80% 75% at 50% 45%, #000 50%, transparent 100%);
-  -webkit-mask-image: radial-gradient(80% 75% at 50% 45%, #000 50%, transparent 100%);
+  background: radial-gradient(50% 45% at 50% 38%, rgba(111, 177, 255, 0.18), transparent 75%);
 }
 
 @media (max-width: 960px) {
@@ -2811,26 +2800,4 @@ a:hover > .arrow {
   .hero {
     overflow-x: clip;
   }
-  .hero-backdrop {
-    inset: 2% -9% 4%;
-  }
-}
-
-.hero-backdrop .glyph {
-  position: absolute;
-  white-space: nowrap;
-  line-height: 1;
-}
-
-.hero-backdrop .math {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 6.4cqi;
-  color: rgba(111, 177, 255, 0.42);
-}
-
-.hero-backdrop .code {
-  font-family: var(--mono);
-  font-size: 3.6cqi;
-  color: rgba(236, 233, 226, 0.38);
 }
