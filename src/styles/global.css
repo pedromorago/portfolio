@@ -343,17 +343,11 @@ a:hover > .arrow {
     backdrop-filter: none;
     border-bottom-color: var(--line);
   }
-  /* iOS Safari draws the page behind the clock and battery, above the top of
-     the viewport. This strip extends the bar up into that area so the text
-     scrolling underneath doesn't show there. */
-  .nav::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 100%;
-    height: 120px;
-    background: var(--bg);
+  /* iOS Safari fills the area behind the clock with the colour of a fixed bar
+     at the top edge, but only when nothing see-through lies over that edge.
+     The film grain starts below the bar so the bar is what Safari finds. */
+  body::after {
+    top: calc(72px + env(safe-area-inset-top, 0px));
   }
 }
 
