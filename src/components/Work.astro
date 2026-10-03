@@ -63,6 +63,9 @@ type Project = (typeof w.groups)[number]["projects"][number] & { status?: string
               ))
             }
           </ul>
+          <div class="swipe-dots" aria-hidden="true">
+            {g.projects.map((_, i) => <button type="button" tabindex="-1" data-index={i} />)}
+          </div>
         </div>
       ))
     }

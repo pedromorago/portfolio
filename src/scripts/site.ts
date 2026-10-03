@@ -212,3 +212,38 @@ if (toggle && menu && nav) {
     }
   });
 }
+
+// Project rows on phones: the dots follow the card in view, and tapping one
+// scrolls to its card. The dots are decorative for assistive technology, which
+// reads the cards as a plain list.
+document.querySelectorAll<HTMLElement>(".work-group").forEach((group) => {
+  const list = group.querySelector<HTMLElement>(".apps-grid");
+  const dots = [...group.querySelectorAll<HTMLButtonElement>(".swipe-dots button")];
+  if (!list || !dots.length) return;
+  const cards = [...list.children] as HTMLElement[];
+  const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const current = () => {
+    const left = list.scrollLeft;
+    let best = 0;
+    cards.forEach((c, i) => {
+      if (Math.abs(c.offsetLeft - cards[0].offsetLeft - left) < Math.abs(cards[best].offsetLeft - cards[0].offsetLeft - left)) best = i;
+    });
+    // At the end of the row the last card may not reach the left edge.
+    return left + list.clientWidth >= list.scrollWidth - 2 ? cards.length - 1 : best;
+  };
+  let frame = 0;
+  const update = () => {
+    frame = 0;
+    const i = current();
+    dots.forEach((d, j) => d.classList.toggle("on", i === j));
+  };
+  list.addEventListener("scroll", () => {
+    if (!frame) frame = requestAnimationFrame(update);
+  }, { passive: true });
+  dots.forEach((d, i) =>
+    d.addEventListener("click", () =>
+      list.scrollTo({ left: cards[i].offsetLeft - cards[0].offsetLeft, behavior: smooth ? "smooth" : "auto" }),
+    ),
+  );
+  update();
+});
