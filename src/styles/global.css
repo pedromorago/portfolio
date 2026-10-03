@@ -1,27 +1,27 @@
 /* pedromorago.com: one dark theme, self-hosted fonts, no requests to other servers. */
 
-/* A stand-in for Instrument Serif while it loads, or if it never does: Times New
+/* A stand-in for Newsreader while it loads, or if it never does: Times New
    Roman (Liberation Serif on Linux), scaled to the same width and line height,
-   so the fallback keeps the narrow look and the page doesn't jump on swap. */
+   so the page doesn't jump when the web font swaps in. */
 @font-face {
-  font-family: "Instrument Serif Fallback";
+  font-family: "Newsreader Fallback";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 200 800;
   src: local("Times New Roman"), local("TimesNewRomanPSMT"), local("Liberation Serif");
-  size-adjust: 83.6%;
-  ascent-override: 118.4%;
-  descent-override: 37.1%;
+  size-adjust: 105.5%;
+  ascent-override: 70.1%;
+  descent-override: 25.6%;
   line-gap-override: 0%;
 }
 
 @font-face {
-  font-family: "Instrument Serif Fallback";
+  font-family: "Newsreader Fallback";
   font-style: italic;
-  font-weight: 400;
+  font-weight: 200 800;
   src: local("Times New Roman Italic"), local("TimesNewRomanPS-ItalicMT"), local("Liberation Serif Italic");
-  size-adjust: 88%;
-  ascent-override: 112.5%;
-  descent-override: 35.2%;
+  size-adjust: 98.7%;
+  ascent-override: 75%;
+  descent-override: 27.4%;
   line-gap-override: 0%;
 }
 
@@ -38,7 +38,7 @@
   --accent-ink: #06111f;
   --ok: #7ee2a8;
 
-  --serif: "Instrument Serif", "Instrument Serif Fallback", "Iowan Old Style", Georgia, serif;
+  --serif: "Newsreader Variable", "Newsreader Fallback", Georgia, serif;
   --sans: "Inter Tight Variable", "Inter Tight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
@@ -2328,7 +2328,8 @@ a:hover > .arrow {
     flex: 0 0 auto;
   }
   .work-group .app-card h4 {
-    font-size: clamp(2.25rem, 3.2vw, 3rem);
+    font-size: clamp(2rem, 2.6vw, 2.5rem);
+    line-height: 1.1;
   }
   .work-group .app-card .card-body > p:not(.feature-index) {
     font-size: 1.0625rem;

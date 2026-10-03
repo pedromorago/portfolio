@@ -14,7 +14,7 @@ const href = (id: string) => (home || id === "contact" ? `#${id}` : `/#${id}`);
 <nav class:list={["nav", { solid: !home }]} aria-label="Main">
   <div class="container nav-inner">
     <a href={home ? "#" : "/"} class="nav-logo">
-      <span class="nav-mark" aria-hidden="true">PM</span>
+      <span class="nav-mark" aria-hidden="true" translate="no">PM</span>
       <span class="sr-only">{site.hero.name}, home</span>
     </a>
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" hidden>
