@@ -1,11 +1,11 @@
 {
-  "headline": "Senior QA Engineer for Poker & Quantitative Systems",
-  "summary": "Senior QA Engineer with 5 years of experience in test automation across international SaaS and telecom platforms. BSc in Mathematics, 10 years of poker experience, and hands-on testing across API, backend and E2E layers with Playwright and TypeScript, Cypress, REST Assured and Java, Karate and Python. Built a poker range-training product with production-style QA and a quantitative Python optimization model for CI. Targeting QA/SDET roles at the intersection of poker, AI and solver evaluation, game integrity and complex backend systems.",
-  "fitTitle": "Poker and quantitative fit",
+  "headline": "Senior QA Engineer: Test Automation, CI and Quality Engineering",
+  "summary": "Senior QA Engineer with 5 years of test automation across international SaaS and telecom platforms, and a BSc in Mathematics. Hands-on across API, backend and E2E layers with Playwright and TypeScript, Cypress, REST Assured and Java, Karate and Python. Built a Python optimization model that made CI faster and cheaper, and personal projects that test systems with no single right answer: numerical solvers, a real-time server and detection models. Targeting Senior QA/SDET and Quality Engineering roles in test automation, CI and test infrastructure, and AI and model evaluation.",
+  "fitTitle": "Strengths",
   "fit": [
-    "10 years playing poker, including Spin & Go, studying with GTO Wizard; strong working knowledge of EV, equity, pot odds, ranges, combinatorics, blockers and decision-making.",
-    "Mathematics background applied to optimization, combinatorial reasoning, edge cases and quantitative validation.",
-    "Built Spin Trainer, a preflop range-training product with server-side grading, player statistics and 80 reference ranges."
+    "Mathematics background applied to optimization, combinatorial test design, edge cases and quantitative validation.",
+    "Testing without an answer key: invariants, metamorphic relations, statistical checks and seeded defects that prove the checks work.",
+    "Builder as well as tester: CI tooling, a Chrome extension for bug evidence, a public QA wiki with 50+ articles and a full-stack product of my own."
   ],
   "jobs": [
     {
@@ -46,22 +46,22 @@
     {
       "title": "Spin Trainer",
       "url": "pedromorago.com/work/spin-trainer",
-      "text": "My own poker range trainer, from idea to release: React and Spring Boot. 145 API tests, 37 Playwright specs on mock and real backends, mutation testing; 8 real defects found."
+      "text": "My own full-stack app, a poker range trainer, from idea to release: React and Spring Boot. 145 API tests, 37 Playwright specs, mutation testing; 8 real defects found."
     },
     {
       "title": "Solver Validation Lab",
       "url": "github.com/pedromorago/solver-validation-lab",
-      "text": "Poker equity engine and a validator for solver strategy exports, with a regression diff between versions. 26 of 26 seeded defects caught."
+      "text": "Testing numbers with no perfect oracle: an equity engine, a strategy validator and game solvers checked by best responses. 32 of 32 seeded defects caught."
     },
     {
       "title": "Real-Time Testbed",
       "url": "github.com/pedromorago/real-time-testbed",
-      "text": "WebSocket poker table tested for retries, reconnects, races, timers and server crashes with a chaos simulator. 17 of 17 seeded bugs caught."
+      "text": "WebSocket game server tested for retries, reconnects, races, timers and server crashes with a chaos simulator. 17 of 17 seeded bugs caught."
     },
     {
       "title": "Game Integrity Lab",
       "url": "github.com/pedromorago/game-integrity-lab",
-      "text": "Evaluation testbed for bot, RTA and collusion models on synthetic data: per-segment false positives and a regression gate. 11 of 11 seeded bugs caught."
+      "text": "Evaluation testbed for cheat-detection models on synthetic data: per-segment false positives and a regression gate. 11 of 11 seeded bugs caught."
     }
   ],
   "education": [

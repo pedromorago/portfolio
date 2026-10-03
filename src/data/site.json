@@ -2,16 +2,16 @@
   "htmlLang": "en",
   "ogLocale": "en_US",
   "meta": {
-    "title": "Pedro Morago | Senior QA for Poker & Quantitative Systems",
-    "description": "Senior QA Engineer: 5 years of test automation, a Mathematics degree and 10 years of poker. API, backend and E2E testing for poker, AI and quantitative systems.",
-    "ogDescription": "Senior QA Engineer with a Mathematics degree and 10 years of poker. API, backend and E2E automation, specializing in testing quantitative and poker AI systems.",
-    "twitterDescription": "Senior QA Engineer with a Mathematics degree and 10 years of poker, specializing in testing quantitative and poker AI systems."
+    "title": "Pedro Morago | Senior QA Engineer: Test Automation, CI and AI Evaluation",
+    "description": "Senior QA Engineer with 5 years of test automation and a Mathematics degree. API, backend and E2E testing, CI tooling, and systems with no single right answer.",
+    "ogDescription": "Senior QA Engineer with a Mathematics degree: API, backend and E2E automation, CI and test tooling, and the testing of quantitative, real-time and AI-driven systems.",
+    "twitterDescription": "Senior QA Engineer with a Mathematics degree: test automation, CI tooling and the testing of quantitative and AI-driven systems."
   },
   "person": {
     "name": "Pedro Morago López-Vázquez",
     "alternateName": "Pedro Morago",
     "jobTitle": "Senior QA Engineer",
-    "description": "Senior QA Engineer with a Mathematics degree and 10 years of poker experience, specializing in testing quantitative and poker AI systems.",
+    "description": "Senior QA Engineer with 5 years of test automation and a Mathematics degree, working on API, backend and E2E testing, CI tooling and the evaluation of quantitative and AI-driven systems.",
     "worksFor": "Alvatross by SATEC",
     "alumniOf": "University of Cantabria",
     "addressLocality": "Santander",
@@ -35,7 +35,8 @@
       "CI/CD",
       "Mathematics",
       "Mathematical optimization",
-      "Poker strategy"
+      "Metamorphic testing",
+      "Model evaluation"
     ]
   },
   "skipLink": {
@@ -72,7 +73,7 @@
   },
   "hero": {
     "name": "Pedro Morago",
-    "text": "I'm a Senior QA Engineer with 5 years in test automation and a Mathematics degree. I work across API, backend and E2E layers, and I'm specializing in the quality problems behind poker AI, solver evaluation, real-time systems and game integrity.",
+    "text": "I'm a Senior QA Engineer with 5 years in test automation and a Mathematics degree. I work across API, backend and E2E layers, build the tooling around them, and focus on systems that are hard to test: quantitative logic, real-time behavior and models with no single right answer.",
     "photoAlt": "Pedro Morago, arms crossed, in a navy shirt",
     "actions": [
       {
@@ -92,11 +93,11 @@
   "why": {
     "id": "why",
     "kicker": "Why me",
-    "title": "Why this intersection",
+    "title": "What I bring",
     "items": [
       {
         "title": "Quality Engineering",
-        "text": "5 years testing SaaS and telecom systems: API and backend automation, Playwright, REST Assured, CI/CD, risk-based testing and debugging.",
+        "text": "5 years testing SaaS and telecom platforms for international teams: API and backend automation, Playwright, REST Assured, Karate, CI/CD, risk-based testing and debugging.",
         "link": {
           "href": "work/iriusrisk-rules-engine/",
           "label": "How I tested a rules engine →"
@@ -111,15 +112,15 @@
         }
       },
       {
-        "title": "Poker",
-        "text": "10 years of poker, mostly Spin & Go, studying with GTO Wizard. EV, equity, pot odds, ranges, combinatorics, blockers and stack depth are part of how I reason about a decision, and they shape how I test poker software.",
+        "title": "Testing without an answer key",
+        "text": "When a system has no single expected value, as with an optimizer, a solver or a model, I test what must stay true: invariants, metamorphic relations, statistical checks, and seeded bugs that prove the checks work.",
         "link": {
-          "href": "work/spin-trainer/",
-          "label": "See it in Spin Trainer →"
+          "href": "work/solver-validation-lab/",
+          "label": "See it in the Solver Validation Lab →"
         }
       }
     ],
-    "closing": "The overlap is the point: I want to test products where software behavior, probability and strategic decision-making meet."
+    "closing": "Whatever the product, the approach is the same: state the problem precisely, test where defects can live, and build the tooling that keeps it tested."
   },
   "work": {
     "id": "work",
@@ -189,15 +190,15 @@
         ]
       },
       {
-        "title": "Poker and quantitative labs",
-        "note": "Personal projects in the areas I'm moving into: solver validation, real-time systems, model evaluation and a poker product of my own. Each repository is public, with its tests and CI.",
+        "title": "Quantitative and real-time labs",
+        "note": "Personal projects on systems that are hard to test: numerical solvers, real-time state, model evaluation and a full-stack product of my own. Each repository is public, with its tests and CI.",
         "projects": [
           {
             "title": "Solver Validation Lab",
-            "kicker": "Poker validation",
+            "kicker": "Numerical validation",
             "visual": "svlab",
             "page": "work/solver-validation-lab/",
-            "summary": "Validates poker solver strategy exports: 13 rules, suit isomorphism and a regression diff between versions.",
+            "summary": "Testing numbers nobody can check by hand: an exact equity engine, a strategy validator and push/fold solvers checked by best responses.",
             "links": [
               {
                 "href": "https://github.com/pedromorago/solver-validation-lab",
@@ -208,10 +209,10 @@
           },
           {
             "title": "Real-Time Testbed",
-            "kicker": "Real-time poker systems",
+            "kicker": "Real-time systems",
             "visual": "rtt",
             "page": "work/real-time-testbed/",
-            "summary": "A poker table server that crashed and restored 619 times in one run, with every client converging.",
+            "summary": "A WebSocket game server that crashed and restored 619 times in one run, with every client converging.",
             "links": [
               {
                 "href": "https://github.com/pedromorago/real-time-testbed",
@@ -225,7 +226,7 @@
             "kicker": "Model evaluation",
             "visual": "gil",
             "page": "work/game-integrity-lab/",
-            "summary": "Evaluating anti-cheat models on synthetic data, where the best model's false positives were all strong regulars.",
+            "summary": "Evaluating cheat-detection models on synthetic data, where the best model's false positives all fell on strong, legitimate players.",
             "links": [
               {
                 "href": "https://github.com/pedromorago/game-integrity-lab",
@@ -239,7 +240,7 @@
             "kicker": "My product",
             "visual": "spin-explorer",
             "page": "work/spin-trainer/",
-            "summary": "My own poker range trainer, from idea to release, tested like production: 145 API tests, 37 Playwright specs and 8 real defects found.",
+            "summary": "A full-stack training app of my own, from idea to release, tested like production: 145 API tests, 37 Playwright specs and 8 real defects found.",
             "links": [
               {
                 "href": "https://spintrainer.pedromorago.com/",
@@ -535,8 +536,8 @@
   "contact": {
     "id": "contact",
     "kicker": "Contact",
-    "title": "Building poker, AI or technically difficult backend products? Let's talk.",
-    "text": "I'm based in Spain (CET) and work remotely with international teams. I'm particularly interested in Senior QA/SDET and Quality Engineering roles involving poker, quantitative systems, AI evaluation, game integrity or complex backend behavior.",
+    "title": "Building something that's hard to test? Let's talk.",
+    "text": "I'm based in Spain (CET) and work remotely with international teams. I'm interested in Senior QA, SDET and Quality Engineering roles: test automation, CI and test infrastructure, and the evaluation of AI and quantitative systems.",
     "email": "pedro@pedromorago.com",
     "photoAlt": "Pedro Morago",
     "copy": {
@@ -576,7 +577,7 @@
   },
   "caseContact": {
     "title": "Contact",
-    "intro": "I'm Pedro Morago, a Senior QA Engineer with a Mathematics degree and 10 years of poker, working remotely from Spain.",
+    "intro": "I'm Pedro Morago, a Senior QA Engineer with a Mathematics degree, working remotely from Spain.",
     "before": "If you'd like to talk about",
     "after": "email me at",
     "actions": [

@@ -1,20 +1,20 @@
 {
   "slug": "solver-validation-lab",
   "meta": {
-    "title": "Solver Validation Lab: poker math with no oracle | Pedro Morago",
-    "description": "An equity engine and a validator for poker solver strategy exports, tested with invariants, metamorphic relations and a regression diff. 26 seeded defects.",
-    "shareDescription": "How do you test poker math when nobody knows the right answer? An equity engine, a validator for solver strategy exports, and 26 seeded defects, all caught.",
+    "title": "Solver Validation Lab: testing with no perfect oracle | Pedro Morago",
+    "description": "An equity engine, a validator for solver strategy exports and push/fold solvers checked by best responses, tested with invariants, metamorphic relations and 32 seeded defects.",
+    "shareDescription": "How do you test numbers nobody can check by hand? An equity engine, a strategy validator and push/fold solvers checked by best responses, with 32 seeded defects, all caught.",
     "about": [
       "Software testing",
-      "Poker",
       "Metamorphic testing",
-      "Property-based testing"
+      "Property-based testing",
+      "Game theory"
     ]
   },
   "crumb": "Solver Validation Lab",
   "kicker": "Project",
-  "title": "Testing poker math when there is no perfect oracle",
-  "lede": "A solver or a trainer gives you numbers: equities, frequencies, expected values. For a handful of spots you can check them by hand; for the rest there is no answer key, only relationships that must hold. This lab applies that idea at two levels: a small poker equity engine with a suite of checks that each name their oracle, and a validator for exported solver strategies with a regression diff between versions. Seeded bugs and corrupted files show what each check catches.",
+  "title": "Testing a solver when there is no perfect oracle",
+  "lede": "A solver or a trainer gives you numbers: equities, frequencies, expected values. For a handful of spots you can check them by hand; for the rest there is no answer key, only relationships that must hold. This lab applies that idea at three levels, all on poker math: an equity engine with a suite of checks that each name their oracle, a validator for exported solver strategies with a regression diff between versions, and push/fold solvers judged by the one oracle a solved game has, best responses. Seeded bugs show what each check catches.",
   "cover": {
     "image": "svlab",
     "alt": "A terminal showing a regression diff between two versions of a poker strategy failing on its thresholds, and a table of seeded corruptions with the rule that caught each one"
@@ -29,12 +29,12 @@
       "text": "A validator for exported strategies: 13 rules, suit isomorphism and a regression diff"
     },
     {
-      "label": "Tests",
-      "text": "233, including Hypothesis-generated strategy files"
+      "label": "Layer 3",
+      "text": "Heads-up and three-handed push/fold solvers, on equity tables built in C"
     },
     {
       "label": "Seeded defects",
-      "text": "9 engine bugs and 17 file corruptions, all caught",
+      "text": "9 engine bugs, 17 file corruptions and 6 solver bugs, all caught",
       "check": true
     }
   ],
@@ -162,7 +162,7 @@
         },
         {
           "type": "p",
-          "text": "The strategy files in the repository are synthetic, generated or written by hand for the lab. None comes from a real solver, and the lab isn't one."
+          "text": "The strategy files in the repository are synthetic, generated or written by hand for the lab. None of them comes from a real solver."
         },
         {
           "type": "tech",
@@ -189,15 +189,27 @@
       ]
     },
     {
-      "id": "next",
-      "title": "What comes next",
+      "id": "solvers",
+      "title": "Layer 3: solvers with a real oracle",
       "blocks": [
         {
           "type": "p",
-          "text": "Next in the same repository: a heads-up push/fold equilibrium for short stacks, checked by exploitability, which would give the strategy validator a real solver to point at and a stronger oracle than its best-response rule; and range against range equity, checked against its hand-against-hand parts."
+          "text": "With short stacks, poker reduces to shove or fold, and that game is small enough to solve. It is the one place in the lab where a real oracle exists: for any pair of strategies you can compute what each player would gain by switching to their best response, and the total, the Nash gap, is zero only at an equilibrium."
+        },
+        {
+          "type": "p",
+          "text": "The solvers need the equity of every hand class against every other. A C program enumerates all 1,712,304 boards for each of 47,008 distinct matchups, and the table is written only after the C program agrees exactly, unit for unit, with the Python engine on 300 random matchups. The heads-up solver runs CFR+ until the Nash gap is below a millionth of a big blind per hand. The three-handed one, for the start of a Spin & Go, uses Monte Carlo equities for 818,805 triples of classes and is checked against the exact heads-up table it must reduce to."
+        },
+        {
+          "type": "checks",
+          "items": [
+            "Six bugs seeded into the heads-up solver are all caught, and the most instructive one is caught by a single check: with card removal ignored, the solver still converges to a perfect equilibrium of the wrong game. Only a check that rebuilds the value from every pair of hands that can be dealt, independently of the solver's model, notices.",
+            "A Nash gap that leaves out one player reports convergence that never happened. Cross-checking the gap against the per-hand regrets catches it; the gap alone cannot.",
+            "Exploitability proves that a solver solved its model. Whether the model is the right one needs a check from outside it."
+          ]
         }
       ]
     }
   ],
-  "contactTopic": "testing poker or quantitative systems"
+  "contactTopic": "testing quantitative systems"
 }
