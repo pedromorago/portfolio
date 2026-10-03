@@ -17,6 +17,10 @@ const last = rest.join(" ");
       <h1 class="display hero-title">
         {first} <em>{last}</em>
       </h1>
+      <p class="hero-role">{h.role}</p>
+      <ul class="hero-skills" aria-label="Main skills">
+        {h.skills.map((k) => <li>{k}</li>)}
+      </ul>
       <p class="hero-text">{smart(h.text)}</p>
       <div class="hero-actions">
         {

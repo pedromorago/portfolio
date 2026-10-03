@@ -2744,3 +2744,32 @@ a:hover > .arrow {
 .client-card-close:hover {
   color: var(--text);
 }
+
+/* Under the name, like a profile headline: the role, then the main tools. */
+.hero-role {
+  margin-top: 18px;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.hero-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  list-style: none;
+}
+
+.hero-skills li {
+  padding: 5px 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-2);
+}
+
+.hero .hero-role + .hero-skills + .hero-text {
+  margin-top: 22px;
+}
