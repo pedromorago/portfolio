@@ -2,6 +2,21 @@
 import { Picture } from "astro:assets";
 import { site } from "../lib/site";
 import { portrait } from "../lib/images";
+
+// Decorative backdrop behind the photo: a few lines from the maths I studied
+// (Galois theory, optimization, probability) and from the tests I write.
+const backdrop = [
+  { text: "Gal(L/K) ≅ S₃", kind: "math", top: 6, left: 3 },
+  { text: "x ∈ {0, 1}ⁿ", kind: "math", top: 3, left: 82 },
+  { text: "[L : K] = |Gal(L/K)|", kind: "math", top: 18, left: 9 },
+  { text: "min cᵀx  s.t.  Ax ≤ b", kind: "math", top: 31, left: 0 },
+  { text: "∇f(x*) = λ∇g(x*)", kind: "math", top: 44, left: 6 },
+  { text: "P(A | B) = P(B | A) P(A) / P(B)", kind: "math", top: 57, left: 0 },
+  { text: "f(T(x)) = T′(f(x))", kind: "math", top: 69, left: 5 },
+  { text: "expect(res.status).toBe(200)", kind: "code", top: 80, left: 0 },
+  { text: "assert abs(sum(p) - 1) < ε", kind: "code", top: 87, left: 7 },
+  { text: "expect(p95).toBeLessThan(200)", kind: "code", top: 94, left: 2 },
+];
 import { hrefOf, parseLabel, smart } from "../lib/render";
 
 const h = site.hero;
@@ -34,6 +49,15 @@ const last = rest.join(" ");
       </div>
     </div>
     <div class="hero-photo">
+      <div class="hero-backdrop" aria-hidden="true">
+        {
+          backdrop.map((b) => (
+            <span class:list={["glyph", b.kind]} style={`top:${b.top}%;left:${b.left}%`}>
+              {b.text}
+            </span>
+          ))
+        }
+      </div>
       <Picture
         src={portrait}
         alt={h.photoAlt}
