@@ -354,19 +354,18 @@ document.querySelectorAll<HTMLElement>(".work-group").forEach((group) => {
   };
 
   // A mouse can drag the row too (touch already scrolls it natively). On release
-  // the row settles on the nearest card, carried a little further by a flick.
+  // it moves on to the next card in the direction of the drag, as soon as the
+  // drag is more than a nudge; it never springs back to where it started.
   let dragging = false;
   let startX = 0;
   let startLeft = 0;
   let moved = 0;
-  let samples: { t: number; x: number }[] = [];
   list.addEventListener("pointerdown", (e) => {
     if (e.pointerType !== "mouse" || e.button !== 0 || stops.length < 2) return;
     dragging = true;
     moved = 0;
     startX = e.clientX;
     startLeft = list.scrollLeft;
-    samples = [{ t: e.timeStamp, x: e.clientX }];
   });
   window.addEventListener("pointermove", (e) => {
     if (!dragging) return;
@@ -378,23 +377,23 @@ document.querySelectorAll<HTMLElement>(".work-group").forEach((group) => {
     }
     moved = Math.max(moved, Math.abs(dx));
     list.scrollLeft = startLeft - dx;
-    samples.push({ t: e.timeStamp, x: e.clientX });
-    while (samples.length > 2 && e.timeStamp - samples[0].t > 100) samples.shift();
   });
-  const endDrag = (e: PointerEvent) => {
+  const endDrag = () => {
     if (!dragging) return;
     dragging = false;
     if (!moved) return;
-    const first = samples[0];
-    const span = e.timeStamp - first.t;
-    const v = span > 0 ? (e.clientX - first.x) / span : 0; // px per ms
-    const aim = list.scrollLeft - v * 250;
-    let best = 0;
-    stops.forEach((x, i) => {
-      if (Math.abs(x - aim) < Math.abs(stops[best] - aim)) best = i;
-    });
+    const dx = startLeft - list.scrollLeft; // positive when dragged towards earlier cards
+    const from = stops.reduce((best, x, i) => (Math.abs(x - startLeft) < Math.abs(stops[best] - startLeft) ? i : best), 0);
+    let to = from;
+    if (Math.abs(dx) > 40) {
+      // How many cards the drag covered, rounded up, so any real drag moves on.
+      const step = stops.length > 1 ? Math.abs(stops[1] - stops[0]) : 1;
+      const cards = Math.max(1, Math.ceil((Math.abs(dx) - 40) / step));
+      to = from + (dx > 0 ? -cards : cards);
+    }
+    to = Math.max(0, Math.min(stops.length - 1, to));
     list.classList.remove("dragging");
-    go(stops[best]);
+    go(stops[to]);
   };
   window.addEventListener("pointerup", endDrag);
   window.addEventListener("pointercancel", endDrag);
