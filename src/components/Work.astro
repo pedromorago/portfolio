@@ -24,13 +24,22 @@ type Project = (typeof w.groups)[number]["projects"][number] & { status?: string
 
 
     {
-      w.groups.map((g) => (
+      w.groups.map((g, gi) => (
         <div class="work-group">
           <div class="work-group-head reveal">
             <h3 class="work-group-title">{g.title}</h3>
             <p class="work-group-note">{smart(g.note)}</p>
+            <div class="row-nav" hidden>
+              <span class="row-count" aria-live="polite" />
+              <button type="button" class="row-btn" data-step="-1" aria-label={w.prev} aria-controls={`projects-${gi}`}>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+              </button>
+              <button type="button" class="row-btn" data-step="1" aria-label={w.next} aria-controls={`projects-${gi}`}>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+              </button>
+            </div>
           </div>
-          <ul class="apps-grid">
+          <ul class="apps-grid" id={`projects-${gi}`} aria-label={g.title}>
             {
               (g.projects as Project[]).map((a) => (
                 <li class="card app-card reveal">
@@ -63,9 +72,7 @@ type Project = (typeof w.groups)[number]["projects"][number] & { status?: string
               ))
             }
           </ul>
-          <div class="swipe-dots" aria-hidden="true">
-            {g.projects.map((_, i) => <button type="button" tabindex="-1" data-index={i} />)}
-          </div>
+          <div class="swipe-dots" aria-hidden="true" />
         </div>
       ))
     }

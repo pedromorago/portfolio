@@ -290,37 +290,75 @@ if (toggle && menu && nav) {
   });
 }
 
-// Project rows on phones: the dots follow the card in view, and tapping one
-// scrolls to its card. The dots are decorative for assistive technology, which
-// reads the cards as a plain list.
+// Project rows: each group scrolls sideways. The arrows move one card at a
+// time, the count says which cards are in view, and the dots (decorative for
+// assistive technology, which reads the cards as a plain list) mark the
+// position and jump to it.
 document.querySelectorAll<HTMLElement>(".work-group").forEach((group) => {
   const list = group.querySelector<HTMLElement>(".apps-grid");
-  const dots = [...group.querySelectorAll<HTMLButtonElement>(".swipe-dots button")];
-  if (!list || !dots.length) return;
+  const nav = group.querySelector<HTMLElement>(".row-nav");
+  const dotsBox = group.querySelector<HTMLElement>(".swipe-dots");
+  if (!list || !nav || !dotsBox) return;
   const cards = [...list.children] as HTMLElement[];
-  const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const count = nav.querySelector<HTMLElement>(".row-count")!;
+  const [prev, next] = [...nav.querySelectorAll<HTMLButtonElement>(".row-btn")];
+  const smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let stops: number[] = [];
+  let dots: HTMLButtonElement[] = [];
+
+  const offsetOf = (c: HTMLElement) => c.offsetLeft - cards[0].offsetLeft;
+  const maxScroll = () => list.scrollWidth - list.clientWidth;
+  const go = (left: number) => list.scrollTo({ left, behavior: smooth ? "smooth" : "auto" });
   const current = () => {
-    const left = list.scrollLeft;
     let best = 0;
-    cards.forEach((c, i) => {
-      if (Math.abs(c.offsetLeft - cards[0].offsetLeft - left) < Math.abs(cards[best].offsetLeft - cards[0].offsetLeft - left)) best = i;
+    stops.forEach((x, i) => {
+      if (Math.abs(x - list.scrollLeft) < Math.abs(stops[best] - list.scrollLeft)) best = i;
     });
-    // At the end of the row the last card may not reach the left edge.
-    return left + list.clientWidth >= list.scrollWidth - 2 ? cards.length - 1 : best;
+    return best;
   };
-  let frame = 0;
+
   const update = () => {
-    frame = 0;
+    const left = list.scrollLeft;
     const i = current();
     dots.forEach((d, j) => d.classList.toggle("on", i === j));
+    prev.disabled = left <= 2;
+    next.disabled = left >= maxScroll() - 2;
+    list.classList.toggle("more-left", left > 2);
+    list.classList.toggle("more-right", left < maxScroll() - 2);
+    const inView = cards
+      .map((c, k) => ({ k, a: offsetOf(c) - left, b: offsetOf(c) + c.offsetWidth - left }))
+      .filter((c) => c.a >= -2 && c.b <= list.clientWidth + 2)
+      .map((c) => c.k + 1);
+    const a = inView[0] ?? 1;
+    const b = inView[inView.length - 1] ?? a;
+    count.textContent = `${a === b ? a : `${a}–${b}`} of ${cards.length}`;
   };
+
+  // One stop per card, until the row can't scroll any further.
+  const build = () => {
+    const max = maxScroll();
+    stops = [...new Set(cards.map((c) => Math.min(offsetOf(c), max)))];
+    nav.hidden = stops.length < 2;
+    dotsBox.replaceChildren(
+      ...stops.map((x) => {
+        const d = document.createElement("button");
+        d.type = "button";
+        d.tabIndex = -1;
+        d.addEventListener("click", () => go(x));
+        return d;
+      }),
+    );
+    dots = [...dotsBox.querySelectorAll("button")];
+    if (stops.length < 2) dotsBox.replaceChildren();
+    update();
+  };
+
+  prev.addEventListener("click", () => go(stops[Math.max(0, current() - 1)]));
+  next.addEventListener("click", () => go(stops[Math.min(stops.length - 1, current() + 1)]));
+  let frame = 0;
   list.addEventListener("scroll", () => {
-    if (!frame) frame = requestAnimationFrame(update);
+    if (!frame) frame = requestAnimationFrame(() => ((frame = 0), update()));
   }, { passive: true });
-  dots.forEach((d, i) =>
-    d.addEventListener("click", () =>
-      list.scrollTo({ left: cards[i].offsetLeft - cards[0].offsetLeft, behavior: smooth ? "smooth" : "auto" }),
-    ),
-  );
-  update();
+  window.addEventListener("resize", build);
+  build();
 });

@@ -113,19 +113,6 @@
             ]
           },
           {
-            "title": "CI Shard Advisor",
-            "kicker": "Quantitative tooling",
-            "visual": "shard",
-            "page": "work/ci-shard-advisor/",
-            "summary": "A mathematical optimization problem hidden inside a test pipeline.",
-            "links": [
-              {
-                "href": "https://shard.pedromorago.com/",
-                "label": "Live demo ↗"
-              }
-            ]
-          },
-          {
             "title": "Screen Recorder (QA mode)",
             "kicker": "Chrome extension",
             "visual": "bench",
@@ -136,6 +123,19 @@
                 "href": "https://github.com/pedromorago/screen-recorder-qa/releases/latest",
                 "label": "Download ↗",
                 "sr": " Screen Recorder for Chrome"
+              }
+            ]
+          },
+          {
+            "title": "CI Shard Advisor",
+            "kicker": "Quantitative tooling",
+            "visual": "shard",
+            "page": "work/ci-shard-advisor/",
+            "summary": "A mathematical optimization problem hidden inside a test pipeline.",
+            "links": [
+              {
+                "href": "https://shard.pedromorago.com/",
+                "label": "Live demo ↗"
               }
             ]
           },
@@ -159,6 +159,39 @@
         "title": "Quantitative and real-time labs",
         "note": "Personal projects on systems that are hard to test: numerical solvers, real-time state, model evaluation and a full-stack product of my own. Each repository is public, with its tests and CI.",
         "projects": [
+          {
+            "title": "Spin Trainer",
+            "kicker": "My product",
+            "visual": "spin-explorer",
+            "page": "work/spin-trainer/",
+            "summary": "A full-stack training app of my own, from idea to release, tested like production: 145 API tests, 37 Playwright specs and 8 real defects found.",
+            "links": [
+              {
+                "href": "https://spintrainer.pedromorago.com/",
+                "label": "Open the app ↗",
+                "sr": " Spin Trainer"
+              },
+              {
+                "href": "https://github.com/pedromorago/spin-trainer-qa",
+                "label": "Tests ↗",
+                "sr": " for Spin Trainer"
+              }
+            ]
+          },
+          {
+            "title": "Game Integrity Lab",
+            "kicker": "Model evaluation",
+            "visual": "gil",
+            "page": "work/game-integrity-lab/",
+            "summary": "Evaluating cheat-detection models on synthetic data, where the best model's false positives all fell on strong, legitimate players.",
+            "links": [
+              {
+                "href": "https://github.com/pedromorago/game-integrity-lab",
+                "label": "Code ↗",
+                "sr": " for the Game Integrity Lab"
+              }
+            ]
+          },
           {
             "title": "Solver Validation Lab",
             "kicker": "Numerical validation",
@@ -186,43 +219,12 @@
                 "sr": " for the Real-Time Testbed"
               }
             ]
-          },
-          {
-            "title": "Game Integrity Lab",
-            "kicker": "Model evaluation",
-            "visual": "gil",
-            "page": "work/game-integrity-lab/",
-            "summary": "Evaluating cheat-detection models on synthetic data, where the best model's false positives all fell on strong, legitimate players.",
-            "links": [
-              {
-                "href": "https://github.com/pedromorago/game-integrity-lab",
-                "label": "Code ↗",
-                "sr": " for the Game Integrity Lab"
-              }
-            ]
-          },
-          {
-            "title": "Spin Trainer",
-            "kicker": "My product",
-            "visual": "spin-explorer",
-            "page": "work/spin-trainer/",
-            "summary": "A full-stack training app of my own, from idea to release, tested like production: 145 API tests, 37 Playwright specs and 8 real defects found.",
-            "links": [
-              {
-                "href": "https://spintrainer.pedromorago.com/",
-                "label": "Open the app ↗",
-                "sr": " Spin Trainer"
-              },
-              {
-                "href": "https://github.com/pedromorago/spin-trainer-qa",
-                "label": "Tests ↗",
-                "sr": " for Spin Trainer"
-              }
-            ]
           }
         ]
       }
-    ]
+    ],
+    "prev": "Previous projects",
+    "next": "Next projects"
   },
   "clients": {
     "id": "clients",
