@@ -259,28 +259,12 @@
             "about": "One of Spain's largest energy groups, across oil, gas, fuels and renewables."
           },
           {
-            "name": "Celsa Group",
-            "file": "fe-celsa-group.png",
-            "height": 34,
-            "ratio": 2.541,
-            "sector": "Steel",
-            "about": "One of Europe's leading producers of recycled steel, based in Barcelona."
-          },
-          {
             "name": "Iberdrola",
             "file": "fe-iberdrola.png",
             "height": 40,
             "ratio": 2.174,
             "sector": "Energy",
             "about": "One of the largest electricity utilities in the world, and a global leader in renewable energy."
-          },
-          {
-            "name": "Konecta",
-            "file": "fe-konecta.png",
-            "height": 24,
-            "ratio": 5.0,
-            "sector": "Customer experience",
-            "about": "Spanish multinational in customer experience and business process outsourcing."
           },
           {
             "name": "Renfe",
@@ -396,14 +380,6 @@
             "ratio": 2.953,
             "sector": "Energy and telecom",
             "about": "One of Germany's largest utilities: energy, telecommunications and IT across the northwest of the country."
-          },
-          {
-            "name": "ClearBank",
-            "file": "clearbank.svg",
-            "height": 24,
-            "ratio": 6.122,
-            "sector": "Banking",
-            "about": "UK clearing bank built on cloud technology."
           },
           {
             "name": "DHL",
