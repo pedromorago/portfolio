@@ -127,10 +127,10 @@ if (copyBtn) {
   });
 }
 
-// Logo carousels: they scroll on their own and can be dragged with a mouse or
-// a finger. A drag that ends in a fast flick throws the row: it keeps the
-// speed of the gesture and slows back to its own pace over a few seconds.
-// Without JavaScript, or with reduced motion, the CSS takes over instead.
+// Logo carousels: they rest until something pushes them. Scrolling the page
+// gives both rows a push, each in its own direction, and a drag that ends in a
+// fast flick throws a row; either way it glides and slows to a stop. Without
+// JavaScript, or with reduced motion, the rows simply stay still.
 // Tapping a logo, or pressing Enter on it, opens a card about the company and
 // holds its row still until the card closes.
 const card = document.getElementById("client-card");
@@ -188,21 +188,32 @@ if (card) {
     }),
   );
 }
+const pushes: ((px: number) => void)[] = [];
+let lastScroll = scrollY;
+window.addEventListener(
+  "scroll",
+  () => {
+    const dy = scrollY - lastScroll;
+    lastScroll = scrollY;
+    pushes.forEach((push) => push(dy));
+  },
+  { passive: true },
+);
 document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
   const track = marquee.querySelector<HTMLElement>(".marquee-track");
   if (!track || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   marquee.classList.add("draggable");
   const dir = marquee.classList.contains("reverse") ? 1 : -1;
-  const speed = 40; // px per second, the row's own pace
-  const settle = 1.4; // seconds for a throw to lose about two thirds of its speed
-  const maxThrow = 5000; // px per second
+  const settle = 0.9; // seconds for a push to lose about two thirds of its speed
+  const maxThrow = 5000; // px per second, for a flick
+  const perScrolledPx = 3; // px per second of speed for each pixel the page scrolls
+  const maxPush = 1200; // px per second, from scrolling
   let offset = 0;
   let width = track.offsetWidth;
   let dragging = false;
-  let hovering = false;
   let startX = 0;
   let startOffset = 0;
-  let thrown = 0; // extra speed from the last flick, px per second
+  let thrown = 0; // current speed from the last push or flick, px per second
   let samples: { t: number; x: number }[] = [];
   let moved = 0;
   let last = performance.now();
@@ -217,8 +228,7 @@ document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
     if (marquee.hasAttribute("data-held")) {
       thrown = 0;
     } else if (!dragging) {
-      // Hovering with a mouse holds the row still, but a throw still plays out.
-      offset += ((hovering ? 0 : dir * speed) + thrown) * dt;
+      offset += thrown * dt;
       thrown *= Math.exp(-dt / settle);
       if (Math.abs(thrown) < 1) thrown = 0;
     }
@@ -226,10 +236,11 @@ document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
     paint();
     requestAnimationFrame(tick);
   };
-  marquee.addEventListener("pointerenter", (e) => {
-    if (e.pointerType === "mouse") hovering = true;
+  // Scrolling down pushes the row its own way; scrolling back up pushes it back.
+  pushes.push((dy) => {
+    if (dragging || marquee.hasAttribute("data-held")) return;
+    thrown = Math.max(-maxPush, Math.min(maxPush, thrown + dir * dy * perScrolledPx));
   });
-  marquee.addEventListener("pointerleave", () => (hovering = false));
   marquee.addEventListener("pointerdown", (e) => {
     dragging = true;
     moved = 0;

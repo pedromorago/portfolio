@@ -1,6 +1,6 @@
 {
   "headline": "Senior QA Engineer",
-  "summary": "After a BSc in Mathematics at the University of Cantabria, I have owned product quality in every role and automated its tests. At Fieldeas I moved client projects from manual testing to Cypress and reported 500+ defects ranked by business risk. At IriusRisk I led the testing strategy for a core module, helped migrate TestCafe to Playwright for about 80% less run time, and built a Python optimization model showing CI could run about 8% faster at 41% lower cost. At Alvatross I automate TM Forum APIs for a German telecom. Targeting Senior QA/SDET and Quality Engineering roles in test automation, CI and AI evaluation.",
+  "summary": "Senior QA Engineer with five years in test strategy, API testing and end-to-end automation, with software teams in cybersecurity, field services and telecom. My background combines mathematics (BSc, University of Cantabria) and formal test design (ISTQB CTFL v4.0), which I apply to deciding what to test, at which layer and how to automate it in TypeScript and Java. At IriusRisk I led the testing strategy for a core product module and built a mixed-integer optimization model showing our CI could run at 41% lower cost and about 8% faster. Interested in test infrastructure and the testing of quantitative, real-time and AI-driven systems.",
   "fitTitle": "Strengths",
   "fit": [
     "Mathematics background applied to optimization, combinatorial test design, edge cases and quantitative validation.",

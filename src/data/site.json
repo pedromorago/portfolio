@@ -69,7 +69,7 @@
   },
   "hero": {
     "name": "Pedro Morago",
-    "text": "After a BSc in Mathematics at the University of Cantabria, I have owned product quality in every role and automated its tests: Cypress at Fieldeas, Playwright and REST Assured at IriusRisk, and Karate at Alvatross today. I also build the tooling around the tests, like a Python optimization model that showed our CI could run about 8% faster at 41% lower cost.",
+    "text": "Five years in test strategy, API testing and end-to-end automation, with software teams in cybersecurity, field services and telecom. My background combines mathematics (BSc, University of Cantabria) and formal test design (ISTQB CTFL v4.0), which I apply to deciding what to test, at which layer and how to automate it.",
     "photoAlt": "Pedro Morago, arms crossed, in a navy shirt",
     "actions": [
       {

@@ -1943,16 +1943,8 @@ a:hover > .arrow {
   gap: clamp(48px, 6vw, 88px);
   padding-right: clamp(48px, 6vw, 88px);
   list-style: none;
-  animation: marquee 40s linear infinite;
 }
 
-.marquee.reverse .marquee-track {
-  animation-direction: reverse;
-}
-
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
 
 .marquee-track img {
   height: 30px;
@@ -1966,12 +1958,6 @@ a:hover > .arrow {
 
 .marquee-track img:hover {
   opacity: 1;
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(-100%);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
