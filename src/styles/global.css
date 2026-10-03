@@ -343,6 +343,18 @@ a:hover > .arrow {
     backdrop-filter: none;
     border-bottom-color: var(--line);
   }
+  /* iOS Safari draws the page behind the clock and battery, above the top of
+     the viewport. This strip extends the bar up into that area so the text
+     scrolling underneath doesn't show there. */
+  .nav::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: 120px;
+    background: var(--bg);
+  }
 }
 
 .nav-inner {
@@ -373,37 +385,6 @@ a:hover > .arrow {
   color: var(--bg);
   font: 700 0.875rem/1 var(--sans);
   letter-spacing: -0.04em;
-}
-
-.nav-name {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 1.375rem;
-  line-height: 1;
-  letter-spacing: 0;
-  white-space: nowrap;
-  color: var(--text);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(6px);
-  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s;
-}
-
-.nav-name em {
-  color: var(--accent);
-}
-
-.nav.named .nav-name,
-.nav.solid .nav-name {
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .nav-name {
-    transition: none;
-  }
 }
 
 .nav-links {
@@ -447,10 +428,6 @@ a:hover > .arrow {
 }
 
 @media (max-width: 760px) {
-  /* Without JavaScript the links stay in the bar and need the room. */
-  html:not(.js) .nav-name {
-    display: none;
-  }
   .nav-links a {
     padding: 8px 9px;
     font-size: 0.875rem;
