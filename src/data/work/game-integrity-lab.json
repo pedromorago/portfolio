@@ -2,8 +2,8 @@
   "slug": "game-integrity-lab",
   "meta": {
     "title": "Game Integrity Lab: evaluating anti-cheat models | Pedro Morago",
-    "description": "An evaluation testbed for poker game-integrity models on synthetic data: bots, RTA and collusion, per-segment false positives and eleven seeded evaluation bugs.",
-    "shareDescription": "When a model flags a poker player, a false positive accuses a real person. An evaluation testbed on synthetic data, with per-segment false positives and eleven seeded evaluation bugs.",
+    "description": "An evaluation testbed for anti-cheat models on synthetic data: bots, real-time assistance and collusion, per-segment false positives and eleven seeded evaluation bugs.",
+    "shareDescription": "When a model flags a player, a false positive accuses a real person. An evaluation testbed on synthetic data, with per-segment false positives and eleven seeded evaluation bugs.",
     "about": [
       "Software testing",
       "Poker",
@@ -14,7 +14,7 @@
   "crumb": "Game Integrity Lab",
   "kicker": "Project",
   "title": "Evaluating models that flag cheaters, when every false positive is a real player",
-  "lede": "Poker sites use models to flag bots, real-time assistance and collusion. Testing those models is a QA problem with a sharp edge: a missed cheater costs the other players money, and a false positive accuses someone innocent. I built an evaluation testbed on synthetic data, three models to evaluate, and a harness of checks, then seeded eleven bugs into the evaluation itself to see which checks catch them.",
+  "lede": "Online platforms use models to flag fraud and cheating. Testing those models is a QA problem with a sharp edge: a missed cheater costs other users money, and a false positive accuses someone innocent. My subject is online poker, where the threats are bots, real-time assistance and collusion. I built an evaluation testbed on synthetic data, three models to evaluate, and a harness of checks, then seeded eleven bugs into the evaluation itself to see which checks catch them.",
   "cover": {
     "image": "gil",
     "alt": "A terminal showing the evaluation of three models on synthetic players, with the false positives of the best one all falling on strong regulars, and a table of seeded evaluation bugs"

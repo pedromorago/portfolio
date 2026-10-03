@@ -14,7 +14,7 @@
   "crumb": "Solver Validation Lab",
   "kicker": "Project",
   "title": "Testing a solver when there is no perfect oracle",
-  "lede": "A solver or a trainer gives you numbers: equities, frequencies, expected values. For a handful of spots you can check them by hand; for the rest there is no answer key, only relationships that must hold. This lab applies that idea at three levels, all on poker math: an equity engine with a suite of checks that each name their oracle, a validator for exported solver strategies with a regression diff between versions, and push/fold solvers judged by the one oracle a solved game has, best responses. Seeded bugs show what each check catches.",
+  "lede": "Numerical software gives you numbers: probabilities, frequencies, expected values. For a handful of spots you can check them by hand; for the rest there is no answer key, only relationships that must hold. This lab applies that idea at three levels, with poker math as the subject: an equity engine with a suite of checks that each name their oracle, a validator for exported solver strategies with a regression diff between versions, and push/fold solvers judged by the one oracle a solved game has, best responses. Seeded bugs show what each check catches.",
   "cover": {
     "image": "svlab",
     "alt": "A terminal showing a regression diff between two versions of a poker strategy failing on its thresholds, and a table of seeded corruptions with the rule that caught each one"

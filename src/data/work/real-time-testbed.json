@@ -1,9 +1,9 @@
 {
   "slug": "real-time-testbed",
   "meta": {
-    "title": "Real-Time Testbed: testing a live poker table | Pedro Morago",
-    "description": "A Hold'em table server over WebSockets, tested for duplicates, reconnects, races, timers and crashes with a chaos simulator and seventeen seeded bugs.",
-    "shareDescription": "What breaks in a real-time poker table: the second click, the dropped connection, the timer that fires with the call, the server that dies mid-hand. A table server, a chaos simulator and seventeen seeded bugs.",
+    "title": "Real-Time Testbed: testing a real-time game server | Pedro Morago",
+    "description": "A real-time game server over WebSockets, tested for duplicates, reconnects, races, timers and crashes with a chaos simulator and seventeen seeded bugs.",
+    "shareDescription": "What breaks in a real-time server: the second click, the dropped connection, the timer that fires with the action, the server that dies mid-game. A game server, a chaos simulator and seventeen seeded bugs.",
     "about": [
       "Software testing",
       "Poker",
@@ -14,8 +14,8 @@
   },
   "crumb": "Real-Time Testbed",
   "kicker": "Project",
-  "title": "Testing a live poker table through a hostile network",
-  "lede": "A real-time poker table fails in ways a unit test rarely sees: a call that arrives twice, a phone that drops mid-hand and comes back a minute later, an action timer that fires in the same millisecond as the player's click, a server that dies halfway through writing a hand. I built a small No-Limit Hold'em table server and a test harness aimed at exactly those failures, then seeded seventeen bugs into it to check that the harness notices.",
+  "title": "Testing a real-time game server through a hostile network",
+  "lede": "A real-time multiplayer server fails in ways a unit test rarely sees: an action that arrives twice, a phone that drops mid-game and comes back a minute later, an action timer that fires in the same millisecond as the player's click, a server that dies halfway through writing a hand. I built a small server for a real-time card game, No-Limit Hold'em, and a test harness aimed at exactly those failures, then seeded seventeen bugs into it to check that the harness notices.",
   "cover": {
     "image": "rtt",
     "alt": "A terminal showing a 100-hand chaos run with 24 server crashes in which every client converged, and a table of seventeen seeded bugs with the kinds of checks that caught each one"

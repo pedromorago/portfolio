@@ -46,7 +46,7 @@
     {
       "title": "Spin Trainer",
       "url": "pedromorago.com/work/spin-trainer",
-      "text": "My own full-stack app, a poker range trainer, from idea to release: React and Spring Boot. 145 API tests, 37 Playwright specs, mutation testing; 8 real defects found."
+      "text": "My own full-stack training app for poker ranges, from idea to release: React and Spring Boot. 145 API tests, 37 Playwright specs, mutation testing; 8 real defects found."
     },
     {
       "title": "Solver Validation Lab",

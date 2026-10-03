@@ -1,9 +1,9 @@
 {
   "slug": "spin-trainer",
   "meta": {
-    "title": "Spin Trainer: a poker trainer I built and tested | Pedro Morago",
-    "description": "My own poker range trainer, built and tested like a production platform: 145 black-box API tests, Playwright on mock and real backends, 8 real defects.",
-    "shareDescription": "My own poker range trainer, from idea to release, tested like a production platform: black-box API tests against the deployable image, one E2E spec for two backends, mutation testing and 8 real defects.",
+    "title": "Spin Trainer: a full-stack product I built and tested | Pedro Morago",
+    "description": "My own full-stack training app, built and tested like a production platform: 145 black-box API tests, Playwright on mock and real backends, 8 real defects.",
+    "shareDescription": "My own full-stack training app, from idea to release, tested like a production platform: black-box API tests against the deployable image, one E2E spec for two backends, mutation testing and 8 real defects.",
     "about": [
       "Software testing",
       "Poker",
@@ -14,8 +14,8 @@
   },
   "crumb": "Spin Trainer",
   "kicker": "Case study, Spin Trainer",
-  "title": "A poker range trainer I built and tested like a production platform",
-  "lede": "Spin Trainer is my own product: a preflop range-training app for Spin & Go poker, with a React frontend, Spring Boot API, Postgres, Google sign-in and server-side grading. The idea was mine, I designed and built it, and then I tested it the way I'd test a production platform: black-box API acceptance tests, executable poker specifications, Playwright against both mock and real backends, production-image testing, concurrency cases and mutation testing.",
+  "title": "A full-stack product I built and tested like a production platform",
+  "lede": "Spin Trainer is my own product: a full-stack training app with a React frontend, Spring Boot API, Postgres, Google sign-in and server-side grading. What it trains is preflop ranges for Spin & Go poker. The idea was mine, I designed and built it, and then I tested it the way I'd test a production platform: black-box API acceptance tests, executable poker specifications, Playwright against both mock and real backends, production-image testing, concurrency cases and mutation testing.",
   "cover": {
     "image": "spin-explorer",
     "alt": "Spin Trainer's Explorer: a 13 by 13 grid of poker hands coloured by action, next to the range statistics"
