@@ -2281,8 +2281,38 @@ a:hover > .arrow {
 }
 
 .work-group .apps-grid > .app-card {
-  flex: 0 0 calc((100% - 120px) / 2);
+  flex: 0 0 calc(100% - 96px);
   scroll-snap-align: start;
+}
+
+/* Wide screens: one project at a time, picture on the left and the story on the right. */
+@media (min-width: 901px) {
+  .work-group .apps-grid > .app-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  }
+  .work-group .app-card .card-visual {
+    aspect-ratio: auto;
+    min-height: 380px;
+    border-bottom: 0;
+    border-right: 1px solid var(--line);
+  }
+  .work-group .app-card .card-body {
+    justify-content: center;
+    padding: 44px 48px;
+  }
+  .work-group .app-card .card-body > * {
+    flex: 0 0 auto;
+  }
+  .work-group .app-card h4 {
+    font-size: clamp(2.25rem, 3.2vw, 3rem);
+  }
+  .work-group .app-card .card-body > p:not(.feature-index) {
+    font-size: 1.0625rem;
+  }
+  .work-group .app-card .card-links {
+    margin-top: 8px;
+  }
 }
 
 /* Cards off to the side would otherwise wait for their fade-in until scrolled to. */
