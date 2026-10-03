@@ -6,6 +6,9 @@
 // card with a line about the company.
 import { site } from "../lib/site";
 const c = site.clients;
+// One row: the Spanish and international companies taken in turn.
+const [a, b] = c.groups.map((g) => g.logos);
+const logos = Array.from({ length: Math.max(a.length, b.length) }, (_, i) => [b[i], a[i]]).flat().filter(Boolean);
 ---
 
 <section id={c.id} class="clients" aria-labelledby="clients-title">
@@ -13,12 +16,12 @@ const c = site.clients;
     <h2 id="clients-title" class="clients-label">{c.label}</h2>
   </div>
   {
-    c.groups.map((g, gi) => (
+    [logos].map((row) => (
       <div class="marquee-group">
-        <div class:list={["marquee", { reverse: gi % 2 === 1 }]}>
+        <div class="marquee">
           {[0, 1, 2].map((copy) => (
             <ul class="marquee-track" aria-hidden={copy > 0 ? "true" : undefined}>
-              {g.logos.map((l) => (
+              {row.map((l) => (
                 <li>
                   <button
                     type="button"

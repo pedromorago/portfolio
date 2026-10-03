@@ -129,9 +129,10 @@ if (copyBtn) {
   });
 }
 
-// Logo carousels: they stay still until someone drags them. A drag that ends
-// in a fast flick throws the row, which glides and slows to a stop. Without
-// JavaScript, or with reduced motion, the rows simply stay still.
+// Logo carousel: one row that drifts slowly to the left, holds still under a
+// mouse, and can be dragged; a drag that ends in a fast flick throws it, and it
+// glides back to its slow drift. Without JavaScript, or with reduced motion,
+// the row stays still.
 // Tapping a logo, or pressing Enter on it, opens a card about the company and
 // holds its row still until the card closes.
 const card = document.getElementById("client-card");
@@ -193,6 +194,7 @@ document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
   const track = marquee.querySelector<HTMLElement>(".marquee-track");
   if (!track || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   marquee.classList.add("draggable");
+  const drift = -14; // px per second, the row's own slow pace
   const settle = 0.9; // seconds for a throw to lose about two thirds of its speed
   const maxThrow = 5000; // px per second
   let offset = 0;
@@ -201,6 +203,7 @@ document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
   let startX = 0;
   let startOffset = 0;
   let thrown = 0; // current speed from the last flick, px per second
+  let hovering = false;
   let samples: { t: number; x: number }[] = [];
   let moved = 0;
   let last = performance.now();
@@ -215,7 +218,7 @@ document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
     if (marquee.hasAttribute("data-held")) {
       thrown = 0;
     } else if (!dragging) {
-      offset += thrown * dt;
+      offset += ((hovering ? 0 : drift) + thrown) * dt;
       thrown *= Math.exp(-dt / settle);
       if (Math.abs(thrown) < 1) thrown = 0;
     }
@@ -223,6 +226,10 @@ document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
     paint();
     requestAnimationFrame(tick);
   };
+  marquee.addEventListener("pointerenter", (e) => {
+    if (e.pointerType === "mouse") hovering = true;
+  });
+  marquee.addEventListener("pointerleave", () => (hovering = false));
   marquee.addEventListener("pointerdown", (e) => {
     dragging = true;
     moved = 0;
