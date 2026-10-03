@@ -326,6 +326,20 @@ a:hover > .arrow {
   border-bottom-color: var(--line);
 }
 
+/* On phones the bar is solid from the start. A see-through bar let the photo
+   show above and through it, and iOS Safari tints the status bar with the
+   colour of a solid fixed header, so the top of the screen stays clean. */
+@media (max-width: 820px) {
+  .nav,
+  .nav.scrolled,
+  .nav.solid {
+    background: var(--bg);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-bottom-color: var(--line);
+  }
+}
+
 .nav-inner {
   display: flex;
   align-items: center;
