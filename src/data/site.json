@@ -440,6 +440,16 @@
     "label": "Companies that use the products I've tested",
     "close": "Close"
   },
+  "reference": {
+    "quote": "Pedro stood out for his ability to design and execute both manual and automated tests, ensuring product quality throughout the development lifecycle. He has a strong understanding of testing methodologies and modern tools, and he is always eager to improve existing processes.",
+    "name": "Victoria López",
+    "role": "QA Manager, IriusRisk",
+    "context": "Worked with me for over two years",
+    "link": {
+      "href": "pedro-morago-reference-letter.pdf",
+      "label": "Read the full letter"
+    }
+  },
   "contact": {
     "id": "contact",
     "kicker": "Contact",

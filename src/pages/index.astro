@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import Hero from "../components/Hero.astro";
 import Clients from "../components/Clients.astro";
 import Work from "../components/Work.astro";
+import Reference from "../components/Reference.astro";
 import Contact from "../components/Contact.astro";
 import { SITE_URL, site, ogImageUrl } from "../lib/site";
 import { homeJsonLd } from "../lib/seo";
@@ -25,6 +26,7 @@ const m = site.meta;
     <Hero />
     <Clients />
     <Work />
+    <Reference />
     <Contact />
   </main>
 </Base>

@@ -1,0 +1,24 @@
+---
+// A line from the reference letter of my QA Manager at IriusRisk, with a link to the full letter.
+import { site } from "../lib/site";
+import { hrefOf, smart } from "../lib/render";
+const r = site.reference;
+---
+
+<section class="section reference-section" aria-label={`Reference from ${r.name}`}>
+  <div class="container">
+    <figure class="reference reveal">
+      <blockquote>
+        <p>{smart(r.quote)}</p>
+      </blockquote>
+      <figcaption>
+        <span class="reference-name">{r.name}</span>
+        <span class="reference-role">{r.role}. {r.context}.</span>
+        <a class="reference-link" href={hrefOf(r.link.href)}>
+          {r.link.label}<span class="sr-only"> from {r.name} (PDF)</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </figcaption>
+    </figure>
+  </div>
+</section>

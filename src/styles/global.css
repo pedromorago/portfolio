@@ -2481,3 +2481,70 @@ a:hover > .arrow {
 .work-group .apps-grid.dragging a {
   pointer-events: none;
 }
+
+/* ------------------------------------------------------------ reference letter */
+
+/* Follows the portfolio closely; that section already ends with room to spare. */
+.reference-section {
+  margin-top: calc(clamp(32px, 5vw, 72px) * -1);
+  padding: 0 0 clamp(48px, 6vw, 88px);
+}
+
+.reference {
+  margin: 0;
+  padding: clamp(28px, 4vw, 48px);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 6px);
+  background: radial-gradient(70% 120% at 0% 0%, rgba(111, 177, 255, 0.08), transparent 60%), var(--bg-2);
+}
+
+.reference blockquote {
+  margin: 0;
+}
+
+.reference blockquote p {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  line-height: 1.2;
+  max-width: 34em;
+}
+
+.reference blockquote p::before {
+  content: "“";
+  color: var(--accent);
+}
+
+.reference blockquote p::after {
+  content: "”";
+  color: var(--accent);
+}
+
+.reference figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 16px;
+  margin-top: 24px;
+}
+
+.reference-name {
+  font-weight: 600;
+}
+
+.reference-role {
+  color: var(--text-2);
+}
+
+.reference-link {
+  display: inline-flex;
+  gap: 6px;
+  min-height: 32px;
+  align-items: center;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-2);
+}
+
+.reference-link:hover {
+  border-bottom-color: var(--accent);
+}
