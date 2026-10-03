@@ -69,7 +69,7 @@
   },
   "hero": {
     "name": "Pedro Morago",
-    "text": "I'm a Senior QA Engineer with 5 years of test automation in cybersecurity, telecom, and process automation for companies outside tech, and a BSc in Mathematics from the University of Cantabria. I work across API, backend and E2E layers, build the tooling around them, and focus on systems that are hard to test: quantitative logic, real-time behavior and models with no single right answer.",
+    "text": "I'm a Senior QA Engineer. After a BSc in Mathematics at the University of Cantabria, I went into software quality and have automated tests in every role since. At Fieldeas I moved client projects from manual testing to Cypress and reported 500+ defects ranked by business risk. At IriusRisk I led the testing strategy for a core module, helped migrate TestCafe to Playwright for about 80% less run time, and built a Python optimization model showing CI could run about 8% faster at 41% lower cost. At Alvatross I automate TM Forum APIs for a German telecom.",
     "photoAlt": "Pedro Morago, arms crossed, in a navy shirt",
     "actions": [
       {
@@ -267,7 +267,7 @@
     "id": "career",
     "kicker": "Career",
     "title": "Where I've worked",
-    "lede": "Five years in QA, with automation in every role.",
+    "lede": "Five years in QA, all of them automating tests.",
     "jobs": [
       {
         "dates": "Jul 2026 – Present",
@@ -379,12 +379,7 @@
         "href": "pedro-morago-reference-letter.pdf",
         "label": "Read the full letter"
       }
-    },
-    "story": [
-      "I studied Mathematics at the University of Cantabria, and the habit stayed with me: state the problem precisely, then prove every step. When I moved into software in 2021, I went straight into test automation, and it has been at the centre of every job since.",
-      "At Fieldeas I found client projects tested by hand and left them running on Cypress suites, after reporting more than 500 defects ranked by business risk. At IriusRisk, a cybersecurity SaaS, I led the testing strategy for a core module, helped move the suite from TestCafe to Playwright with about 80% less run time, and turned a slow CI pipeline into an optimization problem: the model showed that 4 containers would beat 7, about 8% faster and 41% cheaper. Today, at Alvatross, I test a TM Forum telecom platform for EWE in Germany and automate its APIs.",
-      "Outside work I keep building: a training app of my own, tested like a production platform; a Chrome extension that turns a bug into evidence; a public QA wiki with more than 50 articles; and labs for systems with no single right answer, where every check is proven against bugs I seed on purpose."
-    ]
+    }
   },
   "clients": {
     "id": "clients",
