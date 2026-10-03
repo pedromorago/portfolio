@@ -58,7 +58,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 88px;
+  scroll-padding-top: calc(88px + env(safe-area-inset-top, 0px));
   -webkit-text-size-adjust: 100%;
 }
 
@@ -76,6 +76,8 @@ html {
 
 body {
   margin: 0;
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
@@ -314,6 +316,9 @@ a:hover > .arrow {
   left: 0;
   right: 0;
   z-index: 50;
+  /* The page runs under the phone's status bar (viewport-fit=cover), and the
+     bar's padding covers that strip so nothing scrolls visibly behind the clock. */
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) 0 env(safe-area-inset-left, 0px);
   transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
   border-bottom: 1px solid transparent;
 }
@@ -445,7 +450,7 @@ a:hover > .arrow {
 .hero {
   position: relative;
   min-height: 0;
-  padding-top: 72px;
+  padding-top: calc(72px + env(safe-area-inset-top, 0px));
   display: flex;
   flex-direction: column;
   isolation: isolate;
@@ -1200,7 +1205,7 @@ a:hover > .arrow {
 
 .case-hero {
   position: relative;
-  padding: calc(72px + clamp(48px, 8vw, 104px)) 0 clamp(40px, 5vw, 64px);
+  padding: calc(72px + env(safe-area-inset-top, 0px) + clamp(48px, 8vw, 104px)) 0 clamp(40px, 5vw, 64px);
   isolation: isolate;
 }
 
@@ -1920,7 +1925,7 @@ a:hover > .arrow {
   }
   .js .nav.open .nav-links {
     position: absolute;
-    top: 72px;
+    top: calc(72px + env(safe-area-inset-top, 0px));
     left: 0;
     right: 0;
     display: flex;
