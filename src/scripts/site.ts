@@ -317,7 +317,6 @@ document.querySelectorAll<HTMLElement>(".work-group").forEach((group) => {
 
   const offsetOf = (c: HTMLElement) => c.offsetLeft - cards[0].offsetLeft;
   const maxScroll = () => list.scrollWidth - list.clientWidth;
-  const go = (left: number) => list.scrollTo({ left, behavior: smooth ? "smooth" : "auto" });
   const current = () => {
     let best = 0;
     stops.forEach((x, i) => {
@@ -326,20 +325,50 @@ document.querySelectorAll<HTMLElement>(".work-group").forEach((group) => {
     return best;
   };
 
+  // Moving to a card is animated here rather than by the browser, so the row
+  // eases in one direction only, and snapping stays off until it arrives.
+  // While it moves, the count, dots and arrows already show where it is going.
+  let target: number | null = null;
+  let anim = 0;
+  const shown = () => target ?? current();
+  const go = (i: number) => {
+    i = Math.max(0, Math.min(stops.length - 1, i));
+    cancelAnimationFrame(anim);
+    target = i;
+    update();
+    const from = list.scrollLeft;
+    const to = stops[i];
+    if (!smooth || Math.abs(to - from) < 1) {
+      list.scrollLeft = to;
+      target = null;
+      list.classList.remove("moving");
+      update();
+      return;
+    }
+    list.classList.add("moving");
+    const duration = Math.min(650, 300 + Math.abs(to - from) * 0.25);
+    const t0 = performance.now();
+    const step = (now: number) => {
+      const t = Math.min(1, (now - t0) / duration);
+      const ease = 1 - Math.pow(1 - t, 3);
+      list.scrollLeft = from + (to - from) * ease;
+      if (t < 1) anim = requestAnimationFrame(step);
+      else {
+        target = null;
+        list.classList.remove("moving");
+        update();
+      }
+    };
+    anim = requestAnimationFrame(step);
+  };
+
   const update = () => {
-    const left = list.scrollLeft;
-    const i = current();
+    const i = shown();
     dots.forEach((d, j) => d.classList.toggle("on", i === j));
     // An arrow shows only when there is somewhere to go that way.
-    prev.hidden = left <= 2;
-    next.hidden = left >= maxScroll() - 2;
-    const inView = cards
-      .map((c, k) => ({ k, a: offsetOf(c) - left, b: offsetOf(c) + c.offsetWidth - left }))
-      .filter((c) => c.a >= -2 && c.b <= list.clientWidth + 2)
-      .map((c) => c.k + 1);
-    const a = inView[0] ?? 1;
-    const b = inView[inView.length - 1] ?? a;
-    count.textContent = `${a === b ? a : `${a}–${b}`} of ${cards.length}`;
+    prev.hidden = i <= 0;
+    next.hidden = i >= stops.length - 1;
+    count.textContent = `${i + 1} of ${cards.length}`;
   };
 
   // One stop per card, until the row can't scroll any further.
@@ -352,7 +381,7 @@ document.querySelectorAll<HTMLElement>(".work-group").forEach((group) => {
         const d = document.createElement("button");
         d.type = "button";
         d.tabIndex = -1;
-        d.addEventListener("click", () => go(x));
+        d.addEventListener("click", () => go(stops.indexOf(x)));
         return d;
       }),
     );
@@ -370,6 +399,8 @@ document.querySelectorAll<HTMLElement>(".work-group").forEach((group) => {
   let moved = 0;
   list.addEventListener("pointerdown", (e) => {
     if (e.pointerType !== "mouse" || e.button !== 0 || stops.length < 2) return;
+    cancelAnimationFrame(anim);
+    target = null;
     dragging = true;
     moved = 0;
     startX = e.clientX;
@@ -399,9 +430,10 @@ document.querySelectorAll<HTMLElement>(".work-group").forEach((group) => {
       const cards = Math.max(1, Math.ceil((Math.abs(dx) - 40) / step));
       to = from + (dx > 0 ? -cards : cards);
     }
-    to = Math.max(0, Math.min(stops.length - 1, to));
+    // Snapping stays off (the "moving" class) until the row has eased into place.
+    list.classList.add("moving");
     list.classList.remove("dragging");
-    go(stops[to]);
+    go(to);
   };
   window.addEventListener("pointerup", endDrag);
   window.addEventListener("pointercancel", endDrag);
@@ -415,8 +447,8 @@ document.querySelectorAll<HTMLElement>(".work-group").forEach((group) => {
   }, true);
   list.addEventListener("dragstart", (e) => e.preventDefault());
 
-  prev.addEventListener("click", () => go(stops[Math.max(0, current() - 1)]));
-  next.addEventListener("click", () => go(stops[Math.min(stops.length - 1, current() + 1)]));
+  prev.addEventListener("click", () => go(shown() - 1));
+  next.addEventListener("click", () => go(shown() + 1));
   let frame = 0;
   list.addEventListener("scroll", () => {
     if (!frame) frame = requestAnimationFrame(() => ((frame = 0), update()));

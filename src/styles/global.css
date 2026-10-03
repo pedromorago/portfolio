@@ -2470,8 +2470,12 @@ a:hover > .arrow {
 
 .work-group .apps-grid.dragging {
   cursor: grabbing;
-  scroll-snap-type: none;
   user-select: none;
+}
+
+.work-group .apps-grid.dragging,
+.work-group .apps-grid.moving {
+  scroll-snap-type: none;
 }
 
 .work-group .apps-grid.dragging a {
