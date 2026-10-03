@@ -2262,18 +2262,6 @@ a:hover > .arrow {
   overscroll-behavior-x: contain;
   scrollbar-width: none;
   contain: paint;
-  --fade-l: #000;
-  --fade-r: #000;
-  mask-image: linear-gradient(to right, var(--fade-l), #000 48px, #000 calc(100% - 64px), var(--fade-r));
-  -webkit-mask-image: linear-gradient(to right, var(--fade-l), #000 48px, #000 calc(100% - 64px), var(--fade-r));
-}
-
-.work-group .apps-grid.more-left {
-  --fade-l: transparent;
-}
-
-.work-group .apps-grid.more-right {
-  --fade-r: transparent;
 }
 
 .work-group .apps-grid::-webkit-scrollbar {
@@ -2281,7 +2269,7 @@ a:hover > .arrow {
 }
 
 .work-group .apps-grid > .app-card {
-  flex: 0 0 calc(100% - 96px);
+  flex: 0 0 100%;
   scroll-snap-align: start;
 }
 
@@ -2342,23 +2330,47 @@ a:hover > .arrow {
   text-align: right;
 }
 
+.row-wrap {
+  position: relative;
+}
+
+/* Round arrows over the card's edges, vertically centred. */
 .row-btn {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
+  margin-top: -26px;
   padding: 0;
   border: 1px solid var(--line-2);
   border-radius: 999px;
-  background: var(--bg-2);
+  background: rgba(24, 24, 27, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: var(--text);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
   cursor: pointer;
-  transition: background 0.2s var(--ease), border-color 0.2s var(--ease), opacity 0.2s var(--ease);
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.row-btn.prev {
+  left: -26px;
+}
+
+.row-btn.next {
+  right: -26px;
+}
+
+.row-btn[hidden] {
+  display: none;
 }
 
 .row-btn svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
@@ -2366,9 +2378,10 @@ a:hover > .arrow {
   stroke-linejoin: round;
 }
 
-.row-btn:hover:not(:disabled) {
+.row-btn:hover {
   background: var(--bg-3);
   border-color: var(--accent);
+  transform: scale(1.06);
 }
 
 .row-btn:focus-visible {
@@ -2376,9 +2389,14 @@ a:hover > .arrow {
   outline-offset: 3px;
 }
 
-.row-btn:disabled {
-  opacity: 0.35;
-  cursor: default;
+/* Where the gutter is too narrow for the arrows to straddle the edge, they sit inside it. */
+@media (max-width: 1100px) {
+  .row-btn.prev {
+    left: 12px;
+  }
+  .row-btn.next {
+    right: 12px;
+  }
 }
 
 .swipe-dots {
@@ -2426,8 +2444,9 @@ a:hover > .arrow {
   .work-group .apps-grid > .app-card {
     flex-basis: 84%;
   }
-  /* On phones the peeking card and the dots are enough; the arrows would take a row of their own. */
-  .row-nav {
+  /* On phones the peeking card and the dots are enough. */
+  .row-nav,
+  .row-btn {
     display: none !important;
   }
 }

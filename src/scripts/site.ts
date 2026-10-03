@@ -290,8 +290,9 @@ if (toggle && menu && nav) {
   });
 }
 
-// Project rows: each group scrolls sideways. The arrows move one card at a
-// time, the count says which cards are in view, and the dots (decorative for
+// Project rows: each group scrolls sideways. Arrows on the card's edges move
+// one card at a time and appear only when there is more that way; the count
+// says which card is in view, and the dots (decorative for
 // assistive technology, which reads the cards as a plain list) mark the
 // position and jump to it.
 document.querySelectorAll<HTMLElement>(".work-group").forEach((group) => {
@@ -301,7 +302,8 @@ document.querySelectorAll<HTMLElement>(".work-group").forEach((group) => {
   if (!list || !nav || !dotsBox) return;
   const cards = [...list.children] as HTMLElement[];
   const count = nav.querySelector<HTMLElement>(".row-count")!;
-  const [prev, next] = [...nav.querySelectorAll<HTMLButtonElement>(".row-btn")];
+  const prev = group.querySelector<HTMLButtonElement>(".row-btn.prev")!;
+  const next = group.querySelector<HTMLButtonElement>(".row-btn.next")!;
   const smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
   let stops: number[] = [];
   let dots: HTMLButtonElement[] = [];
@@ -321,10 +323,9 @@ document.querySelectorAll<HTMLElement>(".work-group").forEach((group) => {
     const left = list.scrollLeft;
     const i = current();
     dots.forEach((d, j) => d.classList.toggle("on", i === j));
-    prev.disabled = left <= 2;
-    next.disabled = left >= maxScroll() - 2;
-    list.classList.toggle("more-left", left > 2);
-    list.classList.toggle("more-right", left < maxScroll() - 2);
+    // An arrow shows only when there is somewhere to go that way.
+    prev.hidden = left <= 2;
+    next.hidden = left >= maxScroll() - 2;
     const inView = cards
       .map((c, k) => ({ k, a: offsetOf(c) - left, b: offsetOf(c) + c.offsetWidth - left }))
       .filter((c) => c.a >= -2 && c.b <= list.clientWidth + 2)
