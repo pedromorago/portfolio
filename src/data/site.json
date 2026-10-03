@@ -49,10 +49,6 @@
       "label": "Work"
     },
     {
-      "id": "why",
-      "label": "Why me"
-    },
-    {
       "id": "method",
       "label": "How I test"
     },
@@ -73,7 +69,7 @@
   },
   "hero": {
     "name": "Pedro Morago",
-    "text": "I'm a Senior QA Engineer with 5 years in test automation and a Mathematics degree. I work across API, backend and E2E layers, build the tooling around them, and focus on systems that are hard to test: quantitative logic, real-time behavior and models with no single right answer.",
+    "text": "I'm a Senior QA Engineer with 5 years of test automation for international SaaS and telecom teams, and a BSc in Mathematics from the University of Cantabria. I work across API, backend and E2E layers, build the tooling around them, and focus on systems that are hard to test: quantitative logic, real-time behavior and models with no single right answer.",
     "photoAlt": "Pedro Morago, arms crossed, in a navy shirt",
     "actions": [
       {
@@ -89,38 +85,6 @@
       "href": "#contact",
       "label": "Contact me →"
     }
-  },
-  "why": {
-    "id": "why",
-    "kicker": "Why me",
-    "title": "What I bring",
-    "items": [
-      {
-        "title": "Quality Engineering",
-        "text": "5 years testing SaaS and telecom platforms for international teams: API and backend automation, Playwright, REST Assured, Karate, CI/CD, risk-based testing and debugging.",
-        "link": {
-          "href": "work/iriusrisk-rules-engine/",
-          "label": "How I tested a rules engine →"
-        }
-      },
-      {
-        "title": "Mathematics",
-        "text": "A BSc in Mathematics from the University of Cantabria, put to real use in optimization and combinatorial reasoning inside software quality work.",
-        "link": {
-          "href": "work/ci-pipeline-optimization/",
-          "label": "The CI optimization model →"
-        }
-      },
-      {
-        "title": "Testing without an answer key",
-        "text": "When a system has no single expected value, as with an optimizer, a solver or a model, I test what must stay true: invariants, metamorphic relations, statistical checks, and seeded bugs that prove the checks work.",
-        "link": {
-          "href": "work/solver-validation-lab/",
-          "label": "See it in the Solver Validation Lab →"
-        }
-      }
-    ],
-    "closing": "Whatever the product, the approach is the same: state the problem precisely, test where defects can live, and build the tooling that keeps it tested."
   },
   "work": {
     "id": "work",
