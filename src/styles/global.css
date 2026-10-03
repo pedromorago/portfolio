@@ -2769,3 +2769,80 @@ a:hover > .arrow {
     overflow-x: clip;
   }
 }
+
+/* Client logos are buttons: tapping one opens a small card about the company. */
+.marquee-track .logo {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: inherit;
+}
+
+.marquee-track .logo:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+.marquee-track .logo[aria-expanded="true"] img {
+  opacity: 1;
+}
+
+.client-card {
+  position: fixed;
+  z-index: 60;
+  width: min(300px, calc(100vw - 32px));
+  padding: 16px 40px 16px 18px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  background: var(--bg-3);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.client-card[hidden] {
+  display: none;
+}
+
+.client-card-name {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.client-card-sector {
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.client-card-via {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.client-card-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 99px;
+  background: none;
+  color: var(--text-2);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.client-card-close:hover {
+  color: var(--text);
+}

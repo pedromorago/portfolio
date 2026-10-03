@@ -430,47 +430,63 @@
             "name": "Telefónica",
             "file": "fe-telefonica.png",
             "height": 30,
-            "ratio": 3.5
+            "ratio": 3.5,
+            "sector": "Telecommunications",
+            "via": "fieldeas"
           },
           {
             "name": "Repsol",
             "file": "repsol.svg",
-            "ratio": 4.266
+            "ratio": 4.266,
+            "sector": "Energy",
+            "via": "fieldeas"
           },
           {
             "name": "Iberdrola",
             "file": "fe-iberdrola.png",
             "height": 40,
-            "ratio": 2.174
+            "ratio": 2.174,
+            "sector": "Energy",
+            "via": "fieldeas"
           },
           {
             "name": "Renfe",
             "file": "renfe.svg",
-            "ratio": 2.617
+            "ratio": 2.617,
+            "sector": "Rail",
+            "via": "fieldeas"
           },
           {
             "name": "SEAT",
             "file": "seat.svg",
             "height": 34,
-            "ratio": 1.0
+            "ratio": 1.0,
+            "sector": "Automotive",
+            "via": "fieldeas"
           },
           {
             "name": "Adif",
             "file": "fe-adif.png",
             "height": 34,
-            "ratio": 3.286
+            "ratio": 3.286,
+            "sector": "Rail infrastructure",
+            "via": "fieldeas"
           },
           {
             "name": "Metro de Madrid",
             "file": "fe-metro-madrid.png",
             "height": 40,
-            "ratio": 1.609
+            "ratio": 1.609,
+            "sector": "Public transport",
+            "via": "fieldeas"
           },
           {
             "name": "Applus+",
             "file": "fe-applus.png",
             "height": 34,
-            "ratio": 3.258
+            "ratio": 3.258,
+            "sector": "Testing and inspection",
+            "via": "fieldeas"
           }
         ]
       },
@@ -481,52 +497,74 @@
           {
             "name": "J.P. Morgan",
             "file": "jpmorgan.svg",
-            "ratio": 4.864
+            "ratio": 4.864,
+            "sector": "Banking",
+            "via": "iriusrisk"
           },
           {
             "name": "HSBC",
             "file": "hsbc.svg",
             "height": 30,
-            "ratio": 3.716
+            "ratio": 3.716,
+            "sector": "Banking",
+            "via": "iriusrisk"
           },
           {
             "name": "American Express",
             "file": "americanexpress.svg",
             "height": 48,
-            "ratio": 1.0
+            "ratio": 1.0,
+            "sector": "Payments",
+            "via": "iriusrisk"
           },
           {
             "name": "Bosch",
             "file": "fe-bosch.png",
             "height": 30,
-            "ratio": 4.385
+            "ratio": 4.385,
+            "sector": "Engineering and technology",
+            "via": "fieldeas"
           },
           {
             "name": "EWE",
             "file": "ewe.svg",
             "height": 24,
-            "ratio": 2.953
+            "ratio": 2.953,
+            "sector": "Energy and telecom",
+            "via": "alvatross"
           },
           {
             "name": "DHL",
             "file": "dhl.svg",
             "height": 80,
-            "ratio": 1.0
+            "ratio": 1.0,
+            "sector": "Logistics",
+            "via": "fieldeas"
           },
           {
             "name": "ABN AMRO",
             "file": "abnamro.svg",
-            "ratio": 4.05
+            "ratio": 4.05,
+            "sector": "Banking",
+            "via": "iriusrisk"
           },
           {
             "name": "Nexi",
             "file": "nexi.svg",
-            "ratio": 3.312
+            "ratio": 3.312,
+            "sector": "Payments",
+            "via": "iriusrisk"
           }
         ]
       }
     ],
-    "label": "Clients of the teams I've tested for"
+    "label": "Clients of the teams I've tested for",
+    "via": {
+      "fieldeas": "A client of Fieldeas, whose field service management platform I tested from 2021 to 2024.",
+      "iriusrisk": "Named by IriusRisk as a customer of its threat modeling platform, which I tested from 2024 to 2026.",
+      "alvatross": "The client I work for at Alvatross by SATEC: I test its TM Forum OSS platform for telecom service orders."
+    },
+    "close": "Close"
   },
   "contact": {
     "id": "contact",

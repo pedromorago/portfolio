@@ -2,7 +2,8 @@
 // Logos of companies my work has reached. Only names the companies publish
 // themselves: Fieldeas lists its clients on its site, and IriusRisk names its
 // customers in case studies and in the press. The logos are drawn in the
-// text colour, so none of them fights the page.
+// text colour, so none of them fights the page. Tapping one opens a small
+// card that says how my work reached that company.
 import { site } from "../lib/site";
 const c = site.clients;
 ---
@@ -19,6 +20,16 @@ const c = site.clients;
             <ul class="marquee-track" aria-hidden={copy > 0 ? "true" : undefined}>
               {g.logos.map((l) => (
                 <li>
+                  <button
+                    type="button"
+                    class="logo"
+                    tabindex={copy > 0 ? -1 : undefined}
+                    aria-haspopup="dialog"
+                    aria-controls="client-card"
+                    data-name={l.name}
+                    data-sector={l.sector}
+                    data-via={c.via[l.via as keyof typeof c.via]}
+                  >
                   <img
                     draggable="false"
                     src={`/logos/${l.file}`}
@@ -29,6 +40,7 @@ const c = site.clients;
                     loading="lazy"
                     decoding="async"
                   />
+                  </button>
                 </li>
               ))}
             </ul>
@@ -37,4 +49,10 @@ const c = site.clients;
       </div>
     ))
   }
+  <div id="client-card" class="client-card" role="dialog" aria-labelledby="client-card-name" hidden>
+    <p id="client-card-name" class="client-card-name"></p>
+    <p class="client-card-sector"></p>
+    <p class="client-card-via"></p>
+    <button type="button" class="client-card-close" aria-label={c.close}>×</button>
+  </div>
 </section>

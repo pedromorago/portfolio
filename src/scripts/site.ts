@@ -131,6 +131,63 @@ if (copyBtn) {
 // a finger. A drag that ends in a fast flick throws the row: it keeps the
 // speed of the gesture and slows back to its own pace over a few seconds.
 // Without JavaScript, or with reduced motion, the CSS takes over instead.
+// Tapping a logo, or pressing Enter on it, opens a card about the company and
+// holds its row still until the card closes.
+const card = document.getElementById("client-card");
+let openLogo: HTMLButtonElement | null = null;
+const placeCard = () => {
+  if (!card || !openLogo) return;
+  const r = openLogo.getBoundingClientRect();
+  const w = card.offsetWidth;
+  const h = card.offsetHeight;
+  const left = Math.min(Math.max(16, r.left + r.width / 2 - w / 2), innerWidth - w - 16);
+  const top = r.top - h - 14 > 12 ? r.top - h - 14 : r.bottom + 14;
+  card.style.left = `${left}px`;
+  card.style.top = `${top}px`;
+};
+const closeCard = (refocus = false) => {
+  if (!card || !openLogo) return;
+  const logo = openLogo;
+  logo.setAttribute("aria-expanded", "false");
+  logo.closest<HTMLElement>(".marquee")?.removeAttribute("data-held");
+  card.hidden = true;
+  openLogo = null;
+  if (refocus) logo.focus();
+};
+const openCard = (logo: HTMLButtonElement, byKeyboard: boolean) => {
+  if (!card) return;
+  if (openLogo === logo) return closeCard(byKeyboard);
+  closeCard();
+  openLogo = logo;
+  card.querySelector(".client-card-name")!.textContent = logo.dataset.name ?? "";
+  card.querySelector(".client-card-sector")!.textContent = logo.dataset.sector ?? "";
+  card.querySelector(".client-card-via")!.textContent = logo.dataset.via ?? "";
+  logo.setAttribute("aria-expanded", "true");
+  logo.closest<HTMLElement>(".marquee")?.setAttribute("data-held", "");
+  card.hidden = false;
+  placeCard();
+  if (byKeyboard) card.querySelector<HTMLButtonElement>(".client-card-close")?.focus();
+};
+if (card) {
+  card.querySelector(".client-card-close")?.addEventListener("click", () => closeCard(true));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && openLogo) closeCard(true);
+  });
+  document.addEventListener("pointerdown", (e) => {
+    const t = e.target as HTMLElement;
+    if (openLogo && !card.contains(t) && !t.closest(".marquee")) closeCard();
+  });
+  window.addEventListener("scroll", placeCard, { passive: true });
+  window.addEventListener("resize", () => closeCard());
+  // Keyboard activation. Taps are handled by the drag code, which owns the
+  // pointer, except with reduced motion, where the rows don't take it.
+  document.querySelectorAll<HTMLButtonElement>(".marquee-track .logo").forEach((logo) =>
+    logo.addEventListener("click", (e) => {
+      if (e.detail === 0) openCard(logo, true);
+      else if (!logo.closest(".marquee")?.classList.contains("draggable")) openCard(logo, false);
+    }),
+  );
+}
 document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
   const track = marquee.querySelector<HTMLElement>(".marquee-track");
   if (!track || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -147,6 +204,7 @@ document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
   let startOffset = 0;
   let thrown = 0; // extra speed from the last flick, px per second
   let samples: { t: number; x: number }[] = [];
+  let moved = 0;
   let last = performance.now();
   const wrap = () => {
     width = track.offsetWidth || width;
@@ -156,7 +214,9 @@ document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
   const tick = (now: number) => {
     const dt = Math.min(now - last, 100) / 1000;
     last = now;
-    if (!dragging) {
+    if (marquee.hasAttribute("data-held")) {
+      thrown = 0;
+    } else if (!dragging) {
       // Hovering with a mouse holds the row still, but a throw still plays out.
       offset += ((hovering ? 0 : dir * speed) + thrown) * dt;
       thrown *= Math.exp(-dt / settle);
@@ -172,6 +232,7 @@ document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
   marquee.addEventListener("pointerleave", () => (hovering = false));
   marquee.addEventListener("pointerdown", (e) => {
     dragging = true;
+    moved = 0;
     thrown = 0;
     startX = e.clientX;
     startOffset = offset;
@@ -182,6 +243,8 @@ document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
   marquee.addEventListener("pointermove", (e) => {
     if (!dragging) return;
     offset = startOffset + (e.clientX - startX);
+    moved = Math.max(moved, Math.abs(e.clientX - startX));
+    if (moved > 6 && openLogo) closeCard();
     samples.push({ t: e.timeStamp, x: e.clientX });
     while (samples.length > 2 && e.timeStamp - samples[0].t > 100) samples.shift();
   });
@@ -189,6 +252,13 @@ document.querySelectorAll<HTMLElement>(".marquee").forEach((marquee) => {
     if (!dragging) return;
     dragging = false;
     marquee.classList.remove("dragging");
+    // A press that barely moved is a tap on a logo.
+    if (moved <= 6 && e.type === "pointerup") {
+      const logo = document.elementFromPoint(e.clientX, e.clientY)?.closest<HTMLButtonElement>(".logo");
+      if (logo && marquee.contains(logo)) openCard(logo, false);
+      else closeCard();
+      return;
+    }
     // The speed of the last tenth of a second of the drag; a drag that stopped
     // before letting go throws nothing.
     const first = samples[0];
