@@ -168,6 +168,13 @@ const p = site.person;
       margin: 0;
     }
   }
+  /* On screen, contact links are easier to hit; the printed page keeps its size. */
+  @media screen {
+    .contact a {
+      display: inline-block;
+      padding: 4px 0;
+    }
+  }
   @media screen and (max-width: 840px) {
     .page {
       width: auto;
@@ -340,6 +347,8 @@ const p = site.person;
   }
   .note a {
     color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
     word-break: break-all;
   }
   .note {

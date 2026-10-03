@@ -2,7 +2,7 @@
   "htmlLang": "en",
   "ogLocale": "en_US",
   "meta": {
-    "title": "Pedro Morago | Senior QA Engineer: Test Automation, CI and AI Evaluation",
+    "title": "Pedro Morago | Senior QA Engineer: Test Automation and CI",
     "description": "Senior QA Engineer with 5 years of test automation and a Mathematics degree. API, backend and E2E testing, CI tooling, and systems with no single right answer.",
     "ogDescription": "Senior QA Engineer with a Mathematics degree: API, backend and E2E automation, CI and test tooling, and the testing of quantitative, real-time and AI-driven systems.",
     "twitterDescription": "Senior QA Engineer with a Mathematics degree: test automation, CI tooling and the testing of quantitative and AI-driven systems."
@@ -277,7 +277,7 @@
     "id": "career",
     "kicker": "Career",
     "title": "Where I've worked",
-    "lede": "Five years in QA, all of them automating tests.",
+    "lede": "Five years owning product quality, with automation in every role.",
     "jobs": [
       {
         "dates": "Jul 2026 – Present",
