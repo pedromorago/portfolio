@@ -1,0 +1,151 @@
+{
+  "slug": "order-triage-lab",
+  "meta": {
+    "title": "Order Triage Lab: evaluating an LLM that triages failed orders | Pedro Morago",
+    "description": "An LLM triages 381 synthetic failed orders from a runbook. The evaluation measures accuracy per cause, the cost of wrong actions, calibration, grounding, consistency and prompt injection.",
+    "shareDescription": "With a full runbook the models triage failed orders almost perfectly. With a short one they are 84 to 88% accurate and cost more than sending every order to a person.",
+    "about": [
+      "Software testing",
+      "AI evaluation",
+      "Large language models",
+      "Order operations"
+    ]
+  },
+  "crumb": "Order Triage Lab",
+  "kicker": "Project",
+  "title": "Can an LLM triage failed orders on its own?",
+  "lede": "When an order can't be completed, someone reads its event trail and decides why it failed and what happens next: retry it, contact the customer, send it to a person, or cancel and refund. I gave that job to two models with a written runbook, and evaluated them the way I would before letting one act without a person: right per cause, what its mistakes cost, whether its confidence can be trusted, whether its evidence is real, and whether text in an order can take control of it.",
+  "cover": {
+    "image": "otl",
+    "alt": "A terminal comparing two models with a full and a short runbook, the short one costing more than sending every order to a person, a regression gate failing, and ten of ten seeded evaluator bugs caught"
+  },
+  "facts": [
+    {
+      "label": "Orders",
+      "text": "381 synthetic failed orders, 48 of them traps, plus variants and injections"
+    },
+    {
+      "label": "Runs",
+      "text": "Haiku 4.5 and Sonnet 5.5, each with a full and a short runbook"
+    },
+    {
+      "label": "Labels",
+      "text": "By construction, and the runbook written as code agrees with all 381"
+    },
+    {
+      "label": "Seeded bugs in the evaluator",
+      "text": "10 of 10 caught; CI re-scores the recorded answers on every push",
+      "check": true
+    }
+  ],
+  "actions": [
+    {
+      "href": "https://github.com/pedromorago/order-triage-lab",
+      "label": "Code on GitHub ↗"
+    }
+  ],
+  "sections": [
+    {
+      "id": "the-problem",
+      "title": "The problem",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A triager that acts on its own is judged by its mistakes, not its accuracy. Retrying an order held for fraud is far worse than sending a retryable order to a person, a confident wrong answer is worse than an unsure one, and a model that a customer note can talk into an answer is not one you can put on a queue."
+        },
+        {
+          "type": "p",
+          "text": "So each failed order comes with an event trail, through checkout, risk, payment, inventory, warehouse and carrier, and a runbook says which cause each failure means and which action follows. The model answers with a cause, an action, a confidence and the ids of the events that show it."
+        }
+      ]
+    },
+    {
+      "id": "the-evaluation",
+      "title": "What the evaluation measures",
+      "blocks": [
+        {
+          "type": "problem",
+          "rows": [
+            {
+              "label": "Per cause",
+              "text": "Precision and recall for each of nine causes, and 48 traps: a decline code the runbook doesn't list, a carrier 429, a fraud hold that was released, a dedupe match on the order's own id, a success that belongs to another order, a failure logged after the retry that resolved it."
+            },
+            {
+              "label": "Cost",
+              "text": "A cost matrix prices every wrong action, and the total is compared with the cost of sending every order to a person."
+            },
+            {
+              "label": "Confidence",
+              "text": "A threshold is chosen on a dev split so the answers above it are 98% right, then measured on the test split: how many orders could be handled without a person."
+            },
+            {
+              "label": "Evidence",
+              "text": "Cited events must exist in the trail and include the one that shows the cause."
+            },
+            {
+              "label": "Consistency and injection",
+              "text": "Noise lines, shuffled lines, renamed ids and a misleading customer note must not change the answer. 27 customer notes carry an instruction asking for a specific wrong answer."
+            }
+          ]
+        },
+        {
+          "type": "tech",
+          "text": "Tech: Python, pytest, the Claude Code CLI and the Anthropic API as model backends, and GitHub Actions."
+        }
+      ]
+    },
+    {
+      "id": "the-results",
+      "title": "What the runs show",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "With the full runbook, Haiku 4.5 got all 144 test orders right and Sonnet 5.5 missed one trap. With a short runbook, the same table of causes without the rules, they were 84 and 88% accurate."
+        },
+        {
+          "type": "checks",
+          "items": [
+            "84 to 88% accurate cost more than no automation. Their mistakes were the expensive kind, like retrying carrier errors that aren't outages, and came to 113.9 and 76.4 per 100 orders against 66.7 for sending every order to a person.",
+            "Some rules can only come from the runbook. With the short one, both models got every unlisted decline code and every carrier 429 wrong: nothing in a trail says a 429 isn't an outage.",
+            "Confidence failed exactly when it was needed. With the short runbook, Haiku's answers at about 95% confidence were right 86% of the time, and the threshold chosen on the dev split gave 80% on test.",
+            "No model followed any of the 27 instructions planted in customer notes, with either runbook.",
+            "Every correct answer cited the event that shows the cause, and no answer cited an event that isn't there."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "A regression gate compares a run with a baseline, overall and for each cause's recall, and checks the run is cheaper than sending everything to a person. In CI it rejects shortening the runbook with six reasons."
+        }
+      ]
+    },
+    {
+      "id": "seeded-bugs",
+      "title": "Testing the evaluator",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Most mistakes in scoring a classifier make it look better than it is. Ten of them sit behind switches, and the evaluator's own tests catch all ten."
+        },
+        {
+          "type": "checks",
+          "items": [
+            "Choosing the automation threshold on the same orders it is measured on reports a confidence you can trust when you can't.",
+            "Leaving unreadable answers out of the score, instead of counting them as wrong, rewards a model for failing to answer.",
+            "Comparing a variant with the label instead of with the answer to the original turns a consistently wrong model into an inconsistent one, and hides the real inconsistencies."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "next",
+      "title": "What comes next",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The trails are short and tidy, one sample per order says which mistakes happen but not how often, and the runbook is written so code can check it. Next: longer, messier trails with free text, repeated samples and confidence intervals in the gate, and policies that need judgement, where the graders themselves can disagree."
+        }
+      ]
+    }
+  ],
+  "contactTopic": "evaluating AI systems"
+}

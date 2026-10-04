@@ -142,7 +142,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Two samples per configuration show the spread but are too few for confidence intervals, and pricing rules are unusually easy to check. Next: more samples and intervals in the gate, a fuzzier domain where valid is harder to define, and a second lab on evaluating a model that triages failed orders, where the output is a decision rather than code."
+          "text": "Two samples per configuration show the spread but are too few for confidence intervals, and pricing rules are unusually easy to check. Next: more samples and intervals in the gate, and a fuzzier domain where valid is harder to define. The Order Triage Lab takes the same approach to a model whose output is a decision rather than code."
         }
       ]
     }

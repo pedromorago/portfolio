@@ -172,6 +172,20 @@
             ]
           },
           {
+            "title": "Order Triage Lab",
+            "kicker": "AI evaluation",
+            "visual": "otl",
+            "page": "work/order-triage-lab/",
+            "summary": "An LLM triages failed orders from a runbook. With a short runbook it is 88% accurate and costs more than sending every order to a person.",
+            "links": [
+              {
+                "href": "https://github.com/pedromorago/order-triage-lab",
+                "label": "Code ↗",
+                "sr": " for the Order Triage Lab"
+              }
+            ]
+          },
+          {
             "title": "Spin Trainer",
             "kicker": "My product",
             "visual": "spin-explorer",

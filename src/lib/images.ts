@@ -12,6 +12,7 @@ import rtt from "../assets/shots/rtt.png";
 import gil from "../assets/shots/gil.png";
 import ci from "../assets/shots/ci.png";
 import ael from "../assets/shots/ael.png";
+import otl from "../assets/shots/otl.png";
 
 export { portrait, headshot };
 
@@ -26,6 +27,7 @@ export const shots = {
   gil,
   ci,
   ael,
+  otl,
 };
 
 export function shot(key: string) {
