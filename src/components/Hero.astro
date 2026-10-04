@@ -1,7 +1,7 @@
 ---
-import { Picture } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import { site } from "../lib/site";
-import { portrait } from "../lib/images";
+import { avatar, portrait } from "../lib/images";
 import { hrefOf, parseLabel, smart } from "../lib/render";
 
 const h = site.hero;
@@ -17,7 +17,10 @@ const last = rest.join(" ");
       <h1 class="display hero-title" translate="no">
         {first} <em>{last}</em>
       </h1>
-      <p class="hero-role">{h.role}</p>
+      <p class="hero-role">
+        <Image class="hero-avatar" src={avatar} alt="" width={96} height={96} widths={[96, 192]} sizes="48px" loading="eager" />
+        {h.role}
+      </p>
       <ul class="hero-skills" aria-label="Main skills">
         {h.skills.map((k) => <li>{k}</li>)}
       </ul>
