@@ -1,0 +1,151 @@
+{
+  "slug": "ai-evaluation-lab",
+  "meta": {
+    "title": "AI Evaluation Lab: how good are AI-written tests? | Pedro Morago",
+    "description": "Models write pytest suites from user stories; an evaluator scores each test for validity, mutants caught and acceptance criteria really checked, with a regression gate and ten seeded evaluator bugs.",
+    "shareDescription": "A model can write a hundred tests in a minute. Are they right, and would they catch a bug? An evaluator for AI-written test suites: validity, 87 mutants, criteria coverage and a regression gate.",
+    "about": [
+      "Software testing",
+      "AI evaluation",
+      "Large language models",
+      "Mutation testing"
+    ]
+  },
+  "crumb": "AI Evaluation Lab",
+  "kicker": "Project",
+  "title": "How good are the tests an AI writes?",
+  "lede": "A model can write a hundred tests in a minute. That says nothing about whether they are right, or whether they would catch a bug. I gave models user stories for a checkout system, the way a QA engineer gets a ticket, without the code, and built an evaluator that scores every test they write against a reference implementation: whether it is valid, which of 87 seeded bugs it catches, and whether each acceptance criterion is really checked.",
+  "cover": {
+    "image": "ael",
+    "alt": "A terminal showing the comparison of four recorded runs, two models and two prompts, a regression gate failing when the smaller model replaces the larger one, and ten of ten seeded evaluator bugs caught"
+  },
+  "facts": [
+    {
+      "label": "System under test",
+      "text": "Checkout pricing in six user stories with 21 acceptance criteria"
+    },
+    {
+      "label": "Runs",
+      "text": "Haiku 4.5 and Sonnet 5.5, two prompts, two samples each: 1,207 generated tests"
+    },
+    {
+      "label": "Oracle",
+      "text": "87 mutants, 82 of them caught by a hand-written reference suite"
+    },
+    {
+      "label": "Seeded bugs in the evaluator",
+      "text": "10 of 10 caught; CI re-scores the recorded runs on every push",
+      "check": true
+    }
+  ],
+  "actions": [
+    {
+      "href": "https://github.com/pedromorago/ai-evaluation-lab",
+      "label": "Code on GitHub ↗"
+    }
+  ],
+  "sections": [
+    {
+      "id": "the-problem",
+      "title": "The problem",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Teams are starting to let models write tests, and the usual measure is how many came out and whether they pass. Neither says much. A test that passes on wrong expectations can't fail, a test that asserts nothing passes forever, and a suite of two hundred tests can check the same thing two hundred ways while a rule nobody thought about goes untested."
+        },
+        {
+          "type": "p",
+          "text": "So the question here is the one I would ask of a human colleague's suite: is each test right, would the suite catch a bug, and does it really check what the ticket asks for?"
+        }
+      ]
+    },
+    {
+      "id": "the-evaluation",
+      "title": "How a suite is scored",
+      "blocks": [
+        {
+          "type": "problem",
+          "rows": [
+            {
+              "label": "Valid",
+              "text": "Each test runs twice on the correct code. One that fails asserts something the stories never said, and from then on it counts for nothing."
+            },
+            {
+              "label": "Mutants caught",
+              "text": "The pricing code is mutated 87 ways, one small bug each: a comparison, an operator, a constant one cent off, a dropped rounding, a deleted error. A mutant is caught when a valid test fails on it."
+            },
+            {
+              "label": "Criteria verified",
+              "text": "Every rule in the code carries the acceptance criterion it implements, so every mutant knows which criterion it breaks. A test tagged with a criterion only counts when it catches a bug there."
+            },
+            {
+              "label": "Dead weight",
+              "text": "Tests that catch nothing, tests with no assertion, and tests that catch exactly what another test already catches."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Generated tests are code nobody has read, so a file that touches the disk, the network or other processes is never run. The rest run in a throwaway directory and a separate process, under a timeout."
+        },
+        {
+          "type": "tech",
+          "text": "Tech: Python, pytest, an AST mutation engine, the Claude Code CLI and the Anthropic API as model backends, and GitHub Actions."
+        }
+      ]
+    },
+    {
+      "id": "the-results",
+      "title": "What the runs show",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Sonnet 5.5's suites were 99% valid and caught 99% of the catchable mutants. Haiku 4.5's were 94 to 95% valid and caught 93 to 95%, with the gaps concentrated in coupons and loyalty."
+        },
+        {
+          "type": "checks",
+          "items": [
+            "The two models fail differently. Sonnet gets every step right in a comment and the last addition wrong. Haiku applies rules in the wrong place: VAT on shipping that is free in that cart, or the volume discount forgotten at 99 units.",
+            "An invalid test can hide a gap. In one Haiku suite, the only tests at the 99-unit limit had the wrong expected total. They don't count, so nothing checked the limit, and the mutant that rejects 99 units survived.",
+            "A prompt with test-design guidance raised Haiku from 93% to 95% of mutants caught and did nothing for Sonnet.",
+            "One mutant survived every suite from every model: skipping the rounding of the subtotal before a coupon minimum is checked. The hand-written reference suite catches it.",
+            "About a third of every suite catches exactly what another test in it already catches."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "A regression gate compares a run with a baseline, overall and per story, and fails with an exit code. In CI it rejects switching from Sonnet to Haiku with five reasons, among them validity down 4.6 points and the loyalty story falling from 86% to 71% of mutants caught."
+        }
+      ]
+    },
+    {
+      "id": "seeded-bugs",
+      "title": "Testing the evaluator",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "An evaluator that is wrong hands out scores nobody earned, and the numbers still look like numbers. Ten mistakes that are easy to make in a harness like this sit behind switches, and a script turns them on one at a time. The evaluator's own tests catch all ten."
+        },
+        {
+          "type": "checks",
+          "items": [
+            "The most dangerous one counts kills from tests that already fail on the correct code. A test that always fails \"catches\" every mutant, so a broken suite would score perfectly.",
+            "Trusting the criterion tags instead of checking them would report every criterion covered for any suite that tags its tests.",
+            "A runner that quietly copies the original module instead of the mutant makes every suite look useless. The reference suite, which must catch 82 mutants, notices at once."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "next",
+      "title": "What comes next",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Two samples per configuration show the spread but are too few for confidence intervals, and pricing rules are unusually easy to check. Next: more samples and intervals in the gate, a fuzzier domain where valid is harder to define, and a second lab on evaluating a model that triages failed orders, where the output is a decision rather than code."
+        }
+      ]
+    }
+  ],
+  "contactTopic": "evaluating AI systems"
+}

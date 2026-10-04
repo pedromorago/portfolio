@@ -11,6 +11,7 @@ import svlab from "../assets/shots/svlab.png";
 import rtt from "../assets/shots/rtt.png";
 import gil from "../assets/shots/gil.png";
 import ci from "../assets/shots/ci.png";
+import ael from "../assets/shots/ael.png";
 
 export { portrait, headshot };
 
@@ -24,6 +25,7 @@ export const shots = {
   rtt,
   gil,
   ci,
+  ael,
 };
 
 export function shot(key: string) {

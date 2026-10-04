@@ -2,7 +2,7 @@
   "htmlLang": "en",
   "ogLocale": "en_US",
   "meta": {
-    "title": "Pedro Morago | Senior QA Engineer: Test Automation and CI",
+    "title": "Pedro Morago | Senior QA Engineer: Test Automation, CI and AI Evaluation",
     "description": "Senior QA Engineer with 5 years of test automation and a Mathematics degree. API, backend and E2E testing, CI tooling, and systems with no single right answer.",
     "ogDescription": "Senior QA Engineer with a Mathematics degree: API, backend and E2E automation, CI and test tooling, and the testing of quantitative, real-time and AI-driven systems.",
     "twitterDescription": "Senior QA Engineer with a Mathematics degree: test automation, CI tooling and the testing of quantitative and AI-driven systems."
@@ -154,9 +154,23 @@
         ]
       },
       {
-        "title": "Quantitative and real-time labs",
-        "note": "Personal projects on systems that are hard to test: numerical solvers, real-time state, model evaluation and a full-stack product of my own. Each repository is public, with its tests and CI.",
+        "title": "AI, quantitative and real-time labs",
+        "note": "Personal projects on systems that are hard to test: AI-written code, model evaluation, numerical solvers, real-time state and a full-stack product of my own. Each repository is public, with its tests and CI.",
         "projects": [
+          {
+            "title": "AI Evaluation Lab",
+            "kicker": "AI evaluation",
+            "visual": "ael",
+            "page": "work/ai-evaluation-lab/",
+            "summary": "How good are the tests an AI writes? 1,207 generated tests scored for validity, 87 seeded bugs and the acceptance criteria they really check.",
+            "links": [
+              {
+                "href": "https://github.com/pedromorago/ai-evaluation-lab",
+                "label": "Code ↗",
+                "sr": " for the AI Evaluation Lab"
+              }
+            ]
+          },
           {
             "title": "Spin Trainer",
             "kicker": "My product",
