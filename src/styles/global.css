@@ -1981,23 +1981,6 @@ a:hover > .arrow {
   line-height: 0.95;
 }
 
-.hero-avatar {
-  display: none;
-}
-
-@media (max-width: 960px) {
-  .hero-avatar {
-    display: inline-block;
-    width: 48px;
-    height: 48px;
-    margin-right: 12px;
-    vertical-align: middle;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid var(--line-2);
-  }
-}
-
 .hero-title em {
   font-style: italic;
   color: var(--accent);

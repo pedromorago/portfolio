@@ -2,7 +2,6 @@
 // writes modern formats at build time.
 import portrait from "../assets/portrait.png";
 import headshot from "../assets/headshot.png";
-import avatar from "../assets/avatar.jpg";
 import spinExplorer from "../assets/shots/spin-explorer.png";
 import spinQuiz from "../assets/shots/spin-quiz.png";
 import shard from "../assets/shots/shard.png";
@@ -15,7 +14,7 @@ import ci from "../assets/shots/ci.png";
 import ael from "../assets/shots/ael.png";
 import otl from "../assets/shots/otl.png";
 
-export { portrait, headshot, avatar };
+export { portrait, headshot };
 
 export const shots = {
   "spin-explorer": spinExplorer,
