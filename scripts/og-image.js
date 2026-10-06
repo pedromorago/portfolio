@@ -27,7 +27,7 @@ const HOME = `${COMMON}
   .hero { min-height: 630px !important; height: 630px; padding: 0 !important; overflow: hidden; }
   .hero-inner { grid-template-columns: 1.4fr 0.6fr !important; height: 630px; align-items: center !important; }
   .hero-copy { padding: 0 !important; }
-  .hero-title { font-size: 110px !important; }
+  .hero-title { font-size: 84px !important; }
   .hero .hero-photo { align-self: end !important; max-width: 380px !important; margin: 0 !important; }
 `;
 
@@ -35,7 +35,7 @@ const CASE = `${COMMON}
   .breadcrumb, .case-lede, .case-facts, .case-actions, .case-cover, main > article > div, .case-next { display: none !important; }
   .case-hero { height: 630px; padding: 0 !important; display: flex; align-items: center; }
   .case-kicker { margin-top: 0 !important; font-size: 18px !important; }
-  .case-title { font-size: 92px !important; max-width: 11em !important; }
+  .case-title { font-size: 68px !important; max-width: 14em !important; }
   .case-hero .container::after { content: "Pedro Morago, Senior QA Engineer"; display: block; margin-top: 36px; font-size: 22px; color: #b4b0a8; }
 `;
 
