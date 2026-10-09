@@ -130,10 +130,10 @@
         {
           "type": "checks",
           "items": [
-            "One layer can hide another's bug. When the server resends one event too many on resume, the client's deduplication absorbs it and whole games look perfect. Only the protocol check, which holds the server to its own contract, sees it.",
+            "One layer can hide another's bug. When the server resends one event too many on resume, the client's deduplication absorbs it and whole games look perfect. The protocol check, which holds the server to its own contract, sees it, and so do two of the recovery checks.",
             "Invariants keep the state sane but don't know the rules. Accepting a raise below the minimum breaks no invariant, and the random sessions never notice. A reference case written from the rules does.",
             "Races need a window. With instant storage, validating commands concurrently never goes wrong. The concurrency checks use storage that takes a moment, and the simulator randomizes it, so the lost update actually happens.",
-            "Whole-game simulation is the widest net, including both client bugs, but it can be blind to a specific timing. Publishing events before storing them was caught in only one of ten simulated seeds; a check that crashes the server at exactly that moment catches it every time.",
+            "Whole-game simulation is the widest net, including both client bugs, but it can be blind to a specific timing. Publishing events before storing them was noticed by only one of 60 crash games; a check that crashes the server at exactly that moment catches it every time.",
             "Five of the bugs only exist after a restart. The most telling one: when the server forgets which commands it had already applied, the first symptom is a player being told their action failed when it had actually happened."
           ]
         },

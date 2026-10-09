@@ -2,7 +2,7 @@
   "slug": "order-triage-lab",
   "meta": {
     "title": "Order Triage Lab: evaluating an LLM that triages failed orders | Pedro Morago",
-    "description": "An LLM triages 381 synthetic failed orders from a runbook. The evaluation measures accuracy per cause, the cost of wrong actions, calibration, grounding, consistency and prompt injection.",
+    "description": "An LLM triages 210 synthetic failed orders from a runbook, 381 cases with variants and injections. The evaluation measures accuracy per cause, the cost of wrong actions, calibration, grounding, consistency and prompt injection.",
     "shareDescription": "With a full runbook the models triage failed orders almost perfectly. With a short one they are 84 to 88% accurate and cost more than sending every order to a person.",
     "about": [
       "Software testing",
@@ -22,7 +22,7 @@
   "facts": [
     {
       "label": "Orders",
-      "text": "381 synthetic failed orders, 48 of them traps, plus variants and injections"
+      "text": "210 synthetic failed orders, 48 of them traps, plus 171 variants and injections"
     },
     {
       "label": "Runs",
@@ -30,7 +30,7 @@
     },
     {
       "label": "Labels",
-      "text": "By construction, and the runbook written as code agrees with all 381"
+      "text": "By construction, and the runbook written as code agrees with all 381 cases"
     },
     {
       "label": "Seeded bugs in the evaluator",

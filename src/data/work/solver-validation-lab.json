@@ -98,7 +98,7 @@
             },
             {
               "label": "Statistical",
-              "text": "Monte Carlo estimates fall within 4.5 standard errors of the exact value, and quadrupling the samples roughly halves the error."
+              "text": "Monte Carlo estimates fall within 4.5 standard errors of the exact value, and sixteen times the samples at least halves the error."
             },
             {
               "label": "Regression",
@@ -176,14 +176,14 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Seventeen corruptions of a valid strategy file, from frequencies that sum to 1.07 to one hand drifting away from its suit-swapped twin, each run through validate, diff and the isomorphism check. All seventeen are caught, and the table says which tool is needed for what."
+          "text": "Seventeen corruptions of a valid strategy file, from frequencies that sum to 1.07 to one hand drifting away from its suit-swapped twin, each checked with validate, and with diff or the isomorphism check. All seventeen are caught, and the table says which tool is needed for what."
         },
         {
           "type": "checks",
           "items": [
             "A hand that uses a board card, and the same hand written twice in a different card order, are each caught by one rule only. The diff can't see either, so validation has to run before comparing versions.",
             "A valid file with a large strategy change passes every rule. Only the regression diff flags it.",
-            "Hypothesis found a case I had missed: two hands that swap strategies leave every range-weighted total unchanged. Only the per-hand threshold catches it, and there is now a test for it."
+            "Hypothesis found a counterexample during development: two hands that swap strategies leave every range-weighted total unchanged. Only the per-hand threshold catches it, and there is now a test for it."
           ]
         }
       ]
@@ -198,13 +198,13 @@
         },
         {
           "type": "p",
-          "text": "The solvers need the equity of every hand class against every other. A C program enumerates all 1,712,304 boards for each of 47,008 distinct matchups, and the table is written only after the C program agrees exactly, unit for unit, with the Python engine on 300 random matchups. The heads-up solver runs CFR+ until the Nash gap is below a millionth of a big blind per hand. The three-handed one, for the start of a Spin & Go, uses Monte Carlo equities for 818,805 triples of classes and is checked against the exact heads-up table it must reduce to."
+          "text": "The solvers need the equity of every hand class against every other. A C program enumerates all 1,712,304 boards for each of 47,008 distinct matchups, and the table is written only after the C program agrees exactly, unit for unit, with the Python engine on 300 random flop and turn matchups. The heads-up solver runs CFR+ until the Nash gap is below a millionth of a big blind per hand. The three-handed one, for the start of a Spin & Go, uses Monte Carlo equities for 818,805 triples of classes and is checked against the exact heads-up table it must reduce to."
         },
         {
           "type": "checks",
           "items": [
             "Six bugs seeded into the heads-up solver are all caught, and the most instructive one is caught by a single check: with card removal ignored, the solver still converges to a perfect equilibrium of the wrong game. Only a check that rebuilds the value from every pair of hands that can be dealt, independently of the solver's model, notices.",
-            "A Nash gap that leaves out one player reports convergence that never happened. Cross-checking the gap against the per-hand regrets catches it; the gap alone cannot.",
+            "A Nash gap that leaves out one player reports convergence that never happened. Cross-checking the gap against the per-class regrets catches it; the gap alone cannot.",
             "Exploitability proves that a solver solved its model. Whether the model is the right one needs a check from outside it."
           ]
         }

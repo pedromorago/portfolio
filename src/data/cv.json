@@ -24,7 +24,7 @@
       "dates": "May 2024 – Jun 2026",
       "meta": "Remote. International cybersecurity SaaS, threat modeling",
       "bullets": [
-        "Built a Python MILP optimization model for CI sharding: 42% faster in a one-worker benchmark; modelling production workers showed 4 containers instead of 7 could be about 8% faster and 41% cheaper.",
+        "Built a Python MILP optimization model for CI sharding: 42% faster in a one-worker benchmark; a later model of the production workers estimates that 4 containers instead of 7 would be about 8% faster and 41% cheaper.",
         "Led the testing strategy for a core Security Content module across backend, API and frontend layers.",
         "Designed Playwright and TypeScript E2E automation for a combinatorial rules engine using Page Objects, API-backed setup and data factories.",
         "Automated backend APIs with REST Assured and JUnit 5, including schema validation, negative cases and traceability; contributed to a TestCafe to Playwright migration that cut runtime by about 80%."
@@ -56,7 +56,7 @@
     {
       "title": "Spin Trainer",
       "url": "pedromorago.com/work/spin-trainer",
-      "text": "My own full-stack training app for poker ranges, from idea to release: React and Spring Boot. 145 API tests, 37 Playwright specs, mutation testing; 8 real defects found."
+      "text": "My own full-stack training app for poker ranges, from idea to release: React and Spring Boot. 145 API tests, 95 Playwright tests, mutation testing; 8 real defects found."
     },
     {
       "title": "Game Integrity Lab",

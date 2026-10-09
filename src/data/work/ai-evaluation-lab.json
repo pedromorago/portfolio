@@ -105,8 +105,8 @@
         {
           "type": "checks",
           "items": [
-            "The two models fail differently. Sonnet gets every step right in a comment and the last addition wrong. Haiku applies rules in the wrong place: VAT on shipping that is free in that cart, or the volume discount forgotten at 99 units.",
-            "An invalid test can hide a gap. In one Haiku suite, the only tests at the 99-unit limit had the wrong expected total. They don't count, so nothing checked the limit, and the mutant that rejects 99 units survived.",
+            "The two models fail differently. Sonnet usually gets every step right in a comment and the last addition wrong. Haiku applies rules in the wrong place: VAT on shipping that is free in that cart, or the volume discount forgotten at 99 units.",
+            "An invalid test can hide a gap. In two Haiku suites, the only tests at the 99-unit limit had the wrong expected total. They don't count, so nothing checked the limit, and the mutant that rejects 99 units survived.",
             "A prompt with test-design guidance raised Haiku from 93% to 95% of mutants caught and did nothing for Sonnet.",
             "One mutant survived every suite from every model: skipping the rounding of the subtotal before a coupon minimum is checked. The hand-written reference suite catches it.",
             "About a third of every suite catches exactly what another test in it already catches."

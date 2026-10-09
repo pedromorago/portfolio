@@ -86,7 +86,7 @@
             "API acceptance: 145 tests with REST Assured and JUnit 5. Every response is validated against the OpenAPI contract, including status, `Content-Type` and schema.",
             "Executable specification: 23 Cucumber scenarios, written in Spanish, so someone who knows poker but not the code can review the rules.",
             "Collection regression: a Newman run of a new player's whole flow, 20 requests and 47 assertions.",
-            "End-to-end: 37 Playwright specs in TypeScript, run against the mock and against the real API, with axe checking WCAG 2.2 AA under the production Content-Security-Policy.",
+            "End-to-end: 95 Playwright tests in TypeScript, the same specs run against the mock and, 93 of them, against the real API, with axe checking WCAG 2.2 AA under the production Content-Security-Policy.",
             "Unit and integration: 152 unit tests and 106 Testcontainers integration tests in the API, and 295 Vitest tests in the web app."
           ]
         },

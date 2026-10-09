@@ -80,7 +80,7 @@
             },
             {
               "label": "RTA users",
-              "text": "Humans who become near-perfect on hard spots, with extra delay on exactly those decisions."
+              "text": "Regulars who copy the reference strategy on half of the hard spots, with extra delay on exactly those decisions."
             },
             {
               "label": "Collusion",
@@ -117,7 +117,7 @@
         },
         {
           "type": "p",
-          "text": "A regression gate compares a candidate evaluation with a baseline, overall and per segment, and fails with an exit code. Dropping the accuracy features fails it: PR-AUC falls from 0.867 to 0.749, and the share of regulars flagged rises from 3.8% to 9.2%."
+          "text": "A regression gate compares a candidate evaluation with a baseline, overall and per segment, and fails with an exit code. Dropping the accuracy features fails it: PR-AUC falls from 0.866 to 0.749, and the share of regulars flagged rises from 3.8% to 9.2%."
         }
       ]
     },
@@ -133,8 +133,8 @@
           "type": "checks",
           "items": [
             "The most dangerous bugs make the model look better. Leaking players across splits, a feature built from the labels and evaluating on training players all report a PR-AUC of 1.000 against 0.853 for the real pipeline. Nobody would question those numbers from the report alone.",
-            "Two bugs, a false-positive budget computed over all players and a PR curve missing its last point, leave this run's numbers unchanged. Only hand-computed reference cases see them.",
-            "Reporting accuracy as the headline looks great at 0.95, but with one player in nine positive, a model that flags nobody is already right about 89% of the time. A sanity check that makes flagging nobody look as bad as it is catches it."
+            "Two bugs, a false-positive budget computed over all players and a PR curve missing its last point, leave this run's numbers unchanged. Only hand-computed reference cases see both, and the budget invariant also sees the first.",
+            "Reporting accuracy as the headline looks great at 0.95, but on the same data a model that flags nobody already scores 0.87. A sanity check that makes flagging nobody look as bad as it is catches it."
           ]
         }
       ]

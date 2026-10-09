@@ -190,7 +190,7 @@
             "kicker": "My product",
             "visual": "spin-explorer",
             "page": "work/spin-trainer/",
-            "summary": "A full-stack training app of my own, from idea to release, tested like production: 145 API tests, 37 Playwright specs and 8 real defects found.",
+            "summary": "A full-stack training app of my own, from idea to release, tested like production: 145 API tests, 95 Playwright tests and 8 real defects found.",
             "links": [
               {
                 "href": "https://spintrainer.pedromorago.com/",
