@@ -64,7 +64,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "In a Spin & Go, each decision before the flop depends on your position and your stack. Spin Trainer holds 80 reference ranges from a study guide. The Explorer shows them hand by hand, the Quiz deals you a hand and grades your answer on the server, and Stats shows where you keep missing."
+          "text": "In a Spin & Go, each decision before the flop depends on your position and your stack. Spin Trainer holds 80 example reference ranges, built by a public rule that ranks the hands by all-in equity. The Explorer shows them hand by hand, the Quiz deals you a hand and grades your answer on the server, and Stats shows where you keep missing."
         },
         {
           "type": "p",
@@ -84,10 +84,10 @@
           "type": "list",
           "items": [
             "API acceptance: 145 tests with REST Assured and JUnit 5. Every response is validated against the OpenAPI contract, including status, `Content-Type` and schema.",
-            "Executable specification: 23 Cucumber scenarios, written in Spanish, so someone who knows poker but not the code can review the rules.",
+            "Executable specification: 17 Cucumber scenarios and outlines (29 runs), written in Spanish, so someone who knows poker but not the code can review the rules.",
             "Collection regression: a Newman run of a new player's whole flow, 20 requests and 47 assertions.",
             "End-to-end: 95 Playwright tests in TypeScript, the same specs run against the mock and, 93 of them, against the real API, with axe checking WCAG 2.2 AA under the production Content-Security-Policy.",
-            "Unit and integration: 152 unit tests and 106 Testcontainers integration tests in the API, and 295 Vitest tests in the web app."
+            "Unit and integration: 152 unit tests and 106 Testcontainers integration tests in the API, and 347 Vitest tests in the web app."
           ]
         },
         {
